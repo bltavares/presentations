@@ -15,15 +15,21 @@ Write something you like on the other.
 Save for it and we will come later to it
 
 
-# 初心
+## Inheritance
 
 Note:
-https://en.wikipedia.org/wiki/Shoshin
+That is how we perceive the world. Tends to be 'touchable'.
+We are good at finding patterns and giving names to things help our mental model.
+We had a full language based on that.
+We can make if based on that.
 
 
 ## Mutable state
 
 Note:
+That is how we perceive our actions on the real world.
+We tend to do things mutably, it feels natural.
+
 We want to process data, transform, make decisions.
 Lets imagine a small computer.
 
@@ -31,13 +37,6 @@ A computer needs to do lots of things. But it has only 4Mb of memmory.
 It is used inclusive for loading your OS.
 Creating millions of objects was not fesaible.
 We had to improve our tools and prices to allow us to spawn loads of objects.
-
-
-## Inheritance
-
-Note:
-We had a full language based on that.
-We can make if based on that.
 
 
 ## CoffeeScript
@@ -54,6 +53,19 @@ Why is an idea good or bad inheritenly?
 Exploring ideas is valid and healthy.
 
 
+## Confront the current status
+Note:
+Is the best practice of the last year still best practice?
+Is your development environemnt good enough?
+
+
+## Tests
+
+Note:
+No tests, acceptance in another format?
+Generative tests? Type system as a form o testing?
+
+
 ## Ideas vs real world
 
 Note:
@@ -62,6 +74,7 @@ Some ideas are just for inspiration.
 Some ideas are closre to solving current problems.
 
 Some ideas need to be worked on to become real.
+Vagrant, docker
 
 
 ## Explore because you can
@@ -76,13 +89,6 @@ Note:
 
 
 ## Workflow
-
-
-## Tests
-
-Note:
-No tests, acceptance in another format?
-Generative tests? Type system as a form o testing?
 
 
 ## Better IDE
@@ -120,7 +126,7 @@ Note:
 ## Game inspiration
 
 Note:
-{Immediate-mode graphical user interface](http://mollyrocket.com/861)
+[Immediate-mode graphical user interface](http://mollyrocket.com/861)
 React, No mvc, just render your data.
 Game loop ~= Event loop
 
@@ -148,6 +154,12 @@ No locks.
 We can reduce size with shared imuttable structures.
 
 
+# 初心
+
+Note:
+https://en.wikipedia.org/wiki/Shoshin
+
+
 ## Look at the bright side
 
 Note:
@@ -168,12 +180,6 @@ Try to bridge it to your context.
 ## Do things because you can
 Note:
 Exploring ideas leads to new ideas
-
-
-## Confront the current status
-Note:
-Is the best practice of the last year still best practice?
-Is your development environemnt good enough?
 
 
 ## Links
