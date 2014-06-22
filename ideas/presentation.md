@@ -39,13 +39,6 @@ Creating millions of objects was not fesaible.
 We had to improve our tools and prices to allow us to spawn loads of objects.
 
 
-## CoffeeScript
-
-Note:
-Source Maps
-Adopting browser as an target environment
-
-
 ## Good vs Bad
 
 Note:
@@ -57,9 +50,10 @@ Exploring ideas is valid and healthy.
 Note:
 Is the best practice of the last year still best practice?
 Is your development environemnt good enough?
+Is your language good enough?
 
 
-## Tests
+## "TDD is dead"
 
 Note:
 No tests, acceptance in another format?
@@ -83,6 +77,7 @@ Note:
 [Cobol on WheelChairs](http://azac.pl/cobol-on-wheelchair/)
 [Bash webservers](http://www.infoq.com/presentations/bash)
 [Text editors written on a stripped down browser](https://atom.io/)
+CoffeeScript: [Source Maps, Adopting browser as an target environment]
 
 
 ## Lets explore some ideas
