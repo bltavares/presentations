@@ -118,6 +118,17 @@ Note:
 [The future of software, the end of apps, and why UX designers shouldl care about type theory](http://pchiusano.blogspot.com.br/2013/05/the-future-of-software-end-of-apps-and.html)
 
 
+## Events as data
+
+Note:
+Reactive Extensions, BaconJS
+
+
+## Imutable structures
+
+Note: Shared data. New world every step.
+
+
 ## Game inspiration
 
 Note:
@@ -128,17 +139,6 @@ Game loop ~= Event loop
 
 ## Game inspiration
 ![Game Loop](http://rbwhitaker.wdfiles.com/local--files/the-game-loop/GameLoop.png)
-
-
-## Imutable data
-
-Note:
-
-
-## Events as data
-
-Note:
-Reactive Extensions, BaconJS
 
 
 ## Append only database
