@@ -1,0 +1,8 @@
+[package]
+name = "example"
+version = "0.1.0"
+authors = ["Bruno Tavares <connect+github@bltavares.com>"]
+
+[[bin]]
+doc = false
+name = "example"

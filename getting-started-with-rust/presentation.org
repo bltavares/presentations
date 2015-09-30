@@ -1,0 +1,137 @@
+*  Getting started with Rust
+   [[file:rust-logo.png]]
+** Before we start...
+
+Start the installation of ~multirust~ while we go over the introduction
+
+#+BEGIN_SRC bash
+brew install multirust
+#+END_SRC
+
+
+* What is Rust?
+  
+#+BEGIN_QUOTE
+Rust is a systems programming language that runs blazingly fast,
+prevents nearly all segfaults, and guarantees thread safety.
+#+END_QUOTE
+  
+** What does that mean?
+It is a language that compiles to binary, exposes lower level concepts
+while trying to maintain high level features.
+
+* The core "pillars" 
+** a.k.a. tradeoffs
+
+#+BEGIN_QUOTE
+- zero-cost abstractions
+- move semantics
+- guaranteed memory safety
+- threads without data races
+- trait-based generics
+- pattern matching
+- type inference
+- minimal runtime
+- efficient C bindings
+#+END_QUOTE
+
+* Explaining the "pillars" 
+** a.k.a. tradeoffs
+
+- zero-cost abstractions -> you pay for what you use
+- move semantics -> it is exposed when a value is out of scope
+- guaranteed memory safety -> no stackoverflow or segfault
+- threads without data races -> threads without data races
+- trait-based generics -> I'll show this
+- pattern matching
+- type inference -> combined with really good type system
+- minimal runtime -> being capable to be embedded on other systems and langs.
+- efficient C bindings -> C interop
+  
+* Hello World!
+
+http://is.gd/MvBmlc
+
+#+BEGIN_SRC rust
+fn main() {
+    println!("Hello, world!");
+}
+#+END_SRC
+
+* A more complex example
+http://is.gd/et9weo
+
+#+BEGIN_SRC rust
+fn upper(s : &String) -> String {
+  let uppers = s
+    .chars()
+    .flat_map(|x| 
+        x.to_uppercase()
+    );
+  uppers.collect()
+}
+
+
+fn main() {
+   let example = String::from("Hello World!");
+   println!("Initial input: {}, Modified: {}", example, upper(&example));
+}
+#+END_SRC
+
+* Creating a new project
+  
+- ~rustc~ is the compiler
+- ~rustdoc~ is the document generator
+- ~cargo~ is the build and dependencies tool
+
+#+BEGIN_SRC sh
+cargo new --bin example
+cd example
+cargo run
+#+END_SRC
+
+* Introducing "Fighting the compiler"
+It is common to fight the compiler in the beggining.
+It has good explanation to error messages and helps you to fix the error.
+
+* Documentation is part of the build
+
+https://doc.rust-lang.org/book/documentation.html
+
+* Trait-based generics
+  Let's see an example.
+
+* Some exposed concepts to the programmer
+  - Heap vs Stack allocation
+  - Lifetime of values
+  - Ownership of values and move semantics
+* The community is great
+  - Really nice people quite aware of how to deal with new people
+  - It's a new language, so everybody is a newbie
+* Is it ready for prime time?
+** I think there is a lot of potential on the language!
+- Community is starting to build libs
+- Company adoption is it the early-adopters curve
+- Good to build (interop)crypto libs
+- Good to build cross-platform utility tools
+  
+* Your Firefox will be using it soon!
+** Servo: the next Firefox rendering engine
+- Parallel rendering will be enabled
+- Componentized in smaller libraries
+  - So you can use the same HTML parser that Servo uses on your project
+    
+* This is just an intro
+I'm happy to help others to get started after this.
+
+* Happy Hacking
+
+* Links
+- [[https://www.rust-lang.org/][Rust's offical website]]
+- [[https://crates.io/][Rust's package registry]]
+- [[http://this-week-in-rust.org/][Handpicked Rust updates, delivered to your inbox.]]
+- [[http://play.rust-lang.org/][Online playground]]
+- [[http://doc.rust-lang.org/book/README.html][The Rust book]]
+- [[http://rustbyexample.com/][Rust By Example]]
+- [[https://github.com/brson/multirust][multirust - version manager]]
+- [[https://doc.rust-lang.org/stable/std/][std library documentation]]
