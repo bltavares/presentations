@@ -107,8 +107,12 @@ https://doc.rust-lang.org/book/documentation.html
   - Ownership of values and move semantics
 * The community is great
   - Really nice people quite aware of how to deal with new people
+    - Very nice.
+    - Core committers are social aware.
   - It's a new language, so everybody is a newbie
+  - Evolution of the language is transparent - [[https://github.com/rust-lang/rfcs/blob/master/text/0002-rfc-process.md][the RFC process]]
 * Is it ready for prime time?
+** YES...
 ** I think there is a lot of potential on the language!
 - Community is starting to build libs
 - Company adoption is it the early-adopters curve
@@ -129,7 +133,8 @@ I'm happy to help others to get started after this.
 * Links
 - [[https://www.rust-lang.org/][Rust's offical website]]
 - [[https://crates.io/][Rust's package registry]]
-- [[http://this-week-in-rust.org/][Handpicked Rust updates, delivered to your inbox.]]
+- [[http://this-week-in-rust.org/][This Week In Rust - Handpicked Rust updates, delivered to your inbox.]]
+- [[https://github.com/rust-lang/rfcs][The RFC repo]]
 - [[http://play.rust-lang.org/][Online playground]]
 - [[http://doc.rust-lang.org/book/README.html][The Rust book]]
 - [[http://rustbyexample.com/][Rust By Example]]
