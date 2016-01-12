@@ -436,3 +436,24 @@ Ou podemos pedir apenas uma referencia para um slice de string, como somente lei
     println!("[go] {}", out);
   }
 #+END_SRC
+
+* Quero saber mais sobre Estruturas!
+
+Ainda não falamos sobre Traits, como extender operadores para seus
+tipos, como associar comportamentos padrões da linguagem (como
+Iterators para suas listas) e mais.
+
+* Quero saber mais sobre Ownership!
+
+Ownership é um sistema bem interessante da linguagem e isso foi apenas uma introdução.
+Ainda não falamos sobre como Rust permite compartilhar valores entre
+threads, o comportamento de Copy, Drop e Send utlizidos para gerenciar
+memoria, Box e alocação no heap...
+
+* Onde eu posso saber mais?
+
+- [[https://doc.rust-lang.org/stable/book/][Rust Book]]
+- [[https://www.rust-lang.org/community.html][Rust Community Page]]
+- [[https://this-week-in-rust.org/][This Week in Rust]]
+- Entrem no canal do #rust e do #rust-begginer
+- Estamos no #rust-br para falar em português
