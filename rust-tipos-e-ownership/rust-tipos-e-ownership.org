@@ -128,9 +128,9 @@ campos associados ao tipo.
 
 #+BEGIN_SRC rust
   struct Color {
-      red: i32,
-      blue: i32,
-      green: i32
+      red: u8,
+      blue: u8,
+      green: u8
   }
 #+END_SRC
 
@@ -148,9 +148,9 @@ https://doc.rust-lang.org/book/structs.html
 
   #[derive(Debug)]
   struct Color {
-      red: i32,
-      blue: i32,
-      green: i32
+      red: u8,
+      blue: u8,
+      green: u8
   }
 
   fn color(flower: Flower) -> Color {
