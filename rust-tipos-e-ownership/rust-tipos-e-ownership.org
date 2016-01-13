@@ -22,7 +22,7 @@ Vamos ver um pouco sobre /Enums/ e /Structs/ sendo aplicadas em problemas.
 * Problema 1  
   
 Você esta fazendo um programa para falar qual a cor de uma flor.
-Mas ele so funciona pra /Rosas/ e /Violetas/.
+Mas ele só funciona pra /Rosas/ e /Violetas/.
 
 /Rosas/ são vermelhas.
 /Violetas/ são azuis.
@@ -70,7 +70,7 @@ Podemos aproveitar o sistema de tipos e estrutura de dados do Rust?
 
 * Enums
 
-Enums são tipos de dados que representam todos os possiveis valores.
+Enums são tipos de dados que representam todos os possíveis valores.
 Um valor pode ser apenas uma dessas opções.
 
 
@@ -176,14 +176,14 @@ http://is.gd/1ZHZJN
 Até agora falamos de coisas similares a outras linguagens.
 
 Vamos falar da novidade.
-Rust é uma linguagem que não possui Garbage Collector, o que permite:
+Rust é uma linguagem que não possui Garbage Collector (e isso não é necessariamente um inconveniente), o que permite:
 
 - que outras linguagens incluam bibliotecas (como acontece com o openssl)
 - que você possa escrever drivers e sistemas operacionais do zero
 - que você possa escrever programas para ambientes limitados em memoria
-- programas que não podem pausar para coletar a memoria (transacoes de dinheiro, jogos, graficos, navegadores)
+- programas que não podem pausar para coletar a memoria (transações de dinheiro, jogos, gráficos, navegadores)
 
-Isso quer dizer que o gerenciamento de memoria é manual, mas você tem ajuda do compilador.
+Isso quer dizer que o gerenciamento de memória é manual, mas você tem ajuda do compilador.
 
 Vamos introduzir o conceito de ownership
 
@@ -260,13 +260,13 @@ https://doc.rust-lang.org/book/ownership.html
 * Ownership - Quando isso é importante
   
 Rust usa isso para saber quando limpar a memoria, em tempo de compilação.
-Quando uma variavel sai de escopo, se ela for dona de um valor aquele
+Quando uma variável sai de escopo, se ela for dona de um valor aquele
 valor vai ser limpo.
 
 Uma função pode especificar que precisa ser dona do valor, pois vai
-modificalo internamente e nenhum outro lugar pode ter acesso ao mesmo
+modificá-lo internamente e nenhum outro lugar pode ter acesso ao mesmo
 tempo.
-Eu entao, uma funcao vai consumir o dado e retornar um outro, tornando ele invalido.
+A função vai consumir o dado e retornar um outro, tornando o anterior inválido.
 
 #+BEGIN_SRC rust
   fn request(unique_code: UniqueCode) -> Response {
@@ -281,15 +281,15 @@ Eu entao, uma funcao vai consumir o dado e retornar um outro, tornando ele inval
 Apesar de um valor sempre precisar de um dono, ele pode ser emprestado.
 Ele pode ser emprestado apenas de uma das seguintes maneiras ao mesmo tempo:
 
-- quantas vezes quiser em refenrecias somente leitura =&Flower=
-- apenas uma vez de forma rerefencia mutavel =&mut Flower=
+- quantas vezes quiser em referências somente leitura =&Flower=
+- apenas uma vez de forma referência mutável =&mut Flower=
   
 Quando nossa função tiver interesse apenas em ler o dado, podemos
 mudar o tipo que esperamos para uma referencia, adicionando um =&= no
 tipo.
 
 Quando nossa função tiver interesse em alterar o valor, mas não
-invalidar o dono, utilizamos uma referencia mutavel, adicionando um
+invalidar o dono, utilizamos uma referencia mutável, adicionando um
 =&mut= no tipo.
 
 Esse sistema permite que o compilador evite _data races_.
@@ -376,7 +376,7 @@ Muitas vezes o tempo de vida vai ser identificado automaticamente, mas
 algumas vezes precisamos falar para o compilador.
 
 Um exemplo que o compilador não consegue definir é quando estamos
-definindo =structs= com referencias.
+definindo =structs= com referências.
 
 
 https://doc.rust-lang.org/stable/nomicon/lifetime-elision.html
@@ -388,10 +388,10 @@ O compilador vai calcular o tempo de vida de valores através do seu programa.
 Quando alguma coisa utiliza referencias, ele vai tentar descobrir qual
 a menor intercessão entre o tempo de vida de cada um.
 
-Mas existem alguns valores que estam sempre disponiveis em qualquer lugar na memoria.
+Mas existem alguns valores que estão sempre disponíveis em qualquer lugar na memória.
 Eles são chamados de 'static
 
-- 'a é um tempo de vida dinamico
+- 'a é um tempo de vida dinâmico
 - 'static é um tempo de vida que é o mesmo que o seu programa inteiro
   
 Algumas coisas possuem tempo de vida 'static por padrão, como
@@ -418,11 +418,11 @@ http://is.gd/AD0kgX
 Quando a compilação acontece, elas são colocadas em um lugar especial no programa.
 Isso quer dizer que elas já estão alocadas, então o tipo delas é =&'static str=
 
-- Elas são referencias para um espaço da memoria já alocado e não mutavel
+- Elas são referências para um espaço da memoria já alocado e não mutável
 - Elas podem ser acessadas em qualquer estagio do programa,
   
 O tipo =String=, por outro lado, significa que ele precisa ser
-dinamico e a função quer ser dona desse espaço.
+dinâmico e a função quer ser dona desse espaço.
 
 
 * Como resolver isso no exemplo?
@@ -445,7 +445,7 @@ Ou podemos pedir apenas uma referencia para um slice de string, como somente lei
 
 * Quero saber mais sobre Estruturas!
 
-Ainda não falamos sobre Traits, como extender operadores para seus
+Ainda não falamos sobre Traits, como estender operadores para seus
 tipos, como associar comportamentos padrões da linguagem (como
 Iterators para suas listas) e mais.
 
