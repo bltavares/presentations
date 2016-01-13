@@ -266,7 +266,7 @@ valor vai ser limpo.
 Uma função pode especificar que precisa ser dona do valor, pois vai
 modificá-lo internamente e nenhum outro lugar pode ter acesso ao mesmo
 tempo.
-A função vai consumir o dado e retornar um outro, tornando o anterior inválido.
+Ou então, a função vai consumir o dado e retornar um outro, tornando o anterior inválido.
 
 #+BEGIN_SRC rust
   fn request(unique_code: UniqueCode) -> Response {
