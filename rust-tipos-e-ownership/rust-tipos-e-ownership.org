@@ -54,7 +54,7 @@ Vamos começar por essa assinatura de função:
   }
 #+END_SRC
 
-http://is.gd/vzSVf1
+Playground: http://is.gd/vzSVf1
 
 
 * Discutindo a solução
@@ -113,7 +113,7 @@ https://doc.rust-lang.org/book/enums.html
   }
 #+END_SRC
 
-http://is.gd/ue8tq6
+Playground: http://is.gd/ue8tq6
 
 
 * Discutindo a solução com Enum
@@ -173,7 +173,7 @@ https://doc.rust-lang.org/book/structs.html
   }
 #+END_SRC
 
-http://is.gd/rzJH0b
+Playground: http://is.gd/rzJH0b
 
 
 * Introduzindo a grande diferença do Rust
@@ -209,7 +209,7 @@ tentarmos perguntar duas vezes?
   }
 #+END_SRC
 
-http://is.gd/Oiq57d
+Playground: http://is.gd/Oiq57d
 
 
 * Ownership
@@ -323,7 +323,7 @@ Vamos mudar a assinatura da função =color= e como chamamos ela.
   } 
 #+END_SRC
 
-http://is.gd/wTR9AN
+Playground: http://is.gd/wTR9AN
 
 
 * Falando sobre Lifetimes
@@ -372,7 +372,7 @@ O tempo de vida de referencias precisam ser menor que o tempo de vida do valor r
   }
 #+END_SRC
 
-http://is.gd/x67FPD
+Playground: http://is.gd/x67FPD
 
 
 * Lifetime ellision
@@ -415,7 +415,7 @@ números literais, constates e strings literais.
   }
 #+END_SRC
 
-http://is.gd/AD0kgX
+Playground: http://is.gd/AD0kgX
 
 * Por que "string literal" não é aceito em String?
   
