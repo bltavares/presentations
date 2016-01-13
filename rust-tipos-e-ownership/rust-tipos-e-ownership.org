@@ -173,7 +173,7 @@ https://doc.rust-lang.org/book/structs.html
   }
 #+END_SRC
 
-http://is.gd/1ZHZJN
+http://is.gd/rzJH0b
 
 
 * Introduzindo a grande diferença do Rust
@@ -209,7 +209,7 @@ tentarmos perguntar duas vezes?
   }
 #+END_SRC
 
-http://is.gd/1xwgAE
+http://is.gd/Oiq57d
 
 
 * Ownership
@@ -323,7 +323,7 @@ Vamos mudar a assinatura da função =color= e como chamamos ela.
   } 
 #+END_SRC
 
-http://is.gd/eCsYvb
+http://is.gd/wTR9AN
 
 
 * Falando sobre Lifetimes
