@@ -27,6 +27,11 @@ Mas ele só funciona pra /Rosas/ e /Violetas/.
 /Rosas/ são vermelhas.
 /Violetas/ são azuis.
 
+Vamos começar por essa assinatura de função:
+
+#+BEGIN_SRC rust
+  fn color(flower: String) -> String
+#+END_SRC
 
 * Uma solução
 
