@@ -1,0 +1,470 @@
+* Rust
+** Estruturas de dados e (um pouco sobre) ownership
+
+*** Agenda
+- Enums e Structs
+- Memoria e referencias
+- Lifetime
+
+Meu objetivo final é responder:
+- Como criar meus tipos de dados?
+- Por que não posso passar um "string literal" para um função que aceita String!?   
+
+
+* Estruturas de dados
+ 
+Assim como outras linguagens, Rust permite estruturar dados de forma
+relacionada.
+
+Vamos ver um pouco sobre /Enums/ e /Structs/ sendo aplicadas em problemas.
+  
+
+* Problema 1  
+  
+Você esta fazendo um programa para falar qual a cor de uma flor.
+Mas ele só funciona pra /Rosas/ e /Violetas/.
+
+/Rosas/ são vermelhas.
+/Violetas/ são azuis.
+
+Vamos começar por essa assinatura de função:
+
+#+BEGIN_SRC rust
+  fn color(flower: String) -> String
+#+END_SRC
+
+* Uma solução
+
+#+BEGIN_SRC rust
+  fn color(flower: String) -> String {
+      if flower == "Roses" {
+          "red".to_string()
+      } else if flower == "Violets" {
+          "blue".to_string()
+      } else {
+          panic!("So far only Roses or Violets") 
+      }
+  }
+
+  fn main() {
+      let flower = "Roses".to_string();
+      let inspect_color = color(flower);
+
+      println!("The color is: {}", inspect_color);
+  }
+#+END_SRC
+
+Playground: http://is.gd/vzSVf1
+
+
+* Discutindo a solução
+  
+- E se eu passar "Rosas"?
+- E se eu passar "roses"?
+- E se eu passar "Rose"?
+- E se eu passar "Daisies"?
+
+
+* Discutindo a solução
+  
+Todas aqueles casos são permitido de acordo com a assinatura da nossa
+função. E todos eles vão causar um erro em Runtime.
+
+Podemos aproveitar o sistema de tipos e estrutura de dados do Rust?
+
+
+* Enums
+
+Enums são tipos de dados que representam todos os possíveis valores.
+Um valor pode ser apenas uma dessas opções.
+
+
+#+BEGIN_SRC rust
+  enum Flower {
+      Rose,
+      Violet,
+  }
+#+END_SRC
+
+https://doc.rust-lang.org/book/enums.html
+
+
+* Uma solução com Enums
+ 
+#+BEGIN_SRC rust
+  enum Flower {
+      Rose,
+      Violet,
+  }
+
+  fn color(flower: Flower) -> String {
+      match flower {
+          Flower::Rose => "red".to_string(),
+          Flower::Violet => "blue".to_string(),
+      }
+  }
+
+
+  fn main() {
+      let flower = Flower::Rose;
+      let inspect_color = color(flower);
+    
+      println!("The color is: {}", inspect_color);
+  }
+#+END_SRC
+
+Playground: http://is.gd/ue8tq6
+
+
+* Discutindo a solução com Enum
+
+- O Enum define todas as nossas opções estaticamente
+- O compilador sabe quando um dos casos não foi tratado
+- Se começarmos a lidar com mais flores, o compilador vai te avisar
+- Se esquecermos de lidar com uma das flores, o compilador vai te avisar
+
+E se aplicarmos o mesmo para o resultado da função?
+
+
+* Structs
+
+Structs são tipos de dados mais complexos, onde existem diversos
+campos associados ao tipo.
+
+#+BEGIN_SRC rust
+  struct Color {
+      red: u8,
+      blue: u8,
+      green: u8
+  }
+#+END_SRC
+
+https://doc.rust-lang.org/book/structs.html
+
+
+* Introduzindo uma Struct na nossa solução
+
+
+#+BEGIN_SRC rust
+  enum Flower {
+      Rose,
+      Violet,
+  }
+
+  #[derive(Debug)]
+  struct Color {
+      red: u8,
+      blue: u8,
+      green: u8
+  }
+
+  fn color(flower: Flower) -> Color {
+      match flower {
+          Flower::Rose => Color { red: 255, blue: 0, green: 0 },
+          Flower::Violet => Color { blue: 255, red: 0, green: 0 },
+      }
+  }
+
+  fn main() {
+      let flower = Flower::Rose;
+      let inspect_color = color(flower);
+  
+      println!("The color is: {:?}", inspect_color);
+  }
+#+END_SRC
+
+Playground: http://is.gd/rzJH0b
+
+
+* Introduzindo a grande diferença do Rust
+
+Até agora falamos de coisas similares a outras linguagens.
+
+Vamos falar da novidade.
+Rust é uma linguagem que não possui Garbage Collector (e isso não é necessariamente um inconveniente), o que permite:
+
+- que outras linguagens incluam bibliotecas (como acontece com o openssl)
+- que você possa escrever drivers e sistemas operacionais do zero
+- que você possa escrever programas para ambientes limitados em memoria
+- programas que não podem pausar para coletar a memoria (transações de dinheiro, jogos, gráficos, navegadores)
+
+Isso quer dizer que o gerenciamento de memória é manual, mas você tem ajuda do compilador.
+
+Vamos introduzir o conceito de ownership
+
+
+* Ownership
+
+Agora que descobrimos o nome da nossa flor, o que acontece se
+tentarmos perguntar duas vezes?
+
+#+BEGIN_SRC rust
+  fn main() {
+      let flower = Flower::Rose;
+      let inspect_color = color(flower);
+      println!("The color is: {:?}", inspect_color);
+
+      let inspect_color2 = color(flower);
+      println!("The color is: {:?}", inspect_color2);
+  }
+#+END_SRC
+
+Playground: http://is.gd/Oiq57d
+
+
+* Ownership
+
+_BANG_ 
+Erro de /compilação!/
+
+Vamos entender melhor o que Rust quis dizer.
+
+#+BEGIN_QUOTE
+<anon>:25:32: 25:38 error: use of moved value: `flower` [E0382]
+<anon>:25     let inspect_color2 = color(flower);
+                                         ^~~~~~
+<anon>:25:32: 25:38 help: see the detailed explanation for E0382
+<anon>:22:31: 22:37 note: `flower` moved here because it has type `Flower`, which is non-copyable
+<anon>:22     let inspect_color = color(flower);
+                                        ^~~~~~
+error: aborting due to previous error
+#+END_QUOTE
+
+
+* Ownership
+
+No Rust, o compilador consegue saber quem é dono de um espaço de memoria.
+Um valor em memoria sempre tem que ter apenas 1 dono.
+O dono tem as opções de:
+
+- mover o valor para outro dono
+- emprestar o valor para outro lugar
+  
+Vamos ver no codigo
+
+#+BEGIN_SRC rust
+  fn main() {
+      let flower = Flower::Rose; 
+      // O valor Rose foi adicionado a memoria
+      // A variavel flower é dona desse espaço na memoria
+
+      let inspect_color = color(flower);
+      // A função color recebeu o valor de flower
+      // E virou dona daquele espaço na memoria
+      // O valor foi *movido* para os argumentos da funcao
+
+      let inspect_color2 = color(flower);
+      // A função color tentou referenciar um valor na memoria
+      // que a variavel flower não é mais dona
+  }
+#+END_SRC
+
+https://doc.rust-lang.org/book/ownership.html
+  
+
+* Ownership - Quando isso é importante
+  
+Rust usa isso para saber quando limpar a memoria, em tempo de compilação.
+Quando uma variável sai de escopo, se ela for dona de um valor aquele
+valor vai ser limpo.
+
+Uma função pode especificar que precisa ser dona do valor, pois vai
+modificá-lo internamente e nenhum outro lugar pode ter acesso ao mesmo
+tempo.
+Ou então, a função vai consumir o dado e retornar um outro, tornando o anterior inválido.
+
+#+BEGIN_SRC rust
+  fn request(unique_code: UniqueCode) -> Response {
+      // Uma função que se torna dona do unique_code
+      // E garante que o unique_code não sera reutilizado em outros requests
+  }
+#+END_SRC
+
+
+* Introduzindo Borrow
+  
+Apesar de um valor sempre precisar de um dono, ele pode ser emprestado.
+Ele pode ser emprestado apenas de uma das seguintes maneiras ao mesmo tempo:
+
+- quantas vezes quiser em referências somente leitura =&Flower=
+- apenas uma vez de forma referência mutável =&mut Flower=
+  
+Quando nossa função tiver interesse apenas em ler o dado, podemos
+mudar o tipo que esperamos para uma referencia, adicionando um =&= no
+tipo.
+
+Quando nossa função tiver interesse em alterar o valor, mas não
+invalidar o dono, utilizamos uma referencia mutável, adicionando um
+=&mut= no tipo.
+
+Esse sistema permite que o compilador evite _data races_.
+
+
+* Permitindo que color seja chamado várias vezes
+
+Vamos mudar a assinatura da função =color= e como chamamos ela.
+
+#+BEGIN_SRC rust
+  fn color(flower: &Flower) -> Color {
+      match *flower {
+          Flower::Rose => Color { red: 255, blue: 0, green: 0 },
+          Flower::Violet => Color { blue: 255, red: 0, green: 0 },
+      }
+  }
+
+  fn main() {
+      let flower = Flower::Rose;
+
+      let inspect_color = color(&flower);
+      println!("The color is: {:?}", inspect_color);
+
+      let inspect_color2 = color(&flower);
+      println!("The color is: {:?}", inspect_color2);
+  } 
+#+END_SRC
+
+Playground: http://is.gd/wTR9AN
+
+
+* Falando sobre Lifetimes
+  
+Acabamos de adicionar referencias no nosso codigo, mas temos que falar sobre Lifetime.
+https://doc.rust-lang.org/book/lifetimes.html
+
+Toda referencia tem um tempo de vida associado, e muitas vezes o compilador consegue descobrir isso automaticamente.
+
+Se fossemos reescrever ela de forma explicita na nossa função =color= seria assim
+
+#+BEGIN_SRC rust
+  // Com 'lifetime illision'
+  fn color(flower: &Flower) -> Color
+
+  // Com lifetime explicito
+  fn color<'life>(flower: &'life Flower) -> Color
+#+END_SRC
+
+
+* Quando o tempo de vida acaba
+
+O tempo de vida de referencias precisam ser menor que o tempo de vida do valor referenciado.
+
+#+BEGIN_SRC rust
+  enum Exemplo {
+    Teste,
+  }
+
+  fn exemplo<'a>() -> &'a Exemplo {
+    // Aqui criamos um novo valor dentro da funcao
+    let novo_exemplo = Exemplo::Teste;
+
+    // Retornamos a referencia para esse valor
+    &novo_exemplo
+
+    // A função acaba o escopo
+    // e a variavel novo_exemplo é limpa da memoria
+  }
+
+  fn main() {
+    // Se o compilador permitisse, nos agora temos uma referencia
+    // para um lugar inválido na memoria
+    // Segfault <3
+    let resultado : &Exemplo = exemplo();
+  }
+#+END_SRC
+
+Playground: http://is.gd/x67FPD
+
+
+* Lifetime ellision
+  
+Muitas vezes o tempo de vida vai ser identificado automaticamente, mas
+algumas vezes precisamos falar para o compilador.
+
+Um exemplo que o compilador não consegue definir é quando estamos
+definindo =structs= com referências.
+
+
+https://doc.rust-lang.org/stable/nomicon/lifetime-elision.html
+
+
+* Lifetime eterno
+
+O compilador vai calcular o tempo de vida de valores através do seu programa.
+Quando alguma coisa utiliza referencias, ele vai tentar descobrir qual
+a menor intercessão entre o tempo de vida de cada um.
+
+Mas existem alguns valores que estão sempre disponíveis em qualquer lugar na memória.
+Eles são chamados de 'static
+
+- 'a é um tempo de vida dinâmico
+- 'static é um tempo de vida que é o mesmo que o seu programa inteiro
+  
+Algumas coisas possuem tempo de vida 'static por padrão, como
+números literais, constates e strings literais.
+
+
+* Por que "string literal" não é aceito em String?
+  
+#+BEGIN_SRC rust
+  fn go(out: String) {
+    println!("[go] {}", out);
+  }
+
+  fn main() {
+      go("VAAAAAAI!");
+  }
+#+END_SRC
+
+Playground: http://is.gd/AD0kgX
+
+* Por que "string literal" não é aceito em String?
+  
+"String literais" são um pouco especiais em binários.
+Quando a compilação acontece, elas são colocadas em um lugar especial no programa.
+Isso quer dizer que elas já estão alocadas, então o tipo delas é =&'static str=
+
+- Elas são referências para um espaço da memoria já alocado e não mutável
+- Elas podem ser acessadas em qualquer estagio do programa,
+  
+O tipo =String=, por outro lado, significa que ele precisa ser
+dinâmico e a função quer ser dona desse espaço.
+
+
+* Como resolver isso no exemplo?
+  
+Podemos criar uma copia da nossa string literal para mover quem é dono.
+
+#+BEGIN_SRC rust
+  fn main() {
+      go("VAAAAAAI!".to_string());
+  }
+#+END_SRC
+
+Ou podemos pedir apenas uma referencia para um slice de string, como somente leitura.
+
+#+BEGIN_SRC rust
+  fn go(out: &str) {
+    println!("[go] {}", out);
+  }
+#+END_SRC
+
+* Quero saber mais sobre Estruturas!
+
+Ainda não falamos sobre Traits, como estender operadores para seus
+tipos, como associar comportamentos padrões da linguagem (como
+Iterators para suas listas) e mais.
+
+* Quero saber mais sobre Ownership!
+
+Ownership é um sistema bem interessante da linguagem e isso foi apenas uma introdução.
+Ainda não falamos sobre como Rust permite compartilhar valores entre
+threads, o comportamento de Copy, Drop e Send utlizidos para gerenciar
+memoria, Box e alocação no heap...
+
+* Onde eu posso saber mais?
+
+- [[https://doc.rust-lang.org/stable/book/][Rust Book]]
+- [[https://www.rust-lang.org/community.html][Rust Community Page]]
+- [[https://this-week-in-rust.org/][This Week in Rust]]
+- Entrem no canal do #rust e do #rust-begginer
+- Estamos no #rust-br para falar em português
