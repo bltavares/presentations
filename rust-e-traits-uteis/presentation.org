@@ -145,6 +145,36 @@ Todo ~Eq~ precisa implementar ~PartialEq~.
 
 http://is.gd/CGsgsr
 
+* [[http://doc.rust-lang.org/1.6.0/std/default/trait.Default.html][std::default::Default]]
+
+Esse comportamento permite que você crie estruturas com valores default.
+Muitos tipos já possuem [[http://doc.rust-lang.org/1.6.0/src/core/default.rs.html#147-164][um valor padrão]] definido.
+
+Muito útil quando podemos receber uma estrutura com valores de configuração.
+
+#+BEGIN_SRC rust
+  enum ReadType { ReadOnly, WriteOnly, ReadAndWrite, CompareAndSwap, }
+
+  struct ManyOptions {
+      operation_mode: ReadType,
+      number_of_threads: u8,
+  }
+
+  impl Default for ManyOptions {
+      fn default() -> ManyOptions {
+          ManyOptions {
+              operation_mode: ReadType::ReadOnly,
+              number_of_threads: 4,
+          }
+      }
+  }
+
+  fn do_things(with: ManyOptions) {}
+  do_things(Default::default());
+#+END_SRC
+
+http://is.gd/jHiIWb
+
 * [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html][std::io::Read]]
   
 Permite ler bytes para um buffer de ~u8~.
