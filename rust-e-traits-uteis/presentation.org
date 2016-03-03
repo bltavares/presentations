@@ -1,0 +1,305 @@
+* Traits úteis na stdlib de Rust
+* Agenda
+
+- Vamos listar algumas Traits comuns e muito usadas
+- Vou mostrar exemplos de Traits que já acabei usando em Rust
+- Exemplos de uso de algumas Traits
+
+* "Rust's Built-in Traits, the When, How & Why"
+
+/llogiq/ escrevei um ótimo [[https://llogiq.github.io/2015/07/30/traits.html][blog post]] sobre isso:
+
+- Eq, PartialEq, Ord, PartialOrd
+- Index e IndexMut
+- Debug e Display
+- Default
+- Copy ou Clone
+- Drop
+- Error
+- Hash
+- From, Into e outras
+- Deref, DerefMut, AsRef/AsMut, Borrow, BorrowMut and ToOwned
+
+* Derivando comportamentos automaticamente
+Alguns comportamentos podem ser [[https://github.com/rust-lang/rust/blob/f6e125f04a54ec65eac0ecd3cb68e180210a06fa/src/libsyntax_ext/deriving/mod.rs#L163-L186][automáticamente implementados]].
+
+Isso acontece com o atributo `deriving`:
+
+#+BEGIN_SRC rust
+#[derive(Debug, Eq, PartialEq)]
+struct Person {
+  name: String,
+}
+#+END_SRC
+
+http://is.gd/dwcJAA
+
+Existe uma lista fixa hoje em dia, mas com planos de permitir criar seus próprios comportamentos automáticos no futuro.
+
+* Derivando comportamentos automaticamente
+
+No Rust 1.8 nightly f6e125 temos a seguinte lista de Traits que podem ser derivadas:
+
+- Clone
+- Hash
+- RustcEncodable
+- RustcDecodable
+- PartialEq
+- Eq
+- PartialOrd
+- Ord
+- Debug
+- Default
+- Send
+- Sync
+- Copy
+
+E alguns deprecados, em favor de uma outra [[https://github.com/serde-rs/serde][biblioteca de serialização]]
+- Encodable
+- Decodable
+
+* Comportamentos para operadores
+
+Rust permite que você implemente operadores para suas próprias estruturas.
+Um ótimo exemplo de implementar operadores para sua própria estrutura é um [[https://github.com/rust-lang/rust/blob/master/src/test/run-pass/operator-overloading.rs][teste]] no compilador.
+
+* Algumas que eu já usei
+
+- [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html][std::io::Read]]
+- [[http://doc.rust-lang.org/1.6.0/std/io/trait.BufRead.html][std::io::BufRead]]
+- [[http://doc.rust-lang.org/1.6.0/std/io/trait.Write.html][std::io::Write]]
+- [[http://doc.rust-lang.org/1.6.0/std/error/trait.Error.html][std::error::Error]]
+- [[http://doc.rust-lang.org/1.6.0/std/convert/trait.From.html][std::convert::From]]
+- [[http://doc.rust-lang.org/1.6.0/std/iter/trait.FromIterator.html][std::iter::FromIterator]]
+- [[http://doc.rust-lang.org/1.6.0/std/hash/trait.Hash.html][std::hash::Hash]]
+- [[https://doc.rust-lang.org/rustc-serialize/rustc_serialize/trait.Decodable.html][Decodable]]
+
+* Tá, mas quanta coisa!
+
+Vamos tentar exemplificar alguns comportamentos que eu já acabei usando explicitamente em programas.
+
+* [[http://doc.rust-lang.org/1.6.0/collections/fmt/trait.Debug.html][std::fmt::Debug]]
+  
+Útil para visualizar as informações de uma estrutura de dados, durante desenvolvimento.
+  
+#+BEGIN_SRC rust
+  #[derive(Debug)]
+  struct Point {
+      x: i32,
+      y: i32,
+  }
+
+  let origin = Point { x: 0, y: 0 };
+
+  println!("The origin is: {:?}", origin);
+  println!("The origin is: {:#?}", origin);
+#+END_SRC
+
+http://is.gd/NrqsJB
+
+* [[http://doc.rust-lang.org/1.6.0/collections/fmt/trait.Display.html][std::fmt::Display]]
+É o comportamento utilizado quando queromos formatar sem um layout especifico, como ~println!("{}", example)~.
+O objetivo é ser utilizado para informar algo ao usuário final, e por isso não é automaticamente derivado.
+ 
+#+BEGIN_SRC rust
+  struct Point {
+      x: i32,
+      y: i32,
+  }
+
+  impl fmt::Display for Point {
+      fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+          write!(f, "({}, {})", self.x, self.y)
+      }
+  }
+
+  let origin = Point { x: 0, y: 0 };
+
+  println!("The origin is: {}", origin);
+#+END_SRC
+
+http://is.gd/NrqsJB
+
+* [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.PartialEq.html][std::cmp::PartialEq]] e [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.Eq.html][std::cmp::Eq]] 
+  
+~PartialEq~ é utilizado para definir igualdade, mas que permite que alguns valores não sejam iguais a ele mesmo.
+Por exemplo, ~NaN != NaN~.
+
+~Eq~ é utilizado para definir igualdade, em que o mesmo elemento é igual a ele mesmo.
+Por exemplo, ~None == None~.
+
+Todo ~Eq~ precisa implementar ~PartialEq~.
+
+#+BEGIN_SRC rust
+  #[derive(Eq, PartialEq)]
+  struct Point {
+      x: i32,
+      y: i32,
+  }
+
+  let origin = Point { x: 0, y: 0 };
+  let destination = Point { x: 0, y: 0 };
+
+  println!("The origin and destination are the same? Answer is: {:?}", origin == destination);
+#+END_SRC
+
+http://is.gd/CGsgsr
+
+* [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html][std::io::Read]]
+  
+Permite ler bytes para um buffer de ~u8~.
+É preciso implementa apenas o metodo ~read~, mas que [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html#tymethod.read][possui algumas expectativas sobre o seu comportamento.]]
+
+Algumas estruturas que tem esse comportamento são [[http://doc.rust-lang.org/1.6.0/std/fs/struct.File.html][std::fs::File]], [[http://doc.rust-lang.org/1.6.0/std/io/struct.Stdin.html][std::io::Stdin]] e [[http://doc.rust-lang.org/1.6.0/std/net/struct.TcpStream.html][std::net::TcpStream]].
+
+* [[http://doc.rust-lang.org/1.6.0/std/io/trait.BufRead.html][std::io::BufRead]]
+
+É uma estrutura que também implementa ~Read~, mas possui um buffer interno que permite algumas operações extras.
+Exemplos de metodos extras são ~read_line()~ e o iterador ~lines()~.
+
+Além da Trait, que qualquer estrutura pode implementar, temos uma estrutura [[http://doc.rust-lang.org/1.6.0/std/io/struct.BufReader.html][BufReader]] que implementa esse comportamento.
+A vantagem é que a estrutura aceita qualquer ~Read~, e você não precisa implementar o buffer você mesmo.
+
+* [[http://doc.rust-lang.org/1.6.0/std/error/trait.Error.html][std::error::Error]]
+  
+Todos os erros em Rust precisam ter esse comportamento implementado.
+Útil para se utilizar com a macro ~try!~ e tornar o código mais simples.
+
+#+BEGIN_SRC rust
+  #[derive(Debug)]
+  struct ThisIsMyError;
+
+  impl fmt::Display for ThisIsMyError {
+      fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+          write!(f, "Aconteceu um erro que é meu")
+      }
+  }
+
+  impl Error for ThisIsMyError {
+      fn description(&self) -> &str { "*fue fue fue*" }
+  }
+
+  fn this_will_fail() -> Result<i8, ThisIsMyError> {
+      Err(ThisIsMyError)
+  }
+
+  fn would_this_fail() -> Result<i8, ThisIsMyError> {
+      let is_there_a_value = try!(this_will_fail());
+      Ok(is_there_a_value + 1)
+  }
+
+  println!("This is the result: {}", would_this_fail().unwrap());
+#+END_SRC
+
+http://is.gd/TgtKPL
+
+* [[http://doc.rust-lang.org/1.6.0/std/convert/trait.From.html][std::convert::From]]
+
+Comportamento para converter estrutura de dados entre si.
+Algumas conversões já implementadas que podem ser interessantes:
+
+- "string literal" -> String
+- "string literal" -> Vec<u8>
+- Ipv4Addr <-> u32
+- [T] -> Vec<T>
+
+Exemplo de uso:
+
+#+BEGIN_SRC rust
+  let example : Vec<u8> = From::from("teste");
+  let another : String = From::from("teste");
+#+END_SRC
+
+http://is.gd/a6J0SX
+
+* [[http://doc.rust-lang.org/1.6.0/std/convert/trait.From.html][std::convert::From]]
+
+Ainda em From, você pode implementar para sua propria estrutura.
+E um exemplo disso:
+
+#+BEGIN_SRC rust
+impl<'a> From<&'a Authentication> for HashMap<&'a str, &'a str> {
+    fn from(auth: &'a Authentication) -> HashMap<&'a str, &'a str> {
+        let mut hash: HashMap<&'a str, &'a str> = HashMap::new();
+        hash.insert("email", &auth.email);
+        hash.insert("tkn", &auth.token);
+
+        if auth.domain.is_some() {
+            let domain = auth.domain.as_ref().unwrap();
+            hash.insert("z", domain);
+        }
+
+        hash
+    }
+}
+#+END_SRC
+
+https://github.com/bltavares/cloudflare-rs/blob/1e6ec3d9a697f959ee580c53a9dc67d7cee1f777/src/lib.rs#L74-L87
+
+* Um idioma para lidar com Erros entre bibliotecas
+  
+Quando estamos lidando com erros em Rust, muitas vezes estamos lidando com bibliotecas de outros.
+Um idioma bem comum é definir uma estrutura de erro da sua biblioteca, que considera todos os erros possiveis, e converter entre esses tipos.
+
+
+#+BEGIN_SRC rust
+  #[derive(Debug)]
+  pub enum CloudFlareErrors {
+      APIError(hyper::error::Error),
+      ParsingError(rustc_serialize::json::DecoderError),
+  }
+
+  impl From<hyper::error::Error> for CloudFlareErrors {
+      fn from(error: hyper::error::Error) -> CloudFlareErrors {
+          CloudFlareErrors::APIError(error)
+      }
+  }
+
+  impl From<rustc_serialize::json::DecoderError> for CloudFlareErrors {
+      fn from(error: rustc_serialize::json::DecoderError) -> CloudFlareErrors {
+          CloudFlareErrors::ParsingError(error)
+      }
+  }
+
+  fn example(auth: &Authentication) -> Result<Json, CloudFlareErrors> {
+      let authenticate_response = try!(hyper::make_request());
+      let parsed_response = try!(parse(authenticate_response));
+      Ok(parsed_response)
+  }
+#+END_SRC
+https://github.com/bltavares/cloudflare-rs/blob/1e6ec3d9a697f959ee580c53a9dc67d7cee1f777/src/errors.rs#L8-L11
+
+* [[http://doc.rust-lang.org/1.6.0/std/iter/trait.FromIterator.html][std::iter::FromIterator]]
+  
+Permite criar a estrutura de dados consumindo um iterador.
+
+Quando usado explicitamente, é útil para converter entre estruturas
+
+#+BEGIN_SRC rust
+    use std::iter::FromIterator;
+    use std::collections::BTreeSet;
+    
+    let vec = vec!(1, 2, 3);
+    let set = BTreeSet::from_iter(vec);
+#+END_SRC
+
+http://is.gd/eWGPbR
+
+* [[http://doc.rust-lang.org/1.6.0/std/iter/trait.FromIterator.html][std::iter::FromIterator]]
+O mesmo comportamento é usado implicitamente para implementar o ~collect()~.
+
+#+BEGIN_SRC rust
+  use std::collections::BTreeSet;
+  use std::collections::LinkedList;
+
+  let vec : Vec<u8> = vec!(1, 2, 3);
+
+  let set : BTreeSet<_> = vec.iter().map(|x| x + 1).collect();
+  let linked_list : LinkedList<_> = vec.iter().map(|x| x + 1).collect();
+#+END_SRC
+
+http://is.gd/FHYBBe
+
+* Como descobrir quais Traits existem e as estruturas que implemtam isso?
+
+- [[http://doc.rust-lang.org/1.6.0/std/borrow/index.html][Olhe a documentação do módulo]], [[http://doc.rust-lang.org/1.6.0/core/default/trait.Default.html][na documentação da Trait]] ou [[http://doc.rust-lang.org/1.6.0/std/string/struct.String.html][na documentação da estrutura]].
