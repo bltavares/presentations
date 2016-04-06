@@ -278,6 +278,7 @@ Exemplo de uso:
 #+BEGIN_SRC rust
   let example : Vec<u8> = From::from("teste");
   let another : String = From::from("teste");
+  let without_using_type_inference = String::from("teste");
 #+END_SRC
 
 http://is.gd/a6J0SX
@@ -371,6 +372,8 @@ O mesmo comportamento é usado implicitamente para implementar ~collect()~.
 
   let set : BTreeSet<_> = vec.iter().map(|x| x + 1).collect();
   let linked_list : LinkedList<_> = vec.iter().map(|x| x + 1).collect();
+
+  let withouth_relying_on_type_inference = vec.iter().map(|x| x + 1).collect::<LinkedList<_>>();
 #+END_SRC
 
 http://is.gd/FHYBBe
