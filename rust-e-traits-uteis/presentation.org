@@ -1,4 +1,15 @@
 * Traits úteis na stdlib de Rust
+
+* Rust 1.7 lançado hoje!
+
+http://blog.rust-lang.org/2016/03/02/Rust-1.7.html
+
+** festa! yay
+- Estabilização de várias funções
+- HashMaps mais rápidos
+- Melhorias no FFI
+- Copias de slices mais eficientes
+
 * Agenda
 
 - Vamos listar algumas Traits comuns e muito usadas
@@ -18,7 +29,8 @@
 - Error
 - Hash
 - From, Into e outras
-- Deref, DerefMut, AsRef/AsMut, Borrow, BorrowMut and ToOwned
+- Deref, DerefMut, AsRef/AsMut
+- Borrow, BorrowMut and ToOwned
 
 * Derivando comportamentos automaticamente
 Alguns comportamentos podem ser [[https://github.com/rust-lang/rust/blob/f6e125f04a54ec65eac0ecd3cb68e180210a06fa/src/libsyntax_ext/deriving/mod.rs#L163-L186][automáticamente implementados]].
@@ -34,11 +46,13 @@ struct Person {
 
 http://is.gd/dwcJAA
 
-Existe uma lista fixa hoje em dia, mas com planos de permitir criar seus próprios comportamentos automáticos no futuro.
+Existe uma lista fixa hoje em dia, mas com planos de permitir
+criar seus próprios comportamentos automáticos no futuro.
 
 * Derivando comportamentos automaticamente
 
-No Rust 1.8 nightly f6e125 temos a seguinte lista de Traits que podem ser derivadas:
+No Rust 1.8 nightly f6e125 temos a seguinte lista de Traits
+que podem ser derivadas:
 
 - Clone
 - Hash
@@ -60,8 +74,11 @@ E alguns deprecados, em favor de uma outra [[https://github.com/serde-rs/serde][
 
 * Comportamentos para operadores
 
-Rust permite que você implemente operadores para suas próprias estruturas.
-Um ótimo exemplo de implementar operadores para sua própria estrutura é um [[https://github.com/rust-lang/rust/blob/master/src/test/run-pass/operator-overloading.rs][teste]] no compilador.
+Rust permite que você implemente operadores para suas próprias
+estruturas.
+
+Um ótimo exemplo de implementar operadores para sua própria
+estrutura é um [[https://github.com/rust-lang/rust/blob/master/src/test/run-pass/operator-overloading.rs][teste]] no compilador.
 
 * Algumas que eu já usei
 
@@ -76,11 +93,13 @@ Um ótimo exemplo de implementar operadores para sua própria estrutura é um [[
 
 * Tá, mas quanta coisa!
 
-Vamos tentar exemplificar alguns comportamentos que eu já acabei usando explicitamente em programas.
+Vamos tentar exemplificar alguns comportamentos que eu já acabei
+usando explicitamente em programas.
 
 * [[http://doc.rust-lang.org/1.6.0/collections/fmt/trait.Debug.html][std::fmt::Debug]]
   
-Útil para visualizar as informações de uma estrutura de dados, durante desenvolvimento.
+Útil para visualizar as informações de uma estrutura de dados,
+durante desenvolvimento.
   
 #+BEGIN_SRC rust
   #[derive(Debug)]
@@ -98,8 +117,11 @@ Vamos tentar exemplificar alguns comportamentos que eu já acabei usando explici
 http://is.gd/NrqsJB
 
 * [[http://doc.rust-lang.org/1.6.0/collections/fmt/trait.Display.html][std::fmt::Display]]
-É o comportamento utilizado quando queromos formatar sem um layout especifico, como ~println!("{}", example)~.
-O objetivo é ser utilizado para informar algo ao usuário final, e por isso não é automaticamente derivado.
+É o comportamento utilizado quando queromos formatar sem um
+layout especifico, como ~println!("{}", example)~.
+
+O objetivo é ser utilizado para informar algo ao usuário final,
+e por isso não é automaticamente derivado.
  
 #+BEGIN_SRC rust
   struct Point {
@@ -122,10 +144,14 @@ http://is.gd/NrqsJB
 
 * [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.PartialEq.html][std::cmp::PartialEq]] e [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.Eq.html][std::cmp::Eq]] 
   
-~PartialEq~ é utilizado para definir igualdade, mas que permite que alguns valores não sejam iguais a ele mesmo.
+~PartialEq~ é utilizado para definir igualdade, mas que permite
+que alguns valores não sejam iguais a ele mesmo.
+
 Por exemplo, ~NaN != NaN~.
 
-~Eq~ é utilizado para definir igualdade, em que o mesmo elemento é igual a ele mesmo.
+~Eq~ é utilizado para definir igualdade, em que o mesmo elemento
+é igual a ele mesmo.
+
 Por exemplo, ~None == None~.
 
 Todo ~Eq~ precisa implementar ~PartialEq~.
@@ -140,17 +166,20 @@ Todo ~Eq~ precisa implementar ~PartialEq~.
   let origin = Point { x: 0, y: 0 };
   let destination = Point { x: 0, y: 0 };
 
-  println!("The origin and destination are the same? Answer is: {:?}", origin == destination);
+  println!("Are they the same? {}", origin == destination);
 #+END_SRC
 
 http://is.gd/CGsgsr
 
 * [[http://doc.rust-lang.org/1.6.0/std/default/trait.Default.html][std::default::Default]]
 
-Esse comportamento permite que você crie estruturas com valores default.
+Esse comportamento permite que você crie estruturas com valores
+default.
+
 Muitos tipos já possuem [[http://doc.rust-lang.org/1.6.0/src/core/default.rs.html#147-164][um valor padrão]] definido.
 
-Muito útil quando podemos receber uma estrutura com valores de configuração.
+Muito útil quando podemos receber uma estrutura com valores de
+configuração.
 
 #+BEGIN_SRC rust
   enum ReadType { ReadOnly, WriteOnly, ReadAndWrite, CompareAndSwap, }
@@ -178,17 +207,28 @@ http://is.gd/jHiIWb
 * [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html][std::io::Read]]
   
 Permite ler bytes para um buffer de ~u8~.
-É preciso implementa apenas o metodo ~read~, mas que [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html#tymethod.read][possui algumas expectativas sobre o seu comportamento.]]
 
-Algumas estruturas que tem esse comportamento são [[http://doc.rust-lang.org/1.6.0/std/fs/struct.File.html][std::fs::File]], [[http://doc.rust-lang.org/1.6.0/std/io/struct.Stdin.html][std::io::Stdin]] e [[http://doc.rust-lang.org/1.6.0/std/net/struct.TcpStream.html][std::net::TcpStream]].
+É preciso implementa apenas o metodo ~read~,
+mas que [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html#tymethod.read][possui algumas expectativas sobre o seu comportamento.]]
+
+Algumas estruturas que tem esse comportamento são:
+
+- [[http://doc.rust-lang.org/1.6.0/std/fs/struct.File.html][std::fs::File]]
+- [[http://doc.rust-lang.org/1.6.0/std/io/struct.Stdin.html][std::io::Stdin]]
+- [[http://doc.rust-lang.org/1.6.0/std/net/struct.TcpStream.html][std::net::TcpStream]]
 
 * [[http://doc.rust-lang.org/1.6.0/std/io/trait.BufRead.html][std::io::BufRead]]
 
-É uma estrutura que também implementa ~Read~, mas possui um buffer interno que permite algumas operações extras.
+É uma estrutura que também implementa ~Read~, mas possui um buffer
+interno que permite algumas operações extras.
+
 Exemplos de metodos extras são ~read_line()~ e o iterador ~lines()~.
 
-Além da Trait, que qualquer estrutura pode implementar, temos uma estrutura [[http://doc.rust-lang.org/1.6.0/std/io/struct.BufReader.html][BufReader]] que implementa esse comportamento.
-A vantagem é que a estrutura aceita qualquer ~Read~, e você não precisa implementar o buffer você mesmo.
+Além da Trait, que qualquer estrutura pode implementar, temos uma
+estrutura [[http://doc.rust-lang.org/1.6.0/std/io/struct.BufReader.html][BufReader]] que implementa esse comportamento.
+
+A vantagem é que a estrutura aceita qualquer ~Read~, e você não
+precisa implementar o buffer você mesmo.
 
 * [[http://doc.rust-lang.org/1.6.0/std/error/trait.Error.html][std::error::Error]]
   
@@ -268,9 +308,13 @@ https://github.com/bltavares/cloudflare-rs/blob/1e6ec3d9a697f959ee580c53a9dc67d7
 
 * Um idioma para lidar com Erros entre bibliotecas
   
-Quando estamos lidando com erros em Rust, muitas vezes estamos lidando com bibliotecas de outros.
-Um idioma bem comum é definir uma estrutura de erro da sua biblioteca, que considera todos os erros possiveis, e converter entre esses tipos.
+Quando estamos lidando com erros em Rust, muitas vezes estamos lidando
+com bibliotecas de outros.
 
+Um idioma bem comum é definir uma estrutura de erro da sua biblioteca,
+que considera todos os erros possiveis, e converter entre esses tipos.
+
+* Um idioma para lidar com Erros entre bibliotecas
 
 #+BEGIN_SRC rust
   #[derive(Debug)]
@@ -316,7 +360,8 @@ Quando usado explicitamente, é útil para converter entre estruturas
 http://is.gd/eWGPbR
 
 * [[http://doc.rust-lang.org/1.6.0/std/iter/trait.FromIterator.html][std::iter::FromIterator]]
-O mesmo comportamento é usado implicitamente para implementar o ~collect()~.
+
+O mesmo comportamento é usado implicitamente para implementar ~collect()~.
 
 #+BEGIN_SRC rust
   use std::collections::BTreeSet;
@@ -332,4 +377,6 @@ http://is.gd/FHYBBe
 
 * Como descobrir quais Traits existem e as estruturas que implemtam isso?
 
-- [[http://doc.rust-lang.org/1.6.0/std/borrow/index.html][Olhe a documentação do módulo]], [[http://doc.rust-lang.org/1.6.0/core/default/trait.Default.html][na documentação da Trait]] ou [[http://doc.rust-lang.org/1.6.0/std/string/struct.String.html][na documentação da estrutura]].
+- [[http://doc.rust-lang.org/1.6.0/std/borrow/index.html][Olhe a documentação do módulo]]
+- [[http://doc.rust-lang.org/1.6.0/core/default/trait.Default.html][Na documentação da Trait]]
+- [[http://doc.rust-lang.org/1.6.0/std/string/struct.String.html][Na documentação da estrutura]]
