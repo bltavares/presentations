@@ -97,10 +97,10 @@ Vamos tentar exemplificar alguns comportamentos que eu já acabei
 usando explicitamente em programas.
 
 * [[http://doc.rust-lang.org/1.6.0/collections/fmt/trait.Debug.html][std::fmt::Debug]]
-  
+
 Útil para visualizar as informações de uma estrutura de dados,
 durante desenvolvimento.
-  
+
 #+BEGIN_SRC rust
   #[derive(Debug)]
   struct Point {
@@ -122,7 +122,7 @@ layout especifico, como ~println!("{}", example)~.
 
 O objetivo é ser utilizado para informar algo ao usuário final,
 e por isso não é automaticamente derivado.
- 
+
 #+BEGIN_SRC rust
   struct Point {
       x: i32,
@@ -142,8 +142,8 @@ e por isso não é automaticamente derivado.
 
 http://is.gd/NrqsJB
 
-* [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.PartialEq.html][std::cmp::PartialEq]] e [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.Eq.html][std::cmp::Eq]] 
-  
+* [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.PartialEq.html][std::cmp::PartialEq]] e [[http://doc.rust-lang.org/1.6.0/std/cmp/trait.Eq.html][std::cmp::Eq]]
+
 ~PartialEq~ é utilizado para definir igualdade, mas que permite
 que alguns valores não sejam iguais a ele mesmo.
 
@@ -205,7 +205,7 @@ configuração.
 http://is.gd/jHiIWb
 
 * [[http://doc.rust-lang.org/1.6.0/std/io/trait.Read.html][std::io::Read]]
-  
+
 Permite ler bytes para um buffer de ~u8~.
 
 É preciso implementa apenas o metodo ~read~,
@@ -231,7 +231,7 @@ A vantagem é que a estrutura aceita qualquer ~Read~, e você não
 precisa implementar o buffer você mesmo.
 
 * [[http://doc.rust-lang.org/1.6.0/std/error/trait.Error.html][std::error::Error]]
-  
+
 Todos os erros em Rust precisam ter esse comportamento implementado.
 Útil para se utilizar com a macro ~try!~ e tornar o código mais simples.
 
@@ -307,7 +307,7 @@ impl<'a> From<&'a Authentication> for HashMap<&'a str, &'a str> {
 https://github.com/bltavares/cloudflare-rs/blob/1e6ec3d9a697f959ee580c53a9dc67d7cee1f777/src/lib.rs#L74-L87
 
 * Um idioma para lidar com Erros entre bibliotecas
-  
+
 Quando estamos lidando com erros em Rust, muitas vezes estamos lidando
 com bibliotecas de outros.
 
@@ -344,7 +344,7 @@ que considera todos os erros possiveis, e converter entre esses tipos.
 https://github.com/bltavares/cloudflare-rs/blob/1e6ec3d9a697f959ee580c53a9dc67d7cee1f777/src/errors.rs#L8-L11
 
 * [[http://doc.rust-lang.org/1.6.0/std/iter/trait.FromIterator.html][std::iter::FromIterator]]
-  
+
 Permite criar a estrutura de dados consumindo um iterador.
 
 Quando usado explicitamente, é útil para converter entre estruturas
@@ -352,7 +352,7 @@ Quando usado explicitamente, é útil para converter entre estruturas
 #+BEGIN_SRC rust
     use std::iter::FromIterator;
     use std::collections::BTreeSet;
-    
+
     let vec = vec!(1, 2, 3);
     let set = BTreeSet::from_iter(vec);
 #+END_SRC
