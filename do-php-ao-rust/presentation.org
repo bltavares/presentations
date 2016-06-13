@@ -1,0 +1,206 @@
+#+OPTIONS:   num:nil
+
+* Uma jornada de descoberta sobre desenvolvimento
+** do PHP ao Rust
+
+
+* Olá!
+
+Bruno Tavares
+@bltavares
+
+
+* PHP
+: Como era simples
+
+#+BEGIN_SRC php
+<?php
+
+print("Hello World");
+#+END_SRC
+
+* PHP
+: Como era simples
+
+- Colecionava hosts de 250Mb
+- Copiar tudo por FTP
+  
+
+* Ruby
+: Tá ficando complicado
+
+#+BEGIN_SRC shell
+rails new
+#+END_SRC
+
+* Ruby
+: Free host 250Mb
+
+- Como eu coloco isso na internet?
+- Copia tudo no colocado...
+
+* Ruby
+: VPS
+
+- Aluga um servidor inteiro
+- ~rvm~
+- ~capistrano~
+- ~passenger~
+
+
+* Heroku
+: <3
+
+- Simplificou meu stack
+- ~git push heroku master~
+- Sem mais ~rvm~, ~passenger~ e genrenciar servidor
+
+
+* Projetos novos
+: Maiores e mais complexos
+
+- Bancos, Cluster, Filas, Servicos
+- Linguagens diferentes, runtimes diferentes
+- Versões diferentes de linguagens e pacotes
+
+* Dificuldade de iniciar em um novo projeto
+: Meu laptop: Uma coleção de boostraps incompletos
+
+- gem -> scons -> gulp -> bower -> npm -> brew
+- Complexidade de projetos web
+
+
+* Como explicar para quem é iniciante?
+: As coisas ficam simples depois de muita exposição
+  
+* Como explicar para quem é iniciante?
+: Todos somos iniciantes em alguma área
+
+
+* Dá pra ser mais simples?
+  
+* Dá pra ser mais simples?
+
+- Diminuir quantidade de runtimes pra desenvolver?
+- Diminuir quantidade de runtimes pra executar?
+- Automatizar o empacotamento?
+- Execução simples em produção e desenvolvimento?
+  
+
+* Dá pra ser mais simples?
+Sim
+
+* Dá pra ser mais simples?
+: DevOps
+
+- VMs, containers, imagens
+- Chef, Puppet, Ansible, Bash
+
+
+* Descendo a stack
+: Dando uma olhada uma camada abaixo
+
+
+* Descendo a stack
+: Dando uma olhada uma camada abaixo
+
+  - Cross plataforma e ubiquoto
+  - Processo de deploy simples
+  - Runtime pequeno
+
+* Descendo a stack
+: Escolhas disponíveis
+
+- Bash
+- C
+
+* Existem outras opções?
+
+- Evitar internalizar todo os problemas desse nível
+- Aprender gradualmente, de preferência com as ferramentas
+
+
+* Existem outras opções?
+
+- Go
+- D
+- Rust
+
+
+* Rust
+: Motivos que me chamaram a atenção
+
+- Cross plataforma
+- Saída em binário
+- Compilador que grita comigo quando erro
+- Permite que eu explore o nível no meu passo
+- Ideal para fazer os utilitários do projetos
+
+* Rust
+: Hello World
+
+#+BEGIN_SRC rust
+  fn main() {
+      println!("Hello World");
+  }
+#+END_SRC
+
+* Rust
+: Parece alto nível
+
+#+BEGIN_SRC rust
+  for line in content.lines().filter(|x| x.is_empty()) {
+    let words: Vec<String> = line.split(PHRASE_TERMINATOR)
+      .flat_map(|x| x.split_whitespace())
+      .map(|x| x.to_owned())
+      .collect();
+
+    chain.feed(words);
+  }
+  let words: Vec<String> = chain.str_iter_for(100).collect();
+#+END_SRC
+
+* Rust
+: Não deixa que eu faça erros comuns
+
+#+BEGIN_SRC rust
+  fn main() {
+      let valor = "Hello";
+      usa_e_libera_memoria(valor);
+      // println!("Valor agora: {}", valor);
+  }
+#+END_SRC
+
+* Rust
+: O que eu tenho visto que me mantém
+
+- Progressão estável
+  =Stability without stagination=
+- Evolução transparente
+  Processo de RFCs
+- Comunidade amigável
+  =Somos todos iniciantes em alguma área=
+- Possibilidades
+  Utilitários, Extensões de outras linguagens
+  Sistemas Operacionais, Unikernel, Mobile
+
+* Rust
+: Projetos interessantes
+
+- Servo
+- Helix
+- Neon
+- coreutils
+- redox e intermezzOs
+- Xi editor
+
+
+* Rust
+: Por onde começar
+
+- [[https://www.rustup.rs/][rustup.rs]]
+- [[https://github.com/rust-lang-nursery/rustfmt][rustfmt]]
+- [[https://github.com/kud1ing/awesome-rust][awesome-rust]]
+
+
+
