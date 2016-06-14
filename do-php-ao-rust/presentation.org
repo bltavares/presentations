@@ -47,15 +47,6 @@ rails new
 - ~capistrano~
 - ~passenger~
 
-
-* Heroku
-: <3
-
-- Simplificou meu stack
-- ~git push heroku master~
-- Sem mais ~rvm~, ~passenger~ e genrenciar servidor
-
-
 * Projetos novos
 : Maiores e mais complexos
 
@@ -66,12 +57,22 @@ rails new
 * Dificuldade de iniciar em um novo projeto
 : Meu laptop: Uma coleção de boostraps incompletos
 
-- gem -> scons -> gulp -> bower -> npm -> brew
-- Complexidade de projetos web
-
+- gem -> scons -> gulp -> bower -> npm -> brew/apt
+- 1 VM
+- 3 Containeres
+- 3 serviços Python
+- 2 serviços Java
+- 2 serviços Ruby
+- 1 Bash
+- 2 Bancos
+- 3 frameworks JS
+- 2 Compiladores de JavaScript
+- Chef, Jenkins, 4 bots (Ruby, Node e Clojure)
 
 * Como explicar para quem é iniciante?
 : As coisas ficam simples depois de muita exposição
+
+- Complexidade de projetos web
   
 * Como explicar para quem é iniciante?
 : Todos somos iniciantes em alguma área
@@ -86,27 +87,34 @@ rails new
 - Automatizar o empacotamento?
 - Execução simples em produção e desenvolvimento?
   
-
 * Dá pra ser mais simples?
 Sim
 
 * Dá pra ser mais simples?
+: Mapeando cada dependencia implicita
+
+* Dá pra ser mais simples?
 : DevOps
 
-- VMs, containers, imagens
+- VMs, containers, runtimes
 - Chef, Puppet, Ansible, Bash
 
 
 * Descendo a stack
 : Dando uma olhada uma camada abaixo
 
+* Descendo a stack
+: Dando uma olhada uma camada abaixo
+
+- Sei as necessidades da camada de cima
+- Não sei sobre a camada de baixo
 
 * Descendo a stack
 : Dando uma olhada uma camada abaixo
 
-  - Cross plataforma e ubiquoto
-  - Processo de deploy simples
-  - Runtime pequeno
+- Cross plataforma e ubiquoto
+- Processo de instalação simples
+- Runtime pequeno
 
 * Descendo a stack
 : Escolhas disponíveis
@@ -126,7 +134,7 @@ Sim
 - D
 - Rust
 
-
+  
 * Rust
 : Motivos que me chamaram a atenção
 
@@ -161,7 +169,14 @@ Sim
 #+END_SRC
 
 * Rust
-: Não deixa que eu faça erros comuns
+: Com conceitos de liguagem funcional
+
+- Imutabilidade por padrão
+- Sistema de tipos algebrico
+
+
+* Rust
+: Não deixa que eu faça erros comuns nessa camada
 
 #+BEGIN_SRC rust
   fn main() {
@@ -187,20 +202,32 @@ Sim
 * Rust
 : Projetos interessantes
 
-- Servo
-- Helix
-- Neon
-- coreutils
-- redox e intermezzOs
-- Xi editor
-
+- [[https://github.com/servo/servo][Servo]]
+- [[https://github.com/rustbridge/helix][Helix]]
+- [[https://github.com/rustbridge/neon][Neon]]
+- [[https://github.com/uutils/coreutils][coreutils]]
+- [[https://github.com/redox-os/redox][redox]] e [[https://intermezzos.github.io/][intermezzOs]]
+- [[https://github.com/google/xi-editor][Xi]] editor
 
 * Rust
 : Por onde começar
 
 - [[https://www.rustup.rs/][rustup.rs]]
+- [[https://this-week-in-rust.org][This Week In Rust]]
+- [[https://github.com/ctjhoa/rust-learning][rust-learnings]]
 - [[https://github.com/rust-lang-nursery/rustfmt][rustfmt]]
 - [[https://github.com/kud1ing/awesome-rust][awesome-rust]]
 
+* Minha maior aprendizagem nessa jornada
+: É possível transferir conhecimento entre camadas
 
+* Minha maior aprendizagem nessa jornada
+: É possível transferir conhecimento entre camadas
 
+- Olhar na camada de baixo te faz aprender sobre a de cima
+- Siga o seu passo
+- É possível inovar indo pra baixo
+- É possível trazer novidades para a base
+
+* Obrigado!
+: @bltavares
