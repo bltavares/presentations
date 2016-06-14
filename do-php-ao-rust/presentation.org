@@ -58,15 +58,12 @@ rails new
 : Meu laptop: Uma coleção de boostraps incompletos
 
 - gem -> scons -> gulp -> bower -> npm -> brew/apt
-- 1 VM
-- 3 Containeres
+- 1 VM, 3 Containeres
 - 3 serviços Python
 - 2 serviços Java
 - 2 serviços Ruby
-- 1 Bash
-- 2 Bancos
-- 3 frameworks JS
-- 2 Compiladores de JavaScript
+- 1 Bash, 2 Bancos
+- 3 frameworks JS, 2 Compiladores de JavaScript
 - Chef, Jenkins, 4 bots (Ruby, Node e Clojure)
 
 * Como explicar para quem é iniciante?
@@ -187,6 +184,21 @@ Sim
 #+END_SRC
 
 * Rust
+: Erros são explicitos
+
+#+BEGIN_SRC rust
+  impl File {
+      fn open(path: Path) -> Result<File>
+  }
+
+  enum Result<T> {
+     Ok(T),
+     Err(io::Error)
+  }
+#+END_SRC
+
+
+* Rust
 : O que eu tenho visto que me mantém
 
 - Progressão estável
@@ -198,6 +210,34 @@ Sim
 - Possibilidades
   Utilitários, Extensões de outras linguagens
   Sistemas Operacionais, Unikernel, Mobile
+
+* Rust
+: Extendendo outros runtimes
+
+- [[https://www.skylight.io/][Skylight]]
+  
+
+* Rust
+: Machine learning
+
+- [[http://autumnai.com/][Autumn]]
+  
+* Rust
+: IoT
+
+- [[https://www.tessel.io/][Tessel]]
+
+* Rust
+: Plataforma
+
+- Dropbox
+- Chef Habitat (anunciado tem algumas horas)
+
+* Rust
+: Unikernel
+
+- [[https://github.com/gandro/cargo-rumpbake][cargo-rumpbake]]
+
 
 * Rust
 : Projetos interessantes
@@ -213,6 +253,7 @@ Sim
 : Por onde começar
 
 - [[https://www.rustup.rs/][rustup.rs]]
+- [[http://rust-br.com/][#rust-br]]
 - [[https://this-week-in-rust.org][This Week In Rust]]
 - [[https://github.com/ctjhoa/rust-learning][rust-learnings]]
 - [[https://github.com/rust-lang-nursery/rustfmt][rustfmt]]
