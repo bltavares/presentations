@@ -1,0 +1,884 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Uma jornada de descoberta sobre desenvolvimento</title>
+  <style type="text/css">
+    body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background-color: #f7f7f7;
+}
+
+.slide-content {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+
+  font-weight: 200;
+  font-size: 200%;
+  line-height: 1.375;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.arrow {
+  width: 0; height: 0;
+  border: 30px solid #333;
+  float: left;
+  margin-right: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+
+  border-left-width: 0;
+  border-right-width: 50px;
+}
+
+.next {
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+
+  border-left-width: 50px;
+  border-right-width: 0;
+}
+
+.prev:hover {
+  border-right-color: #888;
+  cursor: pointer;
+}
+
+.next:hover {
+  border-left-color: #888;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.2;
+  text-align: center;
+  margin: 170px 0 0;
+}
+
+h2 {
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 140%;
+  line-height: 1.2;
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+  padding-bottom: 15px;
+}
+
+ul {
+  padding: 20px 0 0 60px;
+  font-weight: 200;
+  line-height: 1.375;
+}
+
+.author h1 {
+  font-size: 170%;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.author h3 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 95%;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #44a4dd;
+}
+
+a:hover {
+  color: #66b5ff;
+}
+
+pre {
+  font-size: 60%;
+  line-height: 1.3;
+}
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 3px;
+  background-color: #b4b4b4;
+
+  -webkit-transition: width 0.05s ease-out;
+  -moz-transition: width 0.05s ease-out;
+  -o-transition: width 0.05s ease-out;
+  transition: width 0.05s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 850px) {
+
+  body {
+    font-size: 70%;
+  }
+
+  .slide-content {
+    width: auto;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    margin-top: 120px;
+  }
+
+  .prev, .prev:hover {
+    border-right-color: rgba(135, 135, 135, 0.5);
+  }
+
+  .next, .next:hover {
+    border-left-color: rgba(135, 135, 135, 0.5);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 50%;
+    overflow: hidden;
+  }
+
+  .slide-content {
+    padding: 10px;
+    margin-top: 10px;
+    height: 340px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: letter;
+  }
+
+  .hidden {
+    display: inline;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    float: none !important;
+    overflow: visible;
+    background: none !important;
+    font-size: 52%;
+  }
+
+  .progress, .controls {
+    display: none;
+  }
+
+  .slide {
+    position: static;
+  }
+
+  .slide-content {
+    border: 1px solid #222;
+    margin-top: 0;
+    margin-bottom: 40px;
+    height: 3.5in;
+    overflow: visible;
+  }
+
+  .slide:nth-child(even) {
+    /* 2 slides per page */
+    page-break-before: always;
+  }
+}
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide -" id="slide-1">
+    <section class="slide-content"><h2 id="uma-jornada-de-descoberta-sobre-desenvolvimento-a-id-orgheadline2-a-">Uma jornada de descoberta sobre desenvolvimento<a id="orgheadline2"></a></h2>
+<h2 id="do-php-ao-rust-a-id-orgheadline1-a-">do PHP ao Rust<a id="orgheadline1"></a></h2>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-2">
+    <section class="slide-content"><h3 id="ol-a-id-orgheadline3-a-">Olá!<a id="orgheadline3"></a></h3>
+<p>Bruno Tavares</p>
+<p>@bltavares</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-3">
+    <section class="slide-content"><h3 id="php-a-id-orgheadline4-a-">PHP<a id="orgheadline4"></a></h3>
+<pre><code>Como era simples</code></pre>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">print</span>(<span class="hljs-string">"Hello World"</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-4">
+    <section class="slide-content"><h3 id="php-a-id-orgheadline5-a-">PHP<a id="orgheadline5"></a></h3>
+<pre><code>Como era simples</code></pre>
+<ul>
+<li>Colecionava hosts de 250Mb</li>
+<li>Copiar tudo por FTP</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-5">
+    <section class="slide-content"><h3 id="ruby-a-id-orgheadline6-a-">Ruby<a id="orgheadline6"></a></h3>
+<pre><code>Tá ficando complicado</code></pre>
+<pre><code class="lang-shell">rails new</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-6">
+    <section class="slide-content"><h3 id="ruby-a-id-orgheadline7-a-">Ruby<a id="orgheadline7"></a></h3>
+<pre><code>Free host 250Mb</code></pre>
+<ul>
+<li>Como eu coloco isso na internet?</li>
+<li>Copia tudo no colocado&#x2026;</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-7">
+    <section class="slide-content"><h3 id="ruby-a-id-orgheadline8-a-">Ruby<a id="orgheadline8"></a></h3>
+<pre><code>VPS</code></pre>
+<ul>
+<li>Aluga um servidor inteiro</li>
+<li><code>rvm</code></li>
+<li><code>capistrano</code></li>
+<li><code>passenger</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-8">
+    <section class="slide-content"><h3 id="projetos-novos-a-id-orgheadline9-a-">Projetos novos<a id="orgheadline9"></a></h3>
+<pre><code>Maiores e mais complexos</code></pre>
+<ul>
+<li>Bancos, Cluster, Filas, Servicos</li>
+<li>Linguagens diferentes, runtimes diferentes</li>
+<li>Versões diferentes de linguagens e pacotes</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-9">
+    <section class="slide-content"><h3 id="dificuldade-de-iniciar-em-um-novo-projeto-a-id-orgheadline10-a-">Dificuldade de iniciar em um novo projeto<a id="orgheadline10"></a></h3>
+<pre><code>Meu laptop: Uma coleção de boostraps incompletos</code></pre>
+<ul>
+<li>gem -&gt; scons -&gt; gulp -&gt; bower -&gt; npm -&gt; brew/apt</li>
+<li>1 VM, 3 Containeres</li>
+<li>3 serviços Python</li>
+<li>2 serviços Java</li>
+<li>2 serviços Ruby</li>
+<li>1 Bash, 2 Bancos</li>
+<li>3 frameworks JS, 2 Compiladores de JavaScript</li>
+<li>Chef, Jenkins, 4 bots (Ruby, Node e Clojure)</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-10">
+    <section class="slide-content"><h3 id="como-explicar-para-quem-iniciante-a-id-orgheadline11-a-">Como explicar para quem é iniciante?<a id="orgheadline11"></a></h3>
+<pre><code>As coisas ficam simples depois de muita exposição</code></pre>
+<ul>
+<li>Complexidade de projetos web</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-11">
+    <section class="slide-content"><h3 id="como-explicar-para-quem-iniciante-a-id-orgheadline12-a-">Como explicar para quem é iniciante?<a id="orgheadline12"></a></h3>
+<pre><code>Todos somos iniciantes em alguma área</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-12">
+    <section class="slide-content"><h3 id="d-pra-ser-mais-simples-a-id-orgheadline13-a-">Dá pra ser mais simples?<a id="orgheadline13"></a></h3>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-13">
+    <section class="slide-content"><h3 id="d-pra-ser-mais-simples-a-id-orgheadline14-a-">Dá pra ser mais simples?<a id="orgheadline14"></a></h3>
+<ul>
+<li>Diminuir quantidade de runtimes pra desenvolver?</li>
+<li>Diminuir quantidade de runtimes pra executar?</li>
+<li>Automatizar o empacotamento?</li>
+<li>Execução simples em produção e desenvolvimento?</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-14">
+    <section class="slide-content"><h3 id="d-pra-ser-mais-simples-a-id-orgheadline15-a-">Dá pra ser mais simples?<a id="orgheadline15"></a></h3>
+<p>Sim</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-15">
+    <section class="slide-content"><h3 id="d-pra-ser-mais-simples-a-id-orgheadline16-a-">Dá pra ser mais simples?<a id="orgheadline16"></a></h3>
+<pre><code>Mapeando cada dependencia implicita</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-16">
+    <section class="slide-content"><h3 id="d-pra-ser-mais-simples-a-id-orgheadline17-a-">Dá pra ser mais simples?<a id="orgheadline17"></a></h3>
+<pre><code>DevOps</code></pre>
+<ul>
+<li>VMs, containers, runtimes</li>
+<li>Chef, Puppet, Ansible, Bash</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-17">
+    <section class="slide-content"><h3 id="descendo-a-stack-a-id-orgheadline18-a-">Descendo a stack<a id="orgheadline18"></a></h3>
+<pre><code>Dando uma olhada uma camada abaixo</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-18">
+    <section class="slide-content"><h3 id="descendo-a-stack-a-id-orgheadline19-a-">Descendo a stack<a id="orgheadline19"></a></h3>
+<pre><code>Dando uma olhada uma camada abaixo</code></pre>
+<ul>
+<li>Sei as necessidades da camada de cima</li>
+<li>Não sei sobre a camada de baixo</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-19">
+    <section class="slide-content"><h3 id="descendo-a-stack-a-id-orgheadline20-a-">Descendo a stack<a id="orgheadline20"></a></h3>
+<pre><code>Dando uma olhada uma camada abaixo</code></pre>
+<ul>
+<li>Cross plataforma e ubiquoto</li>
+<li>Processo de instalação simples</li>
+<li>Runtime pequeno</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-20">
+    <section class="slide-content"><h3 id="descendo-a-stack-a-id-orgheadline21-a-">Descendo a stack<a id="orgheadline21"></a></h3>
+<pre><code>Escolhas disponíveis</code></pre>
+<ul>
+<li>Bash</li>
+<li>C</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-21">
+    <section class="slide-content"><h3 id="existem-outras-op-es-a-id-orgheadline22-a-">Existem outras opções?<a id="orgheadline22"></a></h3>
+<ul>
+<li>Evitar internalizar todo os problemas desse nível</li>
+<li>Aprender gradualmente, de preferência com as ferramentas</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-22">
+    <section class="slide-content"><h3 id="existem-outras-op-es-a-id-orgheadline23-a-">Existem outras opções?<a id="orgheadline23"></a></h3>
+<ul>
+<li>Go</li>
+<li>D</li>
+<li>Rust</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-23">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline24-a-">Rust<a id="orgheadline24"></a></h3>
+<pre><code>Motivos que me chamaram a atenção</code></pre>
+<ul>
+<li>Cross plataforma</li>
+<li>Saída em binário</li>
+<li>Compilador que grita comigo quando erro</li>
+<li>Permite que eu explore o nível no meu passo</li>
+<li>Ideal para fazer os utilitários do projetos</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-24">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline25-a-">Rust<a id="orgheadline25"></a></h3>
+<pre><code>Hello World</code></pre>
+<pre><code class="lang-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello World"</span>);
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-25">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline26-a-">Rust<a id="orgheadline26"></a></h3>
+<pre><code>Parece alto nível</code></pre>
+<pre><code class="lang-rust"><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> content.lines().filter(|x| x.is_empty()) {
+  <span class="hljs-keyword">let</span> words: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">String</span>&gt; = line.split(PHRASE_TERMINATOR)
+    .flat_map(|x| x.split_whitespace())
+    .map(|x| x.to_owned())
+    .collect();
+
+  chain.feed(words);
+}
+<span class="hljs-keyword">let</span> words: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">String</span>&gt; = chain.str_iter_for(<span class="hljs-number">100</span>).collect();</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-26">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline27-a-">Rust<a id="orgheadline27"></a></h3>
+<pre><code>Com conceitos de liguagem funcional</code></pre>
+<ul>
+<li>Imutabilidade por padrão</li>
+<li>Sistema de tipos algebrico</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-27">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline28-a-">Rust<a id="orgheadline28"></a></h3>
+<pre><code>Não deixa que eu faça erros comuns nessa camada</code></pre>
+<pre><code class="lang-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-keyword">let</span> valor = <span class="hljs-string">"Hello"</span>;
+    usa_e_libera_memoria(valor);
+    <span class="hljs-comment">// println!("Valor agora: {}", valor);</span>
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-28">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline29-a-">Rust<a id="orgheadline29"></a></h3>
+<pre><code>Erros são explicitos</code></pre>
+<pre><code class="lang-rust"><span class="hljs-keyword">impl</span> File {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">open</span></span>(path: Path) -&gt; <span class="hljs-built_in">Result</span>&lt;File&gt;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Result</span></span>&lt;T&gt; {
+   <span class="hljs-built_in">Ok</span>(T),
+   <span class="hljs-built_in">Err</span>(io::Error)
+}</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-29">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline30-a-">Rust<a id="orgheadline30"></a></h3>
+<pre><code>O que eu tenho visto que me mantém</code></pre>
+<ul>
+<li>Progressão estável
+<code>Stability without stagination</code></li>
+<li>Evolução transparente
+Processo de RFCs</li>
+<li>Comunidade amigável
+<code>Somos todos iniciantes em alguma área</code></li>
+<li>Possibilidades
+Utilitários, Extensões de outras linguagens
+Sistemas Operacionais, Unikernel, Mobile</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-30">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline31-a-">Rust<a id="orgheadline31"></a></h3>
+<pre><code>Extendendo outros runtimes</code></pre>
+<ul>
+<li><a href="https://www.skylight.io/">Skylight</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-31">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline32-a-">Rust<a id="orgheadline32"></a></h3>
+<pre><code>Machine learning</code></pre>
+<ul>
+<li><a href="http://autumnai.com/">Autumn</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-32">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline33-a-">Rust<a id="orgheadline33"></a></h3>
+<pre><code>IoT</code></pre>
+<ul>
+<li><a href="https://www.tessel.io/">Tessel</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-33">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline34-a-">Rust<a id="orgheadline34"></a></h3>
+<pre><code>Plataforma</code></pre>
+<ul>
+<li>Dropbox</li>
+<li>Chef Habitat</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-34">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline35-a-">Rust<a id="orgheadline35"></a></h3>
+<pre><code>Unikernel</code></pre>
+<ul>
+<li><a href="https://github.com/gandro/cargo-rumpbake">cargo-rumpbake</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-35">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline36-a-">Rust<a id="orgheadline36"></a></h3>
+<pre><code>Projetos interessantes</code></pre>
+<ul>
+<li><a href="https://github.com/servo/servo">Servo</a></li>
+<li><a href="https://github.com/rustbridge/helix">Helix</a></li>
+<li><a href="https://github.com/rustbridge/neon">Neon</a></li>
+<li><a href="https://github.com/uutils/coreutils">coreutils</a></li>
+<li><a href="https://github.com/redox-os/redox">redox</a> e <a href="https://intermezzos.github.io/">intermezzOs</a></li>
+<li><a href="https://github.com/google/xi-editor">Xi</a> editor</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-36">
+    <section class="slide-content"><h3 id="rust-a-id-orgheadline37-a-">Rust<a id="orgheadline37"></a></h3>
+<pre><code>Por onde começar</code></pre>
+<ul>
+<li><a href="https://www.rustup.rs/">rustup.rs</a></li>
+<li><a href="http://rust-br.com/">#rust-br</a></li>
+<li><a href="https://this-week-in-rust.org">This Week In Rust</a></li>
+<li><a href="https://github.com/ctjhoa/rust-learning">rust-learnings</a></li>
+<li><a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a></li>
+<li><a href="https://github.com/kud1ing/awesome-rust">awesome-rust</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-37">
+    <section class="slide-content"><h3 id="minha-maior-aprendizagem-nessa-jornada-a-id-orgheadline38-a-">Minha maior aprendizagem nessa jornada<a id="orgheadline38"></a></h3>
+<pre><code>É possível transferir conhecimento entre camadas</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-38">
+    <section class="slide-content"><h3 id="minha-maior-aprendizagem-nessa-jornada-a-id-orgheadline39-a-">Minha maior aprendizagem nessa jornada<a id="orgheadline39"></a></h3>
+<pre><code>É possível transferir conhecimento entre camadas</code></pre>
+<ul>
+<li>Olhar na camada de baixo te faz aprender sobre a de cima</li>
+<li>Siga o seu passo</li>
+<li>É possível inovar indo pra baixo</li>
+<li>É possível trazer novidades para a base</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-39">
+    <section class="slide-content"><h3 id="obrigado-a-id-orgheadline40-a-">Obrigado!<a id="orgheadline40"></a></h3>
+<pre><code>@bltavares</code></pre>
+</section>
+  </div>
+  <div class="slide hidden author-slide" id="slide-40">
+    <section class="slide-content"><div class="author">
+  <h1 class="name">Bruno Tavares</h1>
+    <h3 class="twitter">
+      <a href="http://twitter.com/@bltavares">@bltavares</a>
+    </h3>
+    <h3 class="url">
+      <a href="http://bltavares.com">http://bltavares.com</a>
+    </h3>
+</div>
+</section>
+  </div>
+
+  <div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+  </div>
+
+
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  try {
+    window.history.replaceState({} , null, '#' + currentPosition());
+  } catch (e) {
+    window.location.hash = currentPosition();
+  }
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+/**
+ * Determines whether or not we are currently in full screen mode
+ */
+function isFullScreen() {
+  return document.fullscreenElement ||
+         document.mozFullScreenElement ||
+         document.webkitFullscreenElement ||
+         document.msFullscreenElement;
+}
+
+/**
+ * Toggle fullScreen mode on document element.
+ * Works on chrome (>= 15), firefox (>= 9), ie (>= 11), opera(>= 12.1), safari (>= 5).
+ */
+function toggleFullScreen() {
+  /* Convenient renames */
+  var docElem = document.documentElement;
+  var doc = document;
+
+  docElem.requestFullscreen =
+      docElem.requestFullscreen ||
+      docElem.msRequestFullscreen ||
+      docElem.mozRequestFullScreen ||
+      docElem.webkitRequestFullscreen.bind(docElem, Element.ALLOW_KEYBOARD_INPUT);
+
+  doc.exitFullscreen =
+      doc.exitFullscreen ||
+      doc.msExitFullscreen ||
+      doc.mozCancelFullScreen ||
+      doc.webkitExitFullscreen;
+
+  isFullScreen() ? doc.exitFullscreen() : docElem.requestFullscreen();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, PgDn - FORWARD
+    // enter - FULLSCREEN
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    } else if (kc === 13) {
+      toggleFullScreen();
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+
+  </script>
+</body>
+</html>
