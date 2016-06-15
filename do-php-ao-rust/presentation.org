@@ -1,0 +1,274 @@
+#+OPTIONS:   num:nil
+
+* Uma jornada de descoberta sobre desenvolvimento
+** do PHP ao Rust
+
+
+* Olá!
+
+Bruno Tavares
+@bltavares
+
+
+* PHP
+: Como era simples
+
+#+BEGIN_SRC php
+<?php
+
+print("Hello World");
+#+END_SRC
+
+* PHP
+: Como era simples
+
+- Colecionava hosts de 250Mb
+- Copiar tudo por FTP
+  
+
+* Ruby
+: Tá ficando complicado
+
+#+BEGIN_SRC shell
+rails new
+#+END_SRC
+
+* Ruby
+: Free host 250Mb
+
+- Como eu coloco isso na internet?
+- Copia tudo no colocado...
+
+* Ruby
+: VPS
+
+- Aluga um servidor inteiro
+- ~rvm~
+- ~capistrano~
+- ~passenger~
+
+* Projetos novos
+: Maiores e mais complexos
+
+- Bancos, Cluster, Filas, Servicos
+- Linguagens diferentes, runtimes diferentes
+- Versões diferentes de linguagens e pacotes
+
+* Dificuldade de iniciar em um novo projeto
+: Meu laptop: Uma coleção de boostraps incompletos
+
+- gem -> scons -> gulp -> bower -> npm -> brew/apt
+- 1 VM, 3 Containeres
+- 3 serviços Python
+- 2 serviços Java
+- 2 serviços Ruby
+- 1 Bash, 2 Bancos
+- 3 frameworks JS, 2 Compiladores de JavaScript
+- Chef, Jenkins, 4 bots (Ruby, Node e Clojure)
+
+* Como explicar para quem é iniciante?
+: As coisas ficam simples depois de muita exposição
+
+- Complexidade de projetos web
+  
+* Como explicar para quem é iniciante?
+: Todos somos iniciantes em alguma área
+
+
+* Dá pra ser mais simples?
+  
+* Dá pra ser mais simples?
+
+- Diminuir quantidade de runtimes pra desenvolver?
+- Diminuir quantidade de runtimes pra executar?
+- Automatizar o empacotamento?
+- Execução simples em produção e desenvolvimento?
+  
+* Dá pra ser mais simples?
+Sim
+
+* Dá pra ser mais simples?
+: Mapeando cada dependencia implicita
+
+* Dá pra ser mais simples?
+: DevOps
+
+- VMs, containers, runtimes
+- Chef, Puppet, Ansible, Bash
+
+
+* Descendo a stack
+: Dando uma olhada uma camada abaixo
+
+* Descendo a stack
+: Dando uma olhada uma camada abaixo
+
+- Sei as necessidades da camada de cima
+- Não sei sobre a camada de baixo
+
+* Descendo a stack
+: Dando uma olhada uma camada abaixo
+
+- Cross plataforma e ubiquoto
+- Processo de instalação simples
+- Runtime pequeno
+
+* Descendo a stack
+: Escolhas disponíveis
+
+- Bash
+- C
+
+* Existem outras opções?
+
+- Evitar internalizar todo os problemas desse nível
+- Aprender gradualmente, de preferência com as ferramentas
+
+
+* Existem outras opções?
+
+- Go
+- D
+- Rust
+
+  
+* Rust
+: Motivos que me chamaram a atenção
+
+- Cross plataforma
+- Saída em binário
+- Compilador que grita comigo quando erro
+- Permite que eu explore o nível no meu passo
+- Ideal para fazer os utilitários do projetos
+
+* Rust
+: Hello World
+
+#+BEGIN_SRC rust
+  fn main() {
+      println!("Hello World");
+  }
+#+END_SRC
+
+* Rust
+: Parece alto nível
+
+#+BEGIN_SRC rust
+  for line in content.lines().filter(|x| x.is_empty()) {
+    let words: Vec<String> = line.split(PHRASE_TERMINATOR)
+      .flat_map(|x| x.split_whitespace())
+      .map(|x| x.to_owned())
+      .collect();
+
+    chain.feed(words);
+  }
+  let words: Vec<String> = chain.str_iter_for(100).collect();
+#+END_SRC
+
+* Rust
+: Com conceitos de liguagem funcional
+
+- Imutabilidade por padrão
+- Sistema de tipos algebrico
+
+
+* Rust
+: Não deixa que eu faça erros comuns nessa camada
+
+#+BEGIN_SRC rust
+  fn main() {
+      let valor = "Hello";
+      usa_e_libera_memoria(valor);
+      // println!("Valor agora: {}", valor);
+  }
+#+END_SRC
+
+* Rust
+: Erros são explicitos
+
+#+BEGIN_SRC rust
+  impl File {
+      fn open(path: Path) -> Result<File>
+  }
+
+  enum Result<T> {
+     Ok(T),
+     Err(io::Error)
+  }
+#+END_SRC
+
+
+* Rust
+: O que eu tenho visto que me mantém
+
+- Progressão estável
+  =Stability without stagination=
+- Evolução transparente
+  Processo de RFCs
+- Comunidade amigável
+  =Somos todos iniciantes em alguma área=
+- Possibilidades
+  Utilitários, Extensões de outras linguagens
+  Sistemas Operacionais, Unikernel, Mobile
+
+* Rust
+: Extendendo outros runtimes
+
+- [[https://www.skylight.io/][Skylight]]
+  
+
+* Rust
+: Machine learning
+
+- [[http://autumnai.com/][Autumn]]
+  
+* Rust
+: IoT
+
+- [[https://www.tessel.io/][Tessel]]
+
+* Rust
+: Plataforma
+
+- Dropbox
+- Chef Habitat (anunciado tem algumas horas)
+
+* Rust
+: Unikernel
+
+- [[https://github.com/gandro/cargo-rumpbake][cargo-rumpbake]]
+
+
+* Rust
+: Projetos interessantes
+
+- [[https://github.com/servo/servo][Servo]]
+- [[https://github.com/rustbridge/helix][Helix]]
+- [[https://github.com/rustbridge/neon][Neon]]
+- [[https://github.com/uutils/coreutils][coreutils]]
+- [[https://github.com/redox-os/redox][redox]] e [[https://intermezzos.github.io/][intermezzOs]]
+- [[https://github.com/google/xi-editor][Xi]] editor
+
+* Rust
+: Por onde começar
+
+- [[https://www.rustup.rs/][rustup.rs]]
+- [[http://rust-br.com/][#rust-br]]
+- [[https://this-week-in-rust.org][This Week In Rust]]
+- [[https://github.com/ctjhoa/rust-learning][rust-learnings]]
+- [[https://github.com/rust-lang-nursery/rustfmt][rustfmt]]
+- [[https://github.com/kud1ing/awesome-rust][awesome-rust]]
+
+* Minha maior aprendizagem nessa jornada
+: É possível transferir conhecimento entre camadas
+
+* Minha maior aprendizagem nessa jornada
+: É possível transferir conhecimento entre camadas
+
+- Olhar na camada de baixo te faz aprender sobre a de cima
+- Siga o seu passo
+- É possível inovar indo pra baixo
+- É possível trazer novidades para a base
+
+* Obrigado!
+: @bltavares
