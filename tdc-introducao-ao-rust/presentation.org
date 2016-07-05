@@ -1,0 +1,360 @@
+#+OPTIONS:   num:nil toc:nil
+
+* Rust
+** Uma linguagem interessante
+
+
+* Rust
+** Uma linguagem interessante
+
+
+Venha conhecer essa nova linguagem desenvolvida pela Mozilla, que foca
+em baixo nível, mas com a ergonomia que parece mais alto nível. "Essa
+palestra seria uma primeira introdução ao Rust, uma linguagem
+desenvolvida pela Mozilla. Rust é uma linguagem de programação para
+sistemas de baixo nível, com enfoque a velocidade, prevencão de erros
+de memória e segurança entre threads. Apesar de ser uma linguagem mais
+procedural que permite acesso baixo nivel, ideal para pequenos devices
+e programas gráficos, ela possui muitos dos beneficios de uma
+linguagem de alto nível. Muitos das construções que ela usa é bem
+familiar para quem está acostumado com o paradigma funcional, usando
+um sistema de tipos algebrico, não tem nulo e diversas outras
+coisas. Em breve, teremos partes do Firefox se beneficiando de todas
+essas novidades. Essa palestra seria uma introdução a linguagem,
+explicando o que eles buscam, um pouco de syntax, casos de uso atuais,
+ferramentas, comunidade, e todo o potencial que a ferramenta tem. Mais
+informações sobre a linguagem em https://www.rust-lang.org/
+
+* Olá!
+
+Bruno Tavares
+: Consultor na ThoughtWorks
+
+@bltavares
+
+
+* Antes de tudo...
+O que me levou a me interessar por Rust?
+
+
+* Um pouco sobre os projetos que já passei
+
+- PHP
+- Ruby
+- Java
+- Python
+- JavaScript no navegador
+- JavaScript no servidor
+
+* Projetos mais recentes
+: Maiores e mais complexos
+
+- Bancos, Cluster, Filas, Servicos
+- Linguagens diferentes, runtimes diferentes
+- Versões diferentes de linguagens e pacotes
+
+
+* Dificuldade de iniciar em um novo projeto
+: Meu laptop: Uma coleção de boostraps incompletos
+
+- gem -> scons -> gulp -> bower -> npm -> brew/apt
+- 1 VM, 3 Containeres
+- 3 serviços Python
+- 2 serviços Java
+- 2 serviços Ruby
+- 1 Bash, 2 Bancos
+- 3 frameworks JS, 2 Compiladores de JavaScript
+- Chef, Jenkins, 4 bots (Ruby, Node e Clojure)
+
+* Dificuldade de iniciar em um novo projeto
+: Meu laptop: Uma coleção de boostraps incompletos
+
+Projeto mais maduro em estrutura de entrega.
+Runtime complexo.
+
+
+* Como explicar para quem é iniciante?
+: As coisas ficam simples depois de muita exposição
+
+* Como explicar para quem é iniciante?
+: Todos somos iniciantes em alguma área
+
+
+* Dá pra ser mais simples?
+
+* Dá pra ser mais simples?
+
+- Diminuir quantidade de runtimes pra desenvolver?
+- Diminuir quantidade de runtimes pra executar?
+- Automatizar o empacotamento?
+- Execução simples em produção e desenvolvimento?
+
+* Dá pra ser mais simples?
+Sim
+
+
+* Descendo a tech stack
+: Dando uma olhada uma camada abaixo
+
+* Descendo a tech stack
+: Dando uma olhada uma camada abaixo
+
+- Sei as necessidades da camada de cima
+- Não sei sobre a camada de baixo
+
+* Descendo a tech stack
+: Dando uma olhada uma camada abaixo
+
+- Cross plataforma e facilmente disponível
+- Processo de instalação simples
+- Runtime pequeno
+
+* Descendo a tech stack
+: Escolhas disponíveis
+
+- Bash
+- C
+
+
+* Existem outras opções?
+
+- Evitar internalizar todo os problemas desse nível
+- Aprender gradualmente, de preferência com as ferramentas
+
+* Existem outras opções?
+
+- Go
+- D
+- Rust
+
+
+
+* Rust
+: Motivos que me chamaram a atenção
+
+- Cross plataforma
+- Saída em binário
+- Compilador que impede possíveis errors
+- Permite que eu explore o nível no meu passo
+- Ideal para fazer os utilitários do projetos
+
+* Rust
+: Hello World
+
+#+BEGIN_SRC rust
+  fn main() {
+      println!("Hello World");
+  }
+#+END_SRC
+
+* Rust
+: Principios da linguagem
+
+#+BEGIN_QUOTE
+Rust is a systems programming language that
+runs blazingly fast,
+prevents segfaults,
+and guarantees thread safety.
+#+END_QUOTE
+https://www.rust-lang.org/
+
+* Rust
+: Principios da linguagem
+
+#+BEGIN_QUOTE
+Rust é uma linguagem de programação para sistemas
+que executa rápido,
+previne erros acesso de memória,
+e garante segurança entre threads
+#+END_QUOTE
+
+* Rust
+: Com conceitos novos e antigos
+
+- Macros
+- Inferência de tipos
+- Verificação de tempo de vida de valores
+- Verificação de empréstimo de valores
+- Gerenciamento de memória sem GC
+  (mas com ajuda do compilador)
+
+
+* Rust
+: Com conceitos de liguagem funcional
+
+- Imutabilidade por padrão
+- Sistema de tipos algébrico
+- Closures
+- Pattern matching
+- Separação de comportamento e dados
+
+* Rust
+: Imutabilidade por padrão
+
+#+BEGIN_SRC rust
+fn main() {
+  let x = 1;
+  x = 2;
+}
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+error: re-assignment of immutable variable `x` [E0384]
+#+END_EXAMPLE
+
+
+* Rust
+: Imutabilidade por padrão
+
+#+BEGIN_SRC rust
+fn main() {
+  let mut x = 1;
+  x = 2;
+}
+#+END_SRC
+
+
+* Rust
+: Sistema de tipos algébricos
+
+#+BEGIN_SRC rust
+  enum Color {
+      Red,
+      Blue,
+      Yellow,
+  }
+#+END_SRC
+
+
+* Rust
+: Erros são explicitos
+
+#+BEGIN_SRC rust
+  impl File {
+      fn open(path: Path) -> Result<File>
+  }
+
+  enum Result<T> {
+     Ok(T),
+     Err(io::Error)
+  }
+#+END_SRC
+
+
+* Rust
+: Pattern matching
+: Não há null
+
+#+BEGIN_SRC rust
+  fn main() {
+      let data : Vec<i32> = vec!();
+      match data.first() {
+          None => println!("Nope"),
+          Some(x) => println!("Here: {}", x),
+      }
+  }
+#+END_SRC
+
+
+* Rust
+: Baixo que parece alto nível
+
+#+BEGIN_SRC rust
+  for line in content.lines().filter(|x| x.is_empty()) {
+    let words: Vec<String> = line.split(PHRASE_TERMINATOR)
+      .flat_map(|x| x.split_whitespace())
+      .map(|x| x.to_owned())
+      .collect();
+
+    chain.feed(words);
+  }
+  let words: Vec<String> = chain.str_iter_for(100).collect();
+#+END_SRC
+
+
+* Rust
+: Não deixa que eu faça erros comuns nessa camada
+
+#+BEGIN_SRC rust
+  fn main() {
+      let valor = "Hello";
+      usa_e_libera_memoria(valor);
+      // println!("Valor agora: {}", valor);
+  }
+#+END_SRC
+
+* Rust
+: Com conceitos de liguagem funcional
+
+- Imutabilidade por padrão
+- Sistema de tipos algébrico
+- Closures
+- Pattern matching
+- Separação de comportamento e dados
+
+
+* Rust
+: O que eu tenho visto que me mantém
+
+- Progressão estável
+  =Stability without stagination=
+- Evolução transparente
+  Processo de RFCs
+- Comunidade amigável
+  =Somos todos iniciantes em alguma área=
+- Possibilidades
+  Utilitários, Extensões de outras linguagens
+  Sistemas Operacionais, Unikernel, Mobile
+
+
+* Rust
+: Extendendo outros runtimes
+- [[https://www.skylight.io/][Skylight]]
+
+: Machine learning
+- [[http://autumnai.com/][Autumn]]
+
+: IoT
+- [[https://www.tessel.io/][Tessel]]
+
+: Plataforma
+- [[Dropbox][https://blogs.dropbox.com/tech/2016/06/lossless-compression-with-brotli/]]
+- [[Chef Habitat][https://news.ycombinator.com/item?id=11905560]]
+
+: Unikernel
+- [[https://github.com/gandro/cargo-rumpbake][cargo-rumpbake]]
+
+
+* Rust
+: Projetos interessantes
+
+- [[https://github.com/servo/servo][Servo]]
+- [[https://github.com/rustbridge/helix][Helix]]
+- [[https://github.com/rustbridge/neon][Neon]]
+- [[https://github.com/uutils/coreutils][coreutils]]
+- [[https://github.com/redox-os/redox][redox]] e [[https://intermezzos.github.io/][intermezzOs]]
+- [[https://github.com/google/xi-editor][Xi]] editor
+- [[https://github.com/habitat-sh/habitat][habitat]]
+
+
+* Rust
+: Por onde começar
+
+- [[https://www.rustup.rs/][rustup.rs]]
+- [[http://rust-br.com/][rust-br.com]]
+- [[https://this-week-in-rust.org][This Week In Rust]]
+- [[https://github.com/ctjhoa/rust-learning][rust-learnings]]
+- [[https://github.com/rust-lang-nursery/rustfmt][rustfmt]]
+- [[https://github.com/kud1ing/awesome-rust][awesome-rust]]
+
+* Rust
+** Uma linguagem interessante
+
+- Vários conceitos funcionais
+- Poucas dependencias em runtime
+- Novas estratégias para gerenciamento de memória
+- Muitas possibilidades!
+
+
+* Obrigado!
+: @bltavares
