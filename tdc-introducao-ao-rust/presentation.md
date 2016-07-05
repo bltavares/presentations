@@ -103,12 +103,6 @@ Runtime complexo.
 
 ---
 
-## Como explicar para quem é iniciante?
-
-    Todos somos iniciantes em alguma área
-
----
-
 ## Dá pra ser mais simples?
 
 ---
@@ -231,6 +225,8 @@ fn main() {
 
 -   Macros
 -   Inferência de tipos
+-   Testes em documentação
+-   Ferramenta de build e gerenciador de pacotes
 -   Verificação de tempo de vida de valores
 -   Verificação de empréstimo de valores
 -   Gerenciamento de memória sem GC
@@ -261,7 +257,7 @@ fn main() {
 }
 ```
 
-    error: re-assignment of immutable variable `x` [E0384]
+    error: re-assignment of immutable variable `x` [[E0384](https://doc.rust-lang.org/error-index.html#E0384)]
 
 ---
 

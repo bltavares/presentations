@@ -76,9 +76,6 @@ Runtime complexo.
 * Como explicar para quem é iniciante?
 : As coisas ficam simples depois de muita exposição
 
-* Como explicar para quem é iniciante?
-: Todos somos iniciantes em alguma área
-
 
 * Dá pra ser mais simples?
 
@@ -173,6 +170,8 @@ e garante segurança entre threads
 
 - Macros
 - Inferência de tipos
+- Testes em documentação
+- Ferramenta de build e gerenciador de pacotes
 - Verificação de tempo de vida de valores
 - Verificação de empréstimo de valores
 - Gerenciamento de memória sem GC
@@ -202,6 +201,7 @@ fn main() {
 error: re-assignment of immutable variable `x` [E0384]
 #+END_EXAMPLE
 
+E0384: https://doc.rust-lang.org/error-index.html#E0384
 
 * Rust
 : Imutabilidade por padrão
@@ -318,8 +318,8 @@ fn main() {
 - [[https://www.tessel.io/][Tessel]]
 
 : Plataforma
-- [[Dropbox][https://blogs.dropbox.com/tech/2016/06/lossless-compression-with-brotli/]]
-- [[Chef Habitat][https://news.ycombinator.com/item?id=11905560]]
+- [[https://blogs.dropbox.com/tech/2016/06/lossless-compression-with-brotli/][Dropbox]]
+- [[https://news.ycombinator.com/item?id=11905560][Chef Habitat]]
 
 : Unikernel
 - [[https://github.com/gandro/cargo-rumpbake][cargo-rumpbake]]
