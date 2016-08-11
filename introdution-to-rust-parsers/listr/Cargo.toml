@@ -1,0 +1,6 @@
+[package]
+name = "listr"
+version = "0.1.0"
+authors = ["Ferris The Crab <ferris@example.com"]
+
+[dependencies]
