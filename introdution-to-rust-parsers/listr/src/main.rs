@@ -9,4 +9,10 @@ fn main() {
     let response = request_result.expect("The HTTP request failed to be made");
 
     println!("Response status: {}", response.status);
+
+    use std::io::Read;
+
+    let mut body = String::new();
+    response.read_to_string(&mut body).expect("Could not put the body content into the string");
+    println!("Response body: {}", body);
 }
