@@ -1,0 +1,6 @@
+[package]
+name = "my-domain"
+version = "0.1.0"
+authors = ["Bruno Tavares <btavare@thoughtworks.com>"]
+
+[dependencies]

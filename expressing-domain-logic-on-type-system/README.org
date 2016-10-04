@@ -1,0 +1,487 @@
+* Dominio do problema
+
+- Um pedido não pode ter quantidades negativas
+- Toda transação precisa receber um token de sessão
+- Toda sessão é iniciada por um token de autorização
+
+* Implementação inicial
+
+#+BEGIN_SRC rust
+  pub fn authorize(auth_token: String) -> String {
+      unimplemented!()
+  }
+
+  pub fn send_order(session_token: String,
+                    amount: u8,
+                    product: String) {
+      unimplemented!()
+  }
+
+  fn main() {
+      let session_token = authorize("My initial token".into());
+      send_order(session_token, 10, "Bananas".into())
+  }
+#+END_SRC
+
+* Extraindo o conceito de Session Token
+
+#+BEGIN_SRC rust
+pub struct SessionToken(String);
+
+pub fn authorize(auth_token: String) -> SessionToken {
+    unimplemented!()
+}
+
+pub fn send_order(session_token: SessionToken,
+                  amount: u8,
+                  product: String) {
+    unimplemented!()
+}
+
+fn main() {
+    let session_token = authorize("My initial token".into());
+    send_order(session_token, 10, "Bananas".into())
+}
+#+END_SRC
+
+* Reutilizando o session token
+
+#+BEGIN_SRC rust
+pub struct SessionToken(String);
+
+pub fn authorize(auth_token: String) -> SessionToken {
+    unimplemented!()
+}
+
+pub fn send_order(session_token: &SessionToken,
+                  amount: u8,
+                  product: String) {
+    unimplemented!()
+}
+
+fn main() {
+    let session_token = authorize("My initial token".into());
+    send_order(&session_token, 10, "Bananas".into());
+    send_order(&session_token, 5, "Peras".into());
+}
+#+END_SRC
+
+* Expondo apenas uma maneira de criar um session token valido
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub fn authorize(auth_token: String) -> SessionToken {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      amount: u8,
+                      product: String) {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    // let s = SessionToken("ASDF".into());
+    let session_token = authorize("My initial token".into());
+    send_order(&session_token, 10, "Bananas".into());
+    send_order(&session_token, 5, "Peras".into());
+}
+#+END_SRC
+
+* Extraindo o conceito de Pedido
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct Order {
+        pub amount: u8,
+        pub name: String,
+    }
+
+    pub fn authorize(auth_token: String) -> SessionToken {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: &Order) {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    // let s = SessionToken("ASDF".into());
+    let session_token = authorize("My initial token".into());
+
+    let first_order = Order { amount: 10, name: "Bananas".into() };
+    send_order(&session_token, &first_order);
+}
+#+END_SRC
+
+* Restringindo o conceito de Pedido válido
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub fn create_order(amount: u8, name: String) -> Order {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> SessionToken {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: &Order) {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    // let s = SessionToken("ASDF".into());
+    let session_token = authorize("My initial token".into());
+
+    let first_order = create_order(10, "Bananas".into());
+    send_order(&session_token, &first_order);
+}
+#+END_SRC
+
+* Indicando que um pedido pode ser inválido
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct InvalidOrder(String);
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub fn create_order(amount: u8, name: String) -> Result<Order, InvalidOrder> {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> SessionToken {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: &Order) {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    // let s = SessionToken("ASDF".into());
+    let session_token = authorize("My initial token".into());
+
+    let first_order = create_order(10, "Bananas".into());
+
+    if let Ok(order) = first_order {
+        send_order(&session_token, &order);
+    }
+}
+#+END_SRC
+
+* Trazendo o mesmo de possível falha para iniciar uma sessão
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct InvalidOrder(String);
+
+    pub enum TokenResponseError {
+        ParsingError(String),
+        IoError(String),
+    }
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub fn create_order(amount: u8, name: String) -> Result<Order, InvalidOrder> {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> Result<SessionToken, TokenResponseError> {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: &Order) {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    if let Ok(session_token) = authorize("My initial token".into()) {
+        let first_order = create_order(10, "Bananas".into());
+
+        if let Ok(order) = first_order {
+            send_order(&session_token, &order);
+        }
+    }
+}
+#+END_SRC
+
+* Invalidando uma ordem depois que ela é enviada
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct InvalidOrder(String);
+
+    pub enum TokenResponseError {
+        ParsingError(String),
+        IoError(String),
+    }
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub fn create_order(amount: u8, name: String) -> Result<Order, InvalidOrder> {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> Result<SessionToken, TokenResponseError> {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: Order) {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    if let Ok(session_token) = authorize("My initial token".into()) {
+        let first_order = create_order(10, "Bananas".into());
+
+        if let Ok(order) = first_order {
+            send_order(&session_token, order);
+            // send_order(&session_token, order);
+        }
+    }
+}
+#+END_SRC
+
+* Trazendo uma resposta sobre o resultado do Pedido
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct InvalidOrder(String);
+
+    pub enum ApiError {
+        ParsingError(String),
+        IoError(String),
+    }
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub struct OrderResponse {
+        pub name: String,
+        pub status: String,
+        pub amount: u8,
+    }
+
+    pub fn create_order(amount: u8, name: String) -> Result<Order, InvalidOrder> {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> Result<SessionToken, ApiError> {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: Order) -> Result<OrderResponse, ApiError> {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    if let Ok(session_token) = authorize("My initial token".into()) {
+        let first_order = create_order(10, "Bananas".into());
+
+        if let Ok(order) = first_order {
+            send_order(&session_token, order);
+            // send_order(&session_token, order);
+        }
+    }
+}
+#+END_SRC
+
+* Definindo possíveis status de ordem
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct InvalidOrder(String);
+
+    pub enum ApiError {
+        ParsingError(String),
+        IoError(String),
+    }
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub struct OrderResponse {
+        pub name: String,
+        pub status: OrderStatus,
+        pub amount: u8,
+    }
+
+    pub enum OrderStatus {
+        Waiting,
+        Shipping,
+        Shipped,
+        Delivered,
+    }
+
+    pub fn create_order(amount: u8, name: String) -> Result<Order, InvalidOrder> {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> Result<SessionToken, ApiError> {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: Order) -> Result<OrderResponse, ApiError> {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    if let Ok(session_token) = authorize("My initial token".into()) {
+        let first_order = create_order(10, "Bananas".into());
+
+        if let Ok(order) = first_order {
+            send_order(&session_token, order);
+            // send_order(&session_token, order);
+        }
+    }
+}
+#+END_SRC
+
+* Dando um nome mais bonito para nossas respostas da API
+
+#+BEGIN_SRC rust
+mod lib {
+    pub struct SessionToken(String);
+
+    pub struct InvalidOrder(String);
+
+    pub enum ApiError {
+        ParsingError(String),
+        IoError(String),
+    }
+
+    pub struct Order {
+        amount: u8,
+        name: String,
+    }
+
+    pub struct OrderResponse {
+        name: String,
+        status: OrderStatus,
+        amount: u8,
+    }
+
+    pub enum OrderStatus {
+        Waiting,
+        Shipping,
+        Shipped,
+        Delivered,
+    }
+
+    pub type ApiResponse<T> = Result<T, ApiError>;
+
+    pub fn create_order(amount: u8, name: String) -> Result<Order, InvalidOrder> {
+        if amount <= 0 {
+            unimplemented!()
+        }
+        unimplemented!()
+    }
+
+    pub fn authorize(auth_token: String) -> ApiResponse<SessionToken> {
+        unimplemented!()
+    }
+
+    pub fn send_order(session_token: &SessionToken,
+                      order: Order) -> ApiResponse<OrderResponse> {
+        unimplemented!()
+    }
+}
+
+pub use lib::*;
+
+fn main() {
+    if let Ok(session_token) = authorize("My initial token".into()) {
+        let first_order = create_order(10, "Bananas".into());
+
+        if let Ok(order) = first_order {
+            send_order(&session_token, order);
+            // send_order(&session_token, order);
+        }
+    }
+}
+#+END_SRC
