@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Como mutiplos deploys al dia ayuda a reducir riesgo</title>
+<meta name="author" content="(Bruno Tavares)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/white.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-orgde5cc95">
+<h2 id="orgde5cc95">Como multiples desplegues ayundan</h2>
+<p>
+a reducir riesgos
+</p>
+
+<p>
+(y como hacerlos?)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org46dbe17">
+<h2 id="org46dbe17">Antes de hablar sobre tecnología&#x2026;</h2>
+<p>
+Una pequeña historia de la vida real
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org5070a69">
+<h2 id="org5070a69">lo que pasé en brasil&#x2026;</h2>
+<p>
+con buses de línea
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6269d05">
+<h2 id="org6269d05">buses me llevan desde trabajo</h2>
+<p>
+a mi casa
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org5cb914d">
+<h2 id="org5cb914d">buses tienen horarios</h2>
+</section>
+<section >
+<p>
+pero a (<i>muchas</i>) veces se retrasa
+</p>
+
+</section>
+<section >
+<p>
+y a veces tienen pocas líneas
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge3631e3">
+<h2 id="orge3631e3">¿que comportamientos producen los intervalos y retrasos de buses?</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org41d3821">
+<h2 id="org41d3821">¿si el bus esta lleno?</h2>
+<ul>
+<li class="fragment">espero más 30 minutos para otro?
+<ul>
+<li>posiblemente lleno de nuevo</li>
+
+</ul></li>
+<li class="fragment">acepto irme apretado?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8eb946b">
+<h2 id="org8eb946b">un bus lleno es un gran riesgo</h2>
+</section>
+<section >
+<p>
+si tenemos un problema en el motor, muchas personas no van llegar donde quieren
+</p>
+
+</section>
+<section >
+<p>
+las personas van ser agregadas al próximo bus
+</p>
+<ul>
+<li>que agranda el riesgo, y así continua&#x2026;</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org7a186fd">
+<h2 id="org7a186fd">¿si aun no estoy listo y veo el bus?</h2>
+<ul>
+<li class="fragment">corro por 5 minutos para llegar a tiempo?</li>
+<li class="fragment">voy tranquilo, y espero por 30 minutos (o mas)?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgba002c3">
+<h2 id="orgba002c3">variables del bus</h2>
+<ul>
+<li>muchas personas = mas riesgos</li>
+<li>baja frecuencia = mas personas</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org638be31">
+<h2 id="org638be31">algunas sugerencias para llegar mejor a su casa</h2>
+<ul>
+<li class="fragment">taxi</li>
+<li class="fragment">uber</li>
+<li class="fragment">tener una alta frecuencia de buses</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3c90bc8">
+<h2 id="org3c90bc8">la certeza de un bus próximo cambia el comportamiento</h2>
+<p>
+<a href="https://www.promptworks.com/blog/swiss-train-deployments">the swiss don't run for their train</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org01bc56d">
+<h2 id="org01bc56d">no más buses&#x2026;</h2>
+<p>
+hablamos de computadores
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0193707">
+<h2 id="org0193707">el deployment lleva cambios desde trabajo</h2>
+<p>
+a su "casa"
+</p>
+
+</section>
+<section >
+<ul>
+<li>todos los cambios tiene como destino producción</li>
+<li>un cambio vive en producción, esta es su casa</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org382cad9">
+<h2 id="org382cad9">variables del bus</h2>
+<ul>
+<li>muchas personas = mas riesgos</li>
+<li>baja frecuencia = mas personas</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org36070c2">
+<h2 id="org36070c2">variables del <span class="underline">bus</span></h2>
+<ul>
+<li>muchas <span class="underline">personas</span> = mas riesgos</li>
+<li>baja frecuencia = mas <span class="underline">personas</span></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga594eca">
+<h2 id="orga594eca">variables del deploy</h2>
+<ul>
+<li>muchos cambios = mas riesgos</li>
+<li>baja frecuencia = mas cambios</li>
+
+</ul>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="1.png" alt="1.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="2.png" alt="2.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="3.png" alt="3.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="4.png" alt="4.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="1.png" alt="1.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="5.png" alt="5.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="6.png" alt="6.png" />
+</p>
+</div>
+
+</section>
+<section >
+
+<div class="figure">
+<p><img src="7.png" alt="7.png" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5b43408">
+<h2 id="org5b43408">¿Y si tenemos un bus <span class="underline">por año</span>?</h2>
+<p>
+(No mas buses&#x2026;)
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org0dd4ffc">
+<h2 id="org0dd4ffc">¿Y si tenemos un deploy <span class="underline">por año</span>?</h2>
+</section>
+<section >
+<p>
+Envio:
+</p>
+
+<ul>
+<li class="fragment">1 cambio pequeño?</li>
+<li class="fragment">1 cambio grande?</li>
+<li class="fragment">1.000.000 cambios pequeños?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org5c01a1e">
+<h2 id="org5c01a1e">¿Y si me deploy anual tiene un problema?</h2>
+</section>
+<section >
+<p>
+Reviso y arreglo:
+</p>
+
+<ul>
+<li class="fragment">1 cambio pequeño?</li>
+<li class="fragment">1 cambio grande?</li>
+<li class="fragment">1.000.000 cambios pequeños?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf464deb">
+<h2 id="orgf464deb">¿Como es el comportamiento con deploys a cada <span class="underline">2 semanas</span>?</h2>
+<ul>
+<li class="fragment">El cambio <i>casi</i> listo, corro para el deploy en esta semana?</li>
+<li class="fragment">Espero 2 semanas, por causa de 2 dias más que necesitaba?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org272440e">
+<h2 id="org272440e">Correr para el bus tiene riesgos:</h2>
+</section>
+<section >
+<p>
+No vas a mirar bien los problemas en el camino
+</p>
+
+</section>
+<section >
+<p>
+Puede ponerse en mas riesgo
+</p>
+
+</section>
+<section >
+<p>
+Se queda sin aire
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf58e8b4">
+<h2 id="orgf58e8b4">Correr con un cambio tiene riesgos:</h2>
+</section>
+<section >
+<p>
+No vas mirar bien los problemas en el camino
+</p>
+<ul>
+<li class="fragment">Como voy impactar otros equipos?</li>
+<li class="fragment">Como voy impactar la compania?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Puede ponerse en mas riesgo
+</p>
+<ul>
+<li class="fragment">Estoy comprometiendo buenas practicas?</li>
+<li class="fragment">Hice todas las pruebas necesarias?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Se queda sin aire
+</p>
+<ul>
+<li class="fragment">Burnout</li>
+<li class="fragment">Sentimiento de <i>bombero</i> todo los dias</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org253d4cd">
+<h2 id="org253d4cd">¿Como es el comportamiento con deploys a cada <span class="underline">1 hora</span>?</h2>
+</section>
+<section >
+<p>
+Es posible eligir no subir en el deploy de las 8AM
+</p>
+
+<p>
+Mas algunos minutos y toma el deploy de las 9AM
+</p>
+
+</section>
+<section >
+<p>
+Podemos enviar enviar cambios pequeños y
+probar como es el comportamiento en producción.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org32a76c4">
+<h2 id="org32a76c4">¿Como es el comportamiento con deploys a cada <span class="underline">10 minutos</span>?</h2>
+</section>
+<section >
+<p>
+Si tengo un problema en producción, puedo simplemente hacer mas un deploy
+</p>
+
+</section>
+<section >
+<ul>
+<li class="fragment">No es necesario un flujo de <code>hotfix</code></li>
+<li class="fragment">Pasamos a utilizar el flujo que siempre utilizamos para <code>hotfixes</code></li>
+<li class="fragment">Sabemos que es un buen flujo, incluso para <code>hotfixes</code>, como utilizamos todo los dias</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org466cb7f">
+<h2 id="org466cb7f">¿Pero, si no estoy listo con mi <i>feature</i>?</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd95a80e">
+<h2 id="orgd95a80e">Deploy no es Release</h2>
+</section>
+<section >
+<p>
+Es posible escribir codigo, ponerlo en producción, pero no disponibilizar para el usuario
+</p>
+
+</section>
+<section >
+<ul>
+<li>Despliegue apagado (<i>Feature Toggles</i>)</li>
+<li>Canary release</li>
+<li>A/B testing</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org3353a9b">
+<h2 id="org3353a9b">Despliegue apagado</h2>
+<ul>
+<li class="fragment">Agregamos flags (<code>Feature Toggles</code>) en código para definir el flujo</li>
+<li class="fragment">Tenemos el deploy</li>
+<li class="fragment">Mientras activo, activamos el nuevo flujo de codigo</li>
+<li class="fragment">Si tenemos problemas, volvemos al flujo antiguo
+<ul>
+<li>Sin los riesgos de deploy</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf4cf547">
+<h2 id="orgf4cf547">Canary release</h2>
+<ul>
+<li class="fragment">Agregamos flags (<code>Feature Toggles</code>) en código para definir el flujo</li>
+<li class="fragment">Tenemos el deploy</li>
+<li class="fragment">Mientras activo, activamos el nuevo flujo de codigo para 1% de usuarios</li>
+<li class="fragment">Caso vemos bien, agrandamos a 10% de usuarios</li>
+<li class="fragment">50%, 55%, 70%, &#x2026;. hasta 100%</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga01c7df">
+<h2 id="orga01c7df">A/B testing</h2>
+<ul>
+<li class="fragment">Agregamos flags (<code>Feature Toggles</code>) en código para definir el flujo</li>
+<li class="fragment">Tenemos el deploy</li>
+<li class="fragment">Mientras activo, cambiamos el flag para 50% de los usuarios</li>
+<li class="fragment">Medimos y elijimos el mejor</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org64fcd18">
+<h2 id="org64fcd18">En resumen</h2>
+</section>
+<section >
+<p>
+Variables del deploy
+</p>
+<ul>
+<li>Muchos cambios = Mas riesgos</li>
+<li>Baja frecuencia = Mas cambios</li>
+
+</ul>
+
+</section>
+<section >
+<ul>
+<li><i>Deploys</i> más frecuentes reducen el tamaño de los cambios</li>
+<li>Cambios pequeños ayudan a identificar problemas</li>
+
+</ul>
+
+</section>
+<section >
+<ul>
+<li>Un <i>Deploy</i> grande tiene riesgo</li>
+<li>Un <i>Release</i> grande tiene riesgo</li>
+<li>Un <i>Deploy</i> grande que también es un Release, és doble el riesgo</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org42ec0ed">
+<h2 id="org42ec0ed">¡Gracias!</h2>
+<p>
+Bruno Tavares
+</p>
+
+</section>
+<section id="slide-orgafd1e8e">
+<h3 id="orgafd1e8e">Gracias a <span class="underline">Gonzalo Leyton</span> por la revisión de portuñol</h3>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+maxScale: 1.80,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

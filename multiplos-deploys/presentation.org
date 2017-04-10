@@ -1,0 +1,249 @@
+#+Title: Como mutiplos deploys al dia ayuda a reducir riesgo
+#+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil
+#+REVEAL_THEME: white
+#+REVEAL_TRANS: slide
+#+REVEAL_MAX_SCALE: 1.8
+
+* Como multiples desplegues ayundan
+  a reducir riesgos
+
+  (y como hacerlos?)
+
+* Antes de hablar sobre tecnología...
+  Una pequeña historia de la vida real
+
+* lo que pasé en brasil...
+  con buses de línea
+
+* buses me llevan desde trabajo
+  a mi casa
+
+* buses tienen horarios
+
+  #+reveal: split
+  pero a (/muchas/) veces se retrasa
+
+  #+reveal: split
+  y a veces tienen pocas líneas
+
+* ¿que comportamientos producen los intervalos y retrasos de buses?
+
+* ¿si el bus esta lleno?
+
+  #+attr_reveal: :frag (t t)
+  - espero más 30 minutos para otro?
+    - posiblemente lleno de nuevo
+  - acepto irme apretado?
+
+* un bus lleno es un gran riesgo
+
+  #+reveal: split
+  si tenemos un problema en el motor, muchas personas no van llegar donde quieren
+
+  #+reveal: split
+  las personas van ser agregadas al próximo bus
+  - que agranda el riesgo, y así continua...
+
+* ¿si aun no estoy listo y veo el bus?
+
+  #+attr_reveal: :frag (t t)
+  - corro por 5 minutos para llegar a tiempo?
+  - voy tranquilo, y espero por 30 minutos (o mas)?
+
+* variables del bus
+  - muchas personas = mas riesgos
+  - baja frecuencia = mas personas
+
+* algunas sugerencias para llegar mejor a su casa
+
+  #+attr_reveal: :frag (t t t)
+  - taxi
+  - uber
+  - tener una alta frecuencia de buses
+
+* la certeza de un bus próximo cambia el comportamiento
+
+  [[https://www.promptworks.com/blog/swiss-train-deployments][the swiss don't run for their train]]
+
+* no más buses...
+  hablamos de computadores
+
+* el deployment lleva cambios desde trabajo
+  a su "casa"
+
+  #+reveal: split
+  - todos los cambios tiene como destino producción
+  - un cambio vive en producción, esta es su casa
+
+* variables del bus
+  - muchas personas = mas riesgos
+  - baja frecuencia = mas personas
+
+* variables del _bus_
+  - muchas _personas_ = mas riesgos
+  - baja frecuencia = mas _personas_
+
+* variables del deploy
+  - muchos cambios = mas riesgos
+  - baja frecuencia = mas cambios
+
+  #+REVEAL: split
+  [[file:1.png]]
+
+  #+REVEAL: split
+  [[file:2.png]]
+
+  #+REVEAL: split
+  [[file:3.png]]
+
+  #+REVEAL: split
+  [[file:4.png]]
+
+  #+REVEAL: split
+  [[file:1.png]]
+
+  #+REVEAL: split
+  [[file:5.png]]
+
+  #+REVEAL: split
+  [[file:6.png]]
+
+  #+REVEAL: split
+  [[file:7.png]]
+
+* ¿Y si tenemos un bus _por año_?
+  (No mas buses...)
+
+* ¿Y si tenemos un deploy _por año_?
+
+  #+REVEAL: split
+  Envio:
+
+  #+ATTR_REVEAL: :frag (t t t)
+  - 1 cambio pequeño?
+  - 1 cambio grande?
+  - 1.000.000 cambios pequeños?
+
+* ¿Y si me deploy anual tiene un problema?
+
+  #+REVEAL: split
+  Reviso y arreglo:
+
+  #+ATTR_REVEAL: :frag (t t t)
+  - 1 cambio pequeño?
+  - 1 cambio grande?
+  - 1.000.000 cambios pequeños?
+
+* ¿Como es el comportamiento con deploys a cada _2 semanas_?
+
+  #+ATTR_REVEAL: :frag (t t)
+  - El cambio /casi/ listo, corro para el deploy en esta semana?
+  - Espero 2 semanas, por causa de 2 dias más que necesitaba?
+
+* Correr para el bus tiene riesgos:
+
+  #+REVEAL: split
+  No vas a mirar bien los problemas en el camino
+
+  #+REVEAL: split
+  Puede ponerse en mas riesgo
+
+  #+REVEAL: split
+  Se queda sin aire
+
+* Correr con un cambio tiene riesgos:
+
+  #+REVEAL: split
+  No vas mirar bien los problemas en el camino
+  #+ATTR_REVEAL: :frag (t t)
+    - Como voy impactar otros equipos?
+    - Como voy impactar la compania?
+
+  #+REVEAL: split
+  Puede ponerse en mas riesgo
+  #+ATTR_REVEAL: :frag (t t)
+    - Estoy comprometiendo buenas practicas?
+    - Hice todas las pruebas necesarias?
+
+  #+REVEAL: split
+  Se queda sin aire
+  #+ATTR_REVEAL: :frag (t t)
+    - Burnout
+    - Sentimiento de /bombero/ todo los dias
+
+* ¿Como es el comportamiento con deploys a cada _1 hora_?
+
+  #+REVEAL: split
+  Es posible eligir no subir en el deploy de las 8AM
+
+  Mas algunos minutos y toma el deploy de las 9AM
+
+  #+REVEAL: split
+  Podemos enviar enviar cambios pequeños y
+  probar como es el comportamiento en producción.
+
+* ¿Como es el comportamiento con deploys a cada _10 minutos_?
+
+  #+REVEAL: split
+  Si tengo un problema en producción, puedo simplemente hacer mas un deploy
+
+  #+REVEAL: split
+  #+ATTR_REVEAL: :frag (t t t)
+    - No es necesario un flujo de =hotfix=
+    - Pasamos a utilizar el flujo que siempre utilizamos para =hotfixes=
+    - Sabemos que es un buen flujo, incluso para =hotfixes=, como utilizamos todo los dias
+
+* ¿Pero, si no estoy listo con mi /feature/?
+
+* Deploy no es Release
+
+  #+REVEAL: split
+  Es posible escribir codigo, ponerlo en producción, pero no disponibilizar para el usuario
+
+  #+REVEAL: split
+  - Despliegue apagado (/Feature Toggles/)
+  - Canary release
+  - A/B testing
+
+* Despliegue apagado
+  #+ATTR_REVEAL: :frag (t t t t)
+  - Agregamos flags (=Feature Toggles=) en código para definir el flujo
+  - Tenemos el deploy
+  - Mientras activo, activamos el nuevo flujo de codigo
+  - Si tenemos problemas, volvemos al flujo antiguo
+    - Sin los riesgos de deploy
+
+* Canary release
+  #+ATTR_REVEAL: :frag (t t t t t)
+  - Agregamos flags (=Feature Toggles=) en código para definir el flujo
+  - Tenemos el deploy
+  - Mientras activo, activamos el nuevo flujo de codigo para 1% de usuarios
+  - Caso vemos bien, agrandamos a 10% de usuarios
+  - 50%, 55%, 70%, .... hasta 100%
+
+* A/B testing
+  #+ATTR_REVEAL: :frag (t t t t)
+  - Agregamos flags (=Feature Toggles=) en código para definir el flujo
+  - Tenemos el deploy
+  - Mientras activo, cambiamos el flag para 50% de los usuarios
+  - Medimos y elijimos el mejor
+
+* En resumen
+  #+REVEAL: split
+  Variables del deploy
+  - Muchos cambios = Mas riesgos
+  - Baja frecuencia = Mas cambios
+
+  #+REVEAL: split
+  - /Deploys/ más frecuentes reducen el tamaño de los cambios
+  - Cambios pequeños ayudan a identificar problemas
+
+  #+REVEAL: split
+  - Un /Deploy/ grande tiene riesgo
+  - Un /Release/ grande tiene riesgo
+  - Un /Deploy/ grande que también es un Release, és doble el riesgo
+
+* ¡Gracias!
+  Bruno Tavares
+
+** Gracias a _Gonzalo Leyton_ por la revisión de portuñol
