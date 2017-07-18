@@ -1,5 +1,5 @@
 /**
- * White theme for reveal.js. This is the opposite of the 'black' theme.
+ * Base16 Atelier Forest theme for reveal.js. This is the opposite of the 'black' theme.
  *
  * By Hakim El Hattab, http://hakim.se
  */
@@ -12,23 +12,23 @@
 
 
 // Include theme-specific fonts
-@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+@import url(../../lib/font/open-sans/open-sans.css);
 
 
 // Override theme settings (see ../template/settings.scss)
-$backgroundColor: #fff;
+$backgroundColor: #f1efee;
 
-$mainColor: #222;
-$headingColor: #222;
+$mainColor: #1b1918;
+$headingColor: #1b1918;
 
 $mainFontSize: 42px;
-$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$mainFont: 'Open Sans', Helvetica, sans-serif;
+$headingFont: 'Open Sans', Helvetica, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
-$headingTextTransform: uppercase;
+$headingTextTransform: normal;
 $headingFontWeight: 600;
-$linkColor: #2a76dd;
+$linkColor: #407ee7;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
@@ -37,12 +37,32 @@ $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
 
+$spacing: 0.8em;
+
 section.has-dark-background {
 	&, h1, h2, h3, h4, h5, h6 {
-		color: #fff;
+		color: #01a0e4;
 	}
 }
 
+.reveal {
+  h1, h2 {
+   padding-bottom: $spacing;
+  }
+}
+
+.reveal pre {
+	padding: 1em;
+	background: #fff;
+}
+
+.reveal p + ul, .reveal p + div {
+	padding-top: $spacing;
+}
+
+.reveal	li {
+	font-size: $spacing;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";

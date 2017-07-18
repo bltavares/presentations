@@ -1,8 +1,9 @@
 #+Title: Ouvi falar de Rust... Mas como faço um site?
-#+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil G
-#+REVEAL_THEME: white
+#+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil reveal_history:t
+#+REVEAL_THEME: base16
 #+REVEAL_TRANS: slide
 #+REVEAL_MAX_SCALE: 1.8
+#+REVEAL_EXTRA_CSS: extra.css
 
 * Ouvi falar de Rust...
 
@@ -42,7 +43,10 @@
   "Mas o que é Rust?"
 
 * Rust
-  #+REVEAL_HTML:  <img style="border: none; box-shadow: none;" src="rust-logo.svg" />
+  :PROPERTIES:
+  :CUSTOM_ID: rust
+  :END:
+  #+REVEAL_HTML:  <img style="border: none; box-shadow: none; position: relative; top: 1.6em;" src="rust-logo.svg" width="25%" />
 
   #+BEGIN_QUOTE
   Rust é uma linguagem de programação de sistemas que roda incrivelmente rápido, previne falhas de segmentação, e garante segurança entre threads.
@@ -82,7 +86,8 @@
 * Quem já ouviu falar de Rust?
 
   #+reveal: split
-Ah, e esse é o mascote, Ferris
+  Ah, e esse é o mascote, *Ferris*
+
   #+REVEAL_HTML:  <img style="width: 50%; border: none; box-shadow: none;" src="ferris.png" />
 
   (E dá pra [[http://edunham.net/2016/04/11/plushie_rustacean_pattern.html][costurar]] um pra você)
@@ -250,9 +255,13 @@ Ah, e esse é o mascote, Ferris
   #+END_SRC
 
 ** TA-DA!
-  #+REVEAL_HTML:  <img style="border: none;" src="hello.png" />
+   #+REVEAL_HTML:  <img style="border: none;" src="hello.png" />
 
 * Parabéns!
+  :PROPERTIES:
+  :CUSTOM_ID: parabens
+  :reveal_background: #232323
+  :END:
 
   Você tem um site em Rust.
 
@@ -267,6 +276,7 @@ Ah, e esse é o mascote, Ferris
   https://ouvi-falar-de-rust.herokuapp.com/
 
 * "Uma pergunta..."
+
 ** É fácil aprender Rust?
    Eu passei semanas batendo a cabeça em conceitos que eram novos para mim.
 
@@ -288,19 +298,20 @@ Ah, e esse é o mascote, Ferris
 ** Como eu coloco meu site no Heroku?
    Eu usei esse [[https://github.com/emk/heroku-buildpack-rust][buildpack]].
 
-  #+REVEAL_HTML:  <img style="border: none;" src="heroku.png" />
+   #+REVEAL_HTML:  <img style="border: none;" src="heroku.png" />
 
 ** Só existe o Nickel para web?
    Já existem vários frameworks, mas ainda é um ecosistema em desenvolvimento.
 
+   #+reveal: split
    Uma boa lista está disponível no site [[http://www.arewewebyet.org/][Are We Web Yet?]]
 
-  #+REVEAL_HTML:  <img style="width: 40%;" src="areweweb.png" />
+   #+REVEAL_HTML:  <img style="width: 40%;" src="areweweb.png" />
 
 *** Se você estiver buscando algo mais experimental:
     Confira o [[https://rocket.rs/][Rocket]], que usa uma sintax mais sucinta...
 
-  #+REVEAL_HTML:  <img style="border: none; width:70%;" src="rocket.png" />
+    #+REVEAL_HTML:  <img style="border: none; width:70%;" src="rocket.png" />
 
     #+reveal: split
     Mas depende de funcionalidades do compilador ainda em desenvolvimento.
@@ -312,13 +323,13 @@ Ah, e esse é o mascote, Ferris
    - Rust tem uma versão nova a cada 6 semanas
    - Fica mais fácil de acompanhar as novas funcionalidades
 
-  #+reveal: split
-  Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
+   #+reveal: split
+   Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
 
 ** Como conecto em um banco?
    O [[https://diesel.rs/][Diesel]] pode ajudar nisso.
 
-  #+REVEAL_HTML:  <img style="border: none; width:70%" src="diesel.png" />
+   #+REVEAL_HTML:  <img style="border: none; width:70%" src="diesel.png" />
 
 ** Já existem empresas usando Rust?
    Sim. Inclusive o Firefox do seu computador já tem partes em Rust.
@@ -326,40 +337,52 @@ Ah, e esse é o mascote, Ferris
    Algumas empresas: Dropbox, Chef, Tilde, Sentry, CoreOS, Mozilla e tem mais [[https://www.rust-lang.org/en-US/friends.html][na lista do site]].
 
 ** Só dá pra usar Rust para a web?
-   Não, dá pra usar para muitas outras coisas!
+   Não, dá pra usar para muitas outras lugares!
 
    #+reveal: split
    (Se eu fosse falar todos os exemplos, seria uma outra apresentação inteira)
 
    #+reveal: split
+   Dois fortes* espaços para aplicar a linguagem:
+
+   - Ferramentas de suporte (CLIs, build, processadores de texto, etc)
+   - Extensões de linguagens (Gems, npm, python extensions, FFI)
+
+    #+REVEAL_HTML:  <small>*IMHO</small>
+
+   #+reveal: split
    [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]]...
 
-* Espero que tenham gostado de Rust
+* Espero que tenham gostado de  Rust
 
   Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
 
 ** Links
+   :PROPERTIES:
+   :CUSTOM_ID: links
+   :reveal_background: #232323
+   :END:
 
-- https://github.com/bltavares/meu-site-em-rust
-- [[http://www.rustacean.net/][Imagens do Ferris]]
-- http://edunham.net/2016/04/11/plushie_rustacean_pattern.html
-- https://rustup.rs/
-- https://github.com/nickel-org/nickel.rs
-- https://ouvi-falar-de-rust.herokuapp.com/
-- https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org
-- https://users.rust-lang.org/
-- https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org
-- https://github.com/emk/heroku-buildpack-rust
-- http://www.arewewebyet.org/
-- https://rocket.rs/
-- https://diesel.rs/
-- https://www.rust-lang.org/en-US/friends.html
-- http://www.arewelearningyet.com/
-- https://usehelix.com/
-- https://github.com/mitsuhiko/snaek
-- https://github.com/mgattozzi/curryrs
-- https://www.neon-bindings.com/
-- https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde
-- https://blogs.oracle.com/developers/building-a-container-runtime-in-rust
-- https://tokio.rs/
-- https://github.com/rust-embedded
+   - https://github.com/bltavares/meu-site-em-rust
+   - [[http://www.rustacean.net/][Imagens do Ferris]]
+   - http://edunham.net/2016/04/11/plushie_rustacean_pattern.html
+   - https://rustup.rs/
+   - https://github.com/nickel-org/nickel.rs
+   - https://ouvi-falar-de-rust.herokuapp.com/
+   - https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org
+   - https://users.rust-lang.org/
+   - https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org
+   - https://github.com/emk/heroku-buildpack-rust
+   - http://www.arewewebyet.org/
+   - https://rocket.rs/
+   - https://diesel.rs/
+   - https://www.rust-lang.org/en-US/friends.html
+   - http://www.arewelearningyet.com/
+   - https://usehelix.com/
+   - https://github.com/mitsuhiko/snaek
+   - https://github.com/mgattozzi/curryrs
+   - https://www.neon-bindings.com/
+   - https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde
+   - https://blogs.oracle.com/developers/building-a-container-runtime-in-rust
+   - https://tokio.rs/
+   - https://github.com/rust-embedded
