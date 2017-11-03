@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>(Nunca) Ouvi falar de Rust&#x2026; Mas como faço um site?</title>
+<meta name="author" content="(Bruno Tavares)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/base16.css" id="theme"/>
+
+<link rel="stylesheet" href="extra.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-org25d049b">
+<h2 id="org25d049b">(Nunca) Ouvi falar de Rust&#x2026;</h2>
+<p>
+Mas como eu faço um site?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb134883">
+<h2 id="orgb134883">Olá pessoal!</h2>
+</section>
+<section >
+<p>
+Se você nunca ouviu falar de Rust&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Vou contar o que é Rust
+</p>
+
+</section>
+<section >
+<p>
+Vou contar como eu conheci Rust
+</p>
+
+</section>
+<section >
+<p>
+E alguns problemas que a linguagem me ajudou a resolver
+</p>
+
+</section>
+<section >
+<p>
+Mas se você já ouviu falar&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Vou mostrar alguns passos pra seguir aprendendo
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org62f6cb6">
+<h2 id="org62f6cb6">Em 2015</h2>
+</section>
+<section >
+<p>
+Comecei a me envolver com o deploy das aplicações do meu projeto
+</p>
+
+</section>
+<section >
+<p>
+NPM + Python + Java + Closure Compiler + SCons + RVM&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Eu queria uma maneira simples de executar aplicações
+</p>
+
+</section>
+<section id="slide-orgdd56e08">
+<h3 id="orgdd56e08">Objetivo</h3>
+<p>
+1 arquivo binário e cross-plataforma
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcd4392c">
+<h2 id="orgcd4392c">As opções</h2>
+</section>
+<section >
+<p>
+"Pra escrever binário tem que ser C?"
+</p>
+
+</section>
+<section >
+<p>
+Rust foi uma das opções na minha busca por alternativas
+</p>
+
+</section>
+<section >
+<p>
+"Mas o que é Rust?"
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-rust">
+<h2 id="rust"><a id="orgba28259"></a>Rust</h2>
+<img style="border: none; box-shadow: none; position: relative; top: 1.6em;" src="rust-logo.svg" width="25%" />
+
+<blockquote nil>
+<p>
+Rust é uma linguagem de programação de sistemas que roda incrivelmente rápido, previne falhas de segmentação, e garante segurança entre threads.
+</p>
+</blockquote>
+
+</section>
+<section >
+<p>
+O que me chamou atenção para seguir aprendendo:
+</p>
+
+<ul>
+<li class="fragment">Imutável por padrão</li>
+<li class="fragment">Não tem null ou undefined</li>
+<li class="fragment">Gera binários</li>
+<li class="fragment">Cross-plataforma</li>
+<li class="fragment">Ideal para programar em baixo nível</li>
+<li class="fragment">Linguagem com investimento da Mozilla</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org628b865">
+<h2 id="org628b865">"Deveria me preocupar por ser baixo nível?"</h2>
+<p>
+Quantos falhas podem acontecer em um programa de baixo nível?
+</p>
+
+</section>
+<section >
+<p>
+BufferOverflow, Segmentation Fault, Use After Free&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Rust tem um sistema de tipos que previne diversos erros de gerenciamento de memória, em tempo de compilação
+</p>
+
+</section>
+<section >
+<p>
+Gerenciamento de memória sem Garbage Collector
+</p>
+
+</section>
+<section id="slide-orgfe06a6f">
+<h3 id="orgfe06a6f"><span class="todo TODO">TODO</span> Exemplo de coisas que Rust previne apenas com o compilador</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-orge4fae4b">
+<h2 id="orge4fae4b">Agora eu consigo fazer isso:</h2>
+<video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
+
+</section>
+<section >
+<p>
+E no final da apresentação você também
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1b5f043">
+<h2 id="org1b5f043">Quem já ouviu falar de Rust?</h2>
+</section>
+<section >
+<p>
+Ah, e esse é o mascote, <b>Ferris</b>
+</p>
+
+<img style="width: 50%; border: none; box-shadow: none;" src="ferris.png" />
+
+<p>
+(E dá pra <a href="http://edunham.net/2016/04/11/plushie_rustacean_pattern.html">costurar</a> um pra você)
+</p>
+
+</section>
+<section >
+<p>
+Agora, como faço um site?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6049dc2">
+<h2 id="org6049dc2">Primeiro passo: Instalando as ferramentas</h2>
+<p>
+Siga as instruções no site do <a href="https://rustup.rs/">Rustup</a>
+</p>
+
+<img style="width: 50%; border: none;" src="rustup.png" />
+
+</section>
+<section >
+<p>
+Esse é o gerenciador de versões do Rust
+</p>
+
+<ul>
+<li class="fragment">Vai instalar todas as ferramentas</li>
+<li class="fragment">Suporta Linux, Mac e Windows</li>
+<li class="fragment">Ajuda a manter tudo atualizado</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Teremos instalado no final:
+</p>
+
+<ul>
+<li>rustup: o gerenciador de versões</li>
+<li>cargo: o gerenciador de projetos e de dependências</li>
+<li>rustc: o compilador</li>
+<li>rustdoc: o gerador de documentação</li>
+<li>rust-gdb e rust-lldb: debuggers</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd748441">
+<h2 id="orgd748441">Criando nosso projeto</h2>
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo new --bin meu-site-em-rust
+</pre>
+</div>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo run
+
+Compiling meu-site-em-rust v0.1.0
+Finished dev <span style="color: #c5c8c6;">[</span>unoptimized + debuginfo<span style="color: #c5c8c6;">]</span> target<span style="color: #c5c8c6;">(</span>s<span style="color: #c5c8c6;">)</span> <span style="color: #b5bd68;">in</span> <span style="color: #81a2be;">1.54</span> secs
+Running <span style="color: #b294bb;">`target/debug/meu-site-em-rust`</span>
+Hello, world!
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org641637c">
+<h2 id="org641637c">Vamos criar uma primeira página</h2>
+<p>
+Vamos criar um arquivo em <code>src/index.html</code> com seguinte conteúdo
+</p>
+
+</section>
+<section >
+<div class="org-src-container">
+
+<pre  class="src src-html"><span style="color: #8abeb7;">&lt;!doctype html&gt;</span>
+&lt;<span style="color: #de935f;">html</span>&gt;
+    &lt;<span style="color: #de935f;">head</span>&gt;
+        &lt;<span style="color: #de935f;">meta</span> charset=utf-8&gt;
+        &lt;<span style="color: #de935f;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Ol&#225; TDC SP 2017</span>&lt;/<span style="color: #de935f;">title</span>&gt;
+    &lt;/<span style="color: #de935f;">head</span>&gt;
+    &lt;<span style="color: #de935f;">body</span>&gt;
+        &lt;<span style="color: #de935f;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Ol&#225; mundo</span>&lt;/<span style="color: #de935f;">h1</span>&gt;
+        &lt;<span style="color: #de935f;">marquee</span>&gt;Ol&#225; TDC&lt;/<span style="color: #de935f;">marquee</span>&gt;
+    &lt;/<span style="color: #de935f;">body</span>&gt;
+&lt;/<span style="color: #de935f;">html</span>&gt;
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf29f190">
+<h2 id="orgf29f190">Adicionando um framework web</h2>
+<p>
+Vamos usar o framework <a href="https://github.com/nickel-org/nickel.rs">Nickel</a> para nos ajudar
+</p>
+
+<img style="border: none; width: 80%" src="nickel.png" />
+
+</section>
+<section >
+<p>
+Adicione a dependencia no arquivo <code>Cargo.toml</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-toml">[<span style="color: #81a2be;">dependencies</span>]
+<span style="color: #f0c674;">nickel</span> = <span style="color: #8abeb7;">"0.10.0"</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4a7a879">
+<h2 id="org4a7a879">Alterando nosso arquivo</h2>
+<p>
+Agora vamos ver um pouco de Rust, aos poucos.
+Vamos abrir o arquivo <code>src/main.rs</code>.
+</p>
+
+</section>
+<section >
+<p>
+Primeiro, importamos e incluimos algumas referências do framework web.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="import"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">macro_use</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">extern</span> <span style="color: #b5bd68;">crate</span> nickel;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">nickel</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Nickel</span>, <span style="color: #81a2be;">HttpRouter</span><span style="color: #c5c8c6;">}</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+Incluímos todo o conteúdo do nosso arquivo HTML em uma constante.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="index"><span style="color: #b5bd68;">const</span> <span style="color: #f0c674;">INDEX</span>: &amp;<span style="color: #81a2be;">str</span> = <span style="color: #b294bb;">include_str!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"index.html"</span><span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+Criamos um novo servidor Nickel.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="nickel"><span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">server</span> = <span style="color: #81a2be;">Nickel</span>::new<span style="color: #c5c8c6;">()</span>;
+server.get<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"/"</span>, <span style="color: #b294bb;">middleware!</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">INDEX</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+Configuramos a porta a partir da variável de ambiente <code>PORT</code>.
+Vamos usar a porta 3000 de fallback.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="port"><span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">port</span> = <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">env</span>::var<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"PORT"</span><span style="color: #c5c8c6;">)</span>.unwrap_or<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"3000"</span>.into<span style="color: #8abeb7;">()</span><span style="color: #c5c8c6;">)</span>;
+<span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">url</span> = <span style="color: #b294bb;">format!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"0.0.0.0:</span><span style="color: #8abeb7; font-style: italic;">{port}</span><span style="color: #8abeb7;">"</span>, port = port<span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+Iniciamos o nosso servidor, com uma mensagem caso haja erros.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="start"><span style="color: #b294bb;">println!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"On </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, url<span style="color: #c5c8c6;">)</span>;
+server.listen<span style="color: #c5c8c6;">(</span>url<span style="color: #c5c8c6;">)</span>
+      .expect<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"N&#227;o conseguimos iniciar o servidor"</span><span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+
+<p>
+No final teremos isso:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">macro_use</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">extern</span> <span style="color: #b5bd68;">crate</span> nickel;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">nickel</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Nickel</span>, <span style="color: #81a2be;">HttpRouter</span><span style="color: #c5c8c6;">}</span>;
+
+<span style="color: #b5bd68;">const</span> <span style="color: #f0c674;">INDEX</span>: &amp;<span style="color: #81a2be;">str</span> = <span style="color: #b294bb;">include_str!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"index.html"</span><span style="color: #c5c8c6;">)</span>;
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">server</span> = <span style="color: #81a2be;">Nickel</span>::new<span style="color: #8abeb7;">()</span>;
+    server.get<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"/"</span>, <span style="color: #b294bb;">middleware!</span><span style="color: #f0c674;">(</span><span style="color: #81a2be;">INDEX</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">port</span> = <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">env</span>::var<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"PORT"</span><span style="color: #8abeb7;">)</span>.unwrap_or<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"3000"</span>.into<span style="color: #f0c674;">()</span><span style="color: #8abeb7;">)</span>;
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">url</span> = <span style="color: #b294bb;">format!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"0.0.0.0:</span><span style="color: #8abeb7; font-style: italic;">{port}</span><span style="color: #8abeb7;">"</span>, port = port<span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"On </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, url<span style="color: #8abeb7;">)</span>;
+    server.listen<span style="color: #8abeb7;">(</span>url<span style="color: #8abeb7;">)</span>
+          .expect<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"N&#227;o conseguimos iniciar o servidor"</span><span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdb2a6e5">
+<h2 id="orgdb2a6e5">Agora podemos criar o nosso executável</h2>
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo build --release
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+E executar:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ ./target/release/meu-site-em-rust
+
+On <span style="color: #81a2be;">0.0.0.0:3000</span>
+Listening on http://0.0.0.0:3000
+Ctrl-C to shutdown server
+</pre>
+</div>
+
+</section>
+<section id="slide-org976700b">
+<h3 id="org976700b">TA-DA!</h3>
+<img style="border: none;" src="hello.png" />
+
+</section>
+</section>
+<section>
+<section id="slide-parabens" data-background="#232323">
+<h2 id="parabens"><a id="org64fa5af"></a>Parabéns!</h2>
+<p>
+Você tem um site em Rust.
+</p>
+
+<img style="border: none; box-shadow: none; width: 50%" src="dance.gif" />
+
+</section>
+<section >
+<p>
+E tudo em um só binário!
+</p>
+
+</section>
+<section >
+<p>
+E tem demo no Heroku!
+</p>
+
+<p>
+<a href="https://ouvi-falar-de-rust.herokuapp.com/">https://ouvi-falar-de-rust.herokuapp.com/</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org4f35778">
+<h2 id="org4f35778">"Mas dá pra fazer mais alguma coisa?"</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org9a828ed">
+<h2 id="org9a828ed">Fazendo uma chamada web</h2>
+</section>
+<section >
+<p>
+É tão fácil como outras linguagens, mesmo sendo uma linguagem de sistemas
+</p>
+
+</section>
+<section >
+<p>
+Vou seguir a receita disponível no <a href="https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic">Rust Cookbooks</a>
+</p>
+
+</section>
+<section >
+
+</section>
+</section>
+<section>
+<section id="slide-orgc33323f">
+<h2 id="orgc33323f">"Uma pergunta&#x2026;"</h2>
+<div class="outline-text-2" id="text-orgc33323f">
+</div>
+</section>
+<section id="slide-orgc974993">
+<h3 id="orgc974993">É fácil aprender Rust?</h3>
+<p>
+Eu passei semanas batendo a cabeça em conceitos que eram novos para mim.
+</p>
+
+</section>
+<section >
+<ul>
+<li>Tenho um background mais alto nível (Ruby/Java/JavaScript)</li>
+<li>Tive que aprender sobre stack e referências</li>
+<li>O conceito de <code>lifetime</code> e <code>borrow</code> demoraram pra entrar na minha cabeça</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Rust trouxe novos conceitos para minha caixa de ferramentas.
+</p>
+
+<p>
+E eu tenho me divertido muito!
+</p>
+
+</section>
+<section >
+<p>
+A comunidade é muito aberta e me ajudou bastante.
+</p>
+
+<p>
+Muitas pessoas estão disponíveis para ajudar no <a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">#rust-beginners</a>, no <a href="https://users.rust-lang.org/">fórum</a> e até no <a href="https://riot.im/app/#/room/%23mozilla_%23rust-br:matrix.org">#rust-br</a>.
+</p>
+
+</section>
+<section id="slide-orgf4263b8">
+<h3 id="orgf4263b8">Como eu coloco meu site no Heroku?</h3>
+<p>
+Eu usei esse <a href="https://github.com/emk/heroku-buildpack-rust">buildpack</a>.
+</p>
+
+<img style="border: none;" src="heroku.png" />
+
+</section>
+<section id="slide-org73f4cf3">
+<h3 id="org73f4cf3">Só existe o Nickel para web?</h3>
+<p>
+Já existem vários frameworks, mas ainda é um ecosistema em desenvolvimento.
+</p>
+
+</section>
+<section >
+<p>
+Uma boa lista está disponível no site <a href="http://www.arewewebyet.org/">Are We Web Yet?</a>
+</p>
+
+<img style="width: 40%;" src="areweweb.png" />
+
+</section>
+<section id="slide-orgf2de381">
+<h4 id="orgf2de381">Se você estiver buscando algo mais experimental:</h4>
+<p>
+Confira o <a href="https://rocket.rs/">Rocket</a>, que usa uma sintax mais sucinta&#x2026;
+</p>
+
+<img style="border: none; width:70%;" src="rocket.png" />
+
+</section>
+<section >
+<p>
+Mas depende de funcionalidades do compilador ainda em desenvolvimento.
+</p>
+
+</section>
+<section id="slide-org18f1e16">
+<h3 id="org18f1e16">Preciso usar rustup?</h3>
+<p>
+É o método mais recomendado pela comunidade
+</p>
+
+<ul>
+<li>É a maneira mais fácil de manter tudo atualizado</li>
+<li>Rust tem uma versão nova a cada 6 semanas</li>
+<li>Fica mais fácil de acompanhar as novas funcionalidades</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
+</p>
+
+</section>
+<section id="slide-org58c8a15">
+<h3 id="org58c8a15">Como conecto em um banco?</h3>
+<p>
+O <a href="https://diesel.rs/">Diesel</a> pode ajudar nisso.
+</p>
+
+<img style="border: none; width:70%" src="diesel.png" />
+
+</section>
+<section id="slide-org654927d">
+<h3 id="org654927d">Já existem empresas usando Rust?</h3>
+<p>
+Sim. Inclusive o Firefox do seu computador já tem partes em Rust.
+</p>
+
+<p>
+Algumas empresas: Dropbox, Chef, Tilde, Sentry, CoreOS, Mozilla e tem mais <a href="https://www.rust-lang.org/en-US/friends.html">na lista do site</a>.
+</p>
+
+</section>
+<section id="slide-org0c10c99">
+<h3 id="org0c10c99">Só dá pra usar Rust para a web?</h3>
+<p>
+Não, dá pra usar para muitas outras lugares!
+</p>
+
+</section>
+<section >
+<p>
+(Se eu fosse falar todos os exemplos, seria uma outra apresentação inteira)
+</p>
+
+</section>
+<section >
+<p>
+Dois fortes* espaços para aplicar a linguagem:
+</p>
+
+<ul>
+<li>Ferramentas de suporte (CLIs, build, processadores de texto, etc)</li>
+<li><p>
+Extensões de linguagens (Gems, npm, python extensions, FFI)
+</p>
+
+<small>*IMHO</small></li>
+
+</ul>
+
+</section>
+<section >
+<p>
+<a href="http://www.arewelearningyet.com/">Machine Learning</a>, <a href="https://usehelix.com/">Ruby</a>, <a href="https://github.com/mitsuhiko/snaek">Python</a>, <a href="https://github.com/mgattozzi/curryrs">Haskell</a>, <a href="https://www.neon-bindings.com/">Node.js</a>, <a href="https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde">WebAssembly</a>, <a href="https://blogs.oracle.com/developers/building-a-container-runtime-in-rust">Container</a>, <a href="https://tokio.rs/">Network Platform</a>, <a href="https://github.com/rust-embedded">Embedded</a>&#x2026;
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge579c93">
+<h2 id="orge579c93">Espero que tenham gostado de Rust</h2>
+<p>
+Bruno Tavares - <a href="https://twitter.com/bltavares">@bltavares</a>
+</p>
+
+</section>
+<section id="slide-links" data-background="#232323">
+<h3 id="links"><a id="orga8ff0a2"></a>Links</h3>
+<ul>
+<li><a href="https://github.com/bltavares/meu-site-em-rust">https://github.com/bltavares/meu-site-em-rust</a></li>
+<li><a href="http://www.rustacean.net/">Imagens do Ferris</a></li>
+<li><a href="http://edunham.net/2016/04/11/plushie_rustacean_pattern.html">http://edunham.net/2016/04/11/plushie_rustacean_pattern.html</a></li>
+<li><a href="https://rustup.rs/">https://rustup.rs/</a></li>
+<li><a href="https://github.com/nickel-org/nickel.rs">https://github.com/nickel-org/nickel.rs</a></li>
+<li><a href="https://ouvi-falar-de-rust.herokuapp.com/">https://ouvi-falar-de-rust.herokuapp.com/</a></li>
+<li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org</a></li>
+<li><a href="https://users.rust-lang.org/">https://users.rust-lang.org/</a></li>
+<li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-br:matrix.org">https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org</a></li>
+<li><a href="https://github.com/emk/heroku-buildpack-rust">https://github.com/emk/heroku-buildpack-rust</a></li>
+<li><a href="http://www.arewewebyet.org/">http://www.arewewebyet.org/</a></li>
+<li><a href="https://rocket.rs/">https://rocket.rs/</a></li>
+<li><a href="https://diesel.rs/">https://diesel.rs/</a></li>
+<li><a href="https://www.rust-lang.org/en-US/friends.html">https://www.rust-lang.org/en-US/friends.html</a></li>
+<li><a href="http://www.arewelearningyet.com/">http://www.arewelearningyet.com/</a></li>
+<li><a href="https://usehelix.com/">https://usehelix.com/</a></li>
+<li><a href="https://github.com/mitsuhiko/snaek">https://github.com/mitsuhiko/snaek</a></li>
+<li><a href="https://github.com/mgattozzi/curryrs">https://github.com/mgattozzi/curryrs</a></li>
+<li><a href="https://www.neon-bindings.com/">https://www.neon-bindings.com/</a></li>
+<li><a href="https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde">https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde</a></li>
+<li><a href="https://blogs.oracle.com/developers/building-a-container-runtime-in-rust">https://blogs.oracle.com/developers/building-a-container-runtime-in-rust</a></li>
+<li><a href="https://tokio.rs/">https://tokio.rs/</a></li>
+<li><a href="https://github.com/rust-embedded">https://github.com/rust-embedded</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+maxScale: 1.80,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

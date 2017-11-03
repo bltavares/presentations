@@ -1,0 +1,441 @@
+#+Title: (Nunca) Ouvi falar de Rust... Mas como faço um site?
+#+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil reveal_history:t
+#+REVEAL_THEME: base16
+#+REVEAL_TRANS: slide
+#+REVEAL_MAX_SCALE: 1.8
+#+REVEAL_EXTRA_CSS: extra.css
+
+* (Nunca) Ouvi falar de Rust...
+
+  Mas como eu faço um site?
+
+* Olá pessoal!
+
+  #+reveal: split
+  Se você nunca ouviu falar de Rust...
+
+  #+reveal: split
+  Vou contar o que é Rust
+
+  #+reveal: split
+  Vou contar como eu conheci Rust
+
+  #+reveal: split
+  E alguns problemas que a linguagem me ajudou a resolver
+
+  #+reveal: split
+  Mas se você já ouviu falar...
+
+  #+reveal: split
+  Vou mostrar alguns passos pra seguir aprendendo
+
+* Em 2015
+
+  #+reveal: split
+  Comecei a me envolver com o deploy das aplicações do meu projeto
+
+  #+reveal: split
+  NPM + Python + Java + Closure Compiler + SCons + RVM...
+
+  #+reveal: split
+  Eu queria uma maneira simples de executar aplicações
+
+** Objetivo
+   1 arquivo binário e cross-plataforma
+
+* As opções
+
+  #+reveal: split
+  "Pra escrever binário tem que ser C?"
+
+  #+reveal: split
+  Rust foi uma das opções na minha busca por alternativas
+
+  #+reveal: split
+  "Mas o que é Rust?"
+
+* Rust
+  :PROPERTIES:
+  :CUSTOM_ID: rust
+  :END:
+  #+REVEAL_HTML:  <img style="border: none; box-shadow: none; position: relative; top: 1.6em;" src="rust-logo.svg" width="25%" />
+
+  #+BEGIN_QUOTE
+  Rust é uma linguagem de programação de sistemas que roda incrivelmente rápido, previne falhas de segmentação, e garante segurança entre threads.
+  #+END_QUOTE
+
+  #+reveal: split
+  O que me chamou atenção para seguir aprendendo:
+
+  #+attr_reveal: :frag (t t t t t t)
+  - Imutável por padrão
+  - Não tem null ou undefined
+  - Gera binários
+  - Cross-plataforma
+  - Ideal para programar em baixo nível
+  - Linguagem com investimento da Mozilla
+
+* "Deveria me preocupar por ser baixo nível?"
+
+  Quantos falhas podem acontecer em um programa de baixo nível?
+
+  #+reveal: split
+  BufferOverflow, Segmentation Fault, Use After Free...
+
+  #+reveal: split
+  Rust tem um sistema de tipos que previne diversos erros de gerenciamento de memória, em tempo de compilação
+
+  #+reveal: split
+  Gerenciamento de memória sem Garbage Collector
+
+* TODO Exemplo de coisas que Rust previne apenas com o compilador
+* Agora eu consigo fazer isso:
+
+  #+REVEAL_HTML:  <video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
+
+  #+reveal: split
+  E no final da apresentação você também
+
+  #+reveal: split
+  Com dicas para seguir aprendendo
+
+* Quem já ouviu falar de Rust?
+
+  #+reveal: split
+  Ah, e esse é o mascote, *Ferris*
+
+  #+REVEAL_HTML:  <img style="width: 50%; border: none; box-shadow: none;" src="ferris.png" />
+
+  (E dá pra [[http://edunham.net/2016/04/11/plushie_rustacean_pattern.html][costurar]] um pra você)
+
+  #+reveal: split
+  Agora, como faço um site?
+
+* Primeiro passo: Instalando as ferramentas
+
+  Siga as instruções no site do [[https://rustup.rs/][Rustup]]
+
+  #+REVEAL_HTML:  <img style="width: 50%; border: none;" src="rustup.png" />
+
+  #+reveal: split
+  Esse é o gerenciador de versões do Rust
+
+  #+attr_reveal: :frag (t t t)
+  - Vai instalar todas as ferramentas
+  - Suporta Linux, Mac e Windows
+  - Ajuda a manter tudo atualizado
+
+  #+reveal: split
+  Teremos instalado no final:
+
+  - rustup: o gerenciador de versões
+  - cargo: o gerenciador de projetos e de dependências
+  - rustc: o compilador
+  - rustdoc: o gerador de documentação
+  - rust-gdb e rust-lldb: debuggers
+
+* Criando nosso projeto
+
+  #+BEGIN_SRC bash
+    $ cargo new --bin meu-site-em-rust
+  #+END_SRC
+
+  #+reveal: split
+
+  #+BEGIN_SRC bash
+    $ cargo run
+
+    Compiling meu-site-em-rust v0.1.0
+    Finished dev [unoptimized + debuginfo] target(s) in 1.54 secs
+    Running `target/debug/meu-site-em-rust`
+    Hello, world!
+  #+END_SRC
+
+* Vamos criar uma primeira página
+
+  Vamos criar um arquivo em =src/index.html= com seguinte conteúdo
+
+  #+reveal: split
+  #+BEGIN_SRC html
+    <!doctype html>
+    <html>
+        <head>
+            <meta charset=utf-8>
+            <title>Olá TDC SP 2017</title>
+        </head>
+        <body>
+            <h1>Olá mundo</h1>
+            <marquee>Olá TDC</marquee>
+        </body>
+    </html>
+  #+END_SRC
+
+* Adicionando um framework web
+
+  Vamos usar o framework [[https://github.com/nickel-org/nickel.rs][Nickel]] para nos ajudar
+
+  #+REVEAL_HTML:  <img style="border: none; width: 80%" src="nickel.png" />
+
+  #+reveal: split
+  Adicione a dependencia no arquivo =Cargo.toml=
+
+  #+BEGIN_SRC toml
+    [dependencies]
+    nickel = "0.10.0"
+  #+END_SRC
+
+* Alterando nosso arquivo
+
+  Agora vamos ver um pouco de Rust, aos poucos.
+  Vamos abrir o arquivo =src/main.rs=.
+
+  #+reveal: split
+  Primeiro, importamos e incluimos algumas referências do framework web.
+
+  #+name: import
+  #+BEGIN_SRC rust
+    #[macro_use]
+    extern crate nickel;
+    use nickel::{Nickel, HttpRouter};
+  #+END_SRC
+
+  #+reveal: split
+  Incluímos todo o conteúdo do nosso arquivo HTML em uma constante.
+
+  #+name: index
+  #+BEGIN_SRC rust
+    const INDEX: &str = include_str!("index.html");
+  #+END_SRC
+
+  #+reveal: split
+  Criamos um novo servidor Nickel.
+
+  #+name: nickel
+  #+BEGIN_SRC rust
+    let mut server = Nickel::new();
+    server.get("/", middleware!(INDEX));
+  #+END_SRC
+
+  #+reveal: split
+  Configuramos a porta a partir da variável de ambiente =PORT=.
+  Vamos usar a porta 3000 de fallback.
+
+  #+name: port
+  #+BEGIN_SRC rust
+    let port = std::env::var("PORT").unwrap_or("3000".into());
+    let url = format!("0.0.0.0:{port}", port = port);
+  #+END_SRC
+
+  #+reveal: split
+  Iniciamos o nosso servidor, com uma mensagem caso haja erros.
+
+  #+name: start
+  #+BEGIN_SRC rust
+    println!("On {}", url);
+    server.listen(url)
+          .expect("Não conseguimos iniciar o servidor");
+  #+END_SRC
+
+  #+reveal: split
+
+  No final teremos isso:
+  #+BEGIN_SRC rust :noweb yes
+    <<import>>
+
+    <<index>>
+
+    fn main() {
+        <<nickel>>
+
+        <<port>>
+
+        <<start>>
+    }
+  #+END_SRC
+
+* Agora podemos criar o nosso executável
+
+  #+BEGIN_SRC bash
+    $ cargo build --release
+  #+END_SRC
+
+  #+reveal: split
+  E executar:
+
+  #+BEGIN_SRC bash
+    $ ./target/release/meu-site-em-rust
+
+    On 0.0.0.0:3000
+    Listening on http://0.0.0.0:3000
+    Ctrl-C to shutdown server
+  #+END_SRC
+
+** TA-DA!
+   #+REVEAL_HTML:  <img style="border: none;" src="hello.png" />
+
+* Parabéns!
+  :PROPERTIES:
+  :CUSTOM_ID: parabens
+  :reveal_background: #232323
+  :END:
+
+  Você tem um site em Rust.
+
+  #+REVEAL_HTML:  <img style="border: none; box-shadow: none; width: 50%" src="dance.gif" />
+
+  #+reveal: split
+  E tudo em um só binário!
+
+  #+reveal: split
+  E tem demo no Heroku!
+
+  https://ouvi-falar-de-rust.herokuapp.com/
+
+* "Mas dá pra fazer mais alguma coisa?"
+
+* Fazendo uma chamada web
+
+  #+reveal: split
+  É tão fácil como outras linguagens, mesmo sendo uma linguagem de sistemas
+
+  #+reveal: split
+  Vou seguir a receita disponível no [[https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic][Rust Cookbooks]]
+
+  #+reveal: split
+  TODO Passos para fazer uma chamada Web
+
+  #+reveal: split
+  Agora você tem um código para fazer chamadas na internet:
+
+  - cross-plataforma
+  - binário
+  - com baixo uso de memória, sem o risco de "dar tiros no pé"
+  - que não precisa de ficar instalando várias dependêcias para usar
+
+  #+reveal: split
+  Foi fácil?
+
+* "Uma pergunta..."
+
+** É fácil aprender Rust?
+   Eu passei semanas batendo a cabeça em conceitos que eram novos para mim.
+
+   #+reveal: split
+   - Tenho um background mais alto nível (Ruby/Java/JavaScript)
+   - Tive que aprender sobre stack e referências
+   - O conceito de ~lifetime~ e ~borrow~ demoraram pra entrar na minha cabeça
+
+   #+reveal: split
+   Rust trouxe novos conceitos para minha caixa de ferramentas.
+
+   E eu tenho me divertido muito!
+
+   #+reveal: split
+   A comunidade é muito aberta e me ajudou bastante.
+
+   Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
+
+** Como eu coloco meu site no Heroku?
+   Eu usei esse [[https://github.com/emk/heroku-buildpack-rust][buildpack]].
+
+   #+REVEAL_HTML:  <img style="border: none;" src="heroku.png" />
+
+** Só existe o Nickel para web?
+   Já existem vários frameworks, mas ainda é um ecosistema em desenvolvimento.
+
+   #+reveal: split
+   Uma boa lista está disponível no site [[http://www.arewewebyet.org/][Are We Web Yet?]]
+
+   #+REVEAL_HTML:  <img style="width: 40%;" src="areweweb.png" />
+
+*** Se você estiver buscando algo mais experimental:
+    Confira o [[https://rocket.rs/][Rocket]], que usa uma sintax mais sucinta...
+
+    #+REVEAL_HTML:  <img style="border: none; width:70%;" src="rocket.png" />
+
+    #+reveal: split
+    Mas depende de funcionalidades do compilador ainda em desenvolvimento.
+
+** Preciso usar rustup?
+   É o método mais recomendado pela comunidade
+
+   - É a maneira mais fácil de manter tudo atualizado
+   - Rust tem uma versão nova a cada 6 semanas
+   - Fica mais fácil de acompanhar as novas funcionalidades
+
+   #+reveal: split
+   Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
+
+** Como conecto em um banco?
+   O [[https://diesel.rs/][Diesel]] pode ajudar nisso.
+
+   #+REVEAL_HTML:  <img style="border: none; width:70%" src="diesel.png" />
+
+** Já existem empresas usando Rust?
+   Sim. Inclusive o Firefox do seu computador já tem partes em Rust.
+
+   Algumas empresas: Dropbox, Chef, Tilde, Sentry, CoreOS, Mozilla e tem mais [[https://www.rust-lang.org/en-US/friends.html][na lista do site]].
+
+** Só dá pra usar Rust para a web?
+   Não, dá pra usar para muitas outras lugares!
+
+   #+reveal: split
+   (Se eu fosse falar todos os exemplos, seria uma outra apresentação inteira)
+
+   #+reveal: split
+   Dois fortes* espaços para aplicar a linguagem:
+
+   - Ferramentas de suporte (CLIs, build, processadores de texto, etc)
+   - Extensões de linguagens (Gems, npm, python extensions, FFI)
+
+    #+REVEAL_HTML:  <small>*IMHO</small>
+
+   #+reveal: split
+   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]]...
+
+* Espero que tenham gostado de Rust
+
+** E se quiser seguir conhecendo
+
+   - Tem um [[https://doc.rust-lang.org/book/][livro de graça]] no site [EN]
+   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] é um ótimo canal para tirar dúvidas rápidas
+   - Existe o [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] para falar em portugues
+   - O grupo [[https://telegram.me/rustlangbr][@rustlangbr]] no Telegram
+   - [[https://www.meetup.com/topics/rust/][Meetups]]
+   - [[http://exercism.io/languages/rust/about][Exercicios]]
+   - E [[https://github.com/rust-br/estudos][grupo de estudo online]] em portugues
+
+   #+reveal: split
+   Se você se interessou por Rust, pode entrar em contato comigo também, que eu quero te ajudar com os próximos passos.
+
+   Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
+
+** Links
+   :PROPERTIES:
+   :CUSTOM_ID: links
+   :reveal_background: #232323
+   :END:
+
+   - https://github.com/bltavares/meu-site-em-rust
+   - [[http://www.rustacean.net/][Imagens do Ferris]]
+   - http://edunham.net/2016/04/11/plushie_rustacean_pattern.html
+   - https://rustup.rs/
+   - https://github.com/nickel-org/nickel.rs
+   - https://ouvi-falar-de-rust.herokuapp.com/
+   - https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org
+   - https://users.rust-lang.org/
+   - https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org
+   - https://github.com/emk/heroku-buildpack-rust
+   - http://www.arewewebyet.org/
+   - https://rocket.rs/
+   - https://diesel.rs/
+   - https://www.rust-lang.org/en-US/friends.html
+   - http://www.arewelearningyet.com/
+   - https://usehelix.com/
+   - https://github.com/mitsuhiko/snaek
+   - https://github.com/mgattozzi/curryrs
+   - https://www.neon-bindings.com/
+   - https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde
+   - https://blogs.oracle.com/developers/building-a-container-runtime-in-rust
+   - https://tokio.rs/
+   - https://github.com/rust-embedded
