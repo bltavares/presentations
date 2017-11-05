@@ -65,17 +65,30 @@
   #+END_QUOTE
 
   #+reveal: split
-  O que me chamou atenção para seguir aprendendo:
+  "É uma linguagem bem moderna"
 
-  #+attr_reveal: :frag (t t t t t t)
+  #+reveal: split
+  Uma linguagem com várias características funcionais:
+
+  #+attr_reveal: :frag (t t t t t)
   - Imutável por padrão
   - Não tem null ou undefined
+  - Pattern-matching
+  - Closures
+  - Structs e Enums
+
+  #+reveal: split
+  O que me chamou atenção para seguir aprendendo:
+
+  #+attr_reveal: :frag (t t t t t)
   - Gera binários
   - Cross-plataforma
-  - Ideal para programar em baixo nível
+  - Preocupação em boas mensagens de erro
+  - Focado em baixo nível
+    - Mas com uma experiência de linguagem de alto nível
   - Linguagem com investimento da Mozilla
 
-* "Deveria me preocupar por ser baixo nível?"
+* "Por que escolheram criar uma linguagem de baixo nível?"
 
   Quantos falhas podem acontecer em um programa de baixo nível?
 
@@ -88,16 +101,267 @@
   #+reveal: split
   Gerenciamento de memória sem Garbage Collector
 
-* TODO Exemplo de coisas que Rust previne apenas com o compilador
-* Agora eu consigo fazer isso:
+** [[https://www.mozilla.org/en-US/firefox/quantum/][Mozilla Quantum]]
 
-  #+REVEAL_HTML:  <video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
+   Todas esss características criam um ambiente ideal para avançar com segurança
+
+* Exemplo de coisas que Rust previne apenas com o compilador
+
+  Vamos ver um pouco de Rust
 
   #+reveal: split
-  E no final da apresentação você também
+  [[https://play.rust-lang.org/?gist=638e72a89e58556878203164865e3a83&version=stable][Playground]]
+
+  #+BEGIN_SRC rust
+fn main() {
+    let data = vec!();
+    println!("Data", data);
+}
+  #+END_SRC
 
   #+reveal: split
-  Com dicas para seguir aprendendo
+  #+BEGIN_SRC
+error: argument never used
+ --> src/main.rs:3:22
+  |
+3 |     println!("Data", data);
+  |                      ^^^^
+
+error: aborting due to previous error
+  #+END_SRC
+
+  #+reveal: split
+  [[https://play.rust-lang.org/?gist=a3e89511533fe9ed311cdc1a56e6cd6f&version=stable][Playground]]
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let data = vec!();
+        println!("Data {}", data);
+    }
+  #+END_SRC
+
+  #+reveal: split
+  #+BEGIN_SRC
+error[E0277]: the trait bound
+`std::vec::Vec<_>: std::fmt::Display` is not satisfied
+ --> src/main.rs:3:25
+|
+|println!("Data {}", data);
+|                    ^^^^
+ `std::vec::Vec<_>` cannot be formatted with the default
+    formatter; try using `:?` instead if you are using
+    a format string
+|
+= help: the trait `std::fmt::Display`
+        is not implemented for `std::vec::Vec<_>`
+= note: required by `std::fmt::Display::fmt`
+
+error: aborting due to previous error
+  #+END_SRC
+
+  #+reveal: split
+  #+BEGIN_SRC
+  ^^^^ `std::vec::Vec<_>` cannot be formatted with the default
+  formatter; try using `:?` instead if you are using a
+  format string
+  #+END_SRC
+
+  #+reveal: split
+  [[https://gist.github.com/05d06e731b17b64faa7cd804251dc311][Playground]]
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let data = vec!();
+        println!("Data {:?}", data);
+    }
+  #+END_SRC
+
+  #+reveal: split
+  #+BEGIN_SRC
+error[E0282]: type annotations needed
+ --> src/main.rs:2:16
+  |
+2 |     let data = vec!();
+  |         ----   ^^^^^^ cannot infer type for `T`
+  |         |
+  |         consider giving `data` a type
+  |
+
+error: aborting due to previous error
+  #+END_SRC
+
+  #+reveal: split
+  #+BEGIN_SRC
+error[E0282]: type annotations needed
+  #+END_SRC
+
+  #+reveal: split
+  #+BEGIN_SRC
+  $ rustc --explain E0282
+  #+END_SRC
+
+  #+reveal: split
+  [[https://play.rust-lang.org/?gist=8c2e161f0fe929a1d8edfe88013779b2&version=stable][Playground]]
+
+  #+BEGIN_SRC rust
+    fn main() {
+        let data : Vec<char> = vec!();
+        println!("Data {:?}", data);
+    }
+  #+END_SRC
+
+  #+reveal: split
+  #+BEGIN_SRC
+  Data []
+  #+END_SRC
+
+** Imagine como seria uma base de código bem complexa
+
+   - Código com threads
+   - Processamento de imagens em paralelo
+   - Coordenar muito acesso de I/O
+
+   #+reveal: split
+   Em resumo, imagine quão complexo um navegador é por traz dos panos?
+
+   #+reveal: split
+   Existe algum problema nesse código?
+
+   #+BEGIN_SRC rust
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let data = vec!();
+
+    thread::spawn(|| {
+      data.push('a');
+    });
+
+    thread::spawn(|| {
+      data.push('b');
+    });
+
+    thread::sleep(Duration::from_millis(50));
+
+    println!("Data {:?}", data);
+}
+   #+END_SRC
+
+
+   #+reveal: split
+   [[https://gist.github.com/419ff286df8f165c35879e30f9b8e1f7][Playground]]
+
+   #+BEGIN_SRC rust
+  use std::thread;
+  use std::sync::{Arc, Mutex};
+  use std::time::Duration;
+
+  fn main() {
+      let data = Arc::new(Mutex::new(vec!()));
+
+      let writer = data.clone();
+      thread::spawn(move || {
+          let lock_result = writer.lock();
+          match lock_result {
+              Ok(mut locked_writer) => locked_writer.push('a'),
+              Err(_) => panic!("Could not acquire lock a"),
+          }
+      });
+
+      let writer = data.clone();
+      thread::spawn(move || {
+          let mut locked_writer = writer.lock().expect("Could not aquire lock b");
+          locked_writer.push('b');
+      });
+
+      thread::sleep(Duration::from_millis(50));
+
+      println!("Data {:?}", data);
+  }
+   #+END_SRC
+
+** E mais possibilidades para ajudar a definir o seu sistema
+
+
+   #+reveal: split
+   [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
+
+   #+BEGIN_SRC rust
+#[derive(Debug)]
+struct Pedido {
+    id: i32
+}
+
+fn novo_pedido() -> Pedido {
+    Pedido { id: 1 }
+}
+
+fn enviar_pedido(pedido: Pedido) {
+  // Codigo que envia o pedido
+}
+
+fn main() {
+    let pedido = novo_pedido();
+    enviar_pedido(pedido);
+
+    println!("Dados do pedido: {:?}", pedido);
+}
+   #+END_SRC
+
+   #+reveal: split
+   #+BEGIN_SRC
+error[E0382]: use of moved value: `pedido`
+  --> src/main.rs:18:39
+   |
+16 |     enviar_pedido(pedido);
+   |                   ------ value moved here
+17 |
+18 |     println!("Dados do pedido: {:?}", pedido);
+   |                                       ^^^^^^
+                         value used here after move
+   #+END_SRC
+
+   #+reveal: split
+   [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
+
+   #+BEGIN_SRC rust
+#[derive(Debug)]
+struct Pedido {
+    id: i32
+}
+
+fn novo_pedido() -> Pedido {
+    Pedido { id: 1 }
+}
+
+fn enviar_pedido(pedido: Pedido) {
+  // Codigo que envia o pedido
+}
+
+fn main() {
+    let pedido = novo_pedido();
+    println!("Dados do pedido: {:?}", pedido);
+
+    enviar_pedido(pedido);
+}
+   #+END_SRC
+
+   #+reveal: split
+   #+BEGIN_SRC
+Dados do pedido: Pedido { id: 1 }
+   #+END_SRC
+
+** Mas você não precisa se preocupar com tudo isso agora
+
+   #+reveal: split
+   Não se preocupe com tudo isso agora
+
+   #+reveal: split
+   Essas são as possibilidades e pontecial da linguagem
+
+   #+reveal: split
+   Você pode aprender aos poucos
 
 * Quem já ouviu falar de Rust?
 
@@ -110,6 +374,15 @@
 
   #+reveal: split
   Agora, como faço um site?
+
+* Vamos fazer um site?
+
+  #+REVEAL_HTML:  <video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
+
+** Um Site:
+   - Fácil de deployar
+   - Leve
+   - Aproveitando todas as vantagens que eu já comentei
 
 * Primeiro passo: Instalando as ferramentas
 
@@ -141,7 +414,6 @@
   #+END_SRC
 
   #+reveal: split
-
   #+BEGIN_SRC bash
     $ cargo run
 
@@ -161,7 +433,7 @@
     <html>
         <head>
             <meta charset=utf-8>
-            <title>Olá TDC SP 2017</title>
+            <title>Olá TDC POA 2017</title>
         </head>
         <body>
             <h1>Olá mundo</h1>
@@ -293,7 +565,7 @@
 
 * "Mas dá pra fazer mais alguma coisa?"
 
-* Fazendo uma chamada web
+* Vamos fazer uma chamada web
 
   #+reveal: split
   É tão fácil como outras linguagens, mesmo sendo uma linguagem de sistemas
@@ -301,19 +573,77 @@
   #+reveal: split
   Vou seguir a receita disponível no [[https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic][Rust Cookbooks]]
 
-  #+reveal: split
-  TODO Passos para fazer uma chamada Web
+** Criando um novo projeto novamente
 
-  #+reveal: split
-  Agora você tem um código para fazer chamadas na internet:
+   #+BEGIN_SRC bash
+    $ cargo new --bin minha-chamada-em-rust
+   #+END_SRC
 
-  - cross-plataforma
-  - binário
-  - com baixo uso de memória, sem o risco de "dar tiros no pé"
-  - que não precisa de ficar instalando várias dependêcias para usar
+   #+reveal: split
+   #+BEGIN_SRC bash
+    $ cargo run
 
-  #+reveal: split
-  Foi fácil?
+    Compiling minha-chamada-em-rust v0.1.0
+    Finished dev [unoptimized + debuginfo] target(s) in 1.54 secs
+    Running `target/debug/minha-chamada-em-rust`
+    Hello, world!
+   #+END_SRC
+
+** Adicionando uma lib para chamadas
+   #+reveal: split
+   Já existem diversas bibliotecas disponíveis no [[https://crates.io][Crates.io]]
+
+   #+reveal: split
+   Vamos usar o [[https://docs.rs/reqwest/0.8.0/reqwest/][Reqwest]] nesse projeto
+
+   #+reveal: split
+   Adicione a dependencia no arquivo =Cargo.toml=
+
+   #+BEGIN_SRC toml
+    [dependencies]
+    reqwest = "0.8.0"
+   #+END_SRC
+
+** Alterando nosso binário
+
+   Vamos importar a nossa biblioteca e algumas funcoes de I/O
+
+   #+BEGIN_SRC rust
+extern crate reqwest;
+use std::io::Read;
+   #+END_SRC
+
+   #+reveal: split
+   E criar nossa função
+
+   #+BEGIN_SRC rust
+fn main() {
+    let mut response = reqwest::get("https://httpbin.org/get")
+                                .expect("Could not connect");
+    println!("Resposta: {:?}", response);
+
+    let mut content = String::new();
+    response.read_to_string(&mut content);
+    println!("Conteudo do site: {}", content);
+}
+   #+END_SRC
+
+** TADA - Vamos executar!
+
+   #+BEGIN_SRC
+$ cargo run
+   #+END_SRC
+
+   #+reveal: split
+   Agora você tem um código para fazer chamadas na internet:
+
+   - cross-plataforma
+   - binário
+   - com baixo uso de memória, sem o risco de "dar tiros no pé"
+   - que não precisa de ficar instalando várias dependêcias para usar
+
+   #+reveal: split
+   Bem similar a outras linguagens?
 
 * "Uma pergunta..."
 
@@ -388,7 +718,7 @@
    - Ferramentas de suporte (CLIs, build, processadores de texto, etc)
    - Extensões de linguagens (Gems, npm, python extensions, FFI)
 
-    #+REVEAL_HTML:  <small>*IMHO</small>
+     #+REVEAL_HTML:  <small>*IMHO</small>
 
    #+reveal: split
    [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]]...
@@ -416,6 +746,8 @@
    :reveal_background: #232323
    :END:
 
+   - [[http://intorust.com/][into_rust(); screencasts]]
+   - [[https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/][Podcast da Lambda 3 - Em portugues]]
    - https://github.com/bltavares/meu-site-em-rust
    - [[http://www.rustacean.net/][Imagens do Ferris]]
    - http://edunham.net/2016/04/11/plushie_rustacean_pattern.html

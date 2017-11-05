@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8"/>
 <title>(Nunca) Ouvi falar de Rust&#x2026; Mas como faço um site?</title>
-<meta name="author" content="(Bruno Tavares)"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -29,8 +28,8 @@
 <div class="slides">
 
 <section>
-<section id="slide-org25d049b">
-<h2 id="org25d049b">(Nunca) Ouvi falar de Rust&#x2026;</h2>
+<section id="slide-org0d5a125">
+<h2 id="org0d5a125">(Nunca) Ouvi falar de Rust&#x2026;</h2>
 <p>
 Mas como eu faço um site?
 </p>
@@ -38,8 +37,8 @@ Mas como eu faço um site?
 </section>
 </section>
 <section>
-<section id="slide-orgb134883">
-<h2 id="orgb134883">Olá pessoal!</h2>
+<section id="slide-orgcae0783">
+<h2 id="orgcae0783">Olá pessoal!</h2>
 </section>
 <section >
 <p>
@@ -79,8 +78,8 @@ Vou mostrar alguns passos pra seguir aprendendo
 </section>
 </section>
 <section>
-<section id="slide-org62f6cb6">
-<h2 id="org62f6cb6">Em 2015</h2>
+<section id="slide-org0c74503">
+<h2 id="org0c74503">Em 2015</h2>
 </section>
 <section >
 <p>
@@ -100,8 +99,8 @@ Eu queria uma maneira simples de executar aplicações
 </p>
 
 </section>
-<section id="slide-orgdd56e08">
-<h3 id="orgdd56e08">Objetivo</h3>
+<section id="slide-org2bf1f25">
+<h3 id="org2bf1f25">Objetivo</h3>
 <p>
 1 arquivo binário e cross-plataforma
 </p>
@@ -109,8 +108,8 @@ Eu queria uma maneira simples de executar aplicações
 </section>
 </section>
 <section>
-<section id="slide-orgcd4392c">
-<h2 id="orgcd4392c">As opções</h2>
+<section id="slide-orgd126efc">
+<h2 id="orgd126efc">As opções</h2>
 </section>
 <section >
 <p>
@@ -133,7 +132,7 @@ Rust foi uma das opções na minha busca por alternativas
 </section>
 <section>
 <section id="slide-rust">
-<h2 id="rust"><a id="orgba28259"></a>Rust</h2>
+<h2 id="rust"><a id="org8e10b71"></a>Rust</h2>
 <img style="border: none; box-shadow: none; position: relative; top: 1.6em;" src="rust-logo.svg" width="25%" />
 
 <blockquote nil>
@@ -145,15 +144,39 @@ Rust é uma linguagem de programação de sistemas que roda incrivelmente rápid
 </section>
 <section >
 <p>
-O que me chamou atenção para seguir aprendendo:
+"É uma linguagem bem moderna"
+</p>
+
+</section>
+<section >
+<p>
+Uma linguagem com várias características funcionais:
 </p>
 
 <ul>
 <li class="fragment">Imutável por padrão</li>
 <li class="fragment">Não tem null ou undefined</li>
+<li class="fragment">Pattern-matching</li>
+<li class="fragment">Closures</li>
+<li class="fragment">Structs e Enums</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+O que me chamou atenção para seguir aprendendo:
+</p>
+
+<ul>
 <li class="fragment">Gera binários</li>
 <li class="fragment">Cross-plataforma</li>
-<li class="fragment">Ideal para programar em baixo nível</li>
+<li class="fragment">Preocupação em boas mensagens de erro</li>
+<li class="fragment">Focado em baixo nível
+<ul>
+<li>Mas com uma experiência de linguagem de alto nível</li>
+
+</ul></li>
 <li class="fragment">Linguagem com investimento da Mozilla</li>
 
 </ul>
@@ -161,8 +184,8 @@ O que me chamou atenção para seguir aprendendo:
 </section>
 </section>
 <section>
-<section id="slide-org628b865">
-<h2 id="org628b865">"Deveria me preocupar por ser baixo nível?"</h2>
+<section id="slide-org18ddcd5">
+<h2 id="org18ddcd5">"Por que escolheram criar uma linguagem de baixo nível?"</h2>
 <p>
 Quantos falhas podem acontecer em um programa de baixo nível?
 </p>
@@ -186,27 +209,346 @@ Gerenciamento de memória sem Garbage Collector
 </p>
 
 </section>
-<section id="slide-orgfe06a6f">
-<h3 id="orgfe06a6f"><span class="todo TODO">TODO</span> Exemplo de coisas que Rust previne apenas com o compilador</h3>
-
-</section>
-</section>
-<section>
-<section id="slide-orge4fae4b">
-<h2 id="orge4fae4b">Agora eu consigo fazer isso:</h2>
-<video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
-
-</section>
-<section >
+<section id="slide-org96119ef">
+<h3 id="org96119ef"><a href="https://www.mozilla.org/en-US/firefox/quantum/">Mozilla Quantum</a></h3>
 <p>
-E no final da apresentação você também
+Todas esss características criam um ambiente ideal para avançar com segurança
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-org1b5f043">
-<h2 id="org1b5f043">Quem já ouviu falar de Rust?</h2>
+<section id="slide-org8a54ea4">
+<h2 id="org8a54ea4">Exemplo de coisas que Rust previne apenas com o compilador</h2>
+<p>
+Vamos ver um pouco de Rust
+</p>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=638e72a89e58556878203164865e3a83&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error: argument never used
+ --&gt; src/main.rs:3:22
+  |
+3 |     println!("Data", data);
+  |                      ^^^^
+
+error: aborting due to previous error
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=a3e89511533fe9ed311cdc1a56e6cd6f&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error[E0277]: the trait bound
+`std::vec::Vec&lt;_&gt;: std::fmt::Display` is not satisfied
+ --&gt; src/main.rs:3:25
+|
+|println!("Data {}", data);
+|                    ^^^^
+ `std::vec::Vec&lt;_&gt;` cannot be formatted with the default
+    formatter; try using `:?` instead if you are using
+    a format string
+|
+= help: the trait `std::fmt::Display`
+        is not implemented for `std::vec::Vec&lt;_&gt;`
+= note: required by `std::fmt::Display::fmt`
+
+error: aborting due to previous error
+</pre>
+
+</section>
+<section >
+<pre  class="example">
+^^^^ `std::vec::Vec&lt;_&gt;` cannot be formatted with the default
+formatter; try using `:?` instead if you are using a
+format string
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://gist.github.com/05d06e731b17b64faa7cd804251dc311">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error[E0282]: type annotations needed
+ --&gt; src/main.rs:2:16
+  |
+2 |     let data = vec!();
+  |         ----   ^^^^^^ cannot infer type for `T`
+  |         |
+  |         consider giving `data` a type
+  |
+
+error: aborting due to previous error
+</pre>
+
+</section>
+<section >
+<pre  class="example">
+error[E0282]: type annotations needed
+</pre>
+
+</section>
+<section >
+<pre  class="example">
+$ rustc --explain E0282
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=8c2e161f0fe929a1d8edfe88013779b2&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> : <span style="color: #81a2be;">Vec</span><span style="color: #8abeb7;">&lt;</span><span style="color: #81a2be;">char</span><span style="color: #8abeb7;">&gt;</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+Data []
+</pre>
+
+</section>
+<section id="slide-org0231fe4">
+<h3 id="org0231fe4">Imagine como seria uma base de código bem complexa</h3>
+<ul>
+<li>Código com threads</li>
+<li>Processamento de imagens em paralelo</li>
+<li>Coordenar muito acesso de I/O</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Em resumo, imagine quão complexo um navegador é por traz dos panos?
+</p>
+
+</section>
+<section >
+<p>
+Existe algum problema nesse código?
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">time</span>::<span style="color: #81a2be;">Duration</span>;
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span>|| <span style="color: #f0c674;">{</span>
+      data.push<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">'a'</span><span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span>|| <span style="color: #f0c674;">{</span>
+      data.push<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">'b'</span><span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #81a2be;">thread</span>::sleep<span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Duration</span>::from_millis<span style="color: #f0c674;">(</span><span style="color: #81a2be;">50</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+
+</section>
+<section >
+<p>
+<a href="https://gist.github.com/419ff286df8f165c35879e30f9b8e1f7">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">sync</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Arc</span>, <span style="color: #81a2be;">Mutex</span><span style="color: #c5c8c6;">}</span>;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">time</span>::<span style="color: #81a2be;">Duration</span>;
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #81a2be;">Arc</span>::new<span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Mutex</span>::new<span style="color: #f0c674;">(</span><span style="color: #b294bb;">vec!</span><span style="color: #b5bd68;">()</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">writer</span> = data.clone<span style="color: #8abeb7;">()</span>;
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span><span style="color: #b5bd68;">move</span> || <span style="color: #f0c674;">{</span>
+        <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">lock_result</span> = writer.lock<span style="color: #b5bd68;">()</span>;
+        <span style="color: #b5bd68;">match</span> lock_result <span style="color: #b5bd68;">{</span>
+            <span style="color: #81a2be;">Ok</span><span style="color: #81a2be;">(</span><span style="color: #b5bd68;">mut</span> locked_writer<span style="color: #81a2be;">)</span> =&gt; locked_writer.push<span style="color: #81a2be;">(</span><span style="color: #8abeb7;">'a'</span><span style="color: #81a2be;">)</span>,
+            <span style="color: #81a2be;">Err</span><span style="color: #81a2be;">(</span>_<span style="color: #81a2be;">)</span> =&gt; <span style="color: #b294bb;">panic!</span><span style="color: #81a2be;">(</span><span style="color: #8abeb7;">"Could not acquire lock a"</span><span style="color: #81a2be;">)</span>,
+        <span style="color: #b5bd68;">}</span>
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">writer</span> = data.clone<span style="color: #8abeb7;">()</span>;
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span><span style="color: #b5bd68;">move</span> || <span style="color: #f0c674;">{</span>
+        <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">locked_writer</span> = writer.lock<span style="color: #b5bd68;">()</span>.expect<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">"Could not aquire lock b"</span><span style="color: #b5bd68;">)</span>;
+        locked_writer.push<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">'b'</span><span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #81a2be;">thread</span>::sleep<span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Duration</span>::from_millis<span style="color: #f0c674;">(</span><span style="color: #81a2be;">50</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgf8346e0">
+<h3 id="orgf8346e0">E mais possibilidades para ajudar a definir o seu sistema</h3>
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">struct</span> <span style="color: #81a2be;">Pedido</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">i32</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">novo_pedido</span><span style="color: #c5c8c6;">()</span> -&gt; <span style="color: #81a2be;">Pedido</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #81a2be;">Pedido</span> <span style="color: #8abeb7;">{</span> <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">1</span> <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">enviar_pedido</span><span style="color: #c5c8c6;">(</span><span style="color: #f0c674;">pedido</span>: <span style="color: #81a2be;">Pedido</span><span style="color: #c5c8c6;">)</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Codigo que envia o pedido</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">pedido</span> = novo_pedido<span style="color: #8abeb7;">()</span>;
+    enviar_pedido<span style="color: #8abeb7;">(</span>pedido<span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Dados do pedido: </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, pedido<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error[E0382]: use of moved value: `pedido`
+  --&gt; src/main.rs:18:39
+   |
+16 |     enviar_pedido(pedido);
+   |                   ------ value moved here
+17 |
+18 |     println!("Dados do pedido: {:?}", pedido);
+   |                                       ^^^^^^
+                         value used here after move
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">struct</span> <span style="color: #81a2be;">Pedido</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">i32</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">novo_pedido</span><span style="color: #c5c8c6;">()</span> -&gt; <span style="color: #81a2be;">Pedido</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #81a2be;">Pedido</span> <span style="color: #8abeb7;">{</span> <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">1</span> <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">enviar_pedido</span><span style="color: #c5c8c6;">(</span><span style="color: #f0c674;">pedido</span>: <span style="color: #81a2be;">Pedido</span><span style="color: #c5c8c6;">)</span> <span style="color: #c5c8c6;">{</span>
+  <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Codigo que envia o pedido</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">pedido</span> = novo_pedido<span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Dados do pedido: </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, pedido<span style="color: #8abeb7;">)</span>;
+
+    enviar_pedido<span style="color: #8abeb7;">(</span>pedido<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+Dados do pedido: Pedido { id: 1 }
+</pre>
+
+</section>
+<section id="slide-org431e891">
+<h3 id="org431e891">Mas você não precisa se preocupar com tudo isso agora</h3>
+</section>
+<section >
+<p>
+Não se preocupe com tudo isso agora
+</p>
+
+</section>
+<section >
+<p>
+Essas são as possibilidades e pontecial da linguagem
+</p>
+
+</section>
+<section >
+<p>
+Você pode aprender aos poucos
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org01f453c">
+<h2 id="org01f453c">Quem já ouviu falar de Rust?</h2>
 </section>
 <section >
 <p>
@@ -228,8 +570,25 @@ Agora, como faço um site?
 </section>
 </section>
 <section>
-<section id="slide-org6049dc2">
-<h2 id="org6049dc2">Primeiro passo: Instalando as ferramentas</h2>
+<section id="slide-org791e01b">
+<h2 id="org791e01b">Vamos fazer um site?</h2>
+<video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
+
+</section>
+<section id="slide-orge5471d2">
+<h3 id="orge5471d2">Um Site:</h3>
+<ul>
+<li>Fácil de deployar</li>
+<li>Leve</li>
+<li>Aproveitando todas as vantagens que eu já comentei</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org162630f">
+<h2 id="org162630f">Primeiro passo: Instalando as ferramentas</h2>
 <p>
 Siga as instruções no site do <a href="https://rustup.rs/">Rustup</a>
 </p>
@@ -267,8 +626,8 @@ Teremos instalado no final:
 </section>
 </section>
 <section>
-<section id="slide-orgd748441">
-<h2 id="orgd748441">Criando nosso projeto</h2>
+<section id="slide-org3bb1084">
+<h2 id="org3bb1084">Criando nosso projeto</h2>
 <div class="org-src-container">
 
 <pre  class="src src-bash">$ cargo new --bin meu-site-em-rust
@@ -277,7 +636,6 @@ Teremos instalado no final:
 
 </section>
 <section >
-
 <div class="org-src-container">
 
 <pre  class="src src-bash">$ cargo run
@@ -292,8 +650,8 @@ Hello, world!
 </section>
 </section>
 <section>
-<section id="slide-org641637c">
-<h2 id="org641637c">Vamos criar uma primeira página</h2>
+<section id="slide-org3684c0f">
+<h2 id="org3684c0f">Vamos criar uma primeira página</h2>
 <p>
 Vamos criar um arquivo em <code>src/index.html</code> com seguinte conteúdo
 </p>
@@ -302,11 +660,11 @@ Vamos criar um arquivo em <code>src/index.html</code> com seguinte conteúdo
 <section >
 <div class="org-src-container">
 
-<pre  class="src src-html"><span style="color: #8abeb7;">&lt;!doctype html&gt;</span>
+<pre  class="src src-html">&lt;<span style="color: #b5bd68;">!doctype</span> html&gt;
 &lt;<span style="color: #de935f;">html</span>&gt;
     &lt;<span style="color: #de935f;">head</span>&gt;
         &lt;<span style="color: #de935f;">meta</span> charset=utf-8&gt;
-        &lt;<span style="color: #de935f;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Ol&#225; TDC SP 2017</span>&lt;/<span style="color: #de935f;">title</span>&gt;
+        &lt;<span style="color: #de935f;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Ol&#225; TDC POA 2017</span>&lt;/<span style="color: #de935f;">title</span>&gt;
     &lt;/<span style="color: #de935f;">head</span>&gt;
     &lt;<span style="color: #de935f;">body</span>&gt;
         &lt;<span style="color: #de935f;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Ol&#225; mundo</span>&lt;/<span style="color: #de935f;">h1</span>&gt;
@@ -319,8 +677,8 @@ Vamos criar um arquivo em <code>src/index.html</code> com seguinte conteúdo
 </section>
 </section>
 <section>
-<section id="slide-orgf29f190">
-<h2 id="orgf29f190">Adicionando um framework web</h2>
+<section id="slide-orgc4be8ea">
+<h2 id="orgc4be8ea">Adicionando um framework web</h2>
 <p>
 Vamos usar o framework <a href="https://github.com/nickel-org/nickel.rs">Nickel</a> para nos ajudar
 </p>
@@ -343,8 +701,8 @@ Adicione a dependencia no arquivo <code>Cargo.toml</code>
 </section>
 </section>
 <section>
-<section id="slide-org4a7a879">
-<h2 id="org4a7a879">Alterando nosso arquivo</h2>
+<section id="slide-orgfef3cdb">
+<h2 id="orgfef3cdb">Alterando nosso arquivo</h2>
 <p>
 Agora vamos ver um pouco de Rust, aos poucos.
 Vamos abrir o arquivo <code>src/main.rs</code>.
@@ -448,8 +806,8 @@ No final teremos isso:
 </section>
 </section>
 <section>
-<section id="slide-orgdb2a6e5">
-<h2 id="orgdb2a6e5">Agora podemos criar o nosso executável</h2>
+<section id="slide-orgfbaab44">
+<h2 id="orgfbaab44">Agora podemos criar o nosso executável</h2>
 <div class="org-src-container">
 
 <pre  class="src src-bash">$ cargo build --release
@@ -473,15 +831,15 @@ Ctrl-C to shutdown server
 </div>
 
 </section>
-<section id="slide-org976700b">
-<h3 id="org976700b">TA-DA!</h3>
+<section id="slide-orgc1e11af">
+<h3 id="orgc1e11af">TA-DA!</h3>
 <img style="border: none;" src="hello.png" />
 
 </section>
 </section>
 <section>
 <section id="slide-parabens" data-background="#232323">
-<h2 id="parabens"><a id="org64fa5af"></a>Parabéns!</h2>
+<h2 id="parabens"><a id="org237ee89"></a>Parabéns!</h2>
 <p>
 Você tem um site em Rust.
 </p>
@@ -507,14 +865,14 @@ E tem demo no Heroku!
 </section>
 </section>
 <section>
-<section id="slide-org4f35778">
-<h2 id="org4f35778">"Mas dá pra fazer mais alguma coisa?"</h2>
+<section id="slide-org141b9af">
+<h2 id="org141b9af">"Mas dá pra fazer mais alguma coisa?"</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org9a828ed">
-<h2 id="org9a828ed">Fazendo uma chamada web</h2>
+<section id="slide-org946ebff">
+<h2 id="org946ebff">Vamos fazer uma chamada web</h2>
 </section>
 <section >
 <p>
@@ -528,18 +886,126 @@ Vou seguir a receita disponível no <a href="https://rust-lang-nursery.github.io
 </p>
 
 </section>
+<section id="slide-org008bee9">
+<h3 id="org008bee9">Criando um novo projeto novamente</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo new --bin minha-chamada-em-rust
+</pre>
+</div>
+
+</section>
 <section >
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo run
+
+Compiling minha-chamada-em-rust v0.1.0
+Finished dev <span style="color: #c5c8c6;">[</span>unoptimized + debuginfo<span style="color: #c5c8c6;">]</span> target<span style="color: #c5c8c6;">(</span>s<span style="color: #c5c8c6;">)</span> <span style="color: #b5bd68;">in</span> <span style="color: #81a2be;">1.54</span> secs
+Running <span style="color: #b294bb;">`target/debug/minha-chamada-em-rust`</span>
+Hello, world!
+</pre>
+</div>
+
+</section>
+<section id="slide-org975f8e7">
+<h3 id="org975f8e7">Adicionando uma lib para chamadas</h3>
+</section>
+<section >
+<p>
+Já existem diversas bibliotecas disponíveis no <a href="https://crates.io">Crates.io</a>
+</p>
+
+</section>
+<section >
+<p>
+Vamos usar o <a href="https://docs.rs/reqwest/0.8.0/reqwest/">Reqwest</a> nesse projeto
+</p>
+
+</section>
+<section >
+<p>
+Adicione a dependencia no arquivo <code>Cargo.toml</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-toml">[<span style="color: #81a2be;">dependencies</span>]
+<span style="color: #f0c674;">reqwest</span> = <span style="color: #8abeb7;">"0.8.0"</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-org40dae2e">
+<h3 id="org40dae2e">Alterando nosso binário</h3>
+<p>
+Vamos importar a nossa biblioteca e algumas funcoes de I/O
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">extern</span> <span style="color: #b5bd68;">crate</span> reqwest;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">io</span>::<span style="color: #81a2be;">Read</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+E criar nossa função
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">response</span> = <span style="color: #81a2be;">reqwest</span>::get<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"https://httpbin.org/get"</span><span style="color: #8abeb7;">)</span>
+                                .expect<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Could not connect"</span><span style="color: #8abeb7;">)</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Resposta: </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, response<span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">content</span> = <span style="color: #81a2be;">String</span>::new<span style="color: #8abeb7;">()</span>;
+    response.read_to_string<span style="color: #8abeb7;">(</span>&amp;<span style="color: #b5bd68;">mut</span> content<span style="color: #8abeb7;">)</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Conteudo do site: </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, content<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-org99cb197">
+<h3 id="org99cb197">TADA - Vamos executar!</h3>
+<pre  class="example">
+$ cargo run
+</pre>
+
+</section>
+<section >
+<p>
+Agora você tem um código para fazer chamadas na internet:
+</p>
+
+<ul>
+<li>cross-plataforma</li>
+<li>binário</li>
+<li>com baixo uso de memória, sem o risco de "dar tiros no pé"</li>
+<li>que não precisa de ficar instalando várias dependêcias para usar</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Bem similar a outras linguagens?
+</p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc33323f">
-<h2 id="orgc33323f">"Uma pergunta&#x2026;"</h2>
-<div class="outline-text-2" id="text-orgc33323f">
+<section id="slide-orgf38a668">
+<h2 id="orgf38a668">"Uma pergunta&#x2026;"</h2>
+<div class="outline-text-2" id="text-orgf38a668">
 </div>
 </section>
-<section id="slide-orgc974993">
-<h3 id="orgc974993">É fácil aprender Rust?</h3>
+<section id="slide-org28e213e">
+<h3 id="org28e213e">É fácil aprender Rust?</h3>
 <p>
 Eu passei semanas batendo a cabeça em conceitos que eram novos para mim.
 </p>
@@ -574,8 +1040,8 @@ Muitas pessoas estão disponíveis para ajudar no <a href="https://riot.im/app/#
 </p>
 
 </section>
-<section id="slide-orgf4263b8">
-<h3 id="orgf4263b8">Como eu coloco meu site no Heroku?</h3>
+<section id="slide-org6d74a76">
+<h3 id="org6d74a76">Como eu coloco meu site no Heroku?</h3>
 <p>
 Eu usei esse <a href="https://github.com/emk/heroku-buildpack-rust">buildpack</a>.
 </p>
@@ -583,8 +1049,8 @@ Eu usei esse <a href="https://github.com/emk/heroku-buildpack-rust">buildpack</a
 <img style="border: none;" src="heroku.png" />
 
 </section>
-<section id="slide-org73f4cf3">
-<h3 id="org73f4cf3">Só existe o Nickel para web?</h3>
+<section id="slide-orgce4ffee">
+<h3 id="orgce4ffee">Só existe o Nickel para web?</h3>
 <p>
 Já existem vários frameworks, mas ainda é um ecosistema em desenvolvimento.
 </p>
@@ -598,8 +1064,8 @@ Uma boa lista está disponível no site <a href="http://www.arewewebyet.org/">Ar
 <img style="width: 40%;" src="areweweb.png" />
 
 </section>
-<section id="slide-orgf2de381">
-<h4 id="orgf2de381">Se você estiver buscando algo mais experimental:</h4>
+<section id="slide-org7520988">
+<h4 id="org7520988">Se você estiver buscando algo mais experimental:</h4>
 <p>
 Confira o <a href="https://rocket.rs/">Rocket</a>, que usa uma sintax mais sucinta&#x2026;
 </p>
@@ -613,8 +1079,8 @@ Mas depende de funcionalidades do compilador ainda em desenvolvimento.
 </p>
 
 </section>
-<section id="slide-org18f1e16">
-<h3 id="org18f1e16">Preciso usar rustup?</h3>
+<section id="slide-org3a0ac46">
+<h3 id="org3a0ac46">Preciso usar rustup?</h3>
 <p>
 É o método mais recomendado pela comunidade
 </p>
@@ -633,8 +1099,8 @@ Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais ta
 </p>
 
 </section>
-<section id="slide-org58c8a15">
-<h3 id="org58c8a15">Como conecto em um banco?</h3>
+<section id="slide-org46f57f9">
+<h3 id="org46f57f9">Como conecto em um banco?</h3>
 <p>
 O <a href="https://diesel.rs/">Diesel</a> pode ajudar nisso.
 </p>
@@ -642,8 +1108,8 @@ O <a href="https://diesel.rs/">Diesel</a> pode ajudar nisso.
 <img style="border: none; width:70%" src="diesel.png" />
 
 </section>
-<section id="slide-org654927d">
-<h3 id="org654927d">Já existem empresas usando Rust?</h3>
+<section id="slide-org20fa0c4">
+<h3 id="org20fa0c4">Já existem empresas usando Rust?</h3>
 <p>
 Sim. Inclusive o Firefox do seu computador já tem partes em Rust.
 </p>
@@ -653,8 +1119,8 @@ Algumas empresas: Dropbox, Chef, Tilde, Sentry, CoreOS, Mozilla e tem mais <a hr
 </p>
 
 </section>
-<section id="slide-org0c10c99">
-<h3 id="org0c10c99">Só dá pra usar Rust para a web?</h3>
+<section id="slide-org492704a">
+<h3 id="org492704a">Só dá pra usar Rust para a web?</h3>
 <p>
 Não, dá pra usar para muitas outras lugares!
 </p>
@@ -690,16 +1156,40 @@ Extensões de linguagens (Gems, npm, python extensions, FFI)
 </section>
 </section>
 <section>
-<section id="slide-orge579c93">
-<h2 id="orge579c93">Espero que tenham gostado de Rust</h2>
+<section id="slide-org8386ccc">
+<h2 id="org8386ccc">Espero que tenham gostado de Rust</h2>
+<div class="outline-text-2" id="text-org8386ccc">
+</div>
+</section>
+<section id="slide-orgea6f0f0">
+<h3 id="orgea6f0f0">E se quiser seguir conhecendo</h3>
+<ul>
+<li>Tem um <a href="https://doc.rust-lang.org/book/">livro de graça</a> no site [EN]</li>
+<li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">#rust-beginners</a> é um ótimo canal para tirar dúvidas rápidas</li>
+<li>Existe o <a href="https://riot.im/app/#/room/%23mozilla_%23rust-br:matrix.org">#rust-br</a> para falar em portugues</li>
+<li>O grupo <a href="https://telegram.me/rustlangbr">@rustlangbr</a> no Telegram</li>
+<li><a href="https://www.meetup.com/topics/rust/">Meetups</a></li>
+<li><a href="http://exercism.io/languages/rust/about">Exercicios</a></li>
+<li>E <a href="https://github.com/rust-br/estudos">grupo de estudo online</a> em portugues</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Se você se interessou por Rust, pode entrar em contato comigo também, que eu quero te ajudar com os próximos passos.
+</p>
+
 <p>
 Bruno Tavares - <a href="https://twitter.com/bltavares">@bltavares</a>
 </p>
 
 </section>
 <section id="slide-links" data-background="#232323">
-<h3 id="links"><a id="orga8ff0a2"></a>Links</h3>
+<h3 id="links"><a id="org3beb495"></a>Links</h3>
 <ul>
+<li><a href="http://intorust.com/">into<sub>rust</sub>(); screencasts</a></li>
+<li><a href="https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/">Podcast da Lambda 3 - Em portugues</a></li>
 <li><a href="https://github.com/bltavares/meu-site-em-rust">https://github.com/bltavares/meu-site-em-rust</a></li>
 <li><a href="http://www.rustacean.net/">Imagens do Ferris</a></li>
 <li><a href="http://edunham.net/2016/04/11/plushie_rustacean_pattern.html">http://edunham.net/2016/04/11/plushie_rustacean_pattern.html</a></li>
