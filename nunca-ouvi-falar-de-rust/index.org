@@ -27,7 +27,7 @@
   Mas se você já ouviu falar...
 
   #+reveal: split
-  Vou mostrar alguns passos pra seguir aprendendo
+  Vou mostrar alguns passos para seguir aprendendo
 
 * Em 2015
 
@@ -103,7 +103,7 @@
 
 ** [[https://www.mozilla.org/en-US/firefox/quantum/][Mozilla Quantum]]
 
-   Todas esss características criam um ambiente ideal para avançar com segurança
+   Todas essas características criam um ambiente ideal para avançar com segurança
 
 * Exemplo de coisas que Rust previne apenas com o compilador
 
@@ -113,10 +113,10 @@
   [[https://play.rust-lang.org/?gist=638e72a89e58556878203164865e3a83&version=stable][Playground]]
 
   #+BEGIN_SRC rust
-fn main() {
-    let data = vec!();
-    println!("Data", data);
-}
+    fn main() {
+        let data = vec!();
+        println!("Data", data);
+    }
   #+END_SRC
 
   #+reveal: split
@@ -225,27 +225,27 @@ error[E0282]: type annotations needed
    Em resumo, imagine quão complexo um navegador é por traz dos panos?
 
    #+reveal: split
-   Existe algum problema nesse código?
+   Existe algum problema neste código?
 
    #+BEGIN_SRC rust
-use std::thread;
-use std::time::Duration;
+     use std::thread;
+     use std::time::Duration;
 
-fn main() {
-    let data = vec!();
+     fn main() {
+         let data = vec!();
 
-    thread::spawn(|| {
-      data.push('a');
-    });
+         thread::spawn(|| {
+             data.push('a');
+         });
 
-    thread::spawn(|| {
-      data.push('b');
-    });
+         thread::spawn(|| {
+             data.push('b');
+         });
 
-    thread::sleep(Duration::from_millis(50));
+         thread::sleep(Duration::from_millis(50));
 
-    println!("Data {:?}", data);
-}
+         println!("Data {:?}", data);
+     }
    #+END_SRC
 
 
@@ -253,32 +253,32 @@ fn main() {
    [[https://gist.github.com/419ff286df8f165c35879e30f9b8e1f7][Playground]]
 
    #+BEGIN_SRC rust
-  use std::thread;
-  use std::sync::{Arc, Mutex};
-  use std::time::Duration;
+     use std::thread;
+     use std::sync::{Arc, Mutex};
+     use std::time::Duration;
 
-  fn main() {
-      let data = Arc::new(Mutex::new(vec!()));
+     fn main() {
+         let data = Arc::new(Mutex::new(vec!()));
 
-      let writer = data.clone();
-      thread::spawn(move || {
-          let lock_result = writer.lock();
-          match lock_result {
-              Ok(mut locked_writer) => locked_writer.push('a'),
-              Err(_) => panic!("Could not acquire lock a"),
-          }
-      });
+         let writer = data.clone();
+         thread::spawn(move || {
+             let lock_result = writer.lock();
+             match lock_result {
+                 Ok(mut locked_writer) => locked_writer.push('a'),
+                 Err(_) => panic!("Could not acquire lock a"),
+             }
+         });
 
-      let writer = data.clone();
-      thread::spawn(move || {
-          let mut locked_writer = writer.lock().expect("Could not aquire lock b");
-          locked_writer.push('b');
-      });
+         let writer = data.clone();
+         thread::spawn(move || {
+             let mut locked_writer = writer.lock().expect("Could not aquire lock b");
+             locked_writer.push('b');
+         });
 
-      thread::sleep(Duration::from_millis(50));
+         thread::sleep(Duration::from_millis(50));
 
-      println!("Data {:?}", data);
-  }
+         println!("Data {:?}", data);
+     }
    #+END_SRC
 
 ** E mais possibilidades para ajudar a definir o seu sistema
@@ -288,25 +288,25 @@ fn main() {
    [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
 
    #+BEGIN_SRC rust
-#[derive(Debug)]
-struct Pedido {
-    id: i32
-}
+     #[derive(Debug)]
+     struct Pedido {
+         id: i32
+     }
 
-fn novo_pedido() -> Pedido {
-    Pedido { id: 1 }
-}
+     fn novo_pedido() -> Pedido {
+         Pedido { id: 1 }
+     }
 
-fn enviar_pedido(pedido: Pedido) {
-  // Codigo que envia o pedido
-}
+     fn enviar_pedido(pedido: Pedido) {
+         // Codigo que envia o pedido
+     }
 
-fn main() {
-    let pedido = novo_pedido();
-    enviar_pedido(pedido);
+     fn main() {
+         let pedido = novo_pedido();
+         enviar_pedido(pedido);
 
-    println!("Dados do pedido: {:?}", pedido);
-}
+         println!("Dados do pedido: {:?}", pedido);
+     }
    #+END_SRC
 
    #+reveal: split
@@ -326,25 +326,25 @@ error[E0382]: use of moved value: `pedido`
    [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
 
    #+BEGIN_SRC rust
-#[derive(Debug)]
-struct Pedido {
-    id: i32
-}
+     #[derive(Debug)]
+     struct Pedido {
+         id: i32
+     }
 
-fn novo_pedido() -> Pedido {
-    Pedido { id: 1 }
-}
+     fn novo_pedido() -> Pedido {
+         Pedido { id: 1 }
+     }
 
-fn enviar_pedido(pedido: Pedido) {
-  // Codigo que envia o pedido
-}
+     fn enviar_pedido(pedido: Pedido) {
+         // Codigo que envia o pedido
+     }
 
-fn main() {
-    let pedido = novo_pedido();
-    println!("Dados do pedido: {:?}", pedido);
+     fn main() {
+         let pedido = novo_pedido();
+         println!("Dados do pedido: {:?}", pedido);
 
-    enviar_pedido(pedido);
-}
+         enviar_pedido(pedido);
+     }
    #+END_SRC
 
    #+reveal: split
@@ -355,10 +355,7 @@ Dados do pedido: Pedido { id: 1 }
 ** Mas você não precisa se preocupar com tudo isso agora
 
    #+reveal: split
-   Não se preocupe com tudo isso agora
-
-   #+reveal: split
-   Essas são as possibilidades e pontecial da linguagem
+   Essas são exemplos de possibilidades e potencial da linguagem
 
    #+reveal: split
    Você pode aprender aos poucos
@@ -399,7 +396,7 @@ Dados do pedido: Pedido { id: 1 }
   - Ajuda a manter tudo atualizado
 
   #+reveal: split
-  Teremos instalado no final:
+  No final estará dispoível:
 
   - rustup: o gerenciador de versões
   - cargo: o gerenciador de projetos e de dependências
@@ -431,14 +428,14 @@ Dados do pedido: Pedido { id: 1 }
   #+BEGIN_SRC html
     <!doctype html>
     <html>
-        <head>
-            <meta charset=utf-8>
-            <title>Olá TDC POA 2017</title>
-        </head>
-        <body>
-            <h1>Olá mundo</h1>
-            <marquee>Olá TDC</marquee>
-        </body>
+      <head>
+        <meta charset=utf-8>
+        <title>Olá TDC POA 2017</title>
+      </head>
+      <body>
+        <h1>Olá mundo</h1>
+        <marquee>Olá TDC</marquee>
+      </body>
     </html>
   #+END_SRC
 
@@ -462,7 +459,7 @@ Dados do pedido: Pedido { id: 1 }
   Vamos abrir o arquivo =src/main.rs=.
 
   #+reveal: split
-  Primeiro, importamos e incluimos algumas referências do framework web.
+  Primeiro, importamos e incluímos algumas referências do framework web.
 
   #+name: import
   #+BEGIN_SRC rust
@@ -505,7 +502,7 @@ Dados do pedido: Pedido { id: 1 }
   #+BEGIN_SRC rust
     println!("On {}", url);
     server.listen(url)
-          .expect("Não conseguimos iniciar o servidor");
+        .expect("Não conseguimos iniciar o servidor");
   #+END_SRC
 
   #+reveal: split
@@ -576,17 +573,17 @@ Dados do pedido: Pedido { id: 1 }
 ** Criando um novo projeto novamente
 
    #+BEGIN_SRC bash
-    $ cargo new --bin minha-chamada-em-rust
+     $ cargo new --bin minha-chamada-em-rust
    #+END_SRC
 
    #+reveal: split
    #+BEGIN_SRC bash
-    $ cargo run
+     $ cargo run
 
-    Compiling minha-chamada-em-rust v0.1.0
-    Finished dev [unoptimized + debuginfo] target(s) in 1.54 secs
-    Running `target/debug/minha-chamada-em-rust`
-    Hello, world!
+     Compiling minha-chamada-em-rust v0.1.0
+     Finished dev [unoptimized + debuginfo] target(s) in 1.54 secs
+     Running `target/debug/minha-chamada-em-rust`
+     Hello, world!
    #+END_SRC
 
 ** Adicionando uma lib para chamadas
@@ -600,32 +597,32 @@ Dados do pedido: Pedido { id: 1 }
    Adicione a dependencia no arquivo =Cargo.toml=
 
    #+BEGIN_SRC toml
-    [dependencies]
-    reqwest = "0.8.0"
+     [dependencies]
+     reqwest = "0.8.0"
    #+END_SRC
 
 ** Alterando nosso binário
 
-   Vamos importar a nossa biblioteca e algumas funcoes de I/O
+   Vamos importar a nossa biblioteca e algumas funções de I/O
 
    #+BEGIN_SRC rust
-extern crate reqwest;
-use std::io::Read;
+     extern crate reqwest;
+     use std::io::Read;
    #+END_SRC
 
    #+reveal: split
    E criar nossa função
 
    #+BEGIN_SRC rust
-fn main() {
-    let mut response = reqwest::get("https://httpbin.org/get")
-                                .expect("Could not connect");
-    println!("Resposta: {:?}", response);
+     fn main() {
+         let mut response = reqwest::get("https://httpbin.org/get")
+             .expect("Could not connect");
+         println!("Resposta: {:?}", response);
 
-    let mut content = String::new();
-    response.read_to_string(&mut content);
-    println!("Conteudo do site: {}", content);
-}
+         let mut content = String::new();
+         response.read_to_string(&mut content);
+         println!("Conteudo do site: {}", content);
+     }
    #+END_SRC
 
 ** TADA - Vamos executar!
@@ -640,7 +637,7 @@ $ cargo run
    - cross-plataforma
    - binário
    - com baixo uso de memória, sem o risco de "dar tiros no pé"
-   - que não precisa de ficar instalando várias dependêcias para usar
+   - que não precisa de ficar instalando várias dependências para usar
 
    #+reveal: split
    Bem similar a outras linguagens?
@@ -671,7 +668,7 @@ $ cargo run
    #+REVEAL_HTML:  <img style="border: none;" src="heroku.png" />
 
 ** Só existe o Nickel para web?
-   Já existem vários frameworks, mas ainda é um ecosistema em desenvolvimento.
+   Já existem vários frameworks, mas ainda é um ecossistema em desenvolvimento.
 
    #+reveal: split
    Uma boa lista está disponível no site [[http://www.arewewebyet.org/][Are We Web Yet?]]
@@ -679,7 +676,7 @@ $ cargo run
    #+REVEAL_HTML:  <img style="width: 40%;" src="areweweb.png" />
 
 *** Se você estiver buscando algo mais experimental:
-    Confira o [[https://rocket.rs/][Rocket]], que usa uma sintax mais sucinta...
+    Confira o [[https://rocket.rs/][Rocket]], que usa uma sintaxe mais sucinta...
 
     #+REVEAL_HTML:  <img style="border: none; width:70%;" src="rocket.png" />
 
@@ -696,7 +693,7 @@ $ cargo run
    #+reveal: split
    Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
 
-** Como conecto em um banco?
+** Como conectar em um banco?
    O [[https://diesel.rs/][Diesel]] pode ajudar nisso.
 
    #+REVEAL_HTML:  <img style="border: none; width:70%" src="diesel.png" />
