@@ -358,7 +358,7 @@ Dados do pedido: Pedido { id: 1 }
    Essas são exemplos de possibilidades e potencial da linguagem
 
    #+reveal: split
-   Você pode aprender aos poucos
+   Você pode aprender aos poucos, na sua velocidade
 
 * Quem já ouviu falar de Rust?
 
