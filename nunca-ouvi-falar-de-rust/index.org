@@ -167,7 +167,7 @@ error: aborting due to previous error
   #+END_SRC
 
   #+reveal: split
-  [[https://gist.github.com/05d06e731b17b64faa7cd804251dc311][Playground]]
+  [[https://play.rust-lang.org/?gist=05d06e731b17b64faa7cd804251dc311&version=stable][Playground]]
 
   #+BEGIN_SRC rust
     fn main() {
@@ -215,7 +215,7 @@ error[E0282]: type annotations needed
   Data []
   #+END_SRC
 
-** Imagine como seria uma base de código bem complexa
+** Imagine uma base de código bem complexa
 
    - Código com threads
    - Processamento de imagens em paralelo
@@ -227,6 +227,7 @@ error[E0282]: type annotations needed
    #+reveal: split
    Existe algum problema neste código?
 
+   [[https://play.rust-lang.org/?gist=e03bb56c3fdb75e434a0cf71583034b5&version=stable][Playground]]
    #+BEGIN_SRC rust
      use std::thread;
      use std::time::Duration;
@@ -248,9 +249,16 @@ error[E0282]: type annotations needed
      }
    #+END_SRC
 
+   #+reveal: split
+   Depois de vários ciclos de feedback na compilação:
+
+   - Não teremos acesso a memória já liberada
+   - Teremos adicionado uma forma forma de evitar /race conditions/
+
+   Nosso binário não terá esses problemas!
 
    #+reveal: split
-   [[https://gist.github.com/419ff286df8f165c35879e30f9b8e1f7][Playground]]
+   [[https://play.rust-lang.org/?gist=419ff286df8f165c35879e30f9b8e1f7&version=stable][Playground]]
 
    #+BEGIN_SRC rust
      use std::thread;
@@ -281,8 +289,10 @@ error[E0282]: type annotations needed
      }
    #+END_SRC
 
-** E mais possibilidades para ajudar a definir o seu sistema
 
+*** Esse sistema de tipo traz novas maneiras de expressar seu domínio
+
+   Que não conseguimos fazer em outras linguagens mais conhecidas
 
    #+reveal: split
    [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
@@ -323,6 +333,9 @@ error[E0382]: use of moved value: `pedido`
    #+END_SRC
 
    #+reveal: split
+   Só podemos acessar o pedido antes de enviarmos as informações nesse cenário
+
+   #+reveal: split
    [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
 
    #+BEGIN_SRC rust
@@ -359,6 +372,9 @@ Dados do pedido: Pedido { id: 1 }
 
    #+reveal: split
    Você pode aprender aos poucos, na sua velocidade
+
+   #+reveal: split
+   E começando com o que você já está acostumado
 
 * Quem já ouviu falar de Rust?
 
@@ -718,7 +734,7 @@ $ cargo run
      #+REVEAL_HTML:  <small>*IMHO</small>
 
    #+reveal: split
-   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]]...
+   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Sistemas Operacionais^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}...
 
 * Espero que tenham gostado de Rust
 
