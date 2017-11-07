@@ -88,9 +88,13 @@
     - Mas com uma experiência de linguagem de alto nível
   - Linguagem com investimento da Mozilla
 
+** [[https://www.mozilla.org/en-US/firefox/quantum/][Mozilla Quantum]]
+
+   Todas essas características criam um ambiente ideal para avançar com segurança
+
 * "Por que escolheram criar uma linguagem de baixo nível?"
 
-  Quantos falhas podem acontecer em um programa de baixo nível?
+  Qantas falhas podem acontecer em um programa de baixo nível?
 
   #+reveal: split
   BufferOverflow, Segmentation Fault, Use After Free...
@@ -100,10 +104,6 @@
 
   #+reveal: split
   Gerenciamento de memória sem Garbage Collector
-
-** [[https://www.mozilla.org/en-US/firefox/quantum/][Mozilla Quantum]]
-
-   Todas essas características criam um ambiente ideal para avançar com segurança
 
 * Exemplo de coisas que Rust previne apenas com o compilador
 
@@ -222,7 +222,7 @@ error[E0282]: type annotations needed
    - Coordenar muito acesso de I/O
 
    #+reveal: split
-   Em resumo, imagine quão complexo um navegador é por traz dos panos?
+   Em resumo, imagine quão complexo um navegador é por trás dos panos?
 
    #+reveal: split
    Existe algum problema neste código?
@@ -555,7 +555,7 @@ Dados do pedido: Pedido { id: 1 }
     Ctrl-C to shutdown server
   #+END_SRC
 
-** TA-DA!
+** TA-DÁ!
    #+REVEAL_HTML:  <img style="border: none;" src="hello.png" />
 
 * Parabéns!
@@ -586,7 +586,7 @@ Dados do pedido: Pedido { id: 1 }
   #+reveal: split
   Vou seguir a receita disponível no [[https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic][Rust Cookbooks]]
 
-** Criando um novo projeto novamente
+** Criando mais um novo projeto
 
    #+BEGIN_SRC bash
      $ cargo new --bin minha-chamada-em-rust
@@ -641,7 +641,7 @@ Dados do pedido: Pedido { id: 1 }
      }
    #+END_SRC
 
-** TADA - Vamos executar!
+** TA-DÁ - Vamos executar!
 
    #+BEGIN_SRC
 $ cargo run
@@ -650,6 +650,7 @@ $ cargo run
    #+reveal: split
    Agora você tem um código para fazer chamadas na internet:
 
+TODO: Formatar melhor essa lista
    - cross-plataforma
    - binário
    - com baixo uso de memória, sem o risco de "dar tiros no pé"
@@ -677,6 +678,9 @@ $ cargo run
    A comunidade é muito aberta e me ajudou bastante.
 
    Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
+
+   #+reveal: split
+TODO: Falar das iniciativas de tornar a entrada mais inclusiva, porta de entrada, Rust Bridge, didatico
 
 ** Como eu coloco meu site no Heroku?
    Eu usei esse [[https://github.com/emk/heroku-buildpack-rust][buildpack]].
@@ -734,7 +738,8 @@ $ cargo run
      #+REVEAL_HTML:  <small>*IMHO</small>
 
    #+reveal: split
-   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Sistemas Operacionais^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}...
+TODO: Adicionar exemplo de jogos
+   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Sistemas Operacionais^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, Jogos...
 
 * Espero que tenham gostado de Rust
 
