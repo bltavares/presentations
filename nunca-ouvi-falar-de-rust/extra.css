@@ -16,3 +16,7 @@
 .rust, .reveal .showup {
     color: #df5320;
 }
+
+.large-code-block {
+    font-size: 0.4em !important;
+}

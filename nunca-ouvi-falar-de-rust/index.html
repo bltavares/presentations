@@ -30,7 +30,7 @@
 
 <section>
 <section id="slide-orgef8f248">
-<h2 id="orgef8f248">(Nunca) Ouvi falar de Rust&#x2026;</h2>
+    <h2 id="orgef8f248"><span class="showup">(Nunca)</span> Ouvi falar de <span class="rust">Rust</span>&#x2026;</h2>
 <p>
 Mas como eu faço um site?
 </p>
@@ -43,19 +43,19 @@ Mas como eu faço um site?
 </section>
 <section >
 <p>
-Se você nunca ouviu falar de Rust&#x2026;
+Se você nunca ouviu falar de <span class="rust">Rust</span>&#x2026;
 </p>
 
 </section>
 <section >
 <p>
-Vou contar o que é Rust
+Vou contar o que é <span class="rust">Rust</span>
 </p>
 
 </section>
 <section >
 <p>
-Vou contar como eu conheci Rust
+Vou contar como eu conheci <span class="rust">Rust</span>
 </p>
 
 </section>
@@ -72,15 +72,14 @@ Mas se você já ouviu falar&#x2026;
 
 </section>
 <section >
-<p>
-Vou mostrar alguns passos para seguir aprendendo
-</p>
+<p> Vou mostrar alguns passos para </p>
+<p class="showup"> seguir aprendendo </p>
 
 </section>
 </section>
 <section>
 <section id="slide-org7245332">
-<h2 id="org7245332">Em 2015</h2>
+    <h2 id="org7245332">Em <span class="showup"> 2015</span></h2>
 </section>
 <section >
 <p>
@@ -101,7 +100,7 @@ Eu queria uma maneira simples de executar aplicações
 
 </section>
 <section id="slide-org9c0f417">
-<h3 id="org9c0f417">Objetivo</h3>
+<h3 id="org9c0f417" class="showup">Objetivo</h3>
 <p>
 1 arquivo binário e cross-plataforma
 </p>
@@ -114,48 +113,51 @@ Eu queria uma maneira simples de executar aplicações
 </section>
 <section >
 <p>
-"Pra escrever binário tem que ser C?"
+    "Pra escrever binário <span class="showup"> tem que ser</span> C?"
 </p>
 
 </section>
 <section >
 <p>
-Rust foi uma das opções na minha busca por alternativas
+<span class="rust">Rust</span> foi uma das opções na minha busca por alternativas
 </p>
 
 </section>
 <section >
 <p>
-"Mas o que é Rust?"
+"Mas o que é <span class="rust">Rust</span>?"
 </p>
 
 </section>
 </section>
 <section>
 <section id="slide-rust">
-<h2 id="rust"><a id="orgac35b7b"></a>Rust</h2>
+<h2 id="rust"><a id="orgac35b7b"></a><span class="rust">Rust</span></h2>
 <img style="border: none; box-shadow: none; position: relative; top: 1.6em;" src="rust-logo.svg" width="25%" />
 
 <blockquote nil>
 <p>
-Rust é uma linguagem de programação de sistemas que roda incrivelmente rápido, previne falhas de segmentação, e garante segurança entre threads.
+<span class="rust">Rust</span> é uma linguagem de programação de sistemas que roda incrivelmente rápido, previne falhas de segmentação, e garante segurança entre threads.
 </p>
 </blockquote>
 
 </section>
 <section >
 <p>
-"É uma linguagem bem moderna,
+    "É uma linguagem <span class="showup">bem moderna</span>,
 </p>
 
 <p>
-com foco em baixo nível"
+    com foco em <span class="showup">baixo nível</span>"
 </p>
 
 </section>
 <section >
 <p>
-Uma linguagem com várias características funcionais:
+    Uma linguagem com várias
+</p>
+<p class="showup">
+    características funcionais:
 </p>
 
 <ul>
@@ -197,7 +199,7 @@ Todas essas características criam um ambiente ideal para avançar com seguranç
 </section>
 <section>
 <section id="slide-org2875e6d">
-<h2 id="org2875e6d">"Por que escolheram criar uma linguagem de baixo nível?"</h2>
+    <h2 id="org2875e6d">"Por que escolheram <span class="showup">criar uma linguagem</span> de baixo nível?"</h2>
 <p>
 Qantas falhas podem acontecer em um programa de baixo nível?
 </p>
@@ -215,22 +217,21 @@ Use After Free&#x2026;
 </section>
 <section >
 <p>
-Rust tem um sistema de tipos que previne diversos erros de gerenciamento de memória, em tempo de compilação
+<span class="rust">Rust</span> tem um sistema de tipos que previne diversos erros de gerenciamento de memória, em tempo de compilação
 </p>
 
 </section>
 <section >
-<p>
-Gerenciamento de memória sem Garbage Collector
-</p>
+<p> Gerenciamento de memória sem</p>
+<p class="showup">Garbage Collector </p>
 
 </section>
 </section>
 <section>
 <section id="slide-org5292bd0">
-<h2 id="org5292bd0">Exemplo do Rust previne apenas com o compilador</h2>
+<h2 id="org5292bd0">Exemplo do <span class="rust">Rust</span> previne apenas com o compilador</h2>
 <p>
-Vamos ver um pouco de Rust
+Vamos ver um pouco de <span class="rust">Rust</span>
 </p>
 
 </section>
@@ -379,7 +380,7 @@ Data []
 </section>
 <section >
 <p>
-Em resumo, imagine quão complexo um navegador é por trás dos panos?
+    Em resumo, imagine quão <span class="showup">complexo</span> um navegador é por trás dos panos?
 </p>
 
 </section>
@@ -393,7 +394,7 @@ Existe algum problema neste código?
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-rust"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
+<pre  class="src src-rust large-code-block"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
 <span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">time</span>::<span style="color: #81a2be;">Duration</span>;
 
 <span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
@@ -417,7 +418,7 @@ Existe algum problema neste código?
 </section>
 <section >
 <p>
-Depois de vários ciclos de feedback na compilação:
+    Depois de vários <span class="showup">ciclos de feedback</span> na compilação:
 </p>
 
 <ul>
@@ -427,18 +428,16 @@ Depois de vários ciclos de feedback na compilação:
 </ul>
 
 <p>
-Nosso binário não terá esses problemas!
+    Nosso binário não terá <span class="showup">esses problemas</span>!
 </p>
 
 </section>
 <section >
-<p>
 <a href="https://play.rust-lang.org/?gist=419ff286df8f165c35879e30f9b8e1f7&amp;version=stable">Playground</a>
-</p>
 
 <div class="org-src-container">
 
-<pre  class="src src-rust"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
+<pre  class="src src-rust large-code-block"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
 <span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">sync</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Arc</span>, <span style="color: #81a2be;">Mutex</span><span style="color: #c5c8c6;">}</span>;
 <span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">time</span>::<span style="color: #81a2be;">Duration</span>;
 
@@ -470,7 +469,7 @@ Nosso binário não terá esses problemas!
 
 </section>
 <section id="slide-org012383d">
-<h3 id="org012383d">Esse sistema de tipo traz novas maneiras de expressar seu domínio</h3>
+    <h3 id="org012383d">Esse sistema de tipo traz <span class="showup">novas maneiras</span> de expressar seu domínio</h3>
 </section>
 <section >
 <p>
@@ -485,7 +484,7 @@ Que não conseguimos fazer em outras linguagens mais conhecidas
 
 <div class="org-src-container">
 
-<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
+<pre  class="src src-rust large-code-block"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
 <span style="color: #b5bd68;">struct</span> <span style="color: #81a2be;">Pedido</span> <span style="color: #c5c8c6;">{</span>
     <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">i32</span>
 <span style="color: #c5c8c6;">}</span>
@@ -524,13 +523,13 @@ error[E0382]: use of moved value: `pedido`
 </section>
 <section >
 <p>
-Só podemos acessar o pedido antes de enviarmos as informações nesse cenário
+    Só podemos acessar o pedido <span class="showup">antes</span> de <span class="showup">enviarmos as informações</span> nesse cenário
 </p>
 
 </section>
 <section >
 <p>
-E isso é reforçado pelo compilador
+    E isso é <span class="showup">reforçado</span> pelo compilador
 </p>
 
 </section>
@@ -541,7 +540,7 @@ E isso é reforçado pelo compilador
 
 <div class="org-src-container">
 
-<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
+<pre  class="src src-rust large-code-block"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
 <span style="color: #b5bd68;">struct</span> <span style="color: #81a2be;">Pedido</span> <span style="color: #c5c8c6;">{</span>
     <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">i32</span>
 <span style="color: #c5c8c6;">}</span>
@@ -571,9 +570,9 @@ Dados do pedido: Pedido { id: 1 }
 
 </section>
 <section id="slide-orgaabead0">
-<h3 id="orgaabead0">Rust incentiva <a href="https://doc.rust-lang.org/1.7.0/book/testing.html">testes</a> desde o inicio do projeto</h3>
+<h3 id="orgaabead0"><span class="rust">Rust</span> incentiva <a href="https://doc.rust-lang.org/1.7.0/book/testing.html">testes</a> desde o inicio do projeto</h3>
 <p>
-Tipos não conseguem verificar toda a lógica
+    Tipos não conseguem <span class="showup">verificar toda a lógica</span>
 </p>
 
 </section>
@@ -598,12 +597,13 @@ $ cargo test
 running 1 test
 test test_super_calculo ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured;
+0 filtered out
 </pre>
 
 </section>
 <section id="slide-org3c38353">
-<h3 id="org3c38353"><a href="https://doc.rust-lang.org/1.7.0/book/documentation.html">Documentação</a> é vista como parte importante do seu projeto</h3>
+    <h3 id="org3c38353"><a href="https://doc.rust-lang.org/1.7.0/book/documentation.html">Documentação</a> é vista como parte <span class="showup">importante do seu projeto</span></h3>
 </section>
 <section >
 <p>
@@ -631,7 +631,7 @@ Tentando evitar que exemplos fiquem desatualizados
 </section>
 <section >
 <p>
-Exemplos que aparecem na documentação são executados durante os testes
+    Exemplos que aparecem na documentação são <span class="showup">executados durante os testes</span>
 </p>
 
 <pre  class="example">
@@ -643,7 +643,8 @@ test src/lib.rs - calculo_surpresa (line 4) ... FAILED
 failures:
 
 ---- src/lib.rs - calculo_surpresa (line 4) stdout ----
-  error[E0061]: this function takes 3 parameters but 2 parameters were supplied
+error[E0061]: this function takes 3 parameters
+                but 2 parameters were supplied
  --&gt; src/lib.rs:5:32
   |
 5 | assert_eq!(5, calculo_surpresa(1, 2));
@@ -661,6 +662,9 @@ $ cargo doc --open
 </pre>
 
 </section>
+<section>
+    <img style="border: none;" src="whitespace_documentation.png" />
+</section>
 <section id="slide-org7c13e0c">
 <h3 id="org7c13e0c">Uma linguagem de sistemas:</h3>
 <ul>
@@ -671,28 +675,26 @@ $ cargo doc --open
 </ul>
 
 <p>
-É uma ótimo evolução para todo o ecossistema de baixo nível
+    É uma <span class="showup">ótima evolução</span> para todo o ecossistema de baixo nível
 </p>
 
 </section>
 <section >
-<p>
-E uma ótima opção para construir plataformas de alto nível
-</p>
-
+    <p> E uma <span class="showup">ótima</span> opção para</p>
+    <p>construir <span class="showup">plataformas de alto nível</span></p>
 </section>
 <section id="slide-org6671059">
-<h3 id="org6671059">Mas você não precisa se preocupar com tudo isso agora</h3>
+    <h3 id="org6671059">Mas você não precisa se <span class="showup">preocupar</span> com tudo isso <span class="showup">agora</span></h3>
 </section>
 <section >
 <p>
-Essas foram exemplos de possibilidades e potencial da linguagem
+    Essas foram exemplos de possibilidades e <span class="showup">potencial da linguagem</span>
 </p>
 
 </section>
 <section >
 <p>
-Você pode aprender aos poucos, na sua velocidade
+Você pode <span class="showup">aprender aos poucos</span>, na sua velocidade
 </p>
 
 </section>
@@ -705,7 +707,7 @@ E começando com o que você já está acostumado em outras linguagens
 </section>
 <section>
 <section id="slide-org8123a67">
-<h2 id="org8123a67">Quem já ouviu falar de Rust?</h2>
+<h2 id="org8123a67">Quem já ouviu falar de <span class="rust">Rust</span>?</h2>
 </section>
 <section >
 <p>
@@ -721,7 +723,7 @@ Ah, e esse é o mascote, <b>Ferris</b>
 </section>
 <section >
 <p>
-Agora, como faço um site?
+Agora, como faço um <span class="showup">site</span>?
 </p>
 
 </section>
@@ -745,7 +747,7 @@ Agora, como faço um site?
 </section>
 <section>
 <section id="slide-org5e1fc19">
-<h2 id="org5e1fc19">Primeiro passo: Instalando as ferramentas</h2>
+<h2 id="org5e1fc19"><span class="showup">Primeiro passo</span>: Instalando as ferramentas</h2>
 <p>
 Siga as instruções no site do <a href="https://rustup.rs/">Rustup</a>
 </p>
@@ -755,7 +757,7 @@ Siga as instruções no site do <a href="https://rustup.rs/">Rustup</a>
 </section>
 <section >
 <p>
-Esse é o gerenciador de versões do Rust
+Esse é o gerenciador de versões do <span class="rust">Rust</span>
 </p>
 
 <ul>
@@ -808,7 +810,7 @@ Hello, world!
 </section>
 <section>
 <section id="slide-org26d401d">
-<h2 id="org26d401d">Vamos criar uma primeira página</h2>
+<h2 id="org26d401d">Vamos criar uma primeira <span class="showup">página</span></h2>
 <p>
 Vamos criar um arquivo em <code>src/index.html</code> com seguinte conteúdo
 </p>
@@ -835,7 +837,7 @@ Vamos criar um arquivo em <code>src/index.html</code> com seguinte conteúdo
 </section>
 <section>
 <section id="slide-org852c9f1">
-<h2 id="org852c9f1">Adicionando um framework web</h2>
+<h2 id="org852c9f1">Adicionando um <span class="showup">framework web</span></h2>
 <p>
 Vamos usar o framework <a href="https://github.com/nickel-org/nickel.rs">Nickel</a> para nos ajudar
 </p>
@@ -861,7 +863,7 @@ Adicione a dependência no arquivo <code>Cargo.toml</code>
 <section id="slide-org2de5588">
 <h2 id="org2de5588">Alterando nosso arquivo</h2>
 <p>
-Agora vamos ver um pouco de Rust, aos poucos.
+Agora vamos ver um pouco de <span class="rust">Rust</span>, aos poucos.
 Vamos abrir o arquivo <code>src/main.rs</code>.
 </p>
 
@@ -989,7 +991,7 @@ Ctrl-C to shutdown server
 
 </section>
 <section id="slide-org5bb47d6">
-<h3 id="org5bb47d6">TA-DÁ!</h3>
+<h3 id="org5bb47d6" class="showup">TA-DÁ!</h3>
 <img style="border: none;" src="hello.png" />
 
 </section>
@@ -998,7 +1000,7 @@ Ctrl-C to shutdown server
 <section id="slide-parabens" data-background="#232323">
 <h2 id="parabens"><a id="org184638b"></a>Parabéns!</h2>
 <p>
-Você tem um site em Rust.
+Você tem um site em <span class="rust">Rust</span>.
 </p>
 
 <img style="border: none; box-shadow: none; width: 50%" src="dance.gif" />
@@ -1006,13 +1008,13 @@ Você tem um site em Rust.
 </section>
 <section >
 <p>
-E tudo em um só binário!
+E tudo em <span class="showup">um só binário</span>!
 </p>
 
 </section>
 <section >
 <p>
-E tem demo no Heroku!
+E tem <span class="showup">demo</span> no Heroku!
 </p>
 
 <p>
@@ -1023,24 +1025,23 @@ E tem demo no Heroku!
 </section>
 <section>
 <section id="slide-orgd2476ff">
-<h2 id="orgd2476ff">"Mas dá pra fazer mais alguma coisa?"</h2>
+<h2 id="orgd2476ff">"Mas dá pra fazer <span class="showup">mais alguma</span> coisa?"</h2>
 
 </section>
 </section>
 <section>
 <section id="slide-orgbcfe09b">
-<h2 id="orgbcfe09b">Vamos fazer uma chamada web</h2>
+<h2 id="orgbcfe09b">Vamos fazer uma <br /><span class="showup">chamada web</span></h2>
 </section>
 <section >
 <p>
-É tão fácil como outras linguagens, mesmo sendo uma linguagem de sistemas
+É tão fácil <span class="showup">como outras linguagens</span>, mesmo sendo uma linguagem de sistemas
 </p>
 
 </section>
 <section >
-<p>
-Vou seguir a receita disponível no <a href="https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic">Rust Cookbooks</a>
-</p>
+<p> Vou seguir a receita <span class="showup">disponível</span> no </p>
+<p> <a href="https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic">Rust Cookbooks</a> </p>
 
 </section>
 <section id="slide-org56ca7ef">
@@ -1070,7 +1071,7 @@ Hello, world!
 </section>
 <section >
 <p>
-Já existem diversas bibliotecas disponíveis no <a href="https://crates.io">Crates.io</a>
+Já existem <span class="showup">diversas bibliotecas disponíveis</span> no <a href="https://crates.io">Crates.io</a>
 </p>
 
 </section>
@@ -1128,15 +1129,19 @@ E criar nossa função
 
 </section>
 <section id="slide-org6f3dffd">
-<h3 id="org6f3dffd">TA-DÁ - Vamos executar!</h3>
+<h3 id="org6f3dffd" class="showup">TA-DÁ</h3>
+<p>Vamos executar!</p>
 <pre  class="example">
 $ cargo run
 </pre>
 
 </section>
+<section>
+    <img style="width: 70%" src="minha-chamada.png" />
+</section>
 <section >
 <p>
-Agora você tem um código para fazer chamadas na internet!
+Agora você tem um código para fazer chamadas <span class="showup">na internet</span>!
 </p>
 
 <ul>
@@ -1150,19 +1155,19 @@ Agora você tem um código para fazer chamadas na internet!
 </section>
 <section >
 <p>
-Bem similar a outras linguagens?
+Bem <span class="showup">similar</span> a outras linguagens?
 </p>
 
 </section>
 </section>
 <section>
 <section id="slide-orgac1a366">
-<h2 id="orgac1a366">"Uma pergunta&#x2026;"</h2>
+<h2 id="orgac1a366">"Uma <span class="showup">pergunta</span>&#x2026;"</h2>
 <div class="outline-text-2" id="text-orgac1a366">
 </div>
 </section>
 <section id="slide-org6ccdecd">
-<h3 id="org6ccdecd">É fácil aprender Rust?</h3>
+<h3 id="org6ccdecd">É fácil aprender <span class="rust">Rust</span>?</h3>
 <p>
 Eu passei semanas batendo a cabeça em conceitos que eram novos para mim.
 </p>
@@ -1179,7 +1184,7 @@ Eu passei semanas batendo a cabeça em conceitos que eram novos para mim.
 </section>
 <section >
 <p>
-Rust trouxe novos conceitos para minha caixa de ferramentas.
+<span class="rust">Rust</span> trouxe novos conceitos para minha caixa de ferramentas.
 </p>
 
 <p>
@@ -1189,7 +1194,7 @@ E eu tenho me divertido muito!
 </section>
 <section >
 <p>
-A comunidade é muito aberta e me ajudou bastante, e tem muito interesse em trazer pessoas novas.
+A comunidade é <span class="showup">muito aberta</span> e me ajudou bastante, e tem muito interesse em <span class="showup">trazer pessoas novas</span>.
 </p>
 
 <p>
@@ -1199,25 +1204,25 @@ Muitas pessoas estão disponíveis para ajudar no <a href="https://riot.im/app/#
 </section>
 <section >
 <p>
-Existe um grande esforço em tornar todo o ecossistema inclusivo, tanto a participação das pessoas quanto material para todos os níveis.
+Existe um grande esforço em tornar todo o <span class="showup">ecossistema inclusivo</span>, tanto a <span class="showup">participação das pessoas</span> quanto material para todos os níveis.
 </p>
 
 </section>
 <section id="slide-org90d3fb6">
 <h3 id="org90d3fb6"><a href="https://rustbridge.github.io">RustBridge</a></h3>
 <p>
-Iniciativa para ensinar Rust para quem não é bem representado na área de tecnologia
+Iniciativa para ensinar <span class="rust">Rust</span> para quem não é bem representado na área de tecnologia
 </p>
 
 </section>
 <section >
 <p>
-Com interesse de tornar a linguagem uma boa primeira linguagem de programação
+Com interesse de tornar a linguagem uma boa <span class="showup">primeira linguagem</span> de programação
 </p>
 
 </section>
 <section id="slide-org18979c1">
-<h3 id="org18979c1">Evolução colaborativa</h3>
+<h3 id="org18979c1"><a href="http://rust-lang.github.io/rfcs/">Evolução colaborativa</a></h3>
 <p>
 Todas as propostas de mudança da linguagem seguem um processo de <a href="https://github.com/rust-lang/rfcs/blob/master/0000-template.md">RFC</a>
 </p>
@@ -1225,7 +1230,7 @@ Todas as propostas de mudança da linguagem seguem um processo de <a href="https
 </section>
 <section >
 <p>
-Que agora requer que novas propostas tenham <a href="https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md">documentação</a> e uma maneira clara para ensinar a mudança
+Que agora requer que novas propostas tenham <a href="https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md">documentação</a> e uma maneira clara para <span class="showup">ensinar</span> a mudança
 </p>
 
 </section>
@@ -1241,7 +1246,7 @@ Eu usei esse <a href="https://github.com/emk/heroku-buildpack-rust">buildpack</a
 <section id="slide-org2f57b24">
 <h3 id="org2f57b24">Só existe o Nickel para web?</h3>
 <p>
-Já existem vários frameworks, mas ainda é um ecossistema em desenvolvimento.
+Já existem vários frameworks, mas ainda é um <span class="showup">ecossistema em desenvolvimento</span>.
 </p>
 
 </section>
@@ -1254,7 +1259,7 @@ Uma boa lista está disponível no site <a href="http://www.arewewebyet.org/">Ar
 
 </section>
 <section id="slide-org9b7cdf2">
-<h4 id="org9b7cdf2">Se você estiver buscando algo mais experimental:</h4>
+<h4 id="org9b7cdf2">Se você estiver buscando algo mais <span class="showup">experimental</span>:</h4>
 <p>
 Confira o <a href="https://rocket.rs/">Rocket</a>, que usa uma sintaxe mais sucinta&#x2026;
 </p>
@@ -1276,7 +1281,7 @@ Mas depende de funcionalidades do compilador ainda em desenvolvimento.
 
 <ul>
 <li>É a maneira mais fácil de manter tudo atualizado</li>
-<li>Rust tem uma versão nova a cada 6 semanas</li>
+<li><span class="rust">Rust</span> tem uma versão nova a cada 6 semanas</li>
 <li>Fica mais fácil de acompanhar as novas funcionalidades</li>
 
 </ul>
@@ -1284,7 +1289,7 @@ Mas depende de funcionalidades do compilador ainda em desenvolvimento.
 </section>
 <section >
 <p>
-Rust está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
+<span class="rust">Rust</span> está disponível nos gerenciadores de pacotes dos sistemas operacionais também, mas pode demorar um pouco mais para receber atualizações.
 </p>
 
 </section>
@@ -1298,9 +1303,9 @@ O <a href="https://diesel.rs/">Diesel</a> pode ajudar nisso.
 
 </section>
 <section id="slide-org45e2e1c">
-<h3 id="org45e2e1c">Já existem empresas usando Rust?</h3>
+<h3 id="org45e2e1c">Já existem empresas usando <span class="rust">Rust</span>?</h3>
 <p>
-Sim. Inclusive o Firefox do seu computador já tem partes em Rust.
+Sim. Inclusive o Firefox do seu computador já tem partes em <span class="rust">Rust</span>.
 </p>
 
 <p>
@@ -1309,9 +1314,9 @@ Algumas empresas: Dropbox, Chef, Tilde, Sentry, CoreOS, Mozilla e tem mais <a hr
 
 </section>
 <section id="slide-orgd98271b">
-<h3 id="orgd98271b">Só dá pra usar Rust para a web?</h3>
+<h3 id="orgd98271b">Só dá pra usar <span class="rust">Rust</span> para a web?</h3>
 <p>
-Não, dá pra usar para muitas outras lugares!
+Não, dá pra usar para muitos outros lugares!
 </p>
 
 </section>
@@ -1323,7 +1328,7 @@ Não, dá pra usar para muitas outras lugares!
 </section>
 <section >
 <p>
-Dois fortes* espaços para aplicar a linguagem:
+Dois fortes<span class="showup">*</span> espaços para aplicar a linguagem:
 </p>
 
 <ul>
@@ -1332,7 +1337,7 @@ Dois fortes* espaços para aplicar a linguagem:
 Extensões de linguagens (Gems, npm, python extensions, FFI)
 </p>
 
-<small>*IMHO</small></li>
+<small class="showup">*IMHO</small></li>
 
 </ul>
 
@@ -1346,12 +1351,12 @@ Extensões de linguagens (Gems, npm, python extensions, FFI)
 </section>
 <section>
 <section id="slide-orgc4a6550">
-<h2 id="orgc4a6550">Espero que tenham gostado de Rust</h2>
+<h2 id="orgc4a6550">Espero que tenham gostado de <span class="rust">Rust</span></h2>
 <div class="outline-text-2" id="text-orgc4a6550">
 </div>
 </section>
 <section id="slide-org6af15d9">
-<h3 id="org6af15d9">E se quiser seguir conhecendo</h3>
+<h3 id="org6af15d9">E se quiser <span class="showup">seguir conhecendo</span></h3>
 <ul>
 <li>Tem um <a href="https://doc.rust-lang.org/book/">livro de graça</a> no site [EN]</li>
 <li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">#rust-beginners</a> é um ótimo canal para tirar dúvidas rápidas</li>
@@ -1366,7 +1371,7 @@ Extensões de linguagens (Gems, npm, python extensions, FFI)
 </section>
 <section >
 <p>
-Se você se interessou por Rust, pode entrar em contato comigo também, que eu quero te ajudar com os próximos passos.
+Se você se interessou por <span class="rust">Rust</span>, pode entrar em contato comigo também, que eu quero te ajudar com os próximos passos.
 </p>
 
 <p>
