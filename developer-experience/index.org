@@ -1,0 +1,196 @@
+#+Title: Developer Experience: desbloqueando entregas ágeis
+#+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil reveal_history:t
+#+REVEAL_THEME: base16
+#+REVEAL_TRANS: slide
+#+REVEAL_MAX_SCALE: 1.8
+#+REVEAL_EXTRA_CSS: extra.css
+
+* Developer Experience
+  Desbloqueando entregas ágeis
+
+  #+reveal: split
+  De onde vem a necessidade de entender a experiência de desenvolvimento?
+
+  #+reveal: split
+  - Uma introdução ao conceito
+  - Um case de sucesso
+  - Outros exemplos surgindo no mercado
+
+* Agilidade e Lean
+  Construção colaborativa, evitando desperdicio
+
+  #+reveal: split
+  Processos para responder rápido a necessidades de negócio
+
+** Estamos construindo o que o negócio precisa?
+** Estamos medindo o impacto das decisões?
+** Podemos responder rápido a mudanças?
+
+* Entrega Continua
+  Reduzindo riscos por entregar frequentemente
+
+** Deploy Continuo
+
+* Como manter os benefícios da entrega contínua em grandes equipes?
+
+  #+reveal: split
+  Vamos pensar em um crescimento da equipe
+
+  #+reveal: split
+  10 pessoas desenvolvendo
+
+  #+reveal: split
+  A complexidade ainda é pequena
+
+  #+reveal: split
+  Manter o contexto inteiro do negócio dentro da equipe é simples
+
+  #+reveal: split
+  As ferramentas e processos são simples
+
+** 10 equipes de 10 pessoas desenvolvendo
+
+   #+reveal: split
+   A complexidade de negócio que esse grupo suporta cresce
+
+   #+reveal: split
+   As mudanças possuem maiores riscos e impacto
+
+   #+reveal: split
+   As ferramentas e processos precisam se adaptar ao crescimento da complexidade
+
+** 10 pessoas x 100 pessoas
+
+   - Qual o risco de uma mudança no código?
+   - Qual o risco de uma mudança no banco de dados?
+   - Qual o risco de uma mudança na plataforma?
+
+** Qual a Experiência do Usuário?
+
+   #+reveal: split
+   Técnicas como Zero Downtime Deploy, Blue-Green, Revisões, Ferramental de Testes surgem para gerar uma boa experiência de desenvolvimento
+
+   #+reveal: split
+   E se pensarmos nas pessoas que desenvolvem os nossos sistemas como Usuários dos nossos processos de entrega?
+
+** Qual a Experiência de Desenvolvimento?
+
+   #+reveal: split
+   Qual a experiência de desenvolvimento?
+
+   Quanto tempo de latência desde uma mudança feita até o produção:
+
+   - Uma mudança na lógica do código?
+   - Uma mudança no banco de dados?
+   - Uma mudança na infraestrutura?
+
+   #+reveal: split
+   Qual a experiência de desenvolvimento?
+
+   Qual o custo de em gerar uma mudança:
+
+   - Uma mudança na lógica do código?
+   - Uma mudança no banco de dados?
+   - Uma mudança na infraestrutura?
+
+   #+reveal: split
+   Grande latência e grandes custos de mudança muda o comportamento das equipes
+
+   #+reveal: split
+   Uma mudança que demora 5 dias para chegar em produção carrega muito risco
+
+   #+reveal: split
+   Existe uma tendência a acumular e agrupar mudanças quando o custo é alto
+
+   E isso aumenta o risco
+
+   #+reveal: split
+   As pessoas iram evitar fazer esse tipo de mudança ou buscar outras maneiras
+
+** Saber responder essas perguntas é essencial para Entrega Contínua
+
+   Developer Experience é uma otimização
+
+   #+reveal: split
+
+   Precisamos reduzir os custos dos processos para incentivar Entrega Contínua como a maneira padrão de pensar
+
+* Entrega contínua é pré-requisito para boas entregas
+
+  #+reveal: split
+  Se uma mudança demora 5 minutos para chegar a produção
+  retornar ao estado anterior demora apenas 5 minutos também
+
+* Case
+  Incentivando mudanças em banco de dados entre 25 equipes
+
+  #+reveal: split
+  Cenário inicial: uma mudança de banco de dados precisa
+
+  - Precisa ser revisado pelo DBA
+  - Não podemos permitir comandos que perdam dados (Drop, deletes)
+  - Não podemos permitir comandos que gerem locks nas tabelas
+  - Mudanças estruturais precisam de cuidado redobrado
+
+  #+reveal: split
+  Resultado:
+
+  - Mudanças demoraram 5 dias para serem revisadas
+  - Conflitos nas prioridades atrasavam as revisões
+  - Equipes evitavam fazer mudanças no banco de dados
+  - Falta de confiança por não saberem o que é aceitável
+  - Falta de previsibilidade quando a mudança seria aplicada em produção
+  - Mudanças aconteciam no final da sprint, gerando dependência no código que seria entregue
+
+  #+reveal: split
+  Criamos uma equipe de 4 pessoas:
+
+  - Automatizamos a maioria das checagens nas mudanças
+  - Melhoramos a mensagem de feedback quando encontramos erros
+  - Reduzimos o ciclo de feedback permitindo executar as verificações antes mesmo de enviar o pedido
+  - Nos casos que ainda não haviam verificações automáticas, enviávamos para o DBA nos ajudar
+
+  #+reveal: split
+  Mudanças foram de 5 dias de revisão para 1 hora
+
+  #+reveal: split
+  - Continuamos focando na experiência de quem desenvolve
+  - Cobrimos mais casos para verificacao
+  - Criamos mais passos de verificação para reduzir os riscos das mudanças
+
+  #+reveal: split
+  Em alguns casos, a mudança poderia chegar a 15 minutos em produção
+
+** 4 pessoas
+   Reduziram 40 horas em 25 equipes
+
+   #+reveal: split
+   - O processo se tornou mais trivial
+   - As equipes ficaram mais propensas a criarem mudanças mais cedo durante a sprint
+
+   #+reveal: split
+   Como as mudanças agora tem baixo custo, mais mudanças aconteciam, só que bem menores
+
+* Se você está buscando adotar Entrega Contínua
+
+  Analise o processo de entrega para saber qual o maior custo que está impedindo a adoção
+
+* Se você já pratica Entrega Contínua
+
+  Saiba responder a latência e o custo para cada uma das mudanças
+
+** TODO Developer Experience em outras empresas
+
+* Em resumo
+  Se sua Entrega Contínua tem ciclos muito grandes e um custo alto nas mudanças, talvez seja necessário revisar a experiência do desenvolvimento, e investir nela
+
+  #+reveal: split
+  Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com consequências menores para o seu negócio
+
+  #+reveal: split
+  Podemos conversar mais sobre esses assuntos pela conferência
+
+  #+reveal: split
+  Obrigado
+
+  Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
