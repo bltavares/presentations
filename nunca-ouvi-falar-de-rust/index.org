@@ -283,7 +283,7 @@ error[E0282]: type annotations needed
 
          let writer = data.clone();
          thread::spawn(move || {
-             let mut locked_writer = writer.lock().expect("Could not aquire lock b");
+             let mut locked_writer = writer.lock().expect("Could not acquire lock b");
              locked_writer.push('b');
          });
 
@@ -313,7 +313,7 @@ error[E0282]: type annotations needed
       }
 
       fn enviar_pedido(pedido: Pedido) {
-          // Codigo que envia o pedido
+          // Código que envia o pedido
       }
 
       fn main() {
@@ -341,7 +341,7 @@ error[E0382]: use of moved value: `pedido`
     Só podemos acessar o pedido antes de enviarmos as informações nesse cenário
 
     #+reveal: split
-    E isso é enforçado pelo compilador
+    E isso é reforçado pelo compilador
 
     #+reveal: split
     [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
@@ -357,7 +357,7 @@ error[E0382]: use of moved value: `pedido`
       }
 
       fn enviar_pedido(pedido: Pedido) {
-          // Codigo que envia o pedido
+          // Código que envia o pedido
       }
 
       fn main() {
@@ -404,7 +404,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 
    #+reveal: split
    #+BEGIN_SRC rust
-     /// Realiza um grande calculo que te deixará surpreso
+     /// Realiza um grande cálculo que te deixará surpreso
      /// # Examples
      ///
      /// ```
@@ -449,7 +449,7 @@ $ cargo doc --open
    - Que se preocupa com documentação e testes
    - E traz todas essas aprendizagens de outras linguagens
 
-   É uma ótimo evolução para todo o ecosistema de baixo nível
+   É uma ótimo evolução para todo o ecossistema de baixo nível
 
    #+reveal: split
    E uma ótima opção para construir plataformas de alto nível
@@ -501,7 +501,7 @@ $ cargo doc --open
   - Ajuda a manter tudo atualizado
 
   #+reveal: split
-  No final estará dispoível:
+  No final estará disponível:
 
   - rustup: o gerenciador de versões
   - cargo: o gerenciador de projetos e de dependências
@@ -551,7 +551,7 @@ $ cargo doc --open
   #+REVEAL_HTML:  <img style="border: none; width: 80%" src="nickel.png" />
 
   #+reveal: split
-  Adicione a dependencia no arquivo =Cargo.toml=
+  Adicione a dependência no arquivo =Cargo.toml=
 
   #+BEGIN_SRC toml
     [dependencies]
@@ -699,7 +699,7 @@ $ cargo doc --open
    Vamos usar o [[https://docs.rs/reqwest/0.8.0/reqwest/][Reqwest]] nesse projeto
 
    #+reveal: split
-   Adicione a dependencia no arquivo =Cargo.toml=
+   Adicione a dependência no arquivo =Cargo.toml=
 
    #+BEGIN_SRC toml
      [dependencies]
@@ -768,10 +768,10 @@ $ cargo run
    Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
 
    #+reveal: split
-   Existe um grande esforço em tornar todo o ecosistema inclusivo, tanto a participação das pessoas quanto material para todos os níveis.
+   Existe um grande esforço em tornar todo o ecossistema inclusivo, tanto a participação das pessoas quanto material para todos os níveis.
 
 ** [[https://rustbridge.github.io][RustBridge]]
-   Iniciativa para ensinar Rust para quem não é bem reprensentado na área de tecnologia
+   Iniciativa para ensinar Rust para quem não é bem representado na área de tecnologia
 
    #+reveal: split
    Com interesse de tornar a linguagem uma boa primeira linguagem de programação
