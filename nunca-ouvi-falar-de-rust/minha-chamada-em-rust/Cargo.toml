@@ -1,0 +1,7 @@
+[package]
+name = "minha-chamada-em-rust"
+version = "0.1.0"
+authors = ["Bruno Tavares <connect+github@bltavares.com>"]
+
+[dependencies]
+reqwest = "0.8.0"
