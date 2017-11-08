@@ -65,7 +65,9 @@
   #+END_QUOTE
 
   #+reveal: split
-  "É uma linguagem bem moderna"
+  "É uma linguagem bem moderna,
+
+  com foco em baixo nível"
 
   #+reveal: split
   Uma linguagem com várias características funcionais:
@@ -97,7 +99,9 @@
   Qantas falhas podem acontecer em um programa de baixo nível?
 
   #+reveal: split
-  BufferOverflow, Segmentation Fault, Use After Free...
+  BufferOverflow, Segmentation Fault,
+
+  Use After Free...
 
   #+reveal: split
   Rust tem um sistema de tipos que previne diversos erros de gerenciamento de memória, em tempo de compilação
@@ -105,7 +109,7 @@
   #+reveal: split
   Gerenciamento de memória sem Garbage Collector
 
-* Exemplo de coisas que Rust previne apenas com o compilador
+* Exemplo do Rust previne apenas com o compilador
 
   Vamos ver um pouco de Rust
 
@@ -290,37 +294,38 @@ error[E0282]: type annotations needed
    #+END_SRC
 
 
-*** Esse sistema de tipo traz novas maneiras de expressar seu domínio
+** Esse sistema de tipo traz novas maneiras de expressar seu domínio
 
+   #+reveal: split
    Que não conseguimos fazer em outras linguagens mais conhecidas
 
-   #+reveal: split
-   [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
+    #+reveal: split
+    [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
 
-   #+BEGIN_SRC rust
-     #[derive(Debug)]
-     struct Pedido {
-         id: i32
-     }
+    #+BEGIN_SRC rust
+      #[derive(Debug)]
+      struct Pedido {
+          id: i32
+      }
 
-     fn novo_pedido() -> Pedido {
-         Pedido { id: 1 }
-     }
+      fn novo_pedido() -> Pedido {
+          Pedido { id: 1 }
+      }
 
-     fn enviar_pedido(pedido: Pedido) {
-         // Codigo que envia o pedido
-     }
+      fn enviar_pedido(pedido: Pedido) {
+          // Codigo que envia o pedido
+      }
 
-     fn main() {
-         let pedido = novo_pedido();
-         enviar_pedido(pedido);
+      fn main() {
+          let pedido = novo_pedido();
+          enviar_pedido(pedido);
 
-         println!("Dados do pedido: {:?}", pedido);
-     }
-   #+END_SRC
+          println!("Dados do pedido: {:?}", pedido);
+      }
+    #+END_SRC
 
-   #+reveal: split
-   #+BEGIN_SRC
+    #+reveal: split
+    #+BEGIN_SRC
 error[E0382]: use of moved value: `pedido`
   --> src/main.rs:18:39
    |
@@ -330,51 +335,135 @@ error[E0382]: use of moved value: `pedido`
 18 |     println!("Dados do pedido: {:?}", pedido);
    |                                       ^^^^^^
                          value used here after move
-   #+END_SRC
+    #+END_SRC
+
+    #+reveal: split
+    Só podemos acessar o pedido antes de enviarmos as informações nesse cenário
+
+    #+reveal: split
+    E isso é enforçado pelo compilador
+
+    #+reveal: split
+    [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
+
+    #+BEGIN_SRC rust
+      #[derive(Debug)]
+      struct Pedido {
+          id: i32
+      }
+
+      fn novo_pedido() -> Pedido {
+          Pedido { id: 1 }
+      }
+
+      fn enviar_pedido(pedido: Pedido) {
+          // Codigo que envia o pedido
+      }
+
+      fn main() {
+          let pedido = novo_pedido();
+          println!("Dados do pedido: {:?}", pedido);
+
+          enviar_pedido(pedido);
+      }
+    #+END_SRC
+
+    #+reveal: split
+    #+BEGIN_SRC
+Dados do pedido: Pedido { id: 1 }
+    #+END_SRC
+
+** Rust incentiva [[https://doc.rust-lang.org/1.7.0/book/testing.html][testes]] desde o inicio do projeto
+   Tipos não conseguem verificar toda a lógica
 
    #+reveal: split
-   Só podemos acessar o pedido antes de enviarmos as informações nesse cenário
-
-   #+reveal: split
-   [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
-
    #+BEGIN_SRC rust
-     #[derive(Debug)]
-     struct Pedido {
-         id: i32
+     pub fn super_calculo(x: i32, y: i32) -> i32 {
+         x + y
      }
 
-     fn novo_pedido() -> Pedido {
-         Pedido { id: 1 }
-     }
-
-     fn enviar_pedido(pedido: Pedido) {
-         // Codigo que envia o pedido
-     }
-
-     fn main() {
-         let pedido = novo_pedido();
-         println!("Dados do pedido: {:?}", pedido);
-
-         enviar_pedido(pedido);
+     #[test]
+     fn test_super_calculo() {
+         assert_eq!(3, super_calculo(1, 2));
      }
    #+END_SRC
 
    #+reveal: split
    #+BEGIN_SRC
-Dados do pedido: Pedido { id: 1 }
+$ cargo test
+running 1 test
+test test_super_calculo ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
    #+END_SRC
+
+** [[https://doc.rust-lang.org/1.7.0/book/documentation.html][Documentação]] é vista como parte importante do seu projeto
+
+   #+reveal: split
+   Tentando evitar que exemplos fiquem desatualizados
+
+   #+reveal: split
+   #+BEGIN_SRC rust
+     /// Realiza um grande calculo que te deixará surpreso
+     /// # Examples
+     ///
+     /// ```
+     /// use minha_lib::*;
+     ///
+     /// assert_eq!(5, calculo_surpresa(1, 2));
+     /// ```
+     pub fn calculo_surpresa(x: i32, y: i32, z: i32) -> i32 {
+         x + y + z
+     }
+   #+END_SRC
+
+   #+reveal: split
+   Exemplos que aparecem na documentação são executados durante os testes
+
+   #+BEGIN_SRC
+$ cargo test
+[...]
+running 1 test
+test src/lib.rs - calculo_surpresa (line 4) ... FAILED
+
+failures:
+
+---- src/lib.rs - calculo_surpresa (line 4) stdout ----
+  error[E0061]: this function takes 3 parameters but 2 parameters were supplied
+ --> src/lib.rs:5:32
+  |
+5 | assert_eq!(5, calculo_surpresa(1, 2));
+  |                                ^^^^ expected 3 parameters
+   #+END_SRC
+
+   #+reveal: split
+   Gerar a documentação do projeto é simples
+
+   #+BEGIN_SRC
+$ cargo doc --open
+   #+END_SRC
+
+** Uma linguagem de sistemas:
+
+   - Tem mensagens de erros claras
+   - Que se preocupa com documentação e testes
+   - E traz todas essas aprendizagens de outras linguagens
+
+   É uma ótimo evolução para todo o ecosistema de baixo nível
+
+   #+reveal: split
+   E uma ótima opção para construir plataformas de alto nível
 
 ** Mas você não precisa se preocupar com tudo isso agora
 
    #+reveal: split
-   Essas são exemplos de possibilidades e potencial da linguagem
+   Essas foram exemplos de possibilidades e potencial da linguagem
 
    #+reveal: split
    Você pode aprender aos poucos, na sua velocidade
 
    #+reveal: split
-   E começando com o que você já está acostumado
+   E começando com o que você já está acostumado em outras linguagens
 
 * Quem já ouviu falar de Rust?
 
@@ -393,8 +482,8 @@ Dados do pedido: Pedido { id: 1 }
   #+REVEAL_HTML:  <video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
 
 ** Um Site:
-   - Fácil de deployar
    - Leve
+   - Fácil de deployar
    - Aproveitando todas as vantagens que eu já comentei
 
 * Primeiro passo: Instalando as ferramentas
@@ -648,12 +737,11 @@ $ cargo run
    #+END_SRC
 
    #+reveal: split
-   Agora você tem um código para fazer chamadas na internet:
+   Agora você tem um código para fazer chamadas na internet!
 
-TODO: Formatar melhor essa lista
-   - cross-plataforma
    - binário
-   - com baixo uso de memória, sem o risco de "dar tiros no pé"
+   - cross-plataforma
+   - com baixo uso de memória
    - que não precisa de ficar instalando várias dependências para usar
 
    #+reveal: split
@@ -667,7 +755,7 @@ TODO: Formatar melhor essa lista
    #+reveal: split
    - Tenho um background mais alto nível (Ruby/Java/JavaScript)
    - Tive que aprender sobre stack e referências
-   - O conceito de ~lifetime~ e ~borrow~ demoraram pra entrar na minha cabeça
+   - Os conceitos sobre ~lifetime~ e ~borrow~ demoraram pra entrar na minha cabeça
 
    #+reveal: split
    Rust trouxe novos conceitos para minha caixa de ferramentas.
@@ -675,12 +763,24 @@ TODO: Formatar melhor essa lista
    E eu tenho me divertido muito!
 
    #+reveal: split
-   A comunidade é muito aberta e me ajudou bastante.
+   A comunidade é muito aberta e me ajudou bastante, e tem muito interesse em trazer pessoas novas.
 
    Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
 
    #+reveal: split
-TODO: Falar das iniciativas de tornar a entrada mais inclusiva, porta de entrada, Rust Bridge, didatico
+   Existe um grande esforço em tornar todo o ecosistema inclusivo, tanto a participação das pessoas quanto material para todos os níveis.
+
+** [[https://rustbridge.github.io][RustBridge]]
+   Iniciativa para ensinar Rust para quem não é bem reprensentado na área de tecnologia
+
+   #+reveal: split
+   Com interesse de tornar a linguagem uma boa primeira linguagem de programação
+
+** Evolução colaborativa
+   Todas as propostas de mudança da linguagem seguem um processo de [[https://github.com/rust-lang/rfcs/blob/master/0000-template.md][RFC]]
+
+   #+reveal: split
+   Que agora requer que novas propostas tenham [[https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md][documentação]] e uma maneira clara para ensinar a mudança
 
 ** Como eu coloco meu site no Heroku?
    Eu usei esse [[https://github.com/emk/heroku-buildpack-rust][buildpack]].
@@ -738,8 +838,7 @@ TODO: Falar das iniciativas de tornar a entrada mais inclusiva, porta de entrada
      #+REVEAL_HTML:  <small>*IMHO</small>
 
    #+reveal: split
-TODO: Adicionar exemplo de jogos
-   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Sistemas Operacionais^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, Jogos...
+   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Sistemas Operacionais^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, [[http://arewegameyet.com][Jogos]], [[https://github.com/japaric/rust-cross][cross-compilação]], [[https://github.com/japaric/trust][CI]]...
 
 * Espero que tenham gostado de Rust
 
