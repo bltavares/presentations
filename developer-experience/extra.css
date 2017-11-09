@@ -1,0 +1,16 @@
+.showup {
+    color: #dc9656 !important;
+    color: #86c1b9 !important;
+    color: #a1b56c !important;
+    color: #ba8baf !important;
+    color: #1857c2 !important;
+    font-weight: bold;
+}
+
+.reveal a {
+    color: #a1b56c !important;
+}
+
+.reveal a:before {
+    content: "\021e7 "
+}
