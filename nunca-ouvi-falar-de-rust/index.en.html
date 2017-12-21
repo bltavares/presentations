@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>I've (Never) Heard of Rust&#x2026; But how do I make a website?</title>
+<meta name="author" content="(Bruno Tavares)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/base16.css" id="theme"/>
+
+<link rel="stylesheet" href="extra.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-orge783f9b">
+<h2 id="orge783f9b">I've (Never) Heard of Rust&#x2026;</h2>
+<p>
+But how do I make a website?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org05f885d">
+<h2 id="org05f885d">Hello folks!</h2>
+</section>
+<section >
+<p>
+If you've never heard of Rust&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+I'll tell you what Rust is
+</p>
+
+</section>
+<section >
+<p>
+How I got to know Rust
+</p>
+
+</section>
+<section >
+<p>
+And some problems that the language helped me to solve
+</p>
+
+</section>
+<section >
+<p>
+But if you've already heard of it&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+I'll show you some steps to keep learning
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge6c492d">
+<h2 id="orge6c492d">In 2015</h2>
+</section>
+<section >
+<p>
+I started to get involved with the deployment of some projects.
+</p>
+
+</section>
+<section >
+<p>
+NPM + Python + Java + Closure Compiler + SCons + RVM&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+I wanted a simple way to execute applications
+</p>
+
+</section>
+<section id="slide-org8ed4dd6">
+<h3 id="org8ed4dd6">Objective</h3>
+<p>
+1 cross-platform binary
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org1c68c52">
+<h2 id="org1c68c52">The Options</h2>
+</section>
+<section >
+<p>
+"Do I have to write in C for binaries?"
+</p>
+
+</section>
+<section >
+<p>
+Rust was one of the options in my search for alternatives.
+</p>
+
+</section>
+<section >
+<p>
+"But what is Rust?"
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-rust">
+<h2 id="rust"><a id="org53ddb70"></a>Rust</h2>
+<img style="border: none; box-shadow: none; position: relative; top: 1.6em;" src="rust-logo.svg" width="25%" />
+
+<blockquote nil>
+<p>
+Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.
+</p>
+</blockquote>
+
+</section>
+<section >
+
+<p>
+"It's a very modern language
+</p>
+
+<p>
+with low-level focus"
+</p>
+
+</section>
+<section >
+<p>
+A language with several functional-paradigm features:
+</p>
+
+<ul>
+<li class="fragment">Immutable by default</li>
+<li class="fragment">No null or undefined</li>
+<li class="fragment">Pattern matching</li>
+<li class="fragment">Closures</li>
+<li class="fragment">Structs and Enums</li>
+
+</ul>
+
+</section>
+<section >
+
+<p>
+What stood out to me for continued learning:
+</p>
+
+<ul>
+<li class="fragment">Creates binaries</li>
+<li class="fragment">Cross-platform</li>
+<li class="fragment">Good error messages</li>
+<li class="fragment">Low-level focus
+<ul>
+<li>But with a high-level language experience</li>
+
+</ul></li>
+<li class="fragment">Sponsored by Mozilla</li>
+
+</ul>
+
+</section>
+<section id="slide-orgd123f58">
+<h3 id="orgd123f58"><a href="https://www.mozilla.org/en-US/firefox/quantum/">Mozilla Quantum</a></h3>
+<p>
+All of these traits create an ideal environment for proceeding with confidence
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org26774a6">
+<h2 id="org26774a6">"Why did they choose to create a low-level language?"</h2>
+<p>
+How many bugs can happen in a low-level program?
+</p>
+
+</section>
+<section >
+<p>
+Buffer overflow, segmentation fault,
+</p>
+
+<p>
+Use-After-Free&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Rust has a type system that prevents several kinds of memory management errors at compile-time
+</p>
+
+</section>
+<section >
+<p>
+Memory management without a garbage collector
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7e5d1fa">
+<h2 id="org7e5d1fa">An Example of Rust Preventing Problems with Only the Compiler</h2>
+<p>
+Let's see a little Rust
+</p>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=638e72a89e58556878203164865e3a83&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error: argument never used
+ --&gt; src/main.rs:3:22
+  |
+3 |     println!("Data", data);
+  |                      ^^^^
+
+error: aborting due to previous error
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=a3e89511533fe9ed311cdc1a56e6cd6f&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error[E0277]: the trait bound
+`std::vec::Vec&lt;_&gt;: std::fmt::Display` is not satisfied
+ --&gt; src/main.rs:3:25
+|
+|println!("Data {}", data);
+|                    ^^^^
+ `std::vec::Vec&lt;_&gt;` cannot be formatted with the default
+    formatter; try using `:?` instead if you are using
+    a format string
+|
+= help: the trait `std::fmt::Display`
+        is not implemented for `std::vec::Vec&lt;_&gt;`
+= note: required by `std::fmt::Display::fmt`
+
+error: aborting due to previous error
+</pre>
+
+</section>
+<section >
+<pre  class="example">
+^^^^ `std::vec::Vec&lt;_&gt;` cannot be formatted with the default
+formatter; try using `:?` instead if you are using a
+format string
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=05d06e731b17b64faa7cd804251dc311&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error[E0282]: type annotations needed
+ --&gt; src/main.rs:2:16
+  |
+2 |     let data = vec!();
+  |         ----   ^^^^^^ cannot infer type for `T`
+  |         |
+  |         consider giving `data` a type
+  |
+
+error: aborting due to previous error
+</pre>
+
+</section>
+<section >
+<pre  class="example">
+error[E0282]: type annotations needed
+</pre>
+
+</section>
+<section >
+<pre  class="example">
+$ rustc --explain E0282
+</pre>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=8c2e161f0fe929a1d8edfe88013779b2&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> : <span style="color: #81a2be;">Vec</span><span style="color: #8abeb7;">&lt;</span><span style="color: #81a2be;">char</span><span style="color: #8abeb7;">&gt;</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+Data []
+</pre>
+
+</section>
+<section id="slide-org7663eed">
+<h3 id="org7663eed">Imagine a complex codebase</h3>
+<ul>
+<li>Threaded code</li>
+<li>Parallel image processing</li>
+<li>Lots of coordinated I/O</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+In short, imagine how complex a browser is under the hood.
+</p>
+
+</section>
+<section >
+<p>
+Are there any problems in this code?
+</p>
+
+<p>
+<a href="https://play.rust-lang.org/?gist=e03bb56c3fdb75e434a0cf71583034b5&amp;version=stable">Playground</a>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">time</span>::<span style="color: #81a2be;">Duration</span>;
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #b294bb;">vec!</span><span style="color: #8abeb7;">()</span>;
+
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span>|| <span style="color: #f0c674;">{</span>
+        data.push<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">'a'</span><span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span>|| <span style="color: #f0c674;">{</span>
+        data.push<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">'b'</span><span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #81a2be;">thread</span>::sleep<span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Duration</span>::from_millis<span style="color: #f0c674;">(</span><span style="color: #81a2be;">50</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+After several compilation feedback cycles:
+</p>
+
+<ul>
+<li>We won't have access to memory that's already freed</li>
+<li>We will have another form of avoiding <i>race conditions</i></li>
+
+</ul>
+
+<p>
+Our binary won't have these problems!
+</p>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=419ff286df8f165c35879e30f9b8e1f7&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::thread;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">sync</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Arc</span>, <span style="color: #81a2be;">Mutex</span><span style="color: #c5c8c6;">}</span>;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">time</span>::<span style="color: #81a2be;">Duration</span>;
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">data</span> = <span style="color: #81a2be;">Arc</span>::new<span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Mutex</span>::new<span style="color: #f0c674;">(</span><span style="color: #b294bb;">vec!</span><span style="color: #b5bd68;">()</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">writer</span> = data.clone<span style="color: #8abeb7;">()</span>;
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span><span style="color: #b5bd68;">move</span> || <span style="color: #f0c674;">{</span>
+        <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">lock_result</span> = writer.lock<span style="color: #b5bd68;">()</span>;
+        <span style="color: #b5bd68;">match</span> lock_result <span style="color: #b5bd68;">{</span>
+            <span style="color: #81a2be;">Ok</span><span style="color: #81a2be;">(</span><span style="color: #b5bd68;">mut</span> locked_writer<span style="color: #81a2be;">)</span> =&gt; locked_writer.push<span style="color: #81a2be;">(</span><span style="color: #8abeb7;">'a'</span><span style="color: #81a2be;">)</span>,
+            <span style="color: #81a2be;">Err</span><span style="color: #81a2be;">(</span>_<span style="color: #81a2be;">)</span> =&gt; <span style="color: #b294bb;">panic!</span><span style="color: #81a2be;">(</span><span style="color: #8abeb7;">"Could not acquire lock a"</span><span style="color: #81a2be;">)</span>,
+        <span style="color: #b5bd68;">}</span>
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">writer</span> = data.clone<span style="color: #8abeb7;">()</span>;
+    <span style="color: #81a2be;">thread</span>::spawn<span style="color: #8abeb7;">(</span><span style="color: #b5bd68;">move</span> || <span style="color: #f0c674;">{</span>
+        <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">locked_writer</span> = writer.lock<span style="color: #b5bd68;">()</span>.expect<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">"Could not acquire lock b"</span><span style="color: #b5bd68;">)</span>;
+        locked_writer.push<span style="color: #b5bd68;">(</span><span style="color: #8abeb7;">'b'</span><span style="color: #b5bd68;">)</span>;
+    <span style="color: #f0c674;">}</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #81a2be;">thread</span>::sleep<span style="color: #8abeb7;">(</span><span style="color: #81a2be;">Duration</span>::from_millis<span style="color: #f0c674;">(</span><span style="color: #81a2be;">50</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Data </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, data<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+
+</section>
+<section id="slide-orgd4f050a">
+<h3 id="orgd4f050a">This type system brings new ways of expressing ownership</h3>
+</section>
+<section >
+<p>
+Which we can't do in other better-known languages
+</p>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">struct</span> <span style="color: #81a2be;">Request</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">i32</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">new_request</span><span style="color: #c5c8c6;">()</span> -&gt; <span style="color: #81a2be;">Request</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #81a2be;">Request</span> <span style="color: #8abeb7;">{</span> <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">1</span> <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">send_request</span><span style="color: #c5c8c6;">(</span><span style="color: #f0c674;">request</span>: <span style="color: #81a2be;">Request</span><span style="color: #c5c8c6;">)</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Code to send a request</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">request</span> = new_request<span style="color: #8abeb7;">()</span>;
+    send_request<span style="color: #8abeb7;">(</span>request<span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Request data: </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, request<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+error[E0382]: use of moved value: `request`
+  --&gt; src/main.rs:18:39
+   |
+16 |     send_request(request);
+   |                  ------- value moved here
+17 |
+18 |     println!("Request data: {:?}", request);
+   |                                    ^^^^^^^
+                         value used here after move
+</pre>
+
+</section>
+<section >
+<p>
+We can only access the request before we send data in this scenario.
+</p>
+
+</section>
+<section >
+<p>
+And this is enforced by the compiler.
+</p>
+
+</section>
+<section >
+<p>
+<a href="https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&amp;version=stable">Playground</a>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">derive</span><span style="color: #8abeb7;">(</span><span style="color: #b294bb;">Debug</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">struct</span> <span style="color: #81a2be;">Request</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">i32</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">new_request</span><span style="color: #c5c8c6;">()</span> -&gt; <span style="color: #81a2be;">Request</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #81a2be;">Request</span> <span style="color: #8abeb7;">{</span> <span style="color: #f0c674;">id</span>: <span style="color: #81a2be;">1</span> <span style="color: #8abeb7;">}</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">send_request</span><span style="color: #c5c8c6;">(</span><span style="color: #f0c674;">request</span>: <span style="color: #81a2be;">Request</span><span style="color: #c5c8c6;">)</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #969896; font-style: italic;">// </span><span style="color: #969896; font-style: italic;">Code to send a request</span>
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">request</span> = new_request<span style="color: #8abeb7;">()</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Request data: </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, request<span style="color: #8abeb7;">)</span>;
+
+    send_request<span style="color: #8abeb7;">(</span>request<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+Dados do pedido: Request { id: 1 }
+</pre>
+
+</section>
+<section id="slide-orgb86509c">
+<h3 id="orgb86509c">Rust encourages <a href="https://doc.rust-lang.org/1.7.0/book/testing.html">testing</a> from the beginning of a project</h3>
+<p>
+Types can't verify all logic
+</p>
+
+</section>
+<section >
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">pub</span> <span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">super_calculation</span><span style="color: #c5c8c6;">(</span><span style="color: #f0c674;">x</span>: <span style="color: #81a2be;">i32</span>, <span style="color: #f0c674;">y</span>: <span style="color: #81a2be;">i32</span><span style="color: #c5c8c6;">)</span> -&gt; <span style="color: #81a2be;">i32</span> <span style="color: #c5c8c6;">{</span>
+    x + y
+<span style="color: #c5c8c6;">}</span>
+
+<span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">test</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">test_super_calculation</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b294bb;">assert_eq!</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">3</span>, super_calculation<span style="color: #f0c674;">(</span><span style="color: #81a2be;">1</span>, <span style="color: #81a2be;">2</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<pre  class="example">
+$ cargo test
+running 1 test
+test test_super_calculation ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+</pre>
+
+</section>
+<section id="slide-org8f0bffd">
+<h3 id="org8f0bffd"><a href="https://doc.rust-lang.org/1.7.0/book/documentation.html">Documentation</a> is seen as an important part of your project</h3>
+</section>
+<section >
+<p>
+Trying to avoid out-of-date examples
+</p>
+
+</section>
+<section >
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">/// Runs a grand calculation that will leave you surprised</span>
+<span style="color: #b294bb;">/// # Examples</span>
+<span style="color: #b294bb;">///</span>
+<span style="color: #b294bb;">/// ```</span>
+<span style="color: #b294bb;">/// use my_lib::*;</span>
+<span style="color: #b294bb;">///</span>
+<span style="color: #b294bb;">/// assert_eq!(5, surprise_calculation(1, 2));</span>
+<span style="color: #b294bb;">/// ```</span>
+<span style="color: #b5bd68;">pub</span> <span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">surprise_calculation</span><span style="color: #c5c8c6;">(</span><span style="color: #f0c674;">x</span>: <span style="color: #81a2be;">i32</span>, <span style="color: #f0c674;">y</span>: <span style="color: #81a2be;">i32</span>, <span style="color: #f0c674;">z</span>: <span style="color: #81a2be;">i32</span><span style="color: #c5c8c6;">)</span> -&gt; <span style="color: #81a2be;">i32</span> <span style="color: #c5c8c6;">{</span>
+    x + y + z
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+Examples in documentation are executed during testing
+</p>
+
+<pre  class="example">
+$ cargo test
+[...]
+running 1 test
+test src/lib.rs - surprise_calculation (line 4) ... FAILED
+
+failures:
+
+---- src/lib.rs - surprise_calculation (line 4) stdout ----
+  error[E0061]: this function takes 3 parameters but 2 parameters were supplied
+ --&gt; src/lib.rs:5:32
+  |
+5 | assert_eq!(5, surprise_calculation(1, 2));
+  |                                    ^^^^ expected 3 parameters
+</pre>
+
+</section>
+<section >
+<p>
+Generating project documentation is simple
+</p>
+
+<pre  class="example">
+$ cargo doc --open
+</pre>
+
+</section>
+<section id="slide-orgcff24f1">
+<h3 id="orgcff24f1">A systems language:</h3>
+<ul>
+<li>That has clear error messages</li>
+<li>That cares about documentation and tests</li>
+<li>And combines all these lessons from other languages</li>
+
+</ul>
+
+<p>
+It's a great evolution for the whole low-level ecosystem
+</p>
+
+</section>
+<section >
+<p>
+And a great option to construct low-level platforms
+</p>
+
+</section>
+<section id="slide-orgac76fc1">
+<h3 id="orgac76fc1">But you don't have to worry about all this now</h3>
+</section>
+<section >
+<p>
+These were examples of the potential of the language
+</p>
+
+</section>
+<section >
+<p>
+You can learn bit by bit, at your own speed
+</p>
+
+</section>
+<section >
+<p>
+And start with what you're already familiar with in other languages
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7f526d4">
+<h2 id="org7f526d4">Who's already heard of Rust?</h2>
+</section>
+<section >
+<p>
+Ah, and this is the mascot, <b>Ferris</b>
+</p>
+
+<img style="width: 50%; border: none; box-shadow: none;" src="ferris.png" />
+
+<p>
+(And you can <a href="http://edunham.net/2016/04/11/plushie_rustacean_pattern.html">make</a> your own)
+</p>
+
+</section>
+<section >
+<p>
+Now, how do I make a website?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga3579e7">
+<h2 id="orga3579e7">Shall we make a website?</h2>
+<video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
+
+</section>
+<section id="slide-org7bb9e1b">
+<h3 id="org7bb9e1b">A website that's:</h3>
+<ul>
+<li>Light</li>
+<li>Easy to deploy</li>
+<li>Uses the advantages I've already discussed here</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbc96cf6">
+<h2 id="orgbc96cf6">Step one: Installing the toolchain</h2>
+<p>
+Follow the instructions on <a href="https://rustup.rs/">Rustup</a>'s website
+</p>
+
+<img style="width: 50%; border: none;" src="rustup.png" />
+
+</section>
+<section >
+
+<p>
+This is the toolchain installer for Rust
+</p>
+
+<ul>
+<li class="fragment">Rustup will install the entire toolchain</li>
+<li class="fragment">Supports Linux, Mac, and Windows</li>
+<li class="fragment">It helps keep everything up-to-date</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+When we're done, we'll have:
+</p>
+
+<ul>
+<li>rustup: the toolchain installer</li>
+<li>cargo: the project/package manager</li>
+<li>rustc: the compiler</li>
+<li>rustdoc: the documentation generator</li>
+<li>rust-gdb and rust-lldb: debuggers</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4c34522">
+<h2 id="org4c34522">Creating our project</h2>
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo new --bin my-site-in-rust
+</pre>
+</div>
+
+</section>
+<section >
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo run
+
+Compiling my-site-in-rust v0.1.0
+Finished dev <span style="color: #c5c8c6;">[</span>unoptimized + debuginfo<span style="color: #c5c8c6;">]</span> target<span style="color: #c5c8c6;">(</span>s<span style="color: #c5c8c6;">)</span> <span style="color: #b5bd68;">in</span> <span style="color: #81a2be;">1.54</span> secs
+Running <span style="color: #b294bb;">`target/debug/my-site-in-rust`</span>
+Hello, world!
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org79f9f10">
+<h2 id="org79f9f10">Let's create our first page</h2>
+<p>
+Let's create a file at <code>src/index.html</code> with the following content
+</p>
+
+</section>
+<section >
+<div class="org-src-container">
+
+<pre  class="src src-html"><span style="color: #8abeb7;">&lt;!doctype html&gt;</span>
+&lt;<span style="color: #de935f;">html</span>&gt;
+  &lt;<span style="color: #de935f;">head</span>&gt;
+    &lt;<span style="color: #de935f;">meta</span> charset=utf-8&gt;
+    &lt;<span style="color: #de935f;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Hello TDC POA 2017</span>&lt;/<span style="color: #de935f;">title</span>&gt;
+  &lt;/<span style="color: #de935f;">head</span>&gt;
+  &lt;<span style="color: #de935f;">body</span>&gt;
+    &lt;<span style="color: #de935f;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Hello, world</span>&lt;/<span style="color: #de935f;">h1</span>&gt;
+    &lt;<span style="color: #de935f;">marquee</span>&gt;Hello TDC&lt;/<span style="color: #de935f;">marquee</span>&gt;
+  &lt;/<span style="color: #de935f;">body</span>&gt;
+&lt;/<span style="color: #de935f;">html</span>&gt;
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc8666c2">
+<h2 id="orgc8666c2">Adding a web framework</h2>
+<p>
+Let's use the Nickel framework to help us
+</p>
+
+<img style="border: none; width: 80%" src="nickel.png" />
+
+</section>
+<section >
+<p>
+Add the dependency in the <code>Cargo.toml</code> file
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-toml">[<span style="color: #81a2be;">dependencies</span>]
+<span style="color: #f0c674;">nickel</span> = <span style="color: #8abeb7;">"0.10.0"</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org0fcbbd8">
+<h2 id="org0fcbbd8">Changing our file</h2>
+<p>
+Now let's see a little of Rust, bit by bit.
+Let's open the <code>src/main.rs</code> file.
+</p>
+
+</section>
+<section >
+<p>
+First, we import and include some references to the web framework.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="import"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">macro_use</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">extern</span> <span style="color: #b5bd68;">crate</span> nickel;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">nickel</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Nickel</span>, <span style="color: #81a2be;">HttpRouter</span><span style="color: #c5c8c6;">}</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+We include all of our HTML file content in a constant.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="index"><span style="color: #b5bd68;">const</span> <span style="color: #f0c674;">INDEX</span>: &amp;<span style="color: #81a2be;">str</span> = <span style="color: #b294bb;">include_str!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"index.html"</span><span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+We create a new Nickel server.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="nickel"><span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">server</span> = <span style="color: #81a2be;">Nickel</span>::new<span style="color: #c5c8c6;">()</span>;
+server.get<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"/"</span>, <span style="color: #b294bb;">middleware!</span><span style="color: #8abeb7;">(</span><span style="color: #81a2be;">INDEX</span><span style="color: #8abeb7;">)</span><span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+We configure the port with the <code>PORT</code> environment variable.
+Let's use port 3000 for fallback.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="port"><span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">port</span> = <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">env</span>::var<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"PORT"</span><span style="color: #c5c8c6;">)</span>.unwrap_or<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"3000"</span>.into<span style="color: #8abeb7;">()</span><span style="color: #c5c8c6;">)</span>;
+<span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">url</span> = <span style="color: #b294bb;">format!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"0.0.0.0:</span><span style="color: #8abeb7; font-style: italic;">{port}</span><span style="color: #8abeb7;">"</span>, port = port<span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+We start our server, with a message in case there are errors.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust" id="start"><span style="color: #b294bb;">println!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"On </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, url<span style="color: #c5c8c6;">)</span>;
+server.listen<span style="color: #c5c8c6;">(</span>url<span style="color: #c5c8c6;">)</span>
+    .expect<span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"Unable to start the server"</span><span style="color: #c5c8c6;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+
+<p>
+In the end we'll have this:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b294bb;">#</span><span style="color: #c5c8c6;">[</span><span style="color: #b294bb;">macro_use</span><span style="color: #c5c8c6;">]</span>
+<span style="color: #b5bd68;">extern</span> <span style="color: #b5bd68;">crate</span> nickel;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">nickel</span>::<span style="color: #c5c8c6;">{</span><span style="color: #81a2be;">Nickel</span>, <span style="color: #81a2be;">HttpRouter</span><span style="color: #c5c8c6;">}</span>;
+
+<span style="color: #b5bd68;">const</span> <span style="color: #f0c674;">INDEX</span>: &amp;<span style="color: #81a2be;">str</span> = <span style="color: #b294bb;">include_str!</span><span style="color: #c5c8c6;">(</span><span style="color: #8abeb7;">"index.html"</span><span style="color: #c5c8c6;">)</span>;
+
+<span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">server</span> = <span style="color: #81a2be;">Nickel</span>::new<span style="color: #8abeb7;">()</span>;
+    server.get<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"/"</span>, <span style="color: #b294bb;">middleware!</span><span style="color: #f0c674;">(</span><span style="color: #81a2be;">INDEX</span><span style="color: #f0c674;">)</span><span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">port</span> = <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">env</span>::var<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"PORT"</span><span style="color: #8abeb7;">)</span>.unwrap_or<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"3000"</span>.into<span style="color: #f0c674;">()</span><span style="color: #8abeb7;">)</span>;
+    <span style="color: #b5bd68;">let</span> <span style="color: #f0c674;">url</span> = <span style="color: #b294bb;">format!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"0.0.0.0:</span><span style="color: #8abeb7; font-style: italic;">{port}</span><span style="color: #8abeb7;">"</span>, port = port<span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"On </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, url<span style="color: #8abeb7;">)</span>;
+    server.listen<span style="color: #8abeb7;">(</span>url<span style="color: #8abeb7;">)</span>
+        .expect<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Unable to start the server"</span><span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org137baef">
+<h2 id="org137baef">Now we can create our executable</h2>
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo build --release
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+And execute it:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ ./target/release/my-site-in-rust
+
+On <span style="color: #81a2be;">0.0.0.0:3000</span>
+Listening on http://0.0.0.0:3000
+Ctrl-C to shutdown server
+</pre>
+</div>
+
+</section>
+<section id="slide-org49ed2fd">
+<h3 id="org49ed2fd">TA-DA!</h3>
+<img style="border: none;" src="hello.png" />
+
+</section>
+</section>
+<section>
+<section id="slide-parabens" data-background="#232323">
+<h2 id="parabens"><a id="org94fc414"></a>Congratulations!</h2>
+<p>
+You have a site in Rust.
+</p>
+
+<img style="border: none; box-shadow: none; width: 50%" src="dance.gif" />
+
+</section>
+<section >
+<p>
+And it's all in just one binary!
+</p>
+
+</section>
+<section >
+<p>
+And there's a demo on Heroku!
+</p>
+
+<p>
+<a href="https://ouvi-falar-de-rust.herokuapp.com/">https://ouvi-falar-de-rust.herokuapp.com/</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgff7f350">
+<h2 id="orgff7f350">"But can I do something else?"</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org5e251a0">
+<h2 id="org5e251a0">Let's make a web call</h2>
+</section>
+<section >
+<p>
+It's as easy as in other languages, even though it's a systems language
+</p>
+
+</section>
+<section >
+<p>
+I'm going to follow a recipe on the <a href="https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic">Rust Cookbook</a>
+</p>
+
+</section>
+<section id="slide-org46f6b27">
+<h3 id="org46f6b27">Creating another new project</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo new --bin my-web-request-in-rust
+</pre>
+</div>
+
+</section>
+<section >
+<div class="org-src-container">
+
+<pre  class="src src-bash">$ cargo run
+
+Compiling my-web-request-in-rust v0.1.0
+Finished dev <span style="color: #c5c8c6;">[</span>unoptimized + debuginfo<span style="color: #c5c8c6;">]</span> target<span style="color: #c5c8c6;">(</span>s<span style="color: #c5c8c6;">)</span> <span style="color: #b5bd68;">in</span> <span style="color: #81a2be;">1.54</span> secs
+Running <span style="color: #b294bb;">`target/debug/my-web-request-in-rust`</span>
+Hello, world!
+</pre>
+</div>
+
+</section>
+<section id="slide-org8a82675">
+<h3 id="org8a82675">Adding a library for web requests</h3>
+</section>
+<section >
+<p>
+There are already several libraries available on <a href="https://crates.io">Crates.io</a>
+</p>
+
+</section>
+<section >
+<p>
+Let's use <a href="https://docs.rs/reqwest/0.8.0/reqwest/">Reqwest</a> for this project
+</p>
+
+</section>
+<section >
+<p>
+Add a dependency in the <code>Cargo.toml</code> file
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-toml">[<span style="color: #81a2be;">dependencies</span>]
+<span style="color: #f0c674;">reqwest</span> = <span style="color: #8abeb7;">"0.8.0"</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgaf60ea7">
+<h3 id="orgaf60ea7">Changing our binary</h3>
+<p>
+Let's import our library and some I/O functions
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">extern</span> <span style="color: #b5bd68;">crate</span> reqwest;
+<span style="color: #b5bd68;">use</span> <span style="color: #81a2be;">std</span>::<span style="color: #81a2be;">io</span>::<span style="color: #81a2be;">Read</span>;
+</pre>
+</div>
+
+</section>
+<section >
+<p>
+And create our function
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-rust"><span style="color: #b5bd68;">fn</span> <span style="color: #de935f;">main</span><span style="color: #c5c8c6;">()</span> <span style="color: #c5c8c6;">{</span>
+    <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">response</span> = <span style="color: #81a2be;">reqwest</span>::get<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"https://httpbin.org/get"</span><span style="color: #8abeb7;">)</span>
+        .expect<span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Could not connect"</span><span style="color: #8abeb7;">)</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Response: </span><span style="color: #8abeb7; font-style: italic;">{:?}</span><span style="color: #8abeb7;">"</span>, response<span style="color: #8abeb7;">)</span>;
+
+    <span style="color: #b5bd68;">let</span> <span style="color: #b5bd68;">mut</span> <span style="color: #f0c674;">content</span> = <span style="color: #81a2be;">String</span>::new<span style="color: #8abeb7;">()</span>;
+    response.read_to_string<span style="color: #8abeb7;">(</span>&amp;<span style="color: #b5bd68;">mut</span> content<span style="color: #8abeb7;">)</span>;
+    <span style="color: #b294bb;">println!</span><span style="color: #8abeb7;">(</span><span style="color: #8abeb7;">"Site content: </span><span style="color: #8abeb7; font-style: italic;">{}</span><span style="color: #8abeb7;">"</span>, content<span style="color: #8abeb7;">)</span>;
+<span style="color: #c5c8c6;">}</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-org9ed37b9">
+<h3 id="org9ed37b9">TA-DA - Let's execute!</h3>
+<pre  class="example">
+$ cargo run
+</pre>
+
+</section>
+<section >
+<p>
+Now you have code to make web requests!
+</p>
+
+<ul>
+<li>binary</li>
+<li>cross-platform</li>
+<li>with low memory usage</li>
+<li>which doesn't need several dependencies installed to be used</li>
+
+</ul>
+
+</section>
+<section >
+
+<p>
+Bem similar a outras linguagens?
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org15bfbf4">
+<h2 id="org15bfbf4">"One question&#x2026;"</h2>
+<div class="outline-text-2" id="text-org15bfbf4">
+</div>
+</section>
+<section id="slide-orgd512914">
+<h3 id="orgd512914">Is it easy to learn Rust?</h3>
+<p>
+I spent weeks banging my head against some concepts that were new to me.
+</p>
+
+</section>
+<section >
+<ul>
+<li>I have a more high-level background (Ruby/Java/JavaScript)</li>
+<li>I had to learn about the stack and references</li>
+<li>The concepts of <code>lifetimes</code> and <code>borrowing</code> took a while to get into my head</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Rust brought new concepts to my toolbox.
+</p>
+
+<p>
+And I've been having a lot of fun!
+</p>
+
+</section>
+<section >
+<p>
+The community is very open and helped me a lot, and has a lot of interest in welcoming new people.
+</p>
+
+<p>
+Many people are willing to help on <a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">#rust-beginners</a>, on the <a href="https://users.rust-lang.org/">forum</a>, and even on <a href="https://riot.im/app/#/room/%23mozilla_%23rust-br:matrix.org">#rust-br</a>.
+</p>
+
+</section>
+<section >
+
+<p>
+There's a big push to make the ecosystem inclusive, as much for community participation as for material for all levels.
+</p>
+
+</section>
+<section id="slide-org55b0f5e">
+<h3 id="org55b0f5e"><a href="https://rustbridge.github.io">RustBridge</a></h3>
+<p>
+An initiative to teach Rust to those that aren't well-represented in the area of technology
+</p>
+
+</section>
+<section >
+<p>
+With interest in turning the language into a good first programming language
+</p>
+
+</section>
+<section id="slide-org3317886">
+<h3 id="org3317886">Collaborative evolution</h3>
+<p>
+All proposals for changes in the language follow an <a href="https://github.com/rust-lang/rfcs/blob/master/0000-template.md">RFC</a> process
+</p>
+
+</section>
+<section >
+<p>
+which requires new proposals to have <a href="https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md">documentation</a> and a clear way to teach the change
+</p>
+
+</section>
+<section id="slide-org2f082f8">
+<h3 id="org2f082f8">How do I get my site on Heroku?</h3>
+<p>
+I used this <a href="https://github.com/emk/heroku-buildpack-rust">buildpack</a>.
+</p>
+
+<img style="border: none;" src="heroku.png" />
+
+</section>
+<section id="slide-org77c6533">
+<h3 id="org77c6533">Is there only Nickel for web work?</h3>
+<p>
+There are several frameworks, but it's an ecosystem that's still developing.
+</p>
+
+</section>
+<section >
+<p>
+A good list can be found at <a href="http://www.arewewebyet.org/">Are We Web Yet?</a>
+</p>
+
+<img style="width: 40%;" src="areweweb.png" />
+
+</section>
+<section id="slide-org2429cd2">
+<h4 id="org2429cd2">If you are looking for something more experimental:</h4>
+<p>
+Have a look at <a href="https://rocket.rs/">Rocket</a>, which uses a more succinct syntax&#x2026;
+</p>
+
+<img style="border: none; width:70%;" src="rocket.png" />
+
+</section>
+<section >
+<p>
+But it depends on compiler functionalities that are still in development.
+</p>
+
+</section>
+<section id="slide-orgcf2a59a">
+<h3 id="orgcf2a59a">Do I need to use rustup?</h3>
+<p>
+It's the most recommended method by the community
+</p>
+
+<ul>
+<li>It's the easiest way to stay up-to-date</li>
+<li>Rust has a new version every 6 weeks</li>
+<li>It's easier to follow new developments</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Rust is also available through distro package managers, but it can take a while for updates to come.
+</p>
+
+</section>
+<section id="slide-org63ddec0">
+<h3 id="org63ddec0">How can I connect to a database?</h3>
+<p>
+<a href="https://diesel.rs/">Diesel</a> can help with this.
+</p>
+
+<img style="border: none; width:70%" src="diesel.png" />
+
+</section>
+<section id="slide-orgd45db50">
+<h3 id="orgd45db50">Are there any companies already using Rust?</h3>
+<p>
+Yes. Your Firefox installation already has components written in Rust.
+</p>
+
+<p>
+Some companies: Dropbox, Chef, Tilde, Sentry, CoreOS, Mozilla and there are more <a href="https://www.rust-lang.org/en-US/friends.html">on the website list</a>.
+</p>
+
+</section>
+<section id="slide-orgd46dc38">
+<h3 id="orgd46dc38">Can I only use Rust for web?</h3>
+<p>
+No, you can use it for many other things!
+</p>
+
+</section>
+<section >
+<p>
+(If I tried to list all the examples, this would be another presentation entirely)
+</p>
+
+</section>
+<section >
+<p>
+Two strong* spaces to apply the language:
+</p>
+
+<ul>
+<li>Support tools (CLI tools, build tools, text editors, etc)</li>
+<li><p>
+Language extensions (Gems, npm, python extensions, FFI)
+</p>
+
+<small>*IMHO</small></li>
+
+</ul>
+
+</section>
+<section >
+<p>
+<a href="http://www.arewelearningyet.com/">Machine Learning</a>, <a href="https://usehelix.com/">Ruby</a>, <a href="https://github.com/mitsuhiko/snaek">Python</a>, <a href="https://github.com/mgattozzi/curryrs">Haskell</a>, <a href="https://www.neon-bindings.com/">Node.js</a>, <a href="https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde">WebAssembly</a>, <a href="https://blogs.oracle.com/developers/building-a-container-runtime-in-rust">Container</a>, <a href="https://tokio.rs/">Network Platform</a>, <a href="https://github.com/rust-embedded">Embedded</a>, Sistemas Operacionais<sup><a href="https://intermezzos.github.io/book/">1</a></sup><sup><a href="https://www.redox-os.org/">2</a></sup><sup><a href="https://os.phil-opp.com/">3</a></sup>, <a href="http://arewegameyet.com">Jogos</a>, <a href="https://github.com/japaric/rust-cross">cross-compilação</a>, <a href="https://github.com/japaric/trust">CI</a>&#x2026;
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga988a8a">
+<h2 id="orga988a8a">Espero que tenham gostado de Rust</h2>
+<div class="outline-text-2" id="text-orga988a8a">
+</div>
+</section>
+<section id="slide-org1739f7e">
+<h3 id="org1739f7e">E se quiser seguir conhecendo</h3>
+<ul>
+<li>Tem um <a href="https://doc.rust-lang.org/book/">livro de graça</a> no site [EN]</li>
+<li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">#rust-beginners</a> é um ótimo canal para tirar dúvidas rápidas</li>
+<li>Existe o <a href="https://riot.im/app/#/room/%23mozilla_%23rust-br:matrix.org">#rust-br</a> para falar em portugues</li>
+<li>O grupo <a href="https://telegram.me/rustlangbr">@rustlangbr</a> no Telegram</li>
+<li><a href="https://www.meetup.com/topics/rust/">Meetups</a></li>
+<li><a href="http://exercism.io/languages/rust/about">Exercicios</a></li>
+<li>E <a href="https://github.com/rust-br/estudos">grupo de estudo online</a> em portugues</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Se você se interessou por Rust, pode entrar em contato comigo também, que eu quero te ajudar com os próximos passos.
+</p>
+
+<p>
+Bruno Tavares - <a href="https://twitter.com/bltavares">@bltavares</a>
+</p>
+
+</section>
+<section id="slide-links" data-background="#232323">
+<h3 id="links"><a id="org326a895"></a>Links</h3>
+<ul>
+<li><a href="http://intorust.com/">into<sub>rust</sub>(); screencasts</a></li>
+<li><a href="https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/">Podcast da Lambda 3 - Em portugues</a></li>
+<li><a href="https://github.com/bltavares/meu-site-em-rust">https://github.com/bltavares/meu-site-em-rust</a></li>
+<li><a href="http://www.rustacean.net/">Imagens do Ferris</a></li>
+<li><a href="http://edunham.net/2016/04/11/plushie_rustacean_pattern.html">http://edunham.net/2016/04/11/plushie_rustacean_pattern.html</a></li>
+<li><a href="https://rustup.rs/">https://rustup.rs/</a></li>
+<li><a href="https://github.com/nickel-org/nickel.rs">https://github.com/nickel-org/nickel.rs</a></li>
+<li><a href="https://ouvi-falar-de-rust.herokuapp.com/">https://ouvi-falar-de-rust.herokuapp.com/</a></li>
+<li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-beginners:matrix.org">https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org</a></li>
+<li><a href="https://users.rust-lang.org/">https://users.rust-lang.org/</a></li>
+<li><a href="https://riot.im/app/#/room/%23mozilla_%23rust-br:matrix.org">https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org</a></li>
+<li><a href="https://github.com/emk/heroku-buildpack-rust">https://github.com/emk/heroku-buildpack-rust</a></li>
+<li><a href="http://www.arewewebyet.org/">http://www.arewewebyet.org/</a></li>
+<li><a href="https://rocket.rs/">https://rocket.rs/</a></li>
+<li><a href="https://diesel.rs/">https://diesel.rs/</a></li>
+<li><a href="https://www.rust-lang.org/en-US/friends.html">https://www.rust-lang.org/en-US/friends.html</a></li>
+<li><a href="http://www.arewelearningyet.com/">http://www.arewelearningyet.com/</a></li>
+<li><a href="https://usehelix.com/">https://usehelix.com/</a></li>
+<li><a href="https://github.com/mitsuhiko/snaek">https://github.com/mitsuhiko/snaek</a></li>
+<li><a href="https://github.com/mgattozzi/curryrs">https://github.com/mgattozzi/curryrs</a></li>
+<li><a href="https://www.neon-bindings.com/">https://www.neon-bindings.com/</a></li>
+<li><a href="https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde">https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde</a></li>
+<li><a href="https://blogs.oracle.com/developers/building-a-container-runtime-in-rust">https://blogs.oracle.com/developers/building-a-container-runtime-in-rust</a></li>
+<li><a href="https://tokio.rs/">https://tokio.rs/</a></li>
+<li><a href="https://github.com/rust-embedded">https://github.com/rust-embedded</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+maxScale: 1.80,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
