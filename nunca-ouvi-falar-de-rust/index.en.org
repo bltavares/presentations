@@ -1,4 +1,4 @@
-#+Title: (Nunca) Ouvi falar de Rust... Mas como faço um site?
+#+Title: I've (Never) Heard of Rust... But how do I make a website?
 #+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil reveal_history:t
 #+REVEAL_THEME: base16
 #+REVEAL_TRANS: slide
