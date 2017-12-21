@@ -373,7 +373,7 @@ error[E0382]: use of moved value: `request`
 
     #+reveal: split
     #+BEGIN_SRC
-Dados do pedido: Request { id: 1 }
+Request data: Request { id: 1 }
     #+END_SRC
 
 ** Rust encourages [[https://doc.rust-lang.org/1.7.0/book/testing.html][testing]] from the beginning of a project
@@ -671,7 +671,7 @@ $ cargo doc --open
 
 * "But can I do something else?"
 
-* Let's make a web call
+* Let's make a web request
 
   #+reveal: split
   It's as easy as in other languages, even though it's a systems language
@@ -846,22 +846,22 @@ $ cargo run
      #+REVEAL_HTML:  <small>*IMHO</small>
 
    #+reveal: split
-   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Sistemas Operacionais^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, [[http://arewegameyet.com][Jogos]], [[https://github.com/japaric/rust-cross][cross-compilação]], [[https://github.com/japaric/trust][CI]]...
+   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Operating Systems^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, [[http://arewegameyet.com][Games]], [[https://github.com/japaric/rust-cross][cross compilation]], [[https://github.com/japaric/trust][CI]]...
 
-* Espero que tenham gostado de Rust
+* I hope that you've liked Rust
 
-** E se quiser seguir conhecendo
+** And if you want to keep learning about it
 
-   - Tem um [[https://doc.rust-lang.org/book/][livro de graça]] no site [EN]
-   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] é um ótimo canal para tirar dúvidas rápidas
-   - Existe o [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] para falar em portugues
-   - O grupo [[https://telegram.me/rustlangbr][@rustlangbr]] no Telegram
+   - There's a [[https://doc.rust-lang.org/book/][free book]] on Rust's website
+   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] is a great channel for quickly answering questions
+   - There's [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] for Portuguese speakers
+   - The [[https://telegram.me/rustlangbr][@rustlangbr]] group on Telegram
    - [[https://www.meetup.com/topics/rust/][Meetups]]
-   - [[http://exercism.io/languages/rust/about][Exercicios]]
-   - E [[https://github.com/rust-br/estudos][grupo de estudo online]] em portugues
+   - [[http://exercism.io/languages/rust/about][Exercism]]
+   - And [[https://github.com/rust-br/estudos][online study group]] in Portuguese
 
    #+reveal: split
-   Se você se interessou por Rust, pode entrar em contato comigo também, que eu quero te ajudar com os próximos passos.
+   If Rust interests you, you can contact me too, because I want to help you with your next steps.
 
    Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
 
@@ -872,9 +872,9 @@ $ cargo run
    :END:
 
    - [[http://intorust.com/][into_rust(); screencasts]]
-   - [[https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/][Podcast da Lambda 3 - Em portugues]]
+   - [[https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/][Lambda3 Podcast - in Portuguese]]
    - https://github.com/bltavares/meu-site-em-rust
-   - [[http://www.rustacean.net/][Imagens do Ferris]]
+   - [[http://www.rustacean.net/][Ferris images]]
    - http://edunham.net/2016/04/11/plushie_rustacean_pattern.html
    - https://rustup.rs/
    - https://github.com/nickel-org/nickel.rs
