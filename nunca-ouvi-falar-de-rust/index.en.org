@@ -110,7 +110,7 @@
   Rust has a type system that prevents several kinds of memory management errors at compile-time
 
   #+reveal: split
-  Memory management without a Garbage Collector
+  Memory management without a garbage collector
 
 * An Example of Rust Preventing Problems with Only the Compiler
 
@@ -860,12 +860,12 @@ $ cargo run
 ** And if you want to learn more
 
    - There is a [[https://doc.rust-lang.org/book/][free book]] on the website [EN]
-   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] is a great channel to help with initial doubts
+   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] is a great channel to help with initial questions
    - There is [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] for the Portuguese speakers
    - [[https://telegram.me/rustlangbr][@rustlangbr]] on Telegram
    - [[https://www.meetup.com/topics/rust/][Meetups]]
    - [[http://exercism.io/languages/rust/about][Coding exercises]]
-   - And an [[https://github.com/rust-br/estudos][online studygroup]] in Portuguese
+   - And an [[https://github.com/rust-br/estudos][online study group]] in Portuguese
 
    #+reveal: split
    If you got interested in Rust, you may get in touch with me as well, I want to help you with your next steps into the ecosystem.
