@@ -461,7 +461,7 @@ $ cargo doc --open
    It's a great evolution for the whole low-level ecosystem
 
    #+reveal: split
-   And a great option to construct high-level platforms
+   And a great option to build high-level platforms
 
 ** But you don't have to worry about all this now
 
@@ -670,7 +670,7 @@ $ cargo doc --open
   #+REVEAL_HTML:  <img style="border: none; box-shadow: none; width: 50%" src="dance.gif" />
 
   #+reveal: split
-  And it's all in just one sigle-file binary!
+  And it's all in just one single-file binary!
 
   #+reveal: split
   And there's a demo on Heroku!
@@ -679,7 +679,7 @@ $ cargo doc --open
 
 * "But can I do something else?"
 
-* Let's make a web call
+* Let's make a web request
 
   #+reveal: split
   It's as easy as in other languages, even though it's a systems language
@@ -783,7 +783,7 @@ $ cargo run
    Many people are willing to help on [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], on [[https://riot.im/app/#/room/#mozilla_#rust:matrix.org][#rust]], and on the [[https://users.rust-lang.org/][forum]].
 
    #+reveal: split
-   There's a big push to make the ecosystem inclusive, as much for community participation as for learning material for all programing levels.
+   There's a big push to make an inclusive ecosystem, as much for community participation as for learning material for all programing levels.
 
 ** [[https://rustbridge.github.io][RustBridge]]
    An initiative to teach Rust to those that aren't well-represented in the area of technology

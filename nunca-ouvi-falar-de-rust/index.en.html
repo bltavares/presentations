@@ -30,7 +30,7 @@
 
 <section>
 <section id="slide-orgc611259">
-<h2 id="orgc611259">I've (Never) Heard of <span class="rust">Rust</span>&#x2026;</h2>
+<h2 id="orgc611259">I've <span class="showup">(Never)</span> Heard of <span class="rust">Rust</span>&#x2026;</h2>
 <p>
 But how do I make a website?
 </p>
@@ -73,14 +73,14 @@ But if you've already heard of it&#x2026;
 </section>
 <section >
 <p>
-I'll show you some steps to keep learning
+I'll show you some steps to <span class="showup">keep learning</span>
 </p>
 
 </section>
 </section>
 <section>
 <section id="slide-org1fe367f">
-<h2 id="org1fe367f">In 2015</h2>
+<h2 id="org1fe367f">In <span class="showup">2015</h2></span>
 </section>
 <section >
 <p>
@@ -101,7 +101,7 @@ I wanted a simple way to execute applications
 
 </section>
 <section id="slide-org66c65c5">
-<h3 id="org66c65c5">Objective</h3>
+<h3 id="org66c65c5" class="showup">Objective</h3>
 <p>
 1 single-file cross-platform binary
 </p>
@@ -114,7 +114,7 @@ I wanted a simple way to execute applications
 </section>
 <section >
 <p>
-"Do I have to code in C to produce binaries?"
+"Do I <span class="showup">have to code</span> in C to produce binaries?"
 </p>
 
 </section>
@@ -151,17 +151,17 @@ TL;DR;
 </section>
 <section >
 <p>
-It's a very modern language
+It's a very <span class="showup">modern language</span>
 </p>
 
 <p>
-with low-level focus
+with <span class="showup">low-level</span> focus
 </p>
 
 </section>
 <section >
 <p>
-A language with several functional-paradigm features:
+A language with several <br /><span class="showup">functional-paradigm features</span>:
 </p>
 
 <ul>
@@ -203,7 +203,7 @@ All of these traits create an ideal environment to proceed with confidence
 </section>
 <section>
 <section id="slide-orgdf17591">
-<h2 id="orgdf17591">"Why did they decide to create a low-level language?"</h2>
+<h2 id="orgdf17591">"Why did they decide to <span class="showup">create a low-level</span> language?"</h2>
 <p>
 How many bugs may happen in a low-level program?
 </p>
@@ -227,7 +227,7 @@ How many bugs may happen in a low-level program?
 </section>
 <section >
 <p>
-Memory management without a Garbage Collector
+    Memory management without a <br/ ><span class="showup">Garbage Collector</span>
 </p>
 
 </section>
@@ -385,7 +385,7 @@ Data []
 </section>
 <section >
 <p>
-In short, imagine how complex a browser is under the hood.
+In short, imagine how <span class="showup">complex</span> a browser is under the hood.
 </p>
 
 </section>
@@ -423,7 +423,7 @@ Are there any problems in this code?
 </section>
 <section >
 <p>
-After several compilation feedback cycles:
+After several compilation <span class="showup">feedback cycles</span>:
 </p>
 
 <ul>
@@ -433,7 +433,7 @@ After several compilation feedback cycles:
 </ul>
 
 <p>
-Our binary won't have these problems!
+Our binary won't have <span class="showup">these problems</span>!
 </p>
 
 </section>
@@ -476,7 +476,7 @@ Our binary won't have these problems!
 
 </section>
 <section id="slide-orgc26552d">
-<h3 id="orgc26552d">This type system brings new ways of expressing ownership</h3>
+<h3 id="orgc26552d">This type system brings <br /><span class="showup">new ways</span> of expressing ownership</h3>
 </section>
 <section >
 <p>
@@ -530,13 +530,13 @@ error[E0382]: use of moved value: `order`
 </section>
 <section >
 <p>
-We can only access the order data before we send it in this scenario.
+We can only access the order data <span class="showup">before we send it</span> in this scenario.
 </p>
 
 </section>
 <section >
 <p>
-And this is enforced by the compiler.
+And this is <span class="showup">enforced</span> by the compiler.
 </p>
 
 </section>
@@ -578,7 +578,7 @@ Order data: Order { id: 1 }
 </section>
 <section id="slide-org2d8bf43">
 <h3 id="org2d8bf43"><span class="rust">Rust</span> encourages <a href="https://doc.rust-lang.org/1.7.0/book/testing.html">testing</a> from the beginning of a project</h3>
-<p>
+<p class="showup">
 Types can't verify all logic
 </p>
 
@@ -610,7 +610,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured;
 
 </section>
 <section id="slide-orgfbda749">
-<h3 id="orgfbda749"><a href="https://doc.rust-lang.org/1.7.0/book/documentation.html">Documentation</a> is seen as an important part of your project</h3>
+<h3 id="orgfbda749"><a href="https://doc.rust-lang.org/1.7.0/book/documentation.html">Documentation</a> is seen as an <span class="showup">important part of your project</span></h3>
 </section>
 <section >
 <p>
@@ -638,7 +638,7 @@ Trying to avoid out-of-date examples
 </section>
 <section >
 <p>
-Examples in documentation are executed during testing
+Examples in documentation are executed <br /><span class="showup">during testing</span>
 </p>
 
 <pre  class="example">
@@ -684,28 +684,28 @@ $ cargo doc --open
 </ul>
 
 <p>
-It's a great evolution for the whole low-level ecosystem
+It's a <span class="showup">great evolution</span> for the whole low-level ecosystem
 </p>
 
 </section>
 <section >
 <p>
-And a great option to construct high-level platforms
+And a <span class="showup">great</span> option to <br />build <span class="showup">high-level platforms</span>
 </p>
 
 </section>
 <section id="slide-orgaeb09b0">
-<h3 id="orgaeb09b0">But you don't have to worry about all this now</h3>
+<h3 id="orgaeb09b0">But you <span class="showup">don't have to worry</span> about all this <span class="showup">now</span></h3>
 </section>
 <section >
 <p>
-These were examples of the potential of the language
+These were examples of the <br /><span class="showup">potential of the language</span>
 </p>
 
 </section>
 <section >
 <p>
-You can learn bit by bit, at your own speed
+You can <span class="showup">learn bit by bit</span>, at your own speed
 </p>
 
 </section>
@@ -734,7 +734,7 @@ Ah, and this is the mascot, <b>Ferris</b>
 </section>
 <section >
 <p>
-Now, how do I make a website?
+Now, how do I make a <span class="showup">website</span>?
 </p>
 
 </section>
@@ -758,7 +758,7 @@ Now, how do I make a website?
 </section>
 <section>
 <section id="slide-orgce4df91">
-<h2 id="orgce4df91">Step one: Installing the toolchain</h2>
+<h2 id="orgce4df91"><span class="showup">Step one</span>: Installing the toolchain</h2>
 <p>
 Follow the instructions on <a href="https://rustup.rs/">Rustup</a>'s website
 </p>
@@ -827,7 +827,7 @@ Hello, world!
 </section>
 <section>
 <section id="slide-orgf92d82a">
-<h2 id="orgf92d82a">Let's create our first page</h2>
+<h2 id="orgf92d82a">Let's create our <span class="showup">first page</span></h2>
 <p>
 Let's create a file at <code>src/index.html</code> with the following content
 </p>
@@ -854,7 +854,7 @@ Let's create a file at <code>src/index.html</code> with the following content
 </section>
 <section>
 <section id="slide-orge991f34">
-<h2 id="orge991f34">Adding a web framework</h2>
+<h2 id="orge991f34">Adding a <span class="showup">web framework</span></h2>
 <p>
 Let's use the Nickel framework to help us
 </p>
@@ -1008,7 +1008,7 @@ Ctrl-C to shutdown server
 
 </section>
 <section id="slide-orge0c86f0">
-<h3 id="orge0c86f0">TA-DA!</h3>
+<h3 id="orge0c86f0" class="showup">TA-DA!</h3>
 <img style="border: none;" src="hello.png" />
 
 </section>
@@ -1025,13 +1025,13 @@ You have a site in <span class="rust">Rust</span>.
 </section>
 <section >
 <p>
-And it's all in just one sigle-file binary!
+And it's all in just <span class="showup">one single-file binary</span>!
 </p>
 
 </section>
 <section >
 <p>
-And there's a demo on Heroku!
+And there's a <span class="showup">demo</span> on Heroku!
 </p>
 
 <p>
@@ -1042,23 +1042,23 @@ And there's a demo on Heroku!
 </section>
 <section>
 <section id="slide-orge014a23">
-<h2 id="orge014a23">"But can I do something else?"</h2>
+<h2 id="orge014a23">"But can I do <br /><span class="showup">something else</span>?"</h2>
 
 </section>
 </section>
 <section>
 <section id="slide-org617182c">
-<h2 id="org617182c">Let's make a web call</h2>
+<h2 id="org617182c">Let's make a <span class="showup">web request</span></h2>
 </section>
 <section >
 <p>
-It's as easy as in other languages, even though it's a systems language
+It's <span class="showup">as easy as in other languages</span>,<br /> even though it's a systems language
 </p>
 
 </section>
 <section >
 <p>
-I'm going to follow a recipe available on the <a href="https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic">Rust Cookbook</a>
+I'm going to follow a <span class="showup">recipe available</span> <br />on the <a href="https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic">Rust Cookbook</a>
 </p>
 
 </section>
@@ -1089,7 +1089,7 @@ Hello, world!
 </section>
 <section >
 <p>
-There are already several libraries available on <a href="https://crates.io">Crates.io</a>
+There are already <span class="showup">several libraries available</span><br /<br />> on <a href="https://crates.io">Crates.io</a>
 </p>
 
 </section>
@@ -1147,7 +1147,8 @@ And create our function
 
 </section>
 <section id="slide-org204c422">
-<h3 id="org204c422">TA-DA - Let's execute!</h3>
+    <h3 id="org204c422" class="showup">TA-DA</h3>
+    <p>Let's execute!</p>
 <pre  class="example">
 $ cargo run
 </pre>
@@ -1173,14 +1174,14 @@ Now you have code to make web requests!
 </section>
 <section >
 <p>
-Does it look far too diferent from other languages?
+Does it look far too diferent from <br /><span class="showup">other languages</span>?
 </p>
 
 </section>
 </section>
 <section>
 <section id="slide-org901e927">
-<h2 id="org901e927">"One question&#x2026;"</h2>
+<h2 id="org901e927">"One <span class="showup">question&#x2026;</span>"</h2>
 <div class="outline-text-2" id="text-org901e927">
 </div>
 </section>
@@ -1212,7 +1213,7 @@ And I've been having a lot of fun!
 </section>
 <section >
 <p>
-The community is very open and helped me a lot, and has a lot of interest in welcoming new people.
+The community is very open and <br /><span class="showup">helped me a lot</span>, and has a lot of interest in <br /><span class="showup">welcoming new people</span>.
 </p>
 
 <p>
@@ -1222,7 +1223,7 @@ Many people are willing to help on <a href="https://riot.im/app/#/room/%23mozill
 </section>
 <section >
 <p>
-There's a big push to make the ecosystem inclusive, as much for community participation as for learning material for all programing levels.
+There's a big push to make <span class="showup">an inclusive ecosystem</span>, as much for <span class="showup">community participation</span> as for learning material for all programing levels.
 </p>
 
 </section>
@@ -1235,7 +1236,7 @@ An initiative to teach <span class="rust">Rust</span> to those that aren't well-
 </section>
 <section >
 <p>
-With interest in turning the language into a good first programming language
+With interest in turning the language into a good <span class="showup">first programming language</span>
 </p>
 
 </section>
@@ -1248,7 +1249,7 @@ All proposals for changes in the language follow an <a href="https://github.com/
 </section>
 <section >
 <p>
-Which requires new change proposals to have <a href="https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md">documentation</a> and a clear way to teach the proposed change
+Which requires new change proposals to have <a href="https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md">documentation</a> and a clear way to <br /><span class="showup">teach the proposed change</span>
 </p>
 
 </section>
@@ -1264,7 +1265,7 @@ I used this <a href="https://github.com/emk/heroku-buildpack-rust">buildpack</a>
 <section id="slide-orge43ccfa">
 <h3 id="orge43ccfa">Is there only Nickel for web work?</h3>
 <p>
-There are several frameworks, but it's an ecosystem in development.
+There are several frameworks, but it's an <span class="showup">ecosystem in development</span>.
 </p>
 
 </section>
@@ -1277,7 +1278,7 @@ A good list can be found at <a href="http://www.arewewebyet.org/">Are We Web Yet
 
 </section>
 <section id="slide-orgb669db4">
-<h4 id="orgb669db4">If you are looking for something more experimental:</h4>
+<h4 id="orgb669db4">If you are looking for something more <span class="showup">experimental</span>:</h4>
 <p>
 Have a look at <a href="https://rocket.rs/">Rocket</a>, which uses a more succinct syntax&#x2026;
 </p>
@@ -1346,7 +1347,7 @@ No, you can use it for many other things!
 </section>
 <section >
 <p>
-Two strong* spaces to apply the language:
+Two strong<span class="showup">*</span> spaces to apply the language:
 </p>
 
 <ul>
@@ -1355,7 +1356,7 @@ Two strong* spaces to apply the language:
 Language extensions (Gems, npm, python extensions, FFI)
 </p>
 
-<small>*IMHO</small></li>
+<small>*<span class="showup">IMHO</span></small></li>
 
 </ul>
 
@@ -1398,7 +1399,7 @@ Bruno Tavares - <a href="https://twitter.com/bltavares">@bltavares</a>
 
 </section>
 <section id="slide-org75c02fc">
-<h3 id="org75c02fc">Special thanks</h3>
+<h3 id="org75c02fc">Special <span class="showup">thanks</span></h3>
 <p>
 <a href="https://github.com/ErichDonGubler">Erich Gubler</a>
 </p>
