@@ -9,6 +9,10 @@
 
   Mas como eu faço um site?
 
+  #+reveal: split
+  There are slides in [[https://presentations.bltavares.com/nunca-ouvi-falar-de-rust/index.en.html%0A][English]]
+  Thanks to [[https://github.com/ErichDonGubler][Erich Gubler]]
+
 * Olá pessoal!
 
   #+reveal: split
