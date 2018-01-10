@@ -9,7 +9,7 @@
 
   But how do I make a website?
 
-* Hello folks!
+* Hello everybody!
 
   #+reveal: split
   If you've never heard of Rust...
@@ -41,12 +41,12 @@
   I wanted a simple way to execute applications
 
 ** Objective
-   1 cross-platform binary
+   1 single-file cross-platform binary
 
 * The Options
 
   #+reveal: split
-  "Do I have to write in C for binaries?"
+  "Do I have to code in C to produce binaries?"
 
   #+reveal: split
   Rust was one of the options in my search for alternatives.
@@ -65,10 +65,12 @@
   #+END_QUOTE
 
   #+reveal: split
-  # FIXME: Essa é uma citação alheia, ou do Bruno mesmo?
-  "It's a very modern language
+  TL;DR;
 
-  with low-level focus"
+  #+reveal: split
+  It's a very modern language
+
+  with low-level focus
 
   #+reveal: split
   A language with several functional-paradigm features:
@@ -81,12 +83,10 @@
   - Structs and Enums
 
   #+reveal: split
-  # FIXME: Bruno, essa tradução lhe parece certo? Não entendi super bem por
-  # quê mencionou o "seguir aprendendo"...
-  What stood out to me for continued learning:
+  What kept me interested on the language:
 
   #+attr_reveal: :frag (t t t t t)
-  - Creates binaries
+  - Produces binary executables
   - Cross-platform
   - Good error messages
   - Low-level focus
@@ -95,22 +95,22 @@
 
 ** [[https://www.mozilla.org/en-US/firefox/quantum/][Mozilla Quantum]]
 
-   All of these traits create an ideal environment for proceeding with confidence
+   All of these traits create an ideal environment to proceed with confidence
 
-* "Why did they choose to create a low-level language?"
+* "Why did they decide to create a low-level language?"
 
-  How many bugs can happen in a low-level program?
+  How many bugs may happen in a low-level program?
 
   #+reveal: split
-  Buffer overflow, segmentation fault,
+  [[https://en.wikipedia.org/wiki/Buffer_overflow][Buffer overflow]], [[https://en.wikipedia.org/wiki/Segmentation_fault][segmentation fault]],
 
-  Use-After-Free...
+  [[https://www.owasp.org/index.php/Using_freed_memory][Use-After-Free]]...
 
   #+reveal: split
   Rust has a type system that prevents several kinds of memory management errors at compile-time
 
   #+reveal: split
-  Memory management without a garbage collector
+  Memory management without a Garbage Collector
 
 * An Example of Rust Preventing Problems with Only the Compiler
 
@@ -300,81 +300,81 @@ error[E0282]: type annotations needed
 ** This type system brings new ways of expressing ownership
 
    #+reveal: split
-   Which we can't do in other better-known languages
+   Which we can't express in other popular languages
 
-    #+reveal: split
-    [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
+   #+reveal: split
+   [[https://play.rust-lang.org/?gist=1bc78bcf4678616aa01538b6a281f9ed&version=stable][Playground]]
 
-    #+BEGIN_SRC rust
-      #[derive(Debug)]
-      struct Request {
-          id: i32
-      }
+   #+BEGIN_SRC rust
+     #[derive(Debug)]
+     struct Order {
+         id: i32
+     }
 
-      fn new_request() -> Request {
-          Request { id: 1 }
-      }
+     fn new_order() -> Order {
+         Order { id: 1 }
+     }
 
-      fn send_request(request: Request) {
-          // Code to send a request
-      }
+     fn send_order(order: Order) {
+         // Code to send a order
+     }
 
-      fn main() {
-          let request = new_request();
-          send_request(request);
+     fn main() {
+         let order = new_order();
+         send_order(order);
 
-          println!("Request data: {:?}", request);
-      }
-    #+END_SRC
+         println!("Order data: {:?}", order);
+     }
+   #+END_SRC
 
-    #+reveal: split
-    #+BEGIN_SRC
-error[E0382]: use of moved value: `request`
+   #+reveal: split
+   #+BEGIN_SRC
+error[E0382]: use of moved value: `order`
   --> src/main.rs:18:39
    |
-16 |     send_request(request);
+16 |     send_order(order);
    |                  ------- value moved here
 17 |
-18 |     println!("Request data: {:?}", request);
-   |                                    ^^^^^^^
-                         value used here after move
-    #+END_SRC
+18 |     println!("Order data: {:?}", order);
+   |                                  ^^^^^
+                      value used here after move
+   #+END_SRC
 
-    #+reveal: split
-    We can only access the request before we send data in this scenario.
+   #+reveal: split
+   We can only access the order data before we send it in this scenario.
 
-    #+reveal: split
-    And this is enforced by the compiler.
+   #+reveal: split
+   And this is enforced by the compiler.
 
-    #+reveal: split
-    [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
+   #+reveal: split
+   [[https://play.rust-lang.org/?gist=a84b49edfd7166e56d81260b0e08aa20&version=stable][Playground]]
 
-    #+BEGIN_SRC rust
-      #[derive(Debug)]
-      struct Request {
-          id: i32
-      }
+   #+BEGIN_SRC rust
+     #[derive(Debug)]
+     struct Order {
+         id: i32
+     }
 
-      fn new_request() -> Request {
-          Request { id: 1 }
-      }
+     fn new_order() -> Order {
+         Order { id: 1 }
+     }
 
-      fn send_request(request: Request) {
-          // Code to send a request
-      }
+     fn send_order(order: Order) {
+         // Code to send a order
+     }
 
-      fn main() {
-          let request = new_request();
-          println!("Request data: {:?}", request);
+     fn main() {
+         let order = new_order();
+         println!("Order data: {:?}", order);
 
-          send_request(request);
-      }
-    #+END_SRC
+         send_order(order);
+     }
+   #+END_SRC
 
-    #+reveal: split
-    #+BEGIN_SRC
-Request data: Request { id: 1 }
-    #+END_SRC
+   #+reveal: split
+   #+BEGIN_SRC
+Order data: Order { id: 1 }
+   #+END_SRC
 
 ** Rust encourages [[https://doc.rust-lang.org/1.7.0/book/testing.html][testing]] from the beginning of a project
    Types can't verify all logic
@@ -397,7 +397,8 @@ $ cargo test
 running 1 test
 test test_super_calculation ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured;
+0 filtered out
    #+END_SRC
 
 ** [[https://doc.rust-lang.org/1.7.0/book/documentation.html][Documentation]] is seen as an important part of your project
@@ -432,11 +433,13 @@ test src/lib.rs - surprise_calculation (line 4) ... FAILED
 failures:
 
 ---- src/lib.rs - surprise_calculation (line 4) stdout ----
-  error[E0061]: this function takes 3 parameters but 2 parameters were supplied
+  error[E0061]: this function takes 3 parameters
+                  but 2 parameters were supplied
  --> src/lib.rs:5:32
   |
 5 | assert_eq!(5, surprise_calculation(1, 2));
-  |                                    ^^^^ expected 3 parameters
+  |                                    ^^^^
+  |                      expected 3 parameters
    #+END_SRC
 
    #+reveal: split
@@ -445,6 +448,9 @@ failures:
    #+BEGIN_SRC
 $ cargo doc --open
    #+END_SRC
+
+   #+reveal: split
+   #+REVEAL_HTML:  <img style="border: none;" src="whitespace_documentation.png" />
 
 ** A systems language:
 
@@ -455,7 +461,7 @@ $ cargo doc --open
    It's a great evolution for the whole low-level ecosystem
 
    #+reveal: split
-   And a great option to construct low-level platforms
+   And a great option to construct high-level platforms
 
 ** But you don't have to worry about all this now
 
@@ -475,7 +481,7 @@ $ cargo doc --open
 
   #+REVEAL_HTML:  <img style="width: 50%; border: none; box-shadow: none;" src="ferris.png" />
 
-  (And you can [[http://edunham.net/2016/04/11/plushie_rustacean_pattern.html][make]] your own)
+  (And you can [[http://edunham.net/2016/04/11/plushie_rustacean_pattern.html][sew]] your own)
 
   #+reveal: split
   Now, how do I make a website?
@@ -485,9 +491,9 @@ $ cargo doc --open
   #+REVEAL_HTML:  <video style="max-width: 80%" controls> <source src="MeuSiteEmRust.webm" type="video/webm"> </video>
 
 ** A website that's:
-   - Light
+   - Lightweight
    - Easy to deploy
-   - Uses the advantages I've already discussed here
+   - Uses the advantages already presented here
 
 * Step one: Installing the toolchain
 
@@ -496,8 +502,10 @@ $ cargo doc --open
   #+REVEAL_HTML:  <img style="width: 50%; border: none;" src="rustup.png" />
 
   #+reveal: split
-  # TODO: Talvez não quis dizer "toolchain installer" -- perhaps "version manager"?
-  This is the toolchain installer for Rust
+  This is the version manager for Rust
+
+  #+reveal: split
+  Which helps to install the needed dependencies and tooling
 
   #+attr_reveal: :frag (t t t)
   - Rustup will install the entire toolchain
@@ -539,11 +547,11 @@ $ cargo doc --open
     <html>
       <head>
         <meta charset=utf-8>
-        <title>Hello TDC POA 2017</title>
+        <title>Hello World</title>
       </head>
       <body>
         <h1>Hello, world</h1>
-        <marquee>Hello TDC</marquee>
+        <marquee>Hello everyone!</marquee>
       </body>
     </html>
   #+END_SRC
@@ -662,7 +670,7 @@ $ cargo doc --open
   #+REVEAL_HTML:  <img style="border: none; box-shadow: none; width: 50%" src="dance.gif" />
 
   #+reveal: split
-  And it's all in just one binary!
+  And it's all in just one sigle-file binary!
 
   #+reveal: split
   And there's a demo on Heroku!
@@ -671,13 +679,13 @@ $ cargo doc --open
 
 * "But can I do something else?"
 
-* Let's make a web request
+* Let's make a web call
 
   #+reveal: split
   It's as easy as in other languages, even though it's a systems language
 
   #+reveal: split
-  I'm going to follow a recipe on the [[https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic][Rust Cookbook]]
+  I'm going to follow a recipe available on the [[https://rust-lang-nursery.github.io/rust-cookbook/net.html#ex-url-basic][Rust Cookbook]]
 
 ** Creating another new project
 
@@ -741,17 +749,18 @@ $ cargo run
    #+END_SRC
 
    #+reveal: split
+   #+REVEAL_HTML:  <img style="width: 80%" src="minha-chamada.png" />
+
+   #+reveal: split
    Now you have code to make web requests!
 
-   - binary
+   - single-file binary
    - cross-platform
    - with low memory usage
    - which doesn't need several dependencies installed to be used
 
    #+reveal: split
-   # FIXME: Não tenho certeza do que se quer dizer aqui...a resposta é sim ou
-   # não?
-   Bem similar a outras linguagens?
+   Does it look far too diferent from other languages?
 
 * "One question..."
 
@@ -759,7 +768,7 @@ $ cargo run
    I spent weeks banging my head against some concepts that were new to me.
 
    #+reveal: split
-   - I have a more high-level background (Ruby/Java/JavaScript)
+   - I come from a Ruby/Java/JavaScript background
    - I had to learn about the stack and references
    - The concepts of ~lifetimes~ and ~borrowing~ took a while to get into my head
 
@@ -771,12 +780,10 @@ $ cargo run
    #+reveal: split
    The community is very open and helped me a lot, and has a lot of interest in welcoming new people.
 
-   Many people are willing to help on [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], on the [[https://users.rust-lang.org/][forum]], and even on [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
+   Many people are willing to help on [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], on [[https://riot.im/app/#/room/#mozilla_#rust:matrix.org][#rust]], and on the [[https://users.rust-lang.org/][forum]].
 
    #+reveal: split
-   # TODO: Talvez seja mais esclarecedor dizer aqui que o material é para
-   # programador.
-   There's a big push to make the ecosystem inclusive, as much for community participation as for material for all levels.
+   There's a big push to make the ecosystem inclusive, as much for community participation as for learning material for all programing levels.
 
 ** [[https://rustbridge.github.io][RustBridge]]
    An initiative to teach Rust to those that aren't well-represented in the area of technology
@@ -784,11 +791,11 @@ $ cargo run
    #+reveal: split
    With interest in turning the language into a good first programming language
 
-** Collaborative evolution
+** [[https://rust-lang.github.io/rfcs/][Collaborative evolution]]
    All proposals for changes in the language follow an [[https://github.com/rust-lang/rfcs/blob/master/0000-template.md][RFC]] process
 
    #+reveal: split
-   which requires new proposals to have [[https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md][documentation]] and a clear way to teach the change
+   Which requires new change proposals to have [[https://github.com/rust-lang/rfcs/blob/master/text/1636-document_all_features.md][documentation]] and a clear way to teach the proposed change
 
 ** How do I get my site on Heroku?
    I used this [[https://github.com/emk/heroku-buildpack-rust][buildpack]].
@@ -796,7 +803,7 @@ $ cargo run
    #+REVEAL_HTML:  <img style="border: none;" src="heroku.png" />
 
 ** Is there only Nickel for web work?
-   There are several frameworks, but it's an ecosystem that's still developing.
+   There are several frameworks, but it's an ecosystem in development.
 
    #+reveal: split
    A good list can be found at [[http://www.arewewebyet.org/][Are We Web Yet?]]
@@ -840,30 +847,36 @@ $ cargo run
    #+reveal: split
    Two strong* spaces to apply the language:
 
-   - Support tools (CLI tools, build tools, text editors, etc)
+   - Support tools (CLI tools, build tools, ETLs, etc)
    - Language extensions (Gems, npm, python extensions, FFI)
 
      #+REVEAL_HTML:  <small>*IMHO</small>
 
    #+reveal: split
-   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Operating Systems^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, [[http://arewegameyet.com][Games]], [[https://github.com/japaric/rust-cross][cross compilation]], [[https://github.com/japaric/trust][CI]]...
+   [[http://www.arewelearningyet.com/][Machine Learning]], [[https://usehelix.com/][Ruby]], [[https://github.com/mitsuhiko/snaek][Python]], [[https://github.com/mgattozzi/curryrs][Haskell]], [[https://www.neon-bindings.com/][Node.js]], [[https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde][WebAssembly]], [[https://blogs.oracle.com/developers/building-a-container-runtime-in-rust][Container]], [[https://tokio.rs/][Network Platform]], [[https://github.com/rust-embedded][Embedded]], Operational Systems^{[[https://intermezzos.github.io/book/][1]]}^{[[https://www.redox-os.org/][2]]}^{[[https://os.phil-opp.com/][3]]}, [[http://arewegameyet.com][Games]], [[https://github.com/japaric/rust-cross][cross-compilation]], [[https://github.com/japaric/trust][CI]]...
 
-* I hope that you've liked Rust
+* I hope you liked Rust
 
-** And if you want to keep learning about it
+** And if you want to learn more
 
-   - There's a [[https://doc.rust-lang.org/book/][free book]] on Rust's website
-   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] is a great channel for quickly answering questions
-   - There's [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] for Portuguese speakers
-   - The [[https://telegram.me/rustlangbr][@rustlangbr]] group on Telegram
+   - There is a [[https://doc.rust-lang.org/book/][free book]] on the website [EN]
+   - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] is a great channel to help with initial doubts
+   - There is [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] for the Portuguese speakers
+   - [[https://telegram.me/rustlangbr][@rustlangbr]] on Telegram
    - [[https://www.meetup.com/topics/rust/][Meetups]]
-   - [[http://exercism.io/languages/rust/about][Exercism]]
-   - And [[https://github.com/rust-br/estudos][online study group]] in Portuguese
+   - [[http://exercism.io/languages/rust/about][Coding exercises]]
+   - And an [[https://github.com/rust-br/estudos][online studygroup]] in Portuguese
 
    #+reveal: split
-   If Rust interests you, you can contact me too, because I want to help you with your next steps.
+   If you got interested in Rust, you may get in touch with me as well, I want to help you with your next steps into the ecosystem.
 
    Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
+
+** Special thanks
+
+   [[https://github.com/ErichDonGubler][Erich Gubler]]
+
+   Thank you for translating the [[https://presentations.bltavares.com/nunca-ouvi-falar-de-rust/][original]] presentation from Portuguese to English
 
 ** Links
    :PROPERTIES:
@@ -872,9 +885,9 @@ $ cargo run
    :END:
 
    - [[http://intorust.com/][into_rust(); screencasts]]
-   - [[https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/][Lambda3 Podcast - in Portuguese]]
+   - [[https://www.lambda3.com.br/2017/10/lambda3-podcast-66-rust/][Podcast da Lambda 3 - Em portugues]]
    - https://github.com/bltavares/meu-site-em-rust
-   - [[http://www.rustacean.net/][Ferris images]]
+   - [[http://www.rustacean.net/][Ferris pictures]]
    - http://edunham.net/2016/04/11/plushie_rustacean_pattern.html
    - https://rustup.rs/
    - https://github.com/nickel-org/nickel.rs
