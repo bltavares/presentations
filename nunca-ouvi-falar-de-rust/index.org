@@ -443,6 +443,9 @@ failures:
 $ cargo doc --open
    #+END_SRC
 
+ #+reveal: split
+ #+REVEAL_HTML:  <img style="border: none;" src="whitespace_documentation.png" />
+
 ** Uma linguagem de sistemas:
 
    - Tem mensagens de erros claras
@@ -690,6 +693,9 @@ $ cargo doc --open
      Running `target/debug/minha-chamada-em-rust`
      Hello, world!
    #+END_SRC
+
+ #+reveal: split
+ #+REVEAL_HTML:  <img style="width: 80%" src="minha-chamada.png" />
 
 ** Adicionando uma lib para chamadas
    #+reveal: split
