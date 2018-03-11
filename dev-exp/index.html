@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Developer Experience: desbloqueando entregas ágeis</title>
+<meta name="author" content="(Bruno Tavares)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/base16.css" id="theme"/>
+
+<link rel="stylesheet" href="extra.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-org7d7aff4">
+<h2 id="org7d7aff4">Developer Experience</h2>
+<p>
+Desbloqueando entregas ágeis
+</p>
+
+</section>
+<p>
+Olá pessoal
+</p>
+
+</section>
+<p>
+De onde vem a necessidade de entender a experiência de desenvolvimento?
+</p>
+
+</section>
+<ul>
+<li>Uma introdução ao conceito</li>
+<li>Um case de sucesso</li>
+<li>Outros exemplos surgindo no mercado</li>
+
+</ul>
+
+</section>
+<section id="slide-orga585952">
+<h3 id="orga585952">De onde vem a necessidade de entender a experiência de desenvolvimento?</h3>
+</section>
+<p>
+Primeiro precisamos de falar sobre Agilidade e Entrega Contínua
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb95d982">
+<h2 id="orgb95d982">Agilidade e Lean</h2>
+<p>
+Construção colaborativa, evitando desperdício
+</p>
+
+</section>
+<section >
+<p>
+Processos para responder rápido a necessidades de negócio
+</p>
+
+</section>
+<section id="slide-org2ccea0c">
+<h3 id="org2ccea0c">Estamos construindo o que o negócio precisa?</h3>
+</section>
+<section id="slide-orgdf8019b">
+<h3 id="orgdf8019b">Estamos medindo o impacto das decisões?</h3>
+</section>
+<section id="slide-orge8c1a0b">
+<h3 id="orge8c1a0b">Podemos responder rápido a mudanças?</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org8dd3f07">
+<h2 id="org8dd3f07">Entrega Contínua</h2>
+<p>
+Reduzindo riscos por entregar frequentemente
+</p>
+
+</section>
+<section >
+<p>
+Ter um processo de entrega confiável e bem definido, onde o produto passa por <i>build</i>, <i>test</i>, <i>deploy</i>
+</p>
+
+</section>
+<section >
+
+<p>
+<a href="http://loja.grupoa.com.br/livros/engenharia-de-software-e-metodos-ageis/entrega-continua/9788582601037">Entrega Continua - Jez Humble &amp; David Farley</a>
+</p>
+<img style="height: 10%; border: none; box-shadow: none;" src="entrega_continua.jpg" />
+
+</section>
+<section >
+<p>
+Lead Time
+</p>
+
+<p>
+Quanto tempo para fazer uma mudança e te-la refletida em <span class="underline">produção</span>
+</p>
+
+</section>
+<section id="slide-orgb335160">
+<h3 id="orgb335160">Entrega contínua é pré-requisito para boas entregas</h3>
+</section>
+<section >
+<p>
+Ter um processo confiável para garantir a qualidade ajuda a reduzir riscos
+</p>
+
+</section>
+<section >
+<p>
+Se as mudanças são pequenas, você consegue identificar melhor o resultado
+</p>
+
+</section>
+<section >
+<p>
+Se uma mudança demora 5 minutos para chegar a produção&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Voltar ao estado anterior demora apenas 5 minutos também
+</p>
+
+</section>
+<section >
+<p>
+Passando pelo mesmo processo confiável que você construiu no dia a dia
+</p>
+
+</section>
+<section >
+<p>
+Lead Time pequeno está ligado a um Mean Time to Recover pequeno
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7856b26">
+<h2 id="org7856b26">Como manter os benefícios da entrega contínua em grandes equipes?</h2>
+</section>
+<section >
+<p>
+Vamos pensar no crescimento de um produto
+</p>
+
+</section>
+<section >
+<p>
+10 pessoas desenvolvendo
+</p>
+
+</section>
+<section >
+<p>
+A complexidade do negócio ainda é pequena
+</p>
+
+</section>
+<section >
+<p>
+Manter o contexto inteiro do negócio dentro da equipe é simples
+</p>
+
+</section>
+<section >
+<p>
+As ferramentas e processos são simples
+</p>
+
+</section>
+<section id="slide-orgb8a3c53">
+<h3 id="orgb8a3c53">10 equipes de 10 pessoas desenvolvendo</h3>
+</section>
+<section >
+<p>
+A complexidade de negócio que esse grupo suporta cresce
+</p>
+
+</section>
+<section >
+<p>
+As mudanças possuem riscos e impacto maiores
+</p>
+
+</section>
+<section >
+<p>
+As ferramentas e processos precisam se adaptar ao crescimento da complexidade
+</p>
+
+</section>
+<section id="slide-org9c73bc3">
+<h3 id="org9c73bc3">10 pessoas vs 100 pessoas</h3>
+<ul>
+<li>Qual o risco de uma mudança no código?</li>
+<li>Qual o risco de uma mudança no banco de dados?</li>
+<li>Qual o risco de uma mudança na plataforma?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Nesta escala estamos nos preocupando bem mais no impacto da experiência do usuário final
+</p>
+
+</section>
+<section id="slide-org47dfe8f">
+<h3 id="org47dfe8f">Qual a Experiência do Usuário?</h3>
+</section>
+<section >
+<p>
+Falamos sobre a jornada do usuário para entender como é interagir com nosso sistema
+</p>
+
+</section>
+<section >
+<p>
+Adotamos técnicas como:
+</p>
+
+<ul>
+<li>Zero Downtime Deploy</li>
+<li>Blue-Green,</li>
+<li>Jorney Mapping</li>
+<li>User Interviews e Heat Map</li>
+<li>Testes automatizados</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Técnicas que tem intuito trazer:
+</p>
+
+<ul>
+<li>Estabilidade</li>
+<li>Qualidade</li>
+<li>Controle</li>
+<li>Previsibilidade</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+E se&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+E se pensarmos nas pessoas que desenvolvem os nossos sistemas como Usuários dos nossos <i>processos de entrega</i>?
+</p>
+
+</section>
+<section id="slide-orgab27ea2">
+<h3 id="orgab27ea2">Qual a Experiência de Desenvolvimento?</h3>
+</section>
+<section >
+<p>
+Qual a experiência de entrega que nossas ferramentas e processos tem?
+</p>
+
+</section>
+<section >
+<p>
+Quais são os comportamentos que o nosso processo de entrega incentivam nas nossas equipes?
+</p>
+
+</section>
+<section >
+<p>
+Quanto tempo de latência desde uma mudança feita até o produção:
+</p>
+
+<ul>
+<li>Uma mudança na lógica do código?</li>
+<li>Uma mudança no banco de dados?</li>
+<li>Uma mudança na infraestrutura?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Qual o custo de em gerar uma mudança:
+</p>
+
+<ul>
+<li>Uma mudança na lógica do código?</li>
+<li>Uma mudança no banco de dados?</li>
+<li>Uma mudança na infraestrutura?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Essas perguntas nos ajudam a entender melhor a experiência de desenvolver
+</p>
+
+</section>
+<section >
+<p>
+&gt; Quanto maior o esforço, menos o uso
+</p>
+
+</section>
+<section >
+<p>
+Um <i>Lead Time</i> muito grande afeta negativamente os comportamentos das equipes
+</p>
+
+</section>
+<section >
+<p>
+Tendência em acumular e agrupar mudanças dado o alto custo de seguir com ela
+</p>
+
+</section>
+<section >
+<p>
+Uma mudança que demora 5 dias para chegar em produção carrega muito risco
+</p>
+
+</section>
+<section >
+<p>
+E isso aumenta o risco no negócio
+</p>
+
+</section>
+<section id="slide-orgd65597e">
+<h3 id="orgd65597e">O processo de entrega sob análise</h3>
+<div class="outline-text-3" id="text-orgd65597e">
+</div>
+</section>
+<section id="slide-org1c0addb">
+<h4 id="org1c0addb">Development Experience busca incentivar a Entrega Contínua</h4>
+</section>
+<section >
+<p>
+Quais os comportamentos que gostaríamos de incentivar através de todas as equipes?
+</p>
+
+</section>
+<section >
+<p>
+Como tornar uma prática de Entrega Contínua mais fácil que um habito adiquirido?
+</p>
+
+</section>
+<section id="slide-org04c6d7c">
+<h3 id="org04c6d7c">Saber responder essas perguntas é essencial para Entrega Contínua</h3>
+<ul>
+<li>Quanto tempo de latência desde uma mudança feita até o produção?
+<ul>
+<li>Lead Time</li>
+
+</ul></li>
+<li>Qual o custo de em gerar uma mudança?
+<ul>
+<li>Development Effort</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Developer Experience é uma otimização para Entrega Contínua
+</p>
+
+</section>
+<section >
+<p>
+Precisamos reduzir os custos dos processos para incentivar Entrega Contínua
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org839a7d5">
+<h2 id="org839a7d5">Case</h2>
+<p>
+Incentivando pequenas mudanças em bancos de dados entre 25 equipes
+</p>
+
+</section>
+<section >
+<p>
+Cenário inicial: uma mudança de banco de dados precisa:
+</p>
+
+<ul>
+<li class="fragment">Precisa ser revisado pelo DBA</li>
+<li class="fragment">Não podemos permitir comandos que perdam dados (Drop, deletes)</li>
+<li class="fragment">Não podemos permitir comandos que geram locks nas tabelas</li>
+<li class="fragment">Mudanças estruturais precisam de cuidado redobrado</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Resultado:
+</p>
+
+<ul>
+<li class="fragment">Mudanças demoraram 5 dias para serem revisadas pelo DBA</li>
+<li class="fragment">Conflitos nas prioridades atrasavam as revisões</li>
+<li class="fragment">Equipes evitavam fazer mudanças no banco de dados</li>
+<li class="fragment">Falta de confiança por não saberem o que é aceitável</li>
+<li class="fragment">Falta de previsibilidade quando a mudança seria aplicada em produção</li>
+<li class="fragment">Mudanças aconteciam no final da sprint, gerando dependência no código que seria entregue</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Mudanças em banco eram evitadas, por ser caro, e deixados para o ultimo dia da sprint
+</p>
+
+</section>
+<section >
+<p>
+Esse não é o comportamento que gostaríamos de incentivar
+</p>
+
+</section>
+<section >
+<p>
+Mas foi o habito adiquirido para lidar com o custo
+</p>
+
+</section>
+<section >
+<p>
+Criamos uma equipe de 4 pessoas:
+</p>
+
+<ul>
+<li class="fragment">Automatizamos a maioria das checagens nas mudanças</li>
+<li class="fragment">Melhoramos a mensagem de feedback quando encontramos erros</li>
+<li class="fragment">Reduzimos o ciclo de feedback permitindo executar as verificações antes mesmo de enviar o pedido</li>
+<li class="fragment">Nos casos que ainda não haviam verificações automáticas, enviávamos para o DBA nos ajudar</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Mudanças foram de 5 dias de revisão para 1 hora
+</p>
+
+<ul>
+<li class="fragment">Continuamos focando na experiência de quem desenvolve</li>
+<li class="fragment">Cobrimos mais casos para verificação</li>
+<li class="fragment">Criamos mais passos de verificação para reduzir os riscos das mudanças</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Em alguns casos, a mudança poderia chegar em 15 minutos a produção
+</p>
+
+</section>
+<section id="slide-orgee2cb47">
+<h3 id="orgee2cb47">4 pessoas</h3>
+<p>
+Reduziram 40 horas para as 25 equipes a cada mudança de SQL
+</p>
+
+</section>
+<section >
+<ul>
+<li>O processo se tornou mais trivial</li>
+<li>As equipes ficaram mais propensas a criar mudanças mais cedo durante a sprint</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Como as mudanças agora tem baixo custo, mais mudanças aconteciam, só que bem menores
+</p>
+
+</section>
+<section >
+<p>
+Mudanças menores carregam menos riscos
+</p>
+
+</section>
+<section >
+<p>
+E buscamos reduzir riscos
+</p>
+
+</section>
+<section id="slide-org5303ef8">
+<h3 id="org5303ef8">Developer Experience em outras empresas</h3>
+<div class="outline-text-3" id="text-org5303ef8">
+</div>
+</section>
+<section id="slide-org14154be">
+<h4 id="org14154be">Nubank: Engineering Productivity</h4>
+</section>
+<section >
+<p>
+Microserviços sendo desenvolvidos o tempo todo por diferentes equipes
+</p>
+
+</section>
+<section >
+<p>
+Processo de entrega requer garantir que todos os serviços tenham uma boa integração
+</p>
+
+</section>
+<section >
+<p>
+Equipes focadas em desenvolver funcionalidades novas competem para passar pelo processo de entrega
+</p>
+
+</section>
+<section >
+<p>
+Um squad dedicado a otimizar e reduzir a fricção do processo de entrega
+</p>
+
+</section>
+<section >
+<ul>
+<li>Buscam novas técnicas de teste para acelerar os passos de integração</li>
+<li>Criam novas ferramentas para ajudar o desenvolvimento</li>
+<li>Tornam processos que todas as equipes passam em algo trivial, sempre que possível</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Estamos experimentando com squads de EngProd em escalas menores, dentro das equipes
+</p>
+
+</section>
+<section >
+<p>
+Melhoria das experiências em comum entre as equipes ao desenvolver
+</p>
+
+</section>
+<section id="slide-org8562566">
+<h4 id="org8562566">Em outros lugares, com outros nomes</h4>
+</section>
+<section >
+
+<ul>
+<li class="fragment">ThoughtWorks sobre <a href="https://www.youtube.com/watch?v=2jGef7HiSns">Developer Experience como diferenciador</a></li>
+<li class="fragment">Heroku sobre <a href="https://www.heroku.com/dx">Developer Experience como oferta de mercado</a></li>
+<li class="fragment">Google sobre <a href="https://testing.googleblog.com/2016/03/from-qa-to-engineering-productivity.html">Engineering Productivity na qualidade dos sistemas</a></li>
+<li class="fragment">Netflix sobre <a href="https://www.atlassian.com/company/events/summit-us/watch-sessions/2017/code-deploy/continuously-integrating-distributed-code-at-netflix">Integracao Continua por membros da equipe de Developer Productivity</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1c589fe">
+<h2 id="org1c589fe">Em resumo</h2>
+<p>
+Se sua Entrega Contínua tem ciclos muito grandes e um custo alto nas mudanças
+</p>
+
+</section>
+<section >
+<p>
+Talvez seja necessário revisar a experiência do desenvolvimento
+</p>
+
+</section>
+<section >
+<p>
+E investir nela
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf559ef8">
+<h2 id="orgf559ef8">Se você ainda não pratica Entrega Contínua</h2>
+<ul>
+<li>Faça um exercicio de <a href="https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&amp;utm_campaign=user_page&amp;utm_medium=link">avaliação de entrega continua</a></li>
+<li>Crie um <a href="http://www.caroli.org/mapeamento-de-fluxo-de-valor/">Value Stream Map</a></li>
+<li>Descubra qual seu <i><a href="http://www.caroli.org/bar-de-uisque-wip-cycle-time-lead-time-batch-size/">Lead Time</a></i></li>
+<li>Adote mudanças no processo para torná-lo confiável e automatizável</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orge8915c8">
+<h2 id="orge8915c8">Se você já pratica Entrega Contínua</h2>
+<ul>
+<li>Faça um exercicio de <a href="https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&amp;utm_campaign=user_page&amp;utm_medium=link">avaliação de entrega continua</a></li>
+<li>Invista em automatizar os processos que mais impactam o fluxo</li>
+<li>Busque feedback de quem desenvolve sobre o que é mais difícil</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+E nos dois casos&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+Saiba responder o seu <i>Lead Time</i>
+</p>
+
+<p>
+para otimizar-lo
+</p>
+
+</section>
+<section >
+<p>
+Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
+</p>
+
+</section>
+<section >
+<p>
+Podemos conversar mais sobre esses assuntos pela conferência
+</p>
+
+</section>
+<section >
+<p>
+Obrigado
+</p>
+
+<p>
+Bruno Tavares - <a href="https://twitter.com/bltavares">@bltavares</a>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+maxScale: 1.80,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
