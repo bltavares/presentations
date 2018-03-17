@@ -50,7 +50,7 @@
 
    Quanto tempo para fazer uma mudança e te-la refletida em _produção_
 
-** Entrega contínua é pré-requisito para boas entregas
+** Entrega Contínua é pré-requisito para boas entregas
 
    #+reveal: split
    Ter um processo confiável para garantir a qualidade ajuda a reduzir riscos
@@ -121,41 +121,17 @@
 ** Qual a Experiência de Desenvolvimento?
 
    #+reveal: split
-   Qual a experiência de entrega que nossas ferramentas e processos tem?
+   Qual a experiência de uso que nossas ferramentas e processo de entrega tem?
 
    #+reveal: split
-   Adotamos técnicas como:
+   Qual o custo e esforço ao fazer:
 
-   - Zero Downtime Deploy
-   - Blue-Green,
-   - Jorney Mapping
-   - User Interviews e Heat Map
-   - Testes automatizados
-
-   #+reveal: split
-   Técnicas que tem intuito trazer:
-
-   - Estabilidade
-   - Qualidade
-   - Controle
-   - Previsibilidade
+   - Uma mudança na lógica do código?
+   - Uma mudança no banco de dados?
+   - Uma mudança na infraestrutura?
 
    #+reveal: split
    Quais são os comportamentos que o nosso processo de entrega incentivam nas nossas equipes?
-
-   #+reveal: split
-   Quanto tempo de latência desde uma mudança feita até o produção:
-
-   - Uma mudança na lógica do código?
-   - Uma mudança no banco de dados?
-   - Uma mudança na infraestrutura?
-
-   #+reveal: split
-   Qual o custo de em gerar uma mudança:
-
-   - Uma mudança na lógica do código?
-   - Uma mudança no banco de dados?
-   - Uma mudança na infraestrutura?
 
    #+reveal: split
    Essas perguntas nos ajudam a entender melhor a experiência de desenvolver
@@ -168,13 +144,12 @@
 *** Developer Experience busca incentivar a Entrega Contínua
 
     #+reveal: split
-    Developer Experience é uma otimização em Entrega Contínua
+    Developer Experience é otimizar Entrega Contínua
 
     #+reveal: split
-    Quais os comportamentos que gostaríamos de incentivar nas equipes?
+    É preciso reduzir os custos dos processos para incentivar Entrega Contínua
 
-    #+reveal: split
-    Precisamos reduzir os custos dos processos para incentivar Entrega Contínua
+*** Quais os comportamentos que gostaríamos de incentivar nas equipes?
 
 * Case
   Incentivando pequenas mudanças em bancos de dados entre 25 equipes
@@ -200,13 +175,10 @@
   - Mudanças aconteciam no final da sprint, gerando dependência no código que seria entregue
 
   #+reveal: split
-  Mudanças em banco eram evitadas, por ser caro, e deixados para o ultimo dia da sprint
+  Mudanças em banco eram evitadas e deixados para o ultimo dia da sprint
 
   #+reveal: split
   Esse não é o comportamento que gostaríamos de incentivar
-
-  #+reveal: split
-  Mas foi o habito adiquirido para lidar com o custo da mudança
 
   #+reveal: split
   Criamos uma equipe de 4 pessoas:
@@ -220,25 +192,17 @@
   #+reveal: split
   Mudanças foram de 5 dias de revisão para 1 hora
 
-  #+attr_reveal: :frag (t t t)
-  - Continuamos focando na experiência de quem desenvolve
-  - Cobrimos mais casos para verificação
-  - Criamos mais passos de verificação para reduzir os riscos das mudanças
-
   #+reveal: split
-  Em alguns casos, a mudança poderia chegar em 15 minutos a produção
-
-  #+reveal: split
-  Reduziram 40 horas para as 25 equipes a cada mudança de SQL
+  /Lead Time/ foi de de 40 horas para 1 hora
 
   #+reveal: split
   O processo se tornou mais trivial
 
   #+reveal: split
-  Como as mudanças agora tem baixo custo, mais mudanças aconteciam
+  Mudanças passaram a acontecer no mais cedo durante a sprint
 
   #+reveal: split
-  As equipes ficaram mais propensas a criar mudanças mais cedo durante a sprint
+  Mais mudanças aconteciam, por ter um baixo custo
 
   #+reveal: split
   E as mudanças eram menores
@@ -246,16 +210,12 @@
   #+reveal: split
   Mudanças menores carregam menos riscos
 
-  #+reveal: split
-  E buscamos reduzir riscos
+  e buscamos reduzir riscos
 
 ** Developer Experience em outras empresas
 *** Nubank: Engineering Productivity
     #+reveal: split
     Microserviços sendo desenvolvidos o tempo todo por diferentes equipes
-
-    #+reveal: split
-    Processo de entrega requer garantir que todos os serviços tenham uma boa integração
 
     #+reveal: split
     Mudanças de todos se enfileram para chegar em produção
@@ -270,9 +230,6 @@
 
     #+reveal: split
     Estamos experimentando com squads de EngProd em escalas menores, dentro das equipes
-
-    #+reveal: split
-    Melhoria das experiências em comum entre as equipes ao desenvolver
 
 *** Em outros lugares, com outros nomes
     #+reveal: split
@@ -290,7 +247,7 @@
 ** O ideal:
    No mesmo dia
 
-   #+reveal: split
+   #+attr_reveal: :frag (t t t t)
    - Escolha uma mudança de baixo risco
      - Uma mudança em um texto é um ótima primeira tarefa
    - Acompanhe a configuração do ferramental
@@ -308,8 +265,7 @@
    #+reveal: split
    No fim do dia você sente que já contribuiu no projeto
 
-
-** Para quem está acompanhando
+** Para quem está acompanhando o onboarding
 
    #+reveal: split
    Você descobre onde falta ergonomia de uso no processo de entrega
@@ -320,21 +276,19 @@
    #+reveal: split
    E já começa com um bom onboarding
 
-   #+reveal: split
-   Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
-
 * Se você ainda não pratica Entrega Contínua
 
+  #+attr_reveal: :frag (t t t t)
   - Faça um exercicio de [[https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&utm_campaign=user_page&utm_medium=link][avaliação de entrega continua]]
   - Crie um [[http://www.caroli.org/mapeamento-de-fluxo-de-valor/][Value Stream Map]]
   - Descubra qual seu /[[http://www.caroli.org/bar-de-uisque-wip-cycle-time-lead-time-batch-size/][Lead Time]]/
   - Adote mudanças no processo para torná-lo confiável e automatizável
 
   #+reveal: split
-  Existem várias técnicas para aumentar a ergonomia de desenvolvimento...
+  Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
 
   #+reveal: split
-  Podemos conversar mais sobre esses assuntos pela conferência
+  Podemos conversar mais durante a conferência
 
   #+reveal: split
   Obrigado
