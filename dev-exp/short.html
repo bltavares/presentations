@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Developer Experience: desbloqueando entregas ágeis</title>
+<meta name="author" content="(Bruno Tavares)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/base16.css" id="theme"/>
+
+<link rel="stylesheet" href="extra.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-org76a7093">
+<h2 id="org76a7093">Developer Experience</h2>
+<p>
+Desbloqueando entregas ágeis
+</p>
+
+</section>
+<section >
+<p>
+Olá pessoal
+</p>
+
+</section>
+<section >
+<p>
+De onde vem a necessidade de entender a experiência de desenvolvimento?
+</p>
+
+</section>
+<section >
+<ul>
+<li>Uma introdução ao conceito</li>
+<li>Um case de sucesso</li>
+<li>Outros exemplos surgindo no mercado</li>
+
+</ul>
+
+</section>
+<section id="slide-orgbb9f08a">
+<h3 id="orgbb9f08a">De onde vem a necessidade de entender a experiência de desenvolvimento?</h3>
+</section>
+<section >
+<p>
+Primeiro precisamos de falar sobre Agilidade e Entrega Contínua
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga1eb83d">
+<h2 id="orga1eb83d">Agilidade e Lean</h2>
+<p>
+Construção colaborativa, evitando desperdício
+</p>
+
+</section>
+<section >
+<p>
+Processos para responder rápido a necessidades de negócio
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org4859a98">
+<h2 id="org4859a98">Entrega Contínua</h2>
+<p>
+Reduzindo riscos por entregar frequentemente
+</p>
+
+</section>
+<section >
+<p>
+Ter um processo de entrega confiável e bem definido, onde o produto passa por <i>build</i>, <i>test</i>, <i>deploy</i>
+</p>
+
+</section>
+<section >
+
+<p>
+<a href="http://loja.grupoa.com.br/livros/engenharia-de-software-e-metodos-ageis/entrega-continua/9788582601037">Entrega Continua - Jez Humble &amp; David Farley</a>
+</p>
+<img style="height: 10%; border: none; box-shadow: none;" src="entrega_continua.jpg" />
+
+</section>
+<section id="slide-org4ef9ffa">
+<h3 id="org4ef9ffa">Lead Time</h3>
+<p>
+Quanto tempo para fazer uma mudança e te-la refletida em <span class="underline">produção</span>
+</p>
+
+</section>
+<section id="slide-org36280a2">
+<h3 id="org36280a2">Entrega Contínua é pré-requisito para boas entregas</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf043aac">
+<h2 id="orgf043aac">Como manter os benefícios da Entrega Contínua?</h2>
+</section>
+<section >
+<p>
+10 pessoas desenvolvendo
+</p>
+
+</section>
+<section >
+<p>
+Manter o contexto inteiro do negócio dentro da equipe é simples
+</p>
+
+</section>
+<section >
+<p>
+As ferramentas e processos são simples
+</p>
+
+</section>
+<section id="slide-org1b04178">
+<h3 id="org1b04178">10 equipes de 10 pessoas desenvolvendo</h3>
+</section>
+<section >
+<p>
+A complexidade de negócio que esse grupo suporta cresce
+</p>
+
+</section>
+<section >
+<p>
+As mudanças possuem riscos e impacto maiores
+</p>
+
+</section>
+<section >
+<p>
+As ferramentas e processos precisam se adaptar ao crescimento da complexidade
+</p>
+
+</section>
+<section id="slide-orgb811de3">
+<h3 id="orgb811de3">10 pessoas vs 100 pessoas</h3>
+<ul>
+<li>Qual o risco de uma mudança no código?</li>
+<li>Qual o risco de uma mudança no banco de dados?</li>
+<li>Qual o risco de uma mudança na plataforma?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Falamos sobre a jornada do usuário para entender como é interagir com nosso sistema
+</p>
+
+</section>
+<section >
+<p>
+E se&#x2026;
+</p>
+
+</section>
+<section >
+<p>
+E se pensarmos nas pessoas que desenvolvem os nossos sistemas como Usuários dos nossos <i>processos de entrega</i>?
+</p>
+
+</section>
+<section id="slide-orgc503a49">
+<h3 id="orgc503a49">Qual a Experiência de Desenvolvimento?</h3>
+</section>
+<section >
+<p>
+Qual a experiência de uso que nossas ferramentas e processo de entrega tem?
+</p>
+
+</section>
+<section >
+<p>
+Qual o custo e esforço ao fazer:
+</p>
+
+<ul>
+<li>Uma mudança na lógica do código?</li>
+<li>Uma mudança no banco de dados?</li>
+<li>Uma mudança na infraestrutura?</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Quais são os comportamentos que o nosso processo de entrega incentivam nas nossas equipes?
+</p>
+
+</section>
+<section >
+<p>
+Quanto maior o esforço, menos o uso
+</p>
+
+</section>
+<section id="slide-org1f5294a">
+<h3 id="org1f5294a">O <i>processo de entrega</i> sob análise</h3>
+<div class="outline-text-3" id="text-org1f5294a">
+</div>
+</section>
+<section id="slide-org19d6979">
+<h4 id="org19d6979">Developer Experience busca incentivar a Entrega Contínua</h4>
+</section>
+<section >
+<p>
+Developer Experience é otimizar Entrega Contínua
+</p>
+
+</section>
+<section >
+<p>
+É preciso reduzir os custos dos processos para incentivar Entrega Contínua
+</p>
+
+</section>
+<section id="slide-org5386f17">
+<h4 id="org5386f17">Quais os comportamentos que gostaríamos de incentivar nas equipes?</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-orgec7663b">
+<h2 id="orgec7663b">Case</h2>
+<p>
+Incentivando pequenas mudanças em bancos de dados entre 25 equipes
+</p>
+
+</section>
+<section >
+<p>
+Cenário inicial: uma mudança de banco de dados precisa:
+</p>
+
+<ul>
+<li class="fragment">Ser revisado pelo DBA</li>
+<li class="fragment">Não podemos permitir comandos que perdam dados (Drop, deletes)</li>
+<li class="fragment">Não podemos permitir comandos que geram locks nas tabelas</li>
+<li class="fragment">Mudanças estruturais precisam de cuidado redobrado</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Resultado:
+</p>
+
+<ul>
+<li class="fragment">Mudanças demoraram 5 dias para serem revisadas pelo DBA</li>
+<li class="fragment">Conflitos nas prioridades atrasavam as revisões</li>
+<li class="fragment">Equipes evitavam fazer mudanças no banco de dados</li>
+<li class="fragment">Falta de confiança por não saberem o que é aceitável</li>
+<li class="fragment">Falta de previsibilidade quando a mudança seria aplicada em produção</li>
+<li class="fragment">Mudanças aconteciam no final da sprint, gerando dependência no código que seria entregue</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Mudanças em banco eram evitadas e deixados para o ultimo dia da sprint
+</p>
+
+</section>
+<section >
+<p>
+Esse não é o comportamento que gostaríamos de incentivar
+</p>
+
+</section>
+<section >
+<p>
+Juntamos uma equipe para:
+</p>
+
+<ul>
+<li class="fragment">Automatizamos a maioria das checagens nas mudanças</li>
+<li class="fragment">Melhoramos a mensagem de feedback quando encontramos erros</li>
+<li class="fragment">Reduzimos o ciclo de feedback permitindo executar as verificações antes mesmo de criar um ticket</li>
+<li class="fragment">Nos casos que ainda não haviam verificações automáticas, enviávamos para o DBA nos ajudar</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Mudanças foram de 5 dias de revisão para 1 hora
+</p>
+
+</section>
+<section >
+<p>
+<i>Lead Time</i> foi de de 40 horas para 1 hora
+</p>
+
+</section>
+<section id="slide-orga63e378">
+<h3 id="orga63e378">Developer Experience em outras empresas</h3>
+<div class="outline-text-3" id="text-orga63e378">
+</div>
+</section>
+<section id="slide-orgf29c3f6">
+<h4 id="orgf29c3f6">Nubank: Engineering Productivity</h4>
+</section>
+<section id="slide-orge96e46e">
+<h4 id="orge96e46e">Em outros lugares, com outros nomes</h4>
+</section>
+<section >
+
+<ul>
+<li class="fragment">ThoughtWorks sobre <a href="https://www.youtube.com/watch?v=2jGef7HiSns">Developer Experience como diferenciador</a></li>
+<li class="fragment">Heroku sobre <a href="https://www.heroku.com/dx">Developer Experience como oferta de mercado</a></li>
+<li class="fragment">Google sobre <a href="https://testing.googleblog.com/2016/03/from-qa-to-engineering-productivity.html">Engineering Productivity na qualidade dos sistemas</a></li>
+<li class="fragment">Netflix sobre <a href="https://www.atlassian.com/company/events/summit-us/watch-sessions/2017/code-deploy/continuously-integrating-distributed-code-at-netflix">Integracao Continua por membros da equipe de Developer Productivity</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgac3515a">
+<h2 id="orgac3515a">Se você ainda não pratica Entrega Contínua</h2>
+<ul>
+<li class="fragment">Faça um exercicio de <a href="https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&amp;utm_campaign=user_page&amp;utm_medium=link">avaliação de entrega continua</a></li>
+<li class="fragment">Crie um <a href="http://www.caroli.org/mapeamento-de-fluxo-de-valor/">Value Stream Map</a></li>
+<li class="fragment">Descubra qual seu <i><a href="http://www.caroli.org/bar-de-uisque-wip-cycle-time-lead-time-batch-size/">Lead Time</a></i></li>
+<li class="fragment">Adote mudanças no processo para torná-lo confiável e automatizável</li>
+
+</ul>
+
+</section>
+<section >
+<p>
+Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
+</p>
+
+</section>
+<section >
+<p>
+Podemos conversar mais durante a conferência
+</p>
+
+<p>
+Bruno Tavares - <a href="https://twitter.com/bltavares">@bltavares</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdc6e08b">
+<h2 id="orgdc6e08b">Um exercicio para sua equipe</h2>
+<p>
+Para conhecer a ergonomia do seu processo de desenvolvimento
+</p>
+
+</section>
+<section >
+<p>
+Quanto tempo demora para uma pessoa chegar no projeto e mudar algo em produção?
+</p>
+
+</section>
+<section id="slide-org9a8661a">
+<h3 id="org9a8661a">O ideal:</h3>
+<p>
+No mesmo dia
+</p>
+
+<ul>
+<li class="fragment">Escolha uma mudança de baixo risco
+<ul>
+<li>Uma mudança em um texto é um ótima primeira tarefa</li>
+
+</ul></li>
+<li class="fragment">Acompanhe a configuração do ferramental</li>
+<li class="fragment">Mostre o caminho para produção</li>
+<li class="fragment">Vejam a mudança em produção</li>
+
+</ul>
+
+</section>
+<section id="slide-org65273fc">
+<h3 id="org65273fc">Para quem está chegando na equipe</h3>
+</section>
+<section >
+<p>
+É o melhor momento para ser apresentado a um processo que você usará todo os dias
+</p>
+
+</section>
+<section >
+<p>
+As próximas mudanças aconteceram em um ambiente já configurado
+</p>
+
+</section>
+<section >
+<p>
+No fim do dia você sente que já contribuiu no projeto
+</p>
+
+</section>
+<section id="slide-org59becdd">
+<h3 id="org59becdd">Para quem está acompanhando o onboarding</h3>
+</section>
+<section >
+<p>
+Você descobre onde falta ergonomia de uso no processo de entrega
+</p>
+
+</section>
+<section >
+<p>
+Você descobre o que não esta documentado
+</p>
+
+</section>
+<section >
+<p>
+E já começa com um bom onboarding
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+maxScale: 1.80,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
