@@ -219,7 +219,7 @@
     (EngProd)
 
     #+reveal: split
-    Microserviços sendo desenvolvidos o tempo todo por diferentes equipes
+    Microserviços em desenvolvimento o tempo todo por diferentes equipes
 
     #+reveal: split
     Mudanças de todos se enfileram para chegar em produção
