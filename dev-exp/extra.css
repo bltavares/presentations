@@ -7,6 +7,14 @@
     font-weight: bold;
 }
 
+.nubank {
+    color: #6D2177;
+}
+
+ul li {
+    font-size: 0.8em !important
+}
+
 .reveal a {
     color: #a1b56c !important;
 }
