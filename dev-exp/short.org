@@ -162,6 +162,8 @@
 
 ** Developer Experience em outras empresas
 *** Nubank: Engineering Productivity
+    (EngProd)
+
 *** Em outros lugares, com outros nomes
     #+reveal: split
 

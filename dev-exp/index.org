@@ -1,6 +1,6 @@
 #+Title: Developer Experience: desbloqueando entregas ágeis
 #+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil reveal_history:t
-#+REVEAL_THEME: base16
+#+REVEAL_THEME: white
 #+REVEAL_TRANS: slide
 #+REVEAL_MAX_SCALE: 1.8
 #+REVEAL_EXTRA_CSS: extra.css
@@ -70,7 +70,7 @@
    #+reveal: split
    Passando pelo mesmo processo confiável que você construiu no dia a dia
 
-* Como manter os benefícios da Entrega Contínua?
+* Como crescer e manter uma Entrega Contínua?
 
   #+reveal: split
   Pensando no crescimento de um produto
@@ -82,7 +82,7 @@
   A complexidade do negócio ainda é pequena
 
   #+reveal: split
-  Manter o contexto inteiro do negócio dentro da equipe é simples
+  Manter o contexto do negócio dentro da equipe é simples
 
   #+reveal: split
   As ferramentas e processos são simples
@@ -155,7 +155,9 @@
   Incentivando pequenas mudanças em bancos de dados entre 25 equipes
 
   #+reveal: split
-  Cenário inicial: uma mudança de banco de dados precisa:
+  Cenário inicial
+
+  Uma mudança de banco de dados precisa:
 
   #+attr_reveal: :frag (t t t t)
   - Ser revisado pelo DBA
@@ -164,7 +166,7 @@
   - Mudanças estruturais precisam de cuidado redobrado
 
   #+reveal: split
-  Resultado:
+  Comportamentos adotados
 
   #+attr_reveal: :frag (t t t t t)
   - Mudanças demoraram 5 dias para serem revisadas pelo DBA
@@ -181,7 +183,7 @@
   Esse não é o comportamento que gostaríamos de incentivar
 
   #+reveal: split
-  Criamos uma equipe de 4 pessoas:
+  Juntamos uma equipe para:
 
   #+attr_reveal: :frag (t t t t)
   - Automatizamos a maioria das checagens nas mudanças
@@ -214,6 +216,8 @@
 
 ** Developer Experience em outras empresas
 *** Nubank: Engineering Productivity
+    (EngProd)
+
     #+reveal: split
     Microserviços sendo desenvolvidos o tempo todo por diferentes equipes
 
@@ -240,8 +244,21 @@
     - Google sobre [[https://testing.googleblog.com/2016/03/from-qa-to-engineering-productivity.html][Engineering Productivity na qualidade dos sistemas]]
     - Netflix sobre [[https://www.atlassian.com/company/events/summit-us/watch-sessions/2017/code-deploy/continuously-integrating-distributed-code-at-netflix][Integracao Continua por membros da equipe de Developer Productivity]]
 
-* Um exercicio para sua equipe
+* Se você ainda não pratica Entrega Contínua
 
+  #+attr_reveal: :frag (t t t t)
+  - Faça um exercicio de [[https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&utm_campaign=user_page&utm_medium=link][avaliação de entrega continua]]
+  - Crie um [[http://www.caroli.org/mapeamento-de-fluxo-de-valor/][Value Stream Map]]
+  - Descubra qual seu /[[http://www.caroli.org/bar-de-uisque-wip-cycle-time-lead-time-batch-size/][Lead Time]]/
+  - Adote mudanças no processo para torná-lo confiável e automatizável
+
+  #+reveal: split
+  Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
+
+* Um exercicio para sua equipe
+  Para conhecer a ergonomia do seu processo de desenvolvimento
+
+  #+reveal: split
   Quanto tempo demora para uma pessoa chegar no projeto e mudar algo em produção?
 
 ** O ideal:
@@ -271,26 +288,12 @@
    Você descobre onde falta ergonomia de uso no processo de entrega
 
    #+reveal: split
-   Você descobre o que não esta documentado
+   Você observa o que é preciso otimizar para /reduzir o Lead Time/
 
    #+reveal: split
    E já começa com um bom onboarding
 
-* Se você ainda não pratica Entrega Contínua
+   #+reveal: split
+   Obrigado
 
-  #+attr_reveal: :frag (t t t t)
-  - Faça um exercicio de [[https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&utm_campaign=user_page&utm_medium=link][avaliação de entrega continua]]
-  - Crie um [[http://www.caroli.org/mapeamento-de-fluxo-de-valor/][Value Stream Map]]
-  - Descubra qual seu /[[http://www.caroli.org/bar-de-uisque-wip-cycle-time-lead-time-batch-size/][Lead Time]]/
-  - Adote mudanças no processo para torná-lo confiável e automatizável
-
-  #+reveal: split
-  Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
-
-  #+reveal: split
-  Podemos conversar mais durante a conferência
-
-  #+reveal: split
-  Obrigado
-
-  Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
+   Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
