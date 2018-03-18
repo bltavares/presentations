@@ -1,0 +1,233 @@
+#+Title: Developer Experience: desbloqueando entregas ágeis
+#+OPTIONS:   num:nil toc:nil reveal_overview:t reveal_title_slide:nil reveal_history:t
+#+REVEAL_THEME: white
+#+REVEAL_TRANS: slide
+#+REVEAL_MAX_SCALE: 1.8
+#+REVEAL_EXTRA_CSS: extra.css
+
+* Developer Experience
+
+  Desbloqueando entregas ágeis
+
+  #+reveal: split
+  Olá pessoal
+
+  #+reveal: split
+  De onde vem a necessidade de entender a experiência de desenvolvimento?
+
+  #+reveal: split
+  - Uma introdução ao conceito
+  - Um case de sucesso
+  - Outros exemplos surgindo no mercado
+
+** De onde vem a necessidade de entender a experiência de desenvolvimento?
+   #+reveal: split
+   Primeiro precisamos de falar sobre Agilidade e Entrega Contínua
+
+* Agilidade e Lean
+  Construção colaborativa, evitando desperdício
+
+  #+reveal: split
+  Processos para responder rápido a necessidades de negócio
+
+* Entrega Contínua
+  Reduzindo riscos por entregar frequentemente
+
+  #+reveal: split
+  Ter um processo de entrega confiável e bem definido, onde o produto passa por /build/, /test/, /deploy/
+
+  #+reveal: split
+
+  [[http://loja.grupoa.com.br/livros/engenharia-de-software-e-metodos-ageis/entrega-continua/9788582601037][Entrega Continua - Jez Humble & David Farley]]
+  #+REVEAL_HTML:  <img style="height: 10%; border: none; box-shadow: none;" src="entrega_continua.jpg" />
+
+** Lead Time
+
+   Quanto tempo para fazer uma mudança e tê-la refletida em _produção_
+
+** Entrega Contínua é pré-requisito para boas entregas
+
+* Como crescer e manter uma Entrega Contínua?
+
+  #+reveal: split
+  10 pessoas desenvolvendo
+
+  #+reveal: split
+  Manter o contexto do negócio dentro da equipe é simples
+
+  #+reveal: split
+  As ferramentas e processos são simples
+
+** 10 equipes de 10 pessoas desenvolvendo
+
+   #+reveal: split
+   A complexidade de negócio que esse grupo suporta cresce
+
+   #+reveal: split
+   As mudanças possuem riscos e impacto maiores
+
+   #+reveal: split
+   As ferramentas e processos precisam se adaptar ao crescimento da complexidade
+
+** 10 pessoas x 100 pessoas
+
+   - Qual o risco de uma mudança no código?
+   - Qual o risco de uma mudança no banco de dados?
+   - Qual o risco de uma mudança na plataforma?
+
+   #+reveal: split
+   Falamos sobre a jornada do usuário para entender como é interagir com nosso sistema
+
+   #+reveal: split
+   E se...
+
+   #+reveal: split
+   E se pensarmos nas pessoas que desenvolvem os nossos sistemas como Usuários dos nossos /processos de entrega/?
+
+** Qual a Experiência de Desenvolvimento?
+
+   #+reveal: split
+   Qual a experiência de uso que nossas ferramentas e processo de entrega tem?
+
+   #+reveal: split
+   Qual o custo e esforço ao fazer:
+
+   - Uma mudança na lógica do código?
+   - Uma mudança no banco de dados?
+   - Uma mudança na infraestrutura?
+
+   #+reveal: split
+   Quais são os comportamentos que o nosso processo de entrega incentivam nas nossas equipes?
+
+   #+reveal: split
+   Quanto maior o esforço, menos o uso
+
+** O /processo de entrega/ sob análise
+
+*** Developer Experience busca incentivar a Entrega Contínua
+
+    #+reveal: split
+    Developer Experience é otimizar Entrega Contínua
+
+    #+reveal: split
+    É preciso reduzir os custos dos processos para incentivar Entrega Contínua
+
+*** Quais os comportamentos que gostaríamos de incentivar nas equipes?
+
+* Case
+  Incentivando pequenas mudanças em bancos de dados entre 25 equipes
+
+  #+reveal: split
+  Cenário inicial
+
+  Uma mudança de banco de dados precisa:
+
+  #+attr_reveal: :frag (t t t t)
+  - Ser revisado pelo DBA
+  - Não podemos permitir comandos que percam dados (Drop, deletes)
+  - Não podemos permitir comandos que geram locks nas tabelas
+  - Mudanças estruturais precisam de cuidado redobrado
+
+  #+reveal: split
+  Comportamentos adotados
+
+  #+attr_reveal: :frag (t t t t t)
+  - Mudanças demoraram 5 dias para serem revisadas pelo DBA
+  - Conflitos nas prioridades atrasavam as revisões
+  - Equipes evitavam fazer mudanças no banco de dados
+  - Falta de confiança por não saberem o que é aceitável
+  - Falta de previsibilidade quando a mudança seria aplicada em produção
+  - Mudanças aconteciam no final da sprint, gerando dependência no código que seria entregue
+
+  #+reveal: split
+  Mudanças em banco eram evitadas e deixados para o último dia da sprint
+
+  #+reveal: split
+  Esse não é o comportamento que gostaríamos de incentivar
+
+  #+reveal: split
+  Juntamos uma equipe para:
+
+  #+attr_reveal: :frag (t t t t)
+  - Automatizamos a maioria das checagens nas mudanças
+  - Melhoramos a mensagem de feedback quando encontramos erros
+  - Reduzimos o ciclo de feedback permitindo executar as verificações antes mesmo de criar um ticket
+  - Nos casos que ainda não haviam verificações automáticas, enviamos para o DBA nos ajudar
+
+  #+reveal: split
+  Mudanças foram de 5 dias de revisão para 1 hora
+
+  #+reveal: split
+  /Lead Time/ foi de de 40 horas para 1 hora
+
+** Developer Experience em outras empresas
+*** Nubank: Engineering Productivity
+    (EngProd)
+
+*** Em outros lugares, com outros nomes
+    #+reveal: split
+
+    #+attr_reveal: :frag (t t t t)
+    - ThoughtWorks sobre [[https://www.youtube.com/watch?v=2jGef7HiSns][Developer Experience como diferenciador]]
+    - Heroku sobre [[https://www.heroku.com/dx][Developer Experience como oferta de mercado]]
+    - Google sobre [[https://testing.googleblog.com/2016/03/from-qa-to-engineering-productivity.html][Engineering Productivity na qualidade dos sistemas]]
+    - Netflix sobre [[https://www.atlassian.com/company/events/summit-us/watch-sessions/2017/code-deploy/continuously-integrating-distributed-code-at-netflix][Integracao Continua por membros da equipe de Developer Productivity]]
+
+* Se você ainda não pratica Entrega Contínua
+
+  #+attr_reveal: :frag (t t t t)
+  - Faça um exercicio de [[https://www.infoq.com/br/articles/como-avaliar-sua-equipe-com-entrega-continua?utm_source=infoq&utm_campaign=user_page&utm_medium=link][avaliação de entrega continua]]
+  - Crie um [[http://www.caroli.org/mapeamento-de-fluxo-de-valor/][Value Stream Map]]
+  - Descubra qual seu /[[http://www.caroli.org/bar-de-uisque-wip-cycle-time-lead-time-batch-size/][Lead Time]]/
+  - Adote mudanças no processo para torná-lo confiável e automatizável
+
+  #+reveal: split
+  Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
+
+  #+reveal: split
+  Podemos conversar mais durante a conferência
+
+  Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
+
+* Um exercício para sua equipe
+  Para conhecer a ergonomia do seu processo de desenvolvimento
+
+  #+reveal: split
+  Quanto tempo demora para uma pessoa chegar no projeto e mudar algo em produção?
+
+** O ideal:
+   No mesmo dia
+
+   #+attr_reveal: :frag (t t t t)
+   - Escolha uma mudança de baixo risco
+     - Uma mudança em um texto é um ótima primeira tarefa
+   - Acompanhe a configuração do ferramental
+   - Mostre o caminho para produção
+   - Vejam a mudança em produção
+
+** Para quem está chegando na equipe
+
+   #+reveal: split
+   É o melhor momento para ser apresentado a um processo que você usará todo os dias
+
+   #+reveal: split
+   As próximas mudanças aconteceram em um ambiente já configurado
+
+   #+reveal: split
+   No fim do dia você sente que já contribuiu no projeto
+
+** Para quem está acompanhando o onboarding
+
+   #+reveal: split
+   Você descobre onde falta ergonomia de uso no processo de entrega
+
+   #+reveal: split
+   Você observa o que é preciso otimizar para /reduzir o Lead Time/
+
+   #+reveal: split
+   E já começa com um bom onboarding
+
+   #+reveal: split
+   Obrigado
+
+   Bruno Tavares - [[https://twitter.com/bltavares][@bltavares]]
