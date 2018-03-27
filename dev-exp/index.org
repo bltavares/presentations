@@ -19,7 +19,7 @@
   - Uma introdução ao conceito
   - Um case de sucesso
   - Outros exemplos surgindo no mercado
-  - Um exercicio
+  - Um exercício
 
 ** De onde vem a necessidade de entender a experiência de desenvolvimento?
    #+reveal: split
@@ -48,7 +48,7 @@
 
 ** Lead Time
 
-   Quanto tempo para fazer uma mudança e te-la refletida em _produção_
+   Quanto tempo para fazer uma mudança e tê-la refletida em _produção_
 
 ** Entrega Contínua é pré-requisito para boas entregas
 
@@ -98,7 +98,7 @@
    #+reveal: split
    As ferramentas e processos precisam se adaptar ao crescimento da complexidade
 
-** 10 pessoas vs 100 pessoas
+** 10 pessoas x 100 pessoas
 
    - Qual o risco de uma mudança no código?
    - Qual o risco de uma mudança no banco de dados?
@@ -161,7 +161,7 @@
 
   #+attr_reveal: :frag (t t t t)
   - Ser revisado pelo DBA
-  - Não podemos permitir comandos que perdam dados (Drop, deletes)
+  - Não podemos permitir comandos que percam dados (Drop, deletes)
   - Não podemos permitir comandos que geram locks nas tabelas
   - Mudanças estruturais precisam de cuidado redobrado
 
@@ -177,7 +177,7 @@
   - Mudanças aconteciam no final da sprint, gerando dependência no código que seria entregue
 
   #+reveal: split
-  Mudanças em banco eram evitadas e deixados para o ultimo dia da sprint
+  Mudanças em banco eram evitadas e deixados para o último dia da sprint
 
   #+reveal: split
   Esse não é o comportamento que gostaríamos de incentivar
@@ -189,7 +189,7 @@
   - Automatizamos a maioria das checagens nas mudanças
   - Melhoramos a mensagem de feedback quando encontramos erros
   - Reduzimos o ciclo de feedback permitindo executar as verificações antes mesmo de criar um ticket
-  - Nos casos que ainda não haviam verificações automáticas, enviávamos para o DBA nos ajudar
+  - Nos casos que ainda não haviam verificações automáticas, enviamos para o DBA nos ajudar
 
   #+reveal: split
   Mudanças foram de 5 dias de revisão para 1 hora
@@ -222,7 +222,7 @@
     Microserviços em desenvolvimento o tempo todo por diferentes equipes
 
     #+reveal: split
-    Mudanças de todos se enfileram para chegar em produção
+    Mudanças de todos se enfileiram para chegar em produção
 
     #+reveal: split
     Um squad dedicado a otimizar e reduzir a fricção do processo de entrega
@@ -255,7 +255,7 @@
   #+reveal: split
   Uma boa experiência de desenvolvimento incentiva mudanças menores e mais frequentes, com riscos menores para o seu negócio
 
-* Um exercicio para sua equipe
+* Um exercício para sua equipe
   Para conhecer a ergonomia do seu processo de desenvolvimento
 
   #+reveal: split
