@@ -861,7 +861,7 @@ $ cargo run
 
    - There is a [[https://doc.rust-lang.org/book/][free book]] on the website [EN]
    - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] is a great channel to help with initial questions
-   - There is [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] for the Portuguese speakers
+   - There is [[https://riot.im/app/#/room/#rust-br:matrix.org][#rust-br]] for the Portuguese speakers
    - [[https://telegram.me/rustlangbr][@rustlangbr]] on Telegram
    - [[https://www.meetup.com/topics/rust/][Meetups]]
    - [[http://exercism.io/languages/rust/about][Coding exercises]]
@@ -894,7 +894,7 @@ $ cargo run
    - https://ouvi-falar-de-rust.herokuapp.com/
    - https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org
    - https://users.rust-lang.org/
-   - https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org
+   - https://riot.im/app/#/room/#rust-br:matrix.org
    - https://github.com/emk/heroku-buildpack-rust
    - http://www.arewewebyet.org/
    - https://rocket.rs/

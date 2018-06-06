@@ -293,7 +293,7 @@
    #+reveal: split
    A comunidade é muito aberta e me ajudou bastante.
 
-   Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
+   Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#rust-br:matrix.org][#rust-br]].
 
 ** Como eu coloco meu site no Heroku?
    Eu usei esse [[https://github.com/emk/heroku-buildpack-rust][buildpack]].
@@ -371,7 +371,7 @@
    - https://ouvi-falar-de-rust.herokuapp.com/
    - https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org
    - https://users.rust-lang.org/
-   - https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org
+   - https://riot.im/app/#/room/#rust-br:matrix.org
    - https://github.com/emk/heroku-buildpack-rust
    - http://www.arewewebyet.org/
    - https://rocket.rs/

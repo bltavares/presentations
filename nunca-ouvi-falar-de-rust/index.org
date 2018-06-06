@@ -775,7 +775,7 @@ $ cargo run
    #+reveal: split
    A comunidade é muito aberta e me ajudou bastante, e tem muito interesse em trazer pessoas novas.
 
-   Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]].
+   Muitas pessoas estão disponíveis para ajudar no [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]], no [[https://users.rust-lang.org/][fórum]] e até no [[https://riot.im/app/#/room/#rust-br:matrix.org][#rust-br]].
 
    #+reveal: split
    Existe um grande esforço em tornar todo o ecossistema inclusivo, tanto a participação das pessoas quanto material para todos os níveis.
@@ -856,7 +856,7 @@ $ cargo run
 
    - Tem um [[https://doc.rust-lang.org/book/][livro de graça]] no site [EN]
    - [[https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org][#rust-beginners]] é um ótimo canal para tirar dúvidas rápidas
-   - Existe o [[https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org][#rust-br]] para falar em portugues
+   - Existe o [[https://riot.im/app/#/room/#rust-br:matrix.org][#rust-br]] para falar em portugues
    - O grupo [[https://telegram.me/rustlangbr][@rustlangbr]] no Telegram
    - [[https://www.meetup.com/topics/rust/][Meetups]]
    - [[http://exercism.io/languages/rust/about][Exercicios]]
@@ -883,7 +883,7 @@ $ cargo run
    - https://ouvi-falar-de-rust.herokuapp.com/
    - https://riot.im/app/#/room/#mozilla_#rust-beginners:matrix.org
    - https://users.rust-lang.org/
-   - https://riot.im/app/#/room/#mozilla_#rust-br:matrix.org
+   - https://riot.im/app/#/room/#rust-br:matrix.org
    - https://github.com/emk/heroku-buildpack-rust
    - http://www.arewewebyet.org/
    - https://rocket.rs/
